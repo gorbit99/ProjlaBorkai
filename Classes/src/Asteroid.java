@@ -23,7 +23,7 @@ public class Asteroid extends SpaceObject {
 	public Material Mine() {
 	}
 	
-	public bool PlaceMaterial(Material material) {
+	public boolean PlaceMaterial(Material material) {
 	}
 	
 	public void MoveAsteroid() {
@@ -31,8 +31,8 @@ public class Asteroid extends SpaceObject {
 	
 	public void Explode() {
 	}
-	
-	public bool CanHideIn() {
+
+	public boolean CanHideIn() {
 	}
 	
 	public void AddWorker(Worker worker) {
