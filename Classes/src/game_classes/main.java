@@ -1,6 +1,6 @@
 package game_classes;
-
 import java.util.Scanner;
+
 public class main {
     public static void printUseCases() {
         System.out.println("The following use cases are avilable:\n" +
