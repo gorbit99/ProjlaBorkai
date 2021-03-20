@@ -13,7 +13,7 @@ package game_classes;//
 
 
 public class Teleporter extends SpaceObject {
-	private bool active;
+	private boolean active;
 	private Teleporter pair;
 	private Asteroid parent;
 	private Teleporter pair;
