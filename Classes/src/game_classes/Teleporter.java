@@ -4,45 +4,73 @@ package game_classes;
 import java.util.ArrayList;
 
 public class Teleporter extends SpaceObject {
-	private boolean active;
-	private Teleporter pair;
-	private Asteroid parent;
-	private BillOfMaterials billOfMaterials;
+    private boolean active;
+    private Teleporter pair;
+    private SpaceObject parent;
+    private static BillOfMaterials billOfMaterials;
 
-	public void LinkTo(Teleporter teleporter) {
-	}
-	
-	public void Place(SpaceObject asteroid) {
-	}
-	
-	public void PairPlaced() {
-	}
-	
-	public Asteroid GetParent() {
-	}
+    private Teleporter() {
+        System.out.println("Teleporter.ctor");
+        active = false;
+    }
 
-	public boolean IsActive(){
-		return active;
-	}
-	
+    private void LinkTo(Teleporter teleporter) {
+        System.out.println("Teleporter.LinkTo");
+        this.pair = teleporter;
+    }
 
-	
-	public void TeleportWorker(Worker worker) {
-	}
+    public void Place(SpaceObject asteroid) {
+        System.out.println("Teleporter.Place");
+        this.active = true;
+        this.parent = asteroid;
+        this.pair.PairPlaced();
+    }
+
+    public void PairPlaced() {
+        System.out.println("Teleporter.PairPlaced");
+        this.active = true;
+    }
+
+    public SpaceObject GetParent() {
+        System.out.println("Teleporter.GetParent");
+        return parent;
+    }
 
 
-	
-	public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) {
-	}
-	
-	public void RemoveNeighbour(SpaceObject spaceObject) {
-	}
-	
-	public void AddWorker(Worker worker) {
-	}
+    public void TeleportWorker(Worker worker) {
+        System.out.println("Teleport.TeleportWorker");
+    }
 
-	@Override
-	public String toString(){
-		return "Teleporter";
-	}
+
+    public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) {
+        System.out.println("Teleporter.CreateTeleporterPair");
+        ArrayList<Teleporter> teleporters = new ArrayList<>();
+        if (billOfMaterials.IsEnough(materials)) {
+            Teleporter a = new Teleporter();
+            Teleporter b = new Teleporter();
+            a.LinkTo(b);
+            b.LinkTo(a);
+            teleporters.add(a);
+            teleporters.add(b);
+        }
+        return teleporters;
+    }
+
+    public void RemoveNeighbour(SpaceObject spaceObject) {
+        System.out.println("Teleport.RemoveNeighbour");
+    }
+
+    public void AddWorker(Worker worker) {
+        System.out.println("Teleport.AddWorker");
+    }
+
+    @Override
+    public void RemoveWorker(Worker worker) {
+        System.out.println("I dunno how we got here");
+    }
+
+    @Override
+    public String toString() {
+        return "Teleporter";
+    }
 }

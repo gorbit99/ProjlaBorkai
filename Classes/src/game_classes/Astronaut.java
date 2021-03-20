@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Astronaut extends Worker {
     private Material[] materialsStored;
-    private Teleporter[] teleporters;
+    private ArrayList<Teleporter> teleporters;
 
     public void Mine() {
     }
@@ -19,18 +19,30 @@ public class Astronaut extends Worker {
         System.out.println("Astronaut.PlaceMaterial");
     }
 
+    //nem tudom mennyire jó ötlet a castolás
     public void PlaceTeleporter() {
         System.out.println("Astronaut.PlaceTeleporter");
+        if (teleporters.isEmpty()) {
+            return;
+        }
+        this.teleporters.get(0).Place(this.position);
 
     }
 
     public void CreateRobot() {
         System.out.println("Astronaut.CreateRobot");
+        Robot roby = Robot.CreateRobot(this.materialsStored);
+        if (roby != null){
+            this.position.AddWorker(roby);
+        }
     }
 
     public void CreateTeleporter() {
         System.out.println("Astronaut.CreateTeleporter");
-        this.teleporters = Teleporter.CreateTeleporterPair(this.materialsStored);
+        if (teleporters.isEmpty())
+            this.teleporters = Teleporter.CreateTeleporterPair(this.materialsStored);
+        if (teleporters.isEmpty())
+            System.out.println("Error");
     }
 
     public void Step() {
@@ -66,7 +78,9 @@ public class Astronaut extends Worker {
             case 6:
                 this.PlaceTeleporter();
                 break;
-            //case 7 :this.PlaceMaterial();break;
+            case 7:
+                //this.PlaceMaterial();
+                break;
             default:
                 this.Wait();
         }
@@ -87,8 +101,7 @@ public class Astronaut extends Worker {
         ArrayList<SpaceObject> neigbours = this.position.GetNeighbours();
         System.out.println("Where do you want to move?");
         for (int i = 0; i < neigbours.size(); i++) {
-            String type = String.valueOf(neigbours.get(i).getClass());
-            System.out.println(i + 1 + "." + type);
+            System.out.println(i + 1 + "." + neigbours.get(i).toString());
         }
         Scanner scanner = new Scanner(System.in);
         int to = scanner.nextInt();
