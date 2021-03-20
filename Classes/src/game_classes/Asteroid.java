@@ -10,7 +10,7 @@ package game_classes;//
 //
 
 
-
+import java.util.Scanner;
 
 public class Asteroid extends SpaceObject {
 	private int layers;
@@ -33,6 +33,14 @@ public class Asteroid extends SpaceObject {
 	}
 
 	public boolean CanHideIn() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Can you hide in the asteroid? (y/n)");
+		String answer = sc.nextLine();
+		sc.close();
+		if (answer.equals("y"))
+			return true;
+
+		return false;
 	}
 	
 	public void AddWorker(Worker worker) {
