@@ -66,4 +66,9 @@ public class Asteroid extends SpaceObject {
 	
 	public void AddWorker(Worker worker) {
 	}
+
+	@Override
+	public String toString(){
+		return "Asteroid";
+	}
 }
