@@ -1,6 +1,7 @@
 package game_classes;
 
 
+import java.util.ArrayList;
 
 public class Teleporter extends SpaceObject {
 	private boolean active;
@@ -11,7 +12,7 @@ public class Teleporter extends SpaceObject {
 	public void LinkTo(Teleporter teleporter) {
 	}
 	
-	public void Place(Asteroid asteroid) {
+	public void Place(SpaceObject asteroid) {
 	}
 	
 	public void PairPlaced() {
@@ -31,7 +32,7 @@ public class Teleporter extends SpaceObject {
 
 
 	
-	public static Teleporter[] CreateTeleporterPair(Material[] materials) {
+	public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) {
 	}
 	
 	public void RemoveNeighbour(SpaceObject spaceObject) {
