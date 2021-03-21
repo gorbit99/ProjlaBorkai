@@ -4,7 +4,7 @@ package game_classes;
  * represents a Worker
  */
 public abstract class Worker {
-    protected Asteroid position;
+    protected Asteroid position = new Asteroid();
 
     /**
      * Moves worker to the given SpaceObject
