@@ -1,7 +1,7 @@
 package game_classes;
 
 public abstract class Worker {
-    protected Asteroid position;
+    protected Asteroid position = new Asteroid();
 
     public void TravelTo(SpaceObject spaceObject) {
         TestLogger.EnterFunction("Worker.TravelTo");

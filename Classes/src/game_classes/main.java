@@ -34,6 +34,7 @@ public class main {
 
     public static void main(String[] args) {
 
+        printUseCases();
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
 
@@ -42,7 +43,8 @@ public class main {
 
             switch (number) {
                 case 1:
-
+                    Astronaut as = new Astronaut();
+                    as.Move();
                     break;
                 case 2:
 

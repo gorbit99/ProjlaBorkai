@@ -115,5 +115,4 @@ public class Astronaut extends Worker {
         this.TravelTo(neighbours.get(to - 1));
         TestLogger.ExitFunction();
     }
-
 }

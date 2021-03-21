@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class SpaceObject {
 	//nem így van az umlen ezt meg kell ebszélni
 	protected ArrayList<Worker> workers;
-	protected ArrayList<SpaceObject> neigbours;
+	protected ArrayList<SpaceObject> neigbours = new ArrayList<SpaceObject>();
 
 	public void AddNeighbour(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("SpaceObject.AddNeighbour");
