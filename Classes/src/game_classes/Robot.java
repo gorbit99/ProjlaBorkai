@@ -2,16 +2,26 @@ package game_classes;
 
 import java.util.ArrayList;
 
-
+/**
+ * represents a robot
+ */
 public class Robot extends Worker {
+    /**
+     * contains the materials that you need to build a robot
+     */
     private static BillOfMaterials billOfMaterials;
 
-
-    private Robot(){
+    /**
+     * robot constructor
+     */
+    public Robot(){
         TestLogger.EnterFunction("Robot.ctor");
         TestLogger.ExitFunction();
     }
 
+    /**
+     * controls the robots movements
+     */
     public void Step() {
         TestLogger.EnterFunction("Robot.Step");
         switch (Game.RandomNum(3)) {
@@ -22,6 +32,10 @@ public class Robot extends Worker {
         TestLogger.ExitFunction();
     }
 
+    /**
+     * called when a asteroid explodes
+     * moves robot to a random neighbour
+     */
     public void Explode() {
         TestLogger.EnterFunction("Robot.Explode");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
@@ -31,6 +45,9 @@ public class Robot extends Worker {
         TestLogger.ExitFunction();
     }
 
+    /**
+     * moves robot to a neighbour
+     */
     public void Move() {
         TestLogger.EnterFunction("Robot.Move");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
@@ -39,6 +56,11 @@ public class Robot extends Worker {
         TestLogger.ExitFunction();
     }
 
+    /**
+     * creates a robot
+     * @param materials materials going to be used for creating the robot
+     * @return a new robot if the build was successful otherwise null
+     */
     public static Robot CreateRobot(Material[] materials){
         TestLogger.EnterFunction("Robot.CreateRobot");
         boolean enough = billOfMaterials.IsEnough(materials);
