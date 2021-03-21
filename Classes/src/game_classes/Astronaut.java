@@ -23,27 +23,35 @@ public class Astronaut extends Worker {
         TestLogger.ExitFunction();
     }
 
+    /**
+     * mines an asteroid
+     */
     public void Mine() {
         TestLogger.EnterFunction("Astronaut.Mine");
         this.position.Mine();
         TestLogger.ExitFunction();
     }
 
+    /**
+     * places the chosen material back to an asteroid if its core is empty
+     */
     public void PlaceMaterial() {
         TestLogger.EnterFunction("Astronaut.PlaceMaterial");
         System.out.println("Which material do you wan to place back?");
         for (int i = 0; i < this.materialsStored.length; i++) {
-            if (materialsStored[i]!=null)
+            if (materialsStored[i] != null)
                 System.out.println(i + 1 + "." + materialsStored[i].toString());
         }
         Scanner scanner = new Scanner(System.in);
         int chosen = scanner.nextInt();
         scanner.close();
-        this.position.PlaceMaterial(materialsStored[chosen-1]);
+        this.position.PlaceMaterial(materialsStored[chosen - 1]);
         TestLogger.ExitFunction();
     }
 
-    //nem tudom mennyire jó ötlet a castolás
+    /**
+     * places a teleporter down
+     */
     public void PlaceTeleporter() {
         TestLogger.EnterFunction("Astronaut.PlaceTeleporter");
         if (teleporters.isEmpty()) {
@@ -55,15 +63,21 @@ public class Astronaut extends Worker {
         TestLogger.ExitFunction();
     }
 
+    /**
+     * creates a robot from the astronaut's materials
+     */
     public void CreateRobot() {
         TestLogger.EnterFunction("Astronaut.CreateRobot");
         Robot roby = Robot.CreateRobot(this.materialsStored);
-        if (roby != null){
+        if (roby != null) {
             this.position.AddWorker(roby);
         }
         TestLogger.ExitFunction();
     }
 
+    /**
+     * creates a teleporter pair from the astronaut's materials
+     */
     public void CreateTeleporter() {
         TestLogger.EnterFunction("Astronaut.CreateTeleporter");
         if (teleporters.isEmpty())
@@ -73,6 +87,9 @@ public class Astronaut extends Worker {
         TestLogger.ExitFunction();
     }
 
+    /**
+     * controls the astronaut's movements
+     */
     public void Step() {
         TestLogger.EnterFunction("Astronaut.Step");
         System.out.println("1. Wait");
@@ -100,18 +117,28 @@ public class Astronaut extends Worker {
         TestLogger.ExitFunction();
     }
 
+    /**
+     * called when an asteroid is exploded
+     */
     public void Explode() {
         TestLogger.EnterFunction("Astronaut.Step");
         this.Die();
         TestLogger.ExitFunction();
     }
 
+    /**
+     * returns the materials of the astronaut
+     * @return astronauts material
+     */
     public Material[] GetStoredMaterials() {
         TestLogger.EnterFunction("Astronaut.Get");
         TestLogger.ExitFunction();
         return this.materialsStored;
     }
 
+    /**
+     * actor can decide where the astronaut moves and calls travelto
+     */
     public void Move() {
         TestLogger.EnterFunction("Astronaut.Move");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
