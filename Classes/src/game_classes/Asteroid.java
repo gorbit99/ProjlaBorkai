@@ -99,7 +99,6 @@ public class Asteroid extends SpaceObject {
 		TestLogger.EnterFunction("Asteroid.RemoveWorker");
 		workers.remove(worker);
 		TestLogger.ExitFunction();
-		System.out.println("Asteroid.RemoveWorker");
 		workers.remove(worker);
 	}
 	
