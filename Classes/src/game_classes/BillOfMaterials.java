@@ -1,9 +1,16 @@
 package game_classes;
 
-
 import java.util.Scanner;
 
+/**
+ * represents the class which knows the right amount of materials for the creation of an object
+ */
 public class BillOfMaterials {
+	/**
+	 * decides whether there is enough material to creat a object
+	 * @param materials materials to be checked if they are enough
+	 * @return true if there is enough material false if there isn't
+	 */
 	public boolean IsEnough(Material[] materials) {
 		TestLogger.EnterFunction("BillOfMaterials.IsEnough");
 		Scanner sc = new Scanner(System.in);
