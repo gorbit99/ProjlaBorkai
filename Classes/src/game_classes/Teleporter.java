@@ -22,8 +22,9 @@ public class Teleporter extends SpaceObject {
      * teleporter constructor
      */
     private Teleporter() {
-        System.out.println("Teleporter.ctor");
+        TestLogger.EnterFunction("Teleporter.ctor");
         active = false;
+        TestLogger.ExitFunction();
     }
 
     /**
@@ -31,8 +32,9 @@ public class Teleporter extends SpaceObject {
      * @param teleporter the teleporter to be linked
      */
     private void LinkTo(Teleporter teleporter) {
-        System.out.println("Teleporter.LinkTo");
+        TestLogger.EnterFunction("Teleporter.LinkTo");
         this.pair = teleporter;
+        TestLogger.ExitFunction();
     }
 
     /**
@@ -40,18 +42,20 @@ public class Teleporter extends SpaceObject {
      * @param asteroid asteroid to be placed
      */
     public void Place(SpaceObject asteroid) {
-        System.out.println("Teleporter.Place");
+        TestLogger.EnterFunction("Teleporter.Place");
         this.active = true;
         this.parent = asteroid;
         this.pair.PairPlaced();
+        TestLogger.ExitFunction();
     }
 
     /**
      * logs that the teleporter's pair is placed
      */
     public void PairPlaced() {
-        System.out.println("Teleporter.PairPlaced");
+        TestLogger.EnterFunction("Teleporter.PairPlaced");
         this.active = true;
+        TestLogger.ExitFunction();
     }
 
     /**
@@ -59,8 +63,10 @@ public class Teleporter extends SpaceObject {
      * @return parent space object
      */
     public SpaceObject GetParent() {
-        System.out.println("Teleporter.GetParent");
+        TestLogger.EnterFunction("Teleporter.GetParent");
+        TestLogger.ExitFunction();
         return parent;
+
     }
 
     /**
@@ -68,9 +74,10 @@ public class Teleporter extends SpaceObject {
      * @param worker worker to be teleported
      */
     public void TeleportWorker(Worker worker) {
-        System.out.println("Teleport.TeleportWorker");
+        TestLogger.EnterFunction("Teleport.TeleportWorker");
         SpaceObject parent = this.GetParent();
         parent.AddWorker(worker);
+        TestLogger.ExitFunction();
     }
 
     /**
@@ -79,7 +86,7 @@ public class Teleporter extends SpaceObject {
      * @return teleporter list with the pair if its possible to create empty list if not
      */
     public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) {
-        System.out.println("Teleporter.CreateTeleporterPair");
+        TestLogger.EnterFunction("Teleporter.CreateTeleporterPair");
         ArrayList<Teleporter> teleporters = new ArrayList<>();
         if (billOfMaterials.IsEnough(materials)) {
             Teleporter a = new Teleporter();
@@ -89,6 +96,7 @@ public class Teleporter extends SpaceObject {
             teleporters.add(a);
             teleporters.add(b);
         }
+        TestLogger.ExitFunction();
         return teleporters;
     }
 
@@ -97,20 +105,23 @@ public class Teleporter extends SpaceObject {
      * @param spaceObject space object to be removed
      */
     public void RemoveNeighbour(SpaceObject spaceObject) {
+        TestLogger.EnterFunction("Teleporter.ctor");
         System.out.println("Teleport.RemoveNeighbour");
         this.neigbours.remove(spaceObject);
         this.parent = this.neigbours.get(Game.RandomNum(this.neigbours.size()));
-
+        TestLogger.ExitFunction();
     }
 
     public void AddWorker(Worker worker) {
-        System.out.println("Teleport.AddWorker");
+        TestLogger.EnterFunction("Teleport.AddWorker");
         this.pair.TeleportWorker(worker);
+        TestLogger.ExitFunction();
     }
 
     @Override
     public void RemoveWorker(Worker worker) {
-        System.out.println("I dunno how we got here");
+        TestLogger.EnterFunction("I dunno how we got here");
+        TestLogger.ExitFunction();
     }
 
     @Override
