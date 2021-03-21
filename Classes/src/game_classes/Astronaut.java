@@ -8,6 +8,8 @@ public class Astronaut extends Worker {
     private ArrayList<Teleporter> teleporters;
 
     public void Mine() {
+        System.out.println("Astronaut.Mine");
+        this.position.Mine();
     }
 
     public Astronaut() {
@@ -15,18 +17,28 @@ public class Astronaut extends Worker {
         this.materialsStored = new Material[10];
     }
 
-    public void PlaceMaterial(Material material) {
+    public void PlaceMaterial() {
         System.out.println("Astronaut.PlaceMaterial");
+        System.out.println("Which material do you wan to place back?");
+        for (int i = 0; i < this.materialsStored.length; i++) {
+            if (materialsStored[i]!=null)
+                System.out.println(i + 1 + "." + materialsStored[i].toString());
+        }
+        Scanner scanner = new Scanner(System.in);
+        int choosen = scanner.nextInt();
+        scanner.close();
+        this.position.PlaceMaterial(materialsStored[choosen-1]);
+
     }
 
-    //nem tudom mennyire jó ötlet a castolás
+
     public void PlaceTeleporter() {
         System.out.println("Astronaut.PlaceTeleporter");
         if (teleporters.isEmpty()) {
             return;
         }
         this.teleporters.get(0).Place(this.position);
-
+        this.teleporters.remove(0);
     }
 
     public void CreateRobot() {
@@ -79,7 +91,7 @@ public class Astronaut extends Worker {
                 this.PlaceTeleporter();
                 break;
             case 7:
-                //this.PlaceMaterial();
+                this.PlaceMaterial();
                 break;
             default:
                 this.Wait();
