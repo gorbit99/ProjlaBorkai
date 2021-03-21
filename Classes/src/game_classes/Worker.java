@@ -73,5 +73,9 @@ public abstract class Worker {
      */
     public abstract void Move();
 
+    /**
+     * returns the stored material of the worker
+     * @return stored materials
+     */
     public abstract Material[] GetStoredMaterials();
 }
