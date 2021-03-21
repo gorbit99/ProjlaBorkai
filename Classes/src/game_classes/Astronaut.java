@@ -38,14 +38,11 @@ public class Astronaut extends Worker {
     public void PlaceMaterial() {
         TestLogger.EnterFunction("Astronaut.PlaceMaterial");
         //TODO testlogger.askquestionné
-        System.out.println("Which material do you wan to place back?");
         for (int i = 0; i < this.materialsStored.length; i++) {
             if (materialsStored[i] != null)
                 System.out.println(i + 1 + "." + materialsStored[i].toString());
         }
-        Scanner scanner = new Scanner(System.in);
-        int chosen = scanner.nextInt();
-        scanner.close();
+        int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you wan to place back?"));
         this.position.PlaceMaterial(materialsStored[chosen - 1]);
         TestLogger.ExitFunction();
     }
@@ -101,9 +98,7 @@ public class Astronaut extends Worker {
         System.out.println("6. Create Teleporter");
         System.out.println("7. Place Teleporter");
         System.out.println("8. Place Material");
-        Scanner scanner = new Scanner(System.in);
-        int to = scanner.nextInt();
-        scanner.close();
+        int to = Integer.parseInt(TestLogger.AskQuestion("Which movement you want to make"));
         to--;
         switch (to) {
             case 1 -> this.Move();
@@ -143,13 +138,11 @@ public class Astronaut extends Worker {
     public void Move() {
         TestLogger.EnterFunction("Astronaut.Move");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
-        System.out.println("Where do you want to move?");
         for (int i = 0; i < neighbours.size(); i++) {
             System.out.println(i + 1 + "." + neighbours.get(i).toString());
         }
-        Scanner scanner = new Scanner(System.in);
-        int to = scanner.nextInt();
-        scanner.close();
+        int to = Integer.parseInt(TestLogger.AskQuestion("Where do you want to move?"));
+
         this.TravelTo(neighbours.get(to - 1));
         TestLogger.ExitFunction();
     }
