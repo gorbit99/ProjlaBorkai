@@ -33,7 +33,12 @@ public class main {
     }
 
     public static void main(String[] args) {
-
+        System.out.println("Initialization:");
+        Astronaut a = new Astronaut();
+        Robot r = new Robot();
+        Game g = Game.GetInstance();
+        AsteroidField af = AsteroidField.GetInstance();
+        System.out.println("----------------------Starting point--------------------");
         printUseCases();
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
@@ -43,82 +48,80 @@ public class main {
 
             switch (number) {
                 case 1:
-                    Astronaut as = new Astronaut();
-                    as.Move();
+                    a.Move();
                     break;
                 case 2:
-
+                    a.Move();
                     break;
                 case 3:
-
+                    a.Drill();
                     break;
                 case 4:
-
+                    a.Drill();
                     break;
                 case 5:
-
+                    a.Drill();
                     break;
                 case 6:
-
+                    a.Mine();
                     break;
                 case 7:
-
+                    a.PlaceMaterial();
                     break;
                 case 8:
-
+                    a.PlaceMaterial();
                     break;
                 case 9:
-
+                    a.PlaceMaterial();
                     break;
                 case 10:
-
+                    a.PlaceTeleporter();
                     break;
                 case 11:
-
+                    a.PlaceTeleporter();
                     break;
                 case 12:
-
+                    a.CreateTeleporter();
                     break;
                 case 13:
-
+                    a.CreateTeleporter();
                     break;
                 case 14:
-
+                    a.CreateRobot();
                     break;
                 case 15:
-
+                    a.CreateRobot();
                     break;
                 case 16:
-
+                    a.Wait();
                     break;
                 case 17:
-
+                    r.Move();
                     break;
                 case 18:
-
+                    r.Move();
                     break;
                 case 19:
-
+                    r.Drill();
                     break;
                 case 20:
-
+                    r.Drill();
                     break;
                 case 21:
-
+                    r.Drill();
                     break;
                 case 22:
-
+                    r.Wait();
                     break;
                 case 23:
-
+                    g.HandleSolarStorm();
                     break;
                 case 24:
-
+                    af.MoveAsteroids();
                     break;
                 default:
                     System.out.println("Error!");
             }
-
 
             number = sc.nextInt();
         }
