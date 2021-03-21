@@ -5,120 +5,115 @@ import java.util.Scanner;
 public class main {
     public static void printUseCases() {
         System.out.println("The following use cases are avilable:\n" +
-                        "(1) Astronaut moves to asteroid\n" +
-                        "(2) Astronaut moves to Teleporter\n" +
-                        "(3) Astronaut drill regular\n" +
-                        "(4) Astronaut drill radioactive\n" +
-                        "(5) Astronaut drill vaporizing\n" +
-                        "(6) Astronaut mine asteroid\n" +
-                        "(7) Astronaut places regular\n" +
-                        "(8) Astronaut places radioactive\n" +
-                        "(9) Astronaut places vaporizing\n" +
-                        "(10) Astronaut places teleporter\n" +
-                        "(11) Astronaut places second teleporter\n" +
-                        "(12) Astronaut creates teleporter pair\n" +
-                        "(13) Astronaut create teleporter pair not enough materials\n" +
-                        "(14) Astronaut create robot\n" +
-                        "(15) Astronaut creates robot not enough materials\n" +
-                        "(16) Astronaut wait\n" +
-                        "(17) Robot moves to asteroid\n" +
-                        "(18) Robot moves to teleporter\n" +
-                        "(19) Robot drills regular\n" +
-                        "(20) Robot drills radioactive\n" +
-                        "(21) Robot drills vaporizing\n" +
-                        "(22) Robot waits\n" +
-                        "(23) Solarstorm happens\n" +
-                        "(24) Asteroidfield moves\n" +
-                        "(0) Exit program\n" +
-                        "Please type the number of the use-case you wish to run!");
+                "(1) Astronaut moves to asteroid\n" +
+                "(2) Astronaut moves to Teleporter\n" +
+                "(3) Astronaut drill regular\n" +
+                "(4) Astronaut drill radioactive\n" +
+                "(5) Astronaut drill vaporizing\n" +
+                "(6) Astronaut mine asteroid\n" +
+                "(7) Astronaut places regular\n" +
+                "(8) Astronaut places radioactive\n" +
+                "(9) Astronaut places vaporizing\n" +
+                "(10) Astronaut places teleporter\n" +
+                "(11) Astronaut places second teleporter\n" +
+                "(12) Astronaut creates teleporter pair\n" +
+                "(13) Astronaut create teleporter pair not enough materials\n" +
+                "(14) Astronaut create robot\n" +
+                "(15) Astronaut creates robot not enough materials\n" +
+                "(16) Astronaut wait\n" +
+                "(17) Robot moves to asteroid\n" +
+                "(18) Robot moves to teleporter\n" +
+                "(19) Robot drills regular\n" +
+                "(20) Robot drills radioactive\n" +
+                "(21) Robot drills vaporizing\n" +
+                "(22) Robot waits\n" +
+                "(23) Solarstorm happens\n" +
+                "(24) Asteroidfield moves\n" +
+                "(0) Exit program\n" +
+                "Please type the number of the use-case you wish to run!");
     }
 
     public static void main(String[] args) {
-        System.out.println("Initialization:");
-        Astronaut a = new Astronaut();
-        Robot r = new Robot();
-        Game g = Game.GetInstance();
-        AsteroidField af = AsteroidField.GetInstance();
-        System.out.println("----------------------Starting point--------------------");
-        printUseCases();
 
+        printUseCases();
         Scanner sc = new Scanner(System.in);
+
         int number = sc.nextInt();
 
         while (number != 0) {
 
             switch (number) {
                 case 1:
-                    a.Move();
+                    TestScenario1();
                     break;
                 case 2:
-                    a.Move();
+                    TestScenario1();
                     break;
                 case 3:
-                    a.Drill();
+                    TestScenario1();
                     break;
                 case 4:
-                    a.Drill();
+                    TestScenario2();
                     break;
                 case 5:
-                    a.Drill();
+                    TestScenario3();
                     break;
                 case 6:
-                    a.Mine();
+                    TestScenario1();
                     break;
                 case 7:
-                    a.PlaceMaterial();
+                    TestScenario4();
                     break;
                 case 8:
-                    a.PlaceMaterial();
+                    TestScenario4();
                     break;
                 case 9:
-                    a.PlaceMaterial();
+                    TestScenario4();
                     break;
                 case 10:
-                    a.PlaceTeleporter();
+                    TestScenario1();
                     break;
                 case 11:
-                    a.PlaceTeleporter();
+                    TestScenario5();
                     break;
                 case 12:
-                    a.CreateTeleporter();
+                    TestScenario2();
                     break;
                 case 13:
-                    a.CreateTeleporter();
+                    TestScenario1();
                     break;
                 case 14:
-                    a.CreateRobot();
+                    TestScenario2();
                     break;
                 case 15:
-                    a.CreateRobot();
+                    TestScenario1();
                     break;
                 case 16:
-                    a.Wait();
+                    TestScenario1();
                     break;
                 case 17:
-                    r.Move();
+                    TestScenario1();
                     break;
                 case 18:
-                    r.Move();
+                    TestScenario1();
                     break;
                 case 19:
-                    r.Drill();
+                    TestScenario1();
                     break;
                 case 20:
-                    r.Drill();
+                    TestScenario2();
                     break;
                 case 21:
-                    r.Drill();
+                    TestScenario3();
                     break;
                 case 22:
-                    r.Wait();
+                    TestScenario1();
                     break;
                 case 23:
-                    g.HandleSolarStorm();
+                    TestScenario6();
                     break;
                 case 24:
-                    af.MoveAsteroids();
+                    TestScenario1();
                     break;
                 default:
                     System.out.println("Error!");
@@ -129,7 +124,7 @@ public class main {
         }
     }
 
-    void Testscenario1() {
+    public static void TestScenario1() {
         Game.GetInstance();
         AsteroidField af = AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -160,7 +155,7 @@ public class main {
         as.AddWorker(r);
     }
 
-    void Testscenario2() {
+    public static void TestScenario2() {
         Game.GetInstance();
         AsteroidField af = AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -178,7 +173,7 @@ public class main {
     }
 
 
-    void TestScenario3() {
+    public static void TestScenario3() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -193,7 +188,7 @@ public class main {
         as.AddWorker(r);
     }
 
-    void TestScenario4() {
+    public static void TestScenario4() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -203,7 +198,7 @@ public class main {
         as.AddWorker(a);
     }
 
-    void TestScenario5() {
+    public static void TestScenario5() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -223,15 +218,17 @@ public class main {
         bs.AddWorker(a);
     }
 
-    void TestScenario6() {
+    public static void TestScenario6() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
         Asteroid bs = new Asteroid();
         Robot r1 = new Robot();
         Astronaut a1 = new Astronaut();
-        AsteroidField.GetInstance().AddAsteroid(as);;
-        AsteroidField.GetInstance().AddAsteroid(bs);;
+        AsteroidField.GetInstance().AddAsteroid(as);
+        ;
+        AsteroidField.GetInstance().AddAsteroid(bs);
+        ;
         Game.GetInstance().AddWorker(a1);
         Game.GetInstance().AddWorker(r1);
         as.AddWorker(a1);
@@ -241,5 +238,5 @@ public class main {
         bs.AddWorker(a2);
         bs.AddWorker(r2);
     }
-
+}
 
