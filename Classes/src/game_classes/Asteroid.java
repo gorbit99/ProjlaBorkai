@@ -26,7 +26,7 @@ public class Asteroid extends SpaceObject {
 		System.out.println("Asteroid.Mine");
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Is 1 or more layer on me? (y/n)");
+		System.out.println("Do I still have layers? (y/n)");
 		String answer = sc.nextLine();
 		sc.close();
 		if (answer.equals("y")){
