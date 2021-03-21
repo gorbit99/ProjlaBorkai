@@ -10,7 +10,7 @@ public class AsteroidField {
 	private static AsteroidField instance;
 
 	/**
-	 * Class constructor.
+	 * Class constructor
 	 */
 	private AsteroidField() {
 		TestLogger.EnterFunction("AsteroidField.ctor");
@@ -18,7 +18,7 @@ public class AsteroidField {
 	}
 
 	/**
-	 * @return the instance of the class.
+	 * @return the instance of the class
 	 */
 	public static AsteroidField GetInstance() {
 	    TestLogger.EnterFunction("AsteroidField.GetInstance");
@@ -29,7 +29,7 @@ public class AsteroidField {
 	}
 
 	/**
-	 * Moves all Asteroids in the AsteroidField by calling their MoveAsteroid() method.
+	 * Moves all Asteroids in the AsteroidField by calling their MoveAsteroid() method
 	 */
 	public void MoveAsteroids() {
 		TestLogger.EnterFunction("AsteroidField.MoveAsteroids");
@@ -40,8 +40,8 @@ public class AsteroidField {
 	}
 
 	/**
-	 * Adds an Asteroid to the AsteroidField.
-	 * @param asteroid this Asteroid will be added to the AsteroidField.
+	 * Adds an Asteroid to the AsteroidField
+	 * @param asteroid this Asteroid will be added to the AsteroidField
 	 */
 	public void AddAsteroid(Asteroid asteroid) {
 		TestLogger.EnterFunction("AsteroidField.AddAsteroid");
@@ -50,8 +50,8 @@ public class AsteroidField {
 	}
 
 	/**
-	 * Get the Asteroids.
-	 * @return An ArrayList of the asteroids in the AsteroidField.
+	 * Get the Asteroids
+	 * @return An ArrayList of the asteroids in the AsteroidField
 	 */
 	public ArrayList<Asteroid> GetAsteroids() {
 		TestLogger.EnterFunction("AsteroidField.GetAsteroids");
@@ -60,8 +60,8 @@ public class AsteroidField {
 	}
 
 	/**
-	 * Removes an Asteroid.
-	 * @param asteroid this Asteroid will be removed from the AsteroidField.
+	 * Removes an Asteroid
+	 * @param asteroid this Asteroid will be removed from the AsteroidField
 	 */
 	public void RemoveAsteroid(Asteroid asteroid) {
 		TestLogger.EnterFunction("AsteroidField.RemoveAsteroid");
@@ -70,7 +70,7 @@ public class AsteroidField {
 	}
 
 	/**
-	 * Handles a solarstorm. Calls the HandleSolarStorm method of all Asteroids stored.
+	 * Handles a solarstorm. Calls the HandleSolarStorm method of all Asteroids stored
 	 */
 	public void HandleSolarStorm() {
 		TestLogger.EnterFunction("AsteroidField.HandleSolarStorm");
