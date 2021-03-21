@@ -41,11 +41,11 @@ public class main {
         AsteroidField af = AsteroidField.GetInstance();
         System.out.println("----------------------Starting point--------------------");
         printUseCases();
+
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
 
         while (number != 0) {
-            printUseCases();
 
             switch (number) {
                 case 1:
@@ -124,9 +124,59 @@ public class main {
                     System.out.println("Error!");
             }
 
+            printUseCases();
             number = sc.nextInt();
         }
     }
+
+    void Testscenario1() {
+        Game.GetInstance();
+        AsteroidField af = AsteroidField.GetInstance();
+        Asteroid as = new Asteroid();
+        Asteroid bs = new Asteroid();
+        Coal c = new Coal();
+        Teleporter t1 = new Teleporter();
+        Teleporter t2 = new Teleporter();
+        Teleporter t3 = new Teleporter();
+        Teleporter t4 = new Teleporter();
+        Robot r = new Robot();
+        Astronaut a = new Astronaut();
+        af.AddAsteroid(as);
+        af.AddAsteroid(bs);
+        as.SetCore(c);
+        t1.LinkTo(t2);
+        t2.LinkTo(t1);
+        t3.LinkTo(t4);
+        t4.LinkTo(t3);
+        t1.Place(as);
+        t1.Place(bs);
+        ArrayList<Teleporter> list = new ArrayList<Teleporter>();
+        list.add(t1);
+        list.add(t2);
+        a.SetTeleporters(list);
+        Game.GetInstance().AddWorker(a);
+        Game.GetInstance().AddWorker(r);
+        as.AddWorker(a);
+        as.AddWorker(r);
+    }
+
+    void Testscenario2() {
+        Game.GetInstance();
+        AsteroidField af = AsteroidField.GetInstance();
+        Asteroid as = new Asteroid();
+        Asteroid bs = new Asteroid();
+        Uranium u = new Uranium();
+        Robot r = new Robot();
+        Astronaut a = new Astronaut();
+        af.AddAsteroid(as);
+        af.AddAsteroid(bs);
+        as.SetCore(u);
+        Game.GetInstance().AddWorker(a);
+        Game.GetInstance().AddWorker(r);
+        as.AddWorker(a);
+        as.AddWorker(r);
+    }
+
 
     void TestScenario3() {
         Game.GetInstance();
@@ -191,4 +241,5 @@ public class main {
         bs.AddWorker(a2);
         bs.AddWorker(r2);
     }
-}
+
+

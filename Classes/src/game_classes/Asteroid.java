@@ -27,7 +27,8 @@ public class Asteroid extends SpaceObject {
 	    String answer = TestLogger.AskQuestion("Do I still have layers? (y/n)");
 		if (answer.equals("y")){
 			if (IsCloseToSun())
-				core.HandleCloseToSun(this);
+				if(core != null)
+					core.HandleCloseToSun(this);
 		}
 	    TestLogger.ExitFunction();
 	}
