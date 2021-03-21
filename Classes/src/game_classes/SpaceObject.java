@@ -11,9 +11,8 @@ public abstract class SpaceObject {
 	 * @param workers contains all the workers who are standing on the space object
 	 * @param neighbours contains all the neigbours
 	 */
-	protected ArrayList<Worker> workers;
+	protected ArrayList<Worker> workers = new ArrayList<Worker>();
 	protected ArrayList<SpaceObject> neigbours = new ArrayList<SpaceObject>();
-
 
 	/**
 	 * adds new neighbour
@@ -32,6 +31,9 @@ public abstract class SpaceObject {
 	public ArrayList<SpaceObject> GetNeighbours() {
 		TestLogger.EnterFunction("SpaceObject.GetNeighbours");
 		TestLogger.ExitFunction();
+		neigbours.add(new Asteroid());
+		neigbours.add(new Asteroid());
+
 		return this.neigbours;
 	}
 

@@ -9,7 +9,7 @@ public class Robot extends Worker {
     /**
      * contains the materials that you need to build a robot
      */
-    private static BillOfMaterials billOfMaterials;
+    private static BillOfMaterials billOfMaterials = new BillOfMaterials();
 
     /**
      * robot constructor
@@ -54,6 +54,10 @@ public class Robot extends Worker {
         int to = Game.RandomNum(neighbours.size());
         this.TravelTo(neighbours.get(to));
         TestLogger.ExitFunction();
+    }
+
+    public Material[] GetStoredMaterials() {
+        return null;
     }
 
     /**
