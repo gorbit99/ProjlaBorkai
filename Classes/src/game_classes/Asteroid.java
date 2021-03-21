@@ -13,10 +13,7 @@ public class Asteroid extends SpaceObject {
 
 	public void Drill() {
 	    TestLogger.EnterFunction("Asteroid.Drill");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Do I still have layers? (y/n)");
-		String answer = sc.nextLine();
-		sc.close();
+	    String answer = TestLogger.AskQuestion("Do I still have layers? (y/n)");
 		if (answer.equals("y")){
 			if (IsCloseToSun())
 				core.HandleCloseToSun(this);
@@ -26,10 +23,7 @@ public class Asteroid extends SpaceObject {
 	
 	public Material Mine() {
 	    TestLogger.EnterFunction("Asteroid.Mine");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Do I still have layers? (y/n)");
-		String answer = sc.nextLine();
-		sc.close();
+		String answer = TestLogger.AskQuestion("Do I still have layers? (y/n)");
 		if (answer.equals("y")){
 			TestLogger.ExitFunction();
 			return null;
@@ -81,10 +75,7 @@ public class Asteroid extends SpaceObject {
 
 	public boolean CanHideIn() {
 		TestLogger.EnterFunction("Asteroid.CanHideIn");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Can you hide in the asteroid? (y/n)");
-		String answer = sc.nextLine();
-		sc.close();
+		String answer = TestLogger.AskQuestion("Can you hide in the asteroid? (y/n)");
 		TestLogger.ExitFunction();
 		return answer.equals("y");
 	}
@@ -126,10 +117,7 @@ public class Asteroid extends SpaceObject {
 	
 	public boolean IsCloseToSun() {
 		TestLogger.EnterFunction("Asteroid.IsCloseToSun");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Am I close to the sun? (y/n)");
-		String answer = sc.nextLine();
-		sc.close();
+		String answer = TestLogger.AskQuestion("Am I close to the sun? (y/n)");
 		TestLogger.ExitFunction();
 		return answer.equals("y");
 	}
