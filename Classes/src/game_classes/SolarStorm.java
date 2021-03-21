@@ -2,6 +2,9 @@ package game_classes;
 
 import java.util.Scanner;
 
+/**
+ * This class represents
+ */
 public class SolarStorm {
 
 	public SolarStorm(){
