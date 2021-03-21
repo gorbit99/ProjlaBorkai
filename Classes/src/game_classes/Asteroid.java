@@ -4,7 +4,7 @@ package game_classes;
 import java.util.Scanner;
 
 /**
- * Reprents an asteroid. Extends from SpaceObject.
+ * represent an asteroid. Extends SpaceObject.
  */
 public class Asteroid extends SpaceObject {
 	/**
@@ -22,7 +22,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * This method handles, when someone drills this.
+	 * handles, when someone drills the asteroid
 	 */
 	public void Drill() {
 	    TestLogger.EnterFunction("Asteroid.Drill");
@@ -38,7 +38,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * Handles when it"s under mining.
+	 * Handles when its under mining.
 	 * @return true, if you can mine this.
 	 */
 	public Material Mine() {
@@ -76,7 +76,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * Change the distance from the sun.
+	 * Changes the distance from the sun.
 	 */
 	public void MoveAsteroid() {
 		TestLogger.EnterFunction("Asteroid.MoveAsteroid");
@@ -89,7 +89,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * Handles, when this explodes.
+	 * Handles, when asteroid explodes.
 	 */
 	public void Explode() {
 	    TestLogger.EnterFunction("Asteroid.Explode");
