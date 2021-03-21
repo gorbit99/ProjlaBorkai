@@ -1,17 +1,19 @@
 package game_classes;
+
+
 import java.util.Scanner;
 
 /**
- * This class represents an asteroid. It extends from SpaceObject.
+ * Reprents an asteroid. Extends from SpaceObject.
  */
 public class Asteroid extends SpaceObject {
 	/**
-	 * This is the core of the asteroid.
+	 *The core of the asteroid.
 	 */
 	private Material core;
 
 	/**
-	 * This is constructor of asteroid.
+	 * The constructor of the asteroid.
 	 */
 	public Asteroid(){
 	    TestLogger.EnterFunction("Asteroid.ctor");
@@ -20,7 +22,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * This handles when a worker is drilling this.
+	 * This method handles, when someone drills this.
 	 */
 	public void Drill() {
 	    TestLogger.EnterFunction("Asteroid.Drill");
@@ -36,8 +38,8 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 *
-	 * @return The core of the material. (null if you can't mine it)
+	 * Handles when it"s under mining.
+	 * @return true, if you can mine this.
 	 */
 	public Material Mine() {
 	    TestLogger.EnterFunction("Asteroid.Mine");
@@ -56,28 +58,25 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * This places the material to the core. (If it can be done.)
-	 * @param material This will be the core of the material.
-	 * @return Returns false if the core wasn't empty.
+	 * Places material to the core. (if it can be done)
+	 * @param material This will be the core
+	 * @return true, if the method has been done.
 	 */
 	public boolean PlaceMaterial(Material material) {
 		TestLogger.EnterFunction("Asteroid.PlaceMaterial");
-		if(core==null){
-			TestLogger.ExitFunction();
-			return false;
-		}
 		if(material!=null){
 			core=material;
 			if(IsCloseToSun()){
 				core.HandleCloseToSun(this);
 			}
 		}
+
 		TestLogger.ExitFunction();
-		return true;
+		return material==null;
 	}
 
 	/**
-	 * Moves the asteroid. Change the distance from the sun.
+	 * Change the distance from the sun.
 	 */
 	public void MoveAsteroid() {
 		TestLogger.EnterFunction("Asteroid.MoveAsteroid");
@@ -110,7 +109,7 @@ public class Asteroid extends SpaceObject {
 
 	/**
 	 *
-	 * @return true if, the asteroid has empty core and 0 layers
+	 * @return true, if you can hide in it
 	 */
 	public boolean CanHideIn() {
 		TestLogger.EnterFunction("Asteroid.CanHideIn");
@@ -123,8 +122,8 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * Adds the worker to workers list.
-	 * @param worker
+	 * Adds worker to the workers list.
+	 * @param worker worker to be added to the workers list
 	 */
 	public void AddWorker(Worker worker) {
 		TestLogger.EnterFunction("Asteroid.AddWorker");
@@ -133,7 +132,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * Removes worker from worker list.
+	 * Removes worker from workers list.
 	 * @param worker worker to be removed from workers list
 	 */
 	public void RemoveWorker(Worker worker) {
@@ -155,7 +154,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * Removes spaceObject from neighbour list.
+	 * Removes spaceobject from neighbours
 	 * @param spaceObject space object to be removed
 	 */
 	public void RemoveNeighbour(SpaceObject spaceObject) {
@@ -165,7 +164,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * This method handles if, solarstorm hits the asteroid.
+	 * Handles, when the solarstorm hits this
 	 */
 	public void HandleSolarStorm() {
 		TestLogger.EnterFunction("Asteroid.HandleSolarStorm");
@@ -179,7 +178,7 @@ public class Asteroid extends SpaceObject {
 
 	/**
 	 *
-	 * @return true if, this is close to the sun
+	 * @return true, if it is close to the sun
 	 */
 	public boolean IsCloseToSun() {
 		TestLogger.EnterFunction("Asteroid.IsCloseToSun");
@@ -189,6 +188,16 @@ public class Asteroid extends SpaceObject {
 		sc.close();
 		TestLogger.ExitFunction();
 		return answer.equals("y");
+	}
+
+	/**
+	 * Gets the material inside the core of the asteroid
+	 * @return The material in the core
+	 */
+	public Material GetCore() {
+		TestLogger.EnterFunction("Asteroid.GetCore");
+		TestLogger.ExitFunction();
+		return core;
 	}
 
 	/**
