@@ -1,12 +1,8 @@
 package game_classes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
-/**
- * This class conducts the game.
- */
 public class Game {
     private ArrayList<Worker> workers;
     private SolarStorm solarStorm;
@@ -14,9 +10,6 @@ public class Game {
     private static Random random;
     private static Game instance;
 
-    /**
-     * Constructor of the class
-     */
     private Game() {
         TestLogger.EnterFunction("Game.ctor");
         TestLogger.ExitFunction();
@@ -24,9 +17,6 @@ public class Game {
         workers = new ArrayList<Worker>();
     }
 
-    /**
-     * @return the instance of the class
-     */
     public static Game GetInstance() {
         TestLogger.EnterFunction("Game.GetInstance");
         if (instance == null)
@@ -35,18 +25,10 @@ public class Game {
         return instance;
     }
 
-    /**
-     * Creates a random number
-     * @param bound upper bound of the number
-     * @return a random number
-     */
     public static int RandomNum(int bound) {
         return random.nextInt(bound);
     }
 
-    /**
-     *  Conducts a round in the game. Makes every worker do it's step, moves all asteroids, checks if the game is still winnable
-     */
     public void DoRound() {
         TestLogger.EnterFunction("Game.DoRound");
         for (Worker w : workers){
@@ -63,11 +45,8 @@ public class Game {
         TestLogger.ExitFunction();
     }
 
-    /**
-     * Checks whether the game is still winnable
-     */
     public void CheckWinOrLose() {
-        TestLogger.EnterFunction("Game.CheckWinOrLose");
+        TestLogger.EnterFunction("Game.CheckWinOrlose");
         ArrayList<Asteroid> asteroids = AsteroidField.GetInstance().GetAsteroids();
         ArrayList<Material> materials = new ArrayList<>();
         for(Asteroid aS : asteroids){
@@ -75,7 +54,9 @@ public class Game {
         }
         for(Worker w : workers){
             Material[] m = w.GetStoredMaterials();
-            Collections.addAll(materials, m);
+            for (int i = 0; i < m.length; i++){
+                materials.add(m[i]);
+            }
         }
         billOfMaterials.IsEnough((Material[]) materials.toArray());
         TestLogger.ExitFunction();
@@ -110,9 +91,6 @@ public class Game {
         TestLogger.ExitFunction();
     }
 
-    /**
-     * Starts the game.
-     */
     public void StartGame() {
         TestLogger.EnterFunction("Game.StartGame");
         TestLogger.ExitFunction();

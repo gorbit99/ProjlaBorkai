@@ -162,4 +162,10 @@ public class Astronaut extends Worker {
         this.TravelTo(neighbours.get(to - 1));
         TestLogger.ExitFunction();
     }
+
+    public void SetTeleporters(ArrayList<Teleporter> teleporters) {
+        TestLogger.EnterFunction("Astronaut.SetTeleporters");
+        this.teleporters = teleporters;
+        TestLogger.ExitFunction();
+    }
 }
