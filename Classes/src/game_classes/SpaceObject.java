@@ -17,7 +17,7 @@ public abstract class SpaceObject {
 
 	/**
 	 * adds new neighbour
-	 * @param spaceObject
+	 * @param spaceObject neighbour to be added to the neighbour list
 	 */
 	public void AddNeighbour(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("SpaceObject.AddNeighbour");
