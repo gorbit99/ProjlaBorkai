@@ -135,6 +135,15 @@ public class Asteroid extends SpaceObject {
 		return answer.equals("y");
 	}
 
+	/**
+	 * Gets the material inside the core of the asteroid
+	 * @return The material in the core
+	 */
+	public Material GetCore() {
+		TestLogger.EnterFunction("Asteroid.GetCore");
+		TestLogger.ExitFunction();
+		return core;
+	}
 
 	@Override
 	public String toString(){
