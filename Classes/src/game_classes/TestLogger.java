@@ -4,6 +4,7 @@ public class TestLogger {
     private static int indentLevel = 0;
 
     public static void EnterFunction(String functionName) {
+        indentLevel++;
         for (int i = 0; i < indentLevel; i++) {
             System.out.print("---");
         }
