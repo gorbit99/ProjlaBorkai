@@ -21,7 +21,7 @@ public class Teleporter extends SpaceObject {
     /**
      * teleporter constructor
      */
-    private Teleporter() {
+    public Teleporter() {
         TestLogger.EnterFunction("Teleporter.ctor");
         active = false;
         TestLogger.ExitFunction();
@@ -31,7 +31,7 @@ public class Teleporter extends SpaceObject {
      * links the teleporter to the given teleporter
      * @param teleporter the teleporter to be linked
      */
-    private void LinkTo(Teleporter teleporter) {
+    public void LinkTo(Teleporter teleporter) {
         TestLogger.EnterFunction("Teleporter.LinkTo");
         this.pair = teleporter;
         TestLogger.ExitFunction();

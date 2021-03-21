@@ -1,4 +1,5 @@
 package game_classes;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -125,5 +126,69 @@ public class main {
 
             number = sc.nextInt();
         }
+    }
+
+    void TestScenario3() {
+        Game.GetInstance();
+        AsteroidField.GetInstance();
+        Asteroid as = new Asteroid();
+        Ice i = new Ice();
+        Robot r = new Robot();
+        Astronaut a = new Astronaut();
+        AsteroidField.GetInstance().AddAsteroid(as);
+        as.SetCore(i);
+        Game.GetInstance().AddWorker(a);
+        Game.GetInstance().AddWorker(r);
+        as.AddWorker(a);
+        as.AddWorker(r);
+    }
+
+    void TestScenario4() {
+        Game.GetInstance();
+        AsteroidField.GetInstance();
+        Asteroid as = new Asteroid();
+        Astronaut a = new Astronaut();
+        AsteroidField.GetInstance().AddAsteroid(as);
+        Game.GetInstance().AddWorker(a);
+        as.AddWorker(a);
+    }
+
+    void TestScenario5() {
+        Game.GetInstance();
+        AsteroidField.GetInstance();
+        Asteroid as = new Asteroid();
+        Asteroid bs = new Asteroid();
+        Teleporter t1 = new Teleporter();
+        Teleporter t2 = new Teleporter();
+        Astronaut a = new Astronaut();
+        AsteroidField.GetInstance().AddAsteroid(as);
+        AsteroidField.GetInstance().AddAsteroid(bs);
+        t1.LinkTo(t2);
+        t2.LinkTo(t1);
+        t1.Place(as);
+        ArrayList<Teleporter> teleporters = new ArrayList<>();
+        teleporters.add(t2);
+        a.SetTeleporters(teleporters);
+        Game.GetInstance().AddWorker(a);
+        bs.AddWorker(a);
+    }
+
+    void TestScenario6() {
+        Game.GetInstance();
+        AsteroidField.GetInstance();
+        Asteroid as = new Asteroid();
+        Asteroid bs = new Asteroid();
+        Robot r1 = new Robot();
+        Astronaut a1 = new Astronaut();
+        AsteroidField.GetInstance().AddAsteroid(as);;
+        AsteroidField.GetInstance().AddAsteroid(bs);;
+        Game.GetInstance().AddWorker(a1);
+        Game.GetInstance().AddWorker(r1);
+        as.AddWorker(a1);
+        as.AddWorker(r1);
+        Astronaut a2 = new Astronaut();
+        Robot r2 = new Robot();
+        bs.AddWorker(a2);
+        bs.AddWorker(r2);
     }
 }
