@@ -5,15 +5,24 @@ package game_classes;//
 //  @ Project : Untitled
 //  @ File Name : SolarStorm.java
 //  @ Date : 2021. 03. 19.
-//  @ Author : 
+//  @ Author :
 //
 //
 
 
-
+import java.util.Scanner;
 
 public class SolarStorm {
-	private int timeTillHit;
+
+	public SolarStorm(){System.out.println(	"SolarStorm.ctor");}
 	public boolean Tick() {
+		System.out.println("SolarStorm.Tick");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Is there a solarstorm? (y/n)");
+		String answer = sc.nextLine();
+		sc.close();
+		if (answer.equals("y"))
+			return true;
+		return false;
 	}
 }

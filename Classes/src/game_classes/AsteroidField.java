@@ -1,7 +1,8 @@
 package game_classes;
 
+import java.util.ArrayList;
 public class AsteroidField {
-    private Asteroid asteroids;
+    private ArrayList<Asteroid> asteroids;
     private static AsteroidField instance;
 
     private AsteroidField() {
@@ -21,13 +22,18 @@ public class AsteroidField {
     public void AddAsteroid(Asteroid asteroid) {
     }
 
-    public Asteroid[] GetAsteroids() {
-        return null;
-    }
+	public ArrayList<Asteroid> GetAsteroids() {
+		System.out.println("AsteroidField.GetAsteroids");
+		return this.asteroids;
+	}
 
     public void RemoveAsteroid(Asteroid asteroid) {
     }
 
-    public void HandleSolarStorm() {
-    }
+	public void HandleSolarStorm() {
+		System.out.println("AsteroidField.HandleSolarStorm");
+		for (int i = 0; i < asteroids.size(); i++) {
+			asteroids.get(i).HandleSolarStorm();
+		}
+	}
 }
