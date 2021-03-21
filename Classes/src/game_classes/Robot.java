@@ -56,6 +56,10 @@ public class Robot extends Worker {
         TestLogger.ExitFunction();
     }
 
+    public Material[] GetStoredMaterials() {
+        return null;
+    }
+
     /**
      * creates a robot
      * @param materials materials going to be used for creating the robot

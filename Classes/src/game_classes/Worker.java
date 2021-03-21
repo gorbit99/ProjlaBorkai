@@ -1,5 +1,7 @@
 package game_classes;
 
+import java.util.ArrayList;
+
 /**
  * represents a Worker
  */
@@ -70,4 +72,6 @@ public abstract class Worker {
      * moves worker
      */
     public abstract void Move();
+
+    public abstract Material[] GetStoredMaterials();
 }

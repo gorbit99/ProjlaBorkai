@@ -33,11 +33,30 @@ public class Game {
 
     public void DoRound() {
         TestLogger.EnterFunction("Game.DoRound");
+        for (Worker w : workers){
+            w.Step();
+            CheckWinOrLose();
+        }
+        AsteroidField.GetInstance().MoveAsteroids();
+        boolean solarStormHappens = solarStorm.Tick();
+        if (solarStormHappens){
+            HandleSolarStorm();
+        }
+        CheckWinOrLose();
+
         TestLogger.ExitFunction();
     }
 
     public void CheckWinOrLose() {
         TestLogger.EnterFunction("Game.CheckWinOrlose");
+        ArrayList<Asteroid> asteroids = AsteroidField.GetInstance().GetAsteroids();
+        ArrayList<Material> materials = new ArrayList<>();
+        for(Asteroid aS : asteroids){
+            materials.add(aS.GetCore());
+        }
+        for(Worker w : workers){
+            materials.addAll(w.)
+        }
         TestLogger.ExitFunction();
     }
 
