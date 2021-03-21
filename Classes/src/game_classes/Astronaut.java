@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Astronaut extends Worker {
-    private Material[] materialsStored;
+    private final Material[] materialsStored;
     private ArrayList<Teleporter> teleporters;
 
     public void Mine() {
         TestLogger.EnterFunction("Astronaut.Mine");
+        this.position.Mine();
         TestLogger.ExitFunction();
     }
 
@@ -18,8 +19,17 @@ public class Astronaut extends Worker {
         TestLogger.ExitFunction();
     }
 
-    public void PlaceMaterial(Material material) {
+    public void PlaceMaterial() {
         TestLogger.EnterFunction("Astronaut.PlaceMaterial");
+        System.out.println("Which material do you wan to place back?");
+        for (int i = 0; i < this.materialsStored.length; i++) {
+            if (materialsStored[i]!=null)
+                System.out.println(i + 1 + "." + materialsStored[i].toString());
+        }
+        Scanner scanner = new Scanner(System.in);
+        int chosen = scanner.nextInt();
+        scanner.close();
+        this.position.PlaceMaterial(materialsStored[chosen-1]);
         TestLogger.ExitFunction();
     }
 
@@ -31,6 +41,7 @@ public class Astronaut extends Worker {
             return;
         }
         this.teleporters.get(0).Place(this.position);
+        this.teleporters.remove(0);
         TestLogger.ExitFunction();
     }
 
@@ -67,29 +78,14 @@ public class Astronaut extends Worker {
         scanner.close();
         to--;
         switch (to) {
-            case 1:
-                this.Move();
-                break;
-            case 2:
-                this.Mine();
-                break;
-            case 3:
-                this.Drill();
-                break;
-            case 4:
-                this.CreateRobot();
-                break;
-            case 5:
-                this.CreateTeleporter();
-                break;
-            case 6:
-                this.PlaceTeleporter();
-                break;
-            case 7:
-                //this.PlaceMaterial();
-                break;
-            default:
-                this.Wait();
+            case 1 -> this.Move();
+            case 2 -> this.Mine();
+            case 3 -> this.Drill();
+            case 4 -> this.CreateRobot();
+            case 5 -> this.CreateTeleporter();
+            case 6 -> this.PlaceTeleporter();
+            case 7 -> this.PlaceMaterial();
+            default -> this.Wait();
         }
         TestLogger.ExitFunction();
     }

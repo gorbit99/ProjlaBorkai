@@ -11,4 +11,7 @@ public class Ice extends Material{
 		asteroid.SetCore(null);
 		TestLogger.ExitFunction();
 	}
+	public String toString(){
+		return "Ice";
+	}
 }

@@ -5,4 +5,8 @@ public class Coal extends Material{
         TestLogger.EnterFunction("Coal.ctor");
         TestLogger.ExitFunction();
     }
+
+    public String toString(){
+        return "Coal";
+    }
 }

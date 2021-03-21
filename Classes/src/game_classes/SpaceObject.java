@@ -9,6 +9,7 @@ public abstract class SpaceObject {
 
 	public void AddNeighbour(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("SpaceObject.AddNeighbour");
+		this.neigbours.add(spaceObject);
 		TestLogger.ExitFunction();
 	}
 	

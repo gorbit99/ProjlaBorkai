@@ -1,39 +1,80 @@
 package game_classes;
 
 
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Asteroid extends SpaceObject {
-	private int layers;
-	private float distanceFromSun;
 	private Material core;
-	private Asteroid neighbours;
+	public Asteroid(){
+	    TestLogger.EnterFunction("Asteroid.ctor");
+
+	    TestLogger.ExitFunction();
+	}
+
 	public void Drill() {
+	    TestLogger.EnterFunction("Asteroid.Drill");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Do I still have layers? (y/n)");
+		String answer = sc.nextLine();
+		sc.close();
+		if (answer.equals("y")){
+			if (IsCloseToSun())
+				core.HandleCloseToSun(this);
+		}
+	    TestLogger.ExitFunction();
 	}
 	
 	public Material Mine() {
 	    TestLogger.EnterFunction("Asteroid.Mine");
-
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Do I still have layers? (y/n)");
+		String answer = sc.nextLine();
+		sc.close();
+		if (answer.equals("y")){
+			TestLogger.ExitFunction();
+			return null;
+		}
+		Material temp = core;
+		core = null;
 	    TestLogger.ExitFunction();
-		return null;
+		return temp;
 	}
 	
 	public boolean PlaceMaterial(Material material) {
 		TestLogger.EnterFunction("Asteroid.PlaceMaterial");
+		if(material!=null){
+			core=material;
+			if(IsCloseToSun()){
+				core.HandleCloseToSun(this);
+			}
+		}
 
 		TestLogger.ExitFunction();
-		return true;
+		return material==null;
 	}
 	
 	public void MoveAsteroid() {
 		TestLogger.EnterFunction("Asteroid.MoveAsteroid");
+
+		if(IsCloseToSun()){
+			core.HandleCloseToSun(this);
+		}
 
 		TestLogger.ExitFunction();
 	}
 	
 	public void Explode() {
 	    TestLogger.EnterFunction("Asteroid.Explode");
+
+		for (Worker w:workers) { //itt honnan van a worker????
+			w.Explode();
+		}
+
+		for (SpaceObject so:neigbours) {
+			so.RemoveNeighbour(this);
+		}
+
+		AsteroidField.GetInstance().RemoveAsteroid(this);
 
 		TestLogger.ExitFunction();
 	}
@@ -50,38 +91,48 @@ public class Asteroid extends SpaceObject {
 	
 	public void AddWorker(Worker worker) {
 		TestLogger.EnterFunction("Asteroid.AddWorker");
-
+		workers.add(worker);
 		TestLogger.ExitFunction();
 	}
 	
 	public void RemoveWorker(Worker worker) {
 		TestLogger.EnterFunction("Asteroid.RemoveWorker");
-
+		workers.remove(worker);
 		TestLogger.ExitFunction();
+		System.out.println("Asteroid.RemoveWorker");
+		workers.remove(worker);
 	}
 	
 	public void SetCore(Material material) {
 	    TestLogger.EnterFunction("Asteroid.SetCore");
-
+		core = material;
 	    TestLogger.ExitFunction();
 	}
 	
 	public void RemoveNeighbour(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("Asteroid.RemoveNeighbour");
-
+		neigbours.remove(spaceObject);
 		TestLogger.ExitFunction();
 	}
 	
 	public void HandleSolarStorm() {
 		TestLogger.EnterFunction("Asteroid.HandleSolarStorm");
-
+		if(!CanHideIn()){
+			for (Worker w: workers) {
+				w.Die();
+			}
+		}
 		TestLogger.ExitFunction();
 	}
 	
 	public boolean IsCloseToSun() {
 		TestLogger.EnterFunction("Asteroid.IsCloseToSun");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Am I close to the sun? (y/n)");
+		String answer = sc.nextLine();
+		sc.close();
 		TestLogger.ExitFunction();
-		return true;
+		return answer.equals("y");
 	}
 
 

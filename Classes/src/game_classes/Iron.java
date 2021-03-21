@@ -5,4 +5,8 @@ public class Iron extends Material  {
         TestLogger.EnterFunction("Iron.ctor");
         TestLogger.ExitFunction();
     }
+
+    public String toString(){
+        return "Iron";
+    }
 }

@@ -10,4 +10,8 @@ public class Uranium extends Material{
 		asteroid.Explode();
 		TestLogger.ExitFunction();
 	}
+
+	public String toString(){
+		return "Uranium";
+	}
 }

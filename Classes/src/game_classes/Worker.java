@@ -1,7 +1,7 @@
 package game_classes;
 
 public abstract class Worker {
-    protected SpaceObject position;
+    protected Asteroid position;
 
     public void TravelTo(SpaceObject spaceObject) {
         TestLogger.EnterFunction("Worker.TravelTo");
@@ -12,7 +12,7 @@ public abstract class Worker {
 
     public void Drill() {
         TestLogger.EnterFunction("Worker.Drill");
-
+        this.position.Drill();
         TestLogger.ExitFunction();
     }
 
@@ -25,6 +25,9 @@ public abstract class Worker {
 
     public void HandleSolarStorm() {
         TestLogger.EnterFunction("Worker.HandleSolarStorm");
+        System.out.println("Worker.HandleSolarStorm");
+        if (!this.position.CanHideIn())
+            this.Die();
         TestLogger.ExitFunction();
     }
 

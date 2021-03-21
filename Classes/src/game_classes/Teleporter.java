@@ -44,6 +44,8 @@ public class Teleporter extends SpaceObject {
 
     public void TeleportWorker(Worker worker) {
         TestLogger.EnterFunction("Teleport.TeleportWorker");
+        SpaceObject parent= this.GetParent();
+        parent.AddWorker(worker);
         TestLogger.ExitFunction();
     }
 
@@ -63,13 +65,17 @@ public class Teleporter extends SpaceObject {
         return teleporters;
     }
 
+    //hogy keressünk új szomszédot
     public void RemoveNeighbour(SpaceObject spaceObject) {
         TestLogger.EnterFunction("Teleport.RemoveNeighbour");
+        //TODO fix
+        this.workers.remove(spaceObject);
         TestLogger.ExitFunction();
     }
 
     public void AddWorker(Worker worker) {
         TestLogger.EnterFunction("Teleport.AddWorker");
+                this.pair.TeleportWorker(worker);
         TestLogger.ExitFunction();
     }
 
