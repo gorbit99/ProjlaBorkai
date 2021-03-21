@@ -1,7 +1,7 @@
 package game_classes;
 
 import java.util.ArrayList;
-import java.util.Random;
+
 
 public class Robot extends Worker {
     private static BillOfMaterials billOfMaterials;
@@ -14,8 +14,7 @@ public class Robot extends Worker {
 
     public void Step() {
         TestLogger.EnterFunction("Robot.Step");
-        Random random = new Random();
-        switch (random.nextInt(3)) {
+        switch (Game.RandomNum(3)) {
             case 1 -> this.Move();
             case 2 -> this.Drill();
             default -> this.Wait();
@@ -27,17 +26,15 @@ public class Robot extends Worker {
         TestLogger.EnterFunction("Robot.Explode");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         this.position.RemoveWorker(this);
-        Random random = new Random();
-        int to = random.nextInt(neighbours.size());
+        int to = Game.RandomNum(neighbours.size());
         neighbours.get(to).AddWorker(this);
         TestLogger.ExitFunction();
     }
 
     public void Move() {
         TestLogger.EnterFunction("Robot.Move");
-        Random random = new Random();
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
-        int to = random.nextInt(neighbours.size());
+        int to = Game.RandomNum(neighbours.size());
         this.TravelTo(neighbours.get(to));
         TestLogger.ExitFunction();
     }

@@ -1,5 +1,6 @@
 package game_classes;
 
+import java.util.Random;
 
 public class Game {
     private Astronaut players;
@@ -7,11 +8,13 @@ public class Game {
     private AsteroidField asteroidField;
     private SolarStorm solarStorm;
     private BillOfMaterials billOfMaterials;
+    private static Random random;
     private static Game instance;
 
     private Game() {
         TestLogger.EnterFunction("Game.ctor");
         TestLogger.ExitFunction();
+        this.random = new Random();
     }
 
     public static Game GetInstance() {
@@ -20,6 +23,10 @@ public class Game {
             instance = new Game();
         TestLogger.ExitFunction();
         return instance;
+    }
+
+    public static int RandomNum(int bound) {
+        return random.nextInt(bound);
     }
 
     public void DoRound() {
