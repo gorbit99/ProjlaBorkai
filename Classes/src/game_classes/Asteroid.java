@@ -13,7 +13,7 @@ public class Asteroid extends SpaceObject {
 		System.out.println("Asteroid.Drill");
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Is just 1 layer on me? (y/n)");
+		System.out.println("Do I still have layers? (y/n)");
 		String answer = sc.nextLine();
 		sc.close();
 		if (answer.equals("y")){
