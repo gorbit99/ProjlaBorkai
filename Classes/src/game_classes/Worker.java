@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * represents a Worker
  */
 public abstract class Worker {
-    protected Asteroid position = new Asteroid();
+    protected Asteroid position;
 
     /**
      * Moves worker to the given SpaceObject
@@ -14,8 +14,11 @@ public abstract class Worker {
      */
     public void TravelTo(SpaceObject spaceObject) {
         TestLogger.EnterFunction("Worker.TravelTo");
-        this.position.RemoveWorker(this);
+        if (this.position != null) {
+            this.position.RemoveWorker(this);
+        }
         spaceObject.AddWorker(this);
+        this.position = (Asteroid)spaceObject;
         TestLogger.ExitFunction();
     }
 

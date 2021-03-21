@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class main {
     public static void printUseCases() {
-        System.out.println("The following use cases are avilable:\n" +
+        System.out.println("The following use cases are available:\n" +
                         "(1) Astronaut moves to asteroid\n" +
                         "(2) Astronaut moves to Teleporter\n" +
                         "(3) Astronaut drill regular\n" +
@@ -49,75 +49,99 @@ public class main {
 
             switch (number) {
                 case 1:
+                    TestScenario1();
                     a.Move();
                     break;
                 case 2:
+                    TestScenario1();
                     a.Move();
                     break;
                 case 3:
+                    TestScenario1();
                     a.Drill();
                     break;
                 case 4:
+                    TestScenario2();
                     a.Drill();
                     break;
                 case 5:
+                    TestScenario3();
                     a.Drill();
                     break;
                 case 6:
+                    TestScenario1();
                     a.Mine();
                     break;
                 case 7:
+                    TestScenario4();
                     a.PlaceMaterial();
                     break;
                 case 8:
+                    TestScenario4();
                     a.PlaceMaterial();
                     break;
                 case 9:
+                    TestScenario4();
                     a.PlaceMaterial();
                     break;
                 case 10:
+                    TestScenario1();
                     a.PlaceTeleporter();
                     break;
                 case 11:
+                    TestScenario5();
                     a.PlaceTeleporter();
                     break;
                 case 12:
+                    TestScenario2();
                     a.CreateTeleporter();
                     break;
                 case 13:
+                    TestScenario1();
                     a.CreateTeleporter();
                     break;
                 case 14:
+                    TestScenario2();
                     a.CreateRobot();
                     break;
                 case 15:
+                    TestScenario1();
                     a.CreateRobot();
                     break;
                 case 16:
+                    TestScenario1();
                     a.Wait();
                     break;
                 case 17:
+                    TestScenario1();
                     r.Move();
                     break;
                 case 18:
+                    TestScenario1();
                     r.Move();
                     break;
                 case 19:
+                    TestScenario1();
                     r.Drill();
                     break;
                 case 20:
+                    TestScenario2();
                     r.Drill();
                     break;
                 case 21:
+                    TestScenario3();
                     r.Drill();
                     break;
                 case 22:
+                    TestScenario1();
                     r.Wait();
                     break;
                 case 23:
+                    TestScenario6();
                     g.HandleSolarStorm();
                     break;
                 case 24:
+                    TestScenario1();
                     af.MoveAsteroids();
                     break;
                 default:
@@ -129,7 +153,7 @@ public class main {
         }
     }
 
-    void Testscenario1() {
+    static void TestScenario1() {
         Game.GetInstance();
         AsteroidField af = AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -156,11 +180,11 @@ public class main {
         a.SetTeleporters(list);
         Game.GetInstance().AddWorker(a);
         Game.GetInstance().AddWorker(r);
-        as.AddWorker(a);
-        as.AddWorker(r);
+        a.TravelTo(as);
+        r.TravelTo(as);
     }
 
-    void Testscenario2() {
+    static void TestScenario2() {
         Game.GetInstance();
         AsteroidField af = AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -173,12 +197,12 @@ public class main {
         as.SetCore(u);
         Game.GetInstance().AddWorker(a);
         Game.GetInstance().AddWorker(r);
-        as.AddWorker(a);
-        as.AddWorker(r);
+        a.TravelTo(as);
+        r.TravelTo(as);
     }
 
 
-    void TestScenario3() {
+    static void TestScenario3() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -189,21 +213,21 @@ public class main {
         as.SetCore(i);
         Game.GetInstance().AddWorker(a);
         Game.GetInstance().AddWorker(r);
-        as.AddWorker(a);
-        as.AddWorker(r);
+        a.TravelTo(as);
+        r.TravelTo(as);
     }
 
-    void TestScenario4() {
+    static void TestScenario4() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
         Astronaut a = new Astronaut();
         AsteroidField.GetInstance().AddAsteroid(as);
         Game.GetInstance().AddWorker(a);
-        as.AddWorker(a);
+        a.TravelTo(as);
     }
 
-    void TestScenario5() {
+    static void TestScenario5() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -220,10 +244,10 @@ public class main {
         teleporters.add(t2);
         a.SetTeleporters(teleporters);
         Game.GetInstance().AddWorker(a);
-        bs.AddWorker(a);
+        a.TravelTo(bs);
     }
 
-    void TestScenario6() {
+    static void TestScenario6() {
         Game.GetInstance();
         AsteroidField.GetInstance();
         Asteroid as = new Asteroid();
@@ -234,12 +258,12 @@ public class main {
         AsteroidField.GetInstance().AddAsteroid(bs);;
         Game.GetInstance().AddWorker(a1);
         Game.GetInstance().AddWorker(r1);
-        as.AddWorker(a1);
-        as.AddWorker(r1);
+        a1.TravelTo(as);
+        r1.TravelTo(as);
         Astronaut a2 = new Astronaut();
         Robot r2 = new Robot();
-        bs.AddWorker(a2);
-        bs.AddWorker(r2);
+        a2.TravelTo(bs);
+        r2.TravelTo(bs);
     }
-
+}
 

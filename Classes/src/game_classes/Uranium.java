@@ -16,6 +16,7 @@ public class Uranium extends Material{
 	 * This method makes the asteroid explode.
 	 * @param asteroid The asteroid is what contains this material.
 	 */
+	@Override
 	public void HandleCloseToSun(Asteroid asteroid) {
 		TestLogger.EnterFunction("Uranium.HandleCloseToSun");
 		asteroid.Explode();

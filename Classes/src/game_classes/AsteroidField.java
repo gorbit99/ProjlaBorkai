@@ -14,6 +14,7 @@ public class AsteroidField {
 	 */
 	private AsteroidField() {
 		TestLogger.EnterFunction("AsteroidField.ctor");
+		asteroids = new ArrayList<>();
 		TestLogger.ExitFunction();
 	}
 
