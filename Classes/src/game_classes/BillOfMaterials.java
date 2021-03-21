@@ -1,7 +1,5 @@
 package game_classes;
 
-import java.util.Scanner;
-
 /**
  * represents the which knows the right amount of materials for the creation of an object
  */
@@ -13,10 +11,7 @@ public class BillOfMaterials {
 	 */
 	public boolean IsEnough(Material[] materials) {
 		TestLogger.EnterFunction("BillOfMaterials.IsEnough");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Is there enough material? (y/n)");
-		String answer = sc.nextLine();
-		sc.close();
+		String answer = TestLogger.AskQuestion("Is there enough material? (y/n)");
 		TestLogger.ExitFunction();
 		return answer.equals("y");
 	}

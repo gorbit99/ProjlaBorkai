@@ -1,7 +1,5 @@
 package game_classes;
 
-import java.util.Scanner;
-
 /**
  * This class represents the SolarStorms in the game.
  */
@@ -21,10 +19,7 @@ public class SolarStorm {
 	 */
 	public boolean Tick() {
 		TestLogger.EnterFunction("SolarStorm.Tick");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Is there a solarstorm? (y/n)");
-		String answer = sc.nextLine();
-		sc.close();
+		String answer = TestLogger.AskQuestion("Is there a solarstorm? (y/n)");
 		TestLogger.ExitFunction();
 		return answer.equals("y");
 	}
