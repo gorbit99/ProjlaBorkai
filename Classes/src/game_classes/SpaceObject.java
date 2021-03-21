@@ -43,7 +43,7 @@ public abstract class SpaceObject {
 
 	/**
 	 * adds a worker to the worker list
-	 * @param worker worker to be adde to the neighbour list
+	 * @param worker worker to be added to the neighbour list
 	 */
 	public abstract void AddWorker(Worker worker);
 
