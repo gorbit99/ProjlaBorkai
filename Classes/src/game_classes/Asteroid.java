@@ -1,8 +1,6 @@
 package game_classes;
 
 
-import java.util.Scanner;
-
 /**
  * represent an asteroid. Extends SpaceObject.
  */
