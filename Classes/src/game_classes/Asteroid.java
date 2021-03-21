@@ -73,6 +73,7 @@ public class Asteroid extends SpaceObject {
 
 	public boolean CanHideIn() {
 		System.out.println("Asteroid.CanHideIn");
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Can you hide in the asteroid? (y/n)");
 		String answer = sc.nextLine();
