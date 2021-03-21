@@ -8,4 +8,8 @@ public class Uranium extends Material{
 		System.out.println("Uranium.HandleCloseToSun");
 		asteroid.Explode();
 	}
+
+	public String toString(){
+		return "Uranium";
+	}
 }

@@ -8,4 +8,7 @@ public class Ice extends Material{
 		System.out.println("Ice.HandleCloseToSun");
 		asteroid.SetCore(null);
 	}
+	public String toString(){
+		return "Ice";
+	}
 }
