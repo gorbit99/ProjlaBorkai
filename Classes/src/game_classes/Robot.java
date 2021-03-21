@@ -25,9 +25,15 @@ public class Robot extends Worker {
     public void Step() {
         TestLogger.EnterFunction("Robot.Step");
         switch (Game.RandomNum(3)) {
-            case 1 -> this.Move();
-            case 2 -> this.Drill();
-            default -> this.Wait();
+            case 1:
+                this.Move();
+                break;
+            case 2:
+                this.Drill();
+                break;
+            default:
+                this.Wait();
+                break;
         }
         TestLogger.ExitFunction();
     }

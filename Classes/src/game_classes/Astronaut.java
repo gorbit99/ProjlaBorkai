@@ -101,14 +101,30 @@ public class Astronaut extends Worker {
         int to = Integer.parseInt(TestLogger.AskQuestion("Which movement you want to make"));
         to--;
         switch (to) {
-            case 1 -> this.Move();
-            case 2 -> this.Mine();
-            case 3 -> this.Drill();
-            case 4 -> this.CreateRobot();
-            case 5 -> this.CreateTeleporter();
-            case 6 -> this.PlaceTeleporter();
-            case 7 -> this.PlaceMaterial();
-            default -> this.Wait();
+            case 1:
+                this.Move();
+                break;
+            case 2:
+                this.Mine();
+                break;
+            case 3:
+                this.Drill();
+                break;
+            case 4:
+                this.CreateRobot();
+                break;
+            case 5:
+                this.CreateTeleporter();
+                break;
+            case 6:
+                this.PlaceTeleporter();
+                break;
+            case 7:
+                this.PlaceMaterial();
+                break;
+            default:
+                this.Wait();
+                break;
         }
         TestLogger.ExitFunction();
     }
