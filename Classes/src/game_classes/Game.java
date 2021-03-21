@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
-    private Astronaut players;
     private ArrayList<Worker> workers;
-    private AsteroidField asteroidField;
     private SolarStorm solarStorm;
     private BillOfMaterials billOfMaterials;
     private static Random random;
@@ -55,8 +53,12 @@ public class Game {
             materials.add(aS.GetCore());
         }
         for(Worker w : workers){
-            materials.addAll(w.)
+            Material[] m = w.GetStoredMaterials();
+            for (int i = 0; i < m.length; i++){
+                materials.add(m[i]);
+            }
         }
+        billOfMaterials.IsEnough((Material[]) materials.toArray());
         TestLogger.ExitFunction();
     }
 
