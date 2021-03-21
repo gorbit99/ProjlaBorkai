@@ -2,10 +2,12 @@ package game_classes;
 
 public class Uranium extends Material{
 	public Uranium(){
-		System.out.println("Uranium.ctor");
+		TestLogger.EnterFunction("Uranium.ctor");
+		TestLogger.ExitFunction();
 	}
 	public void HandleCloseToSun(Asteroid asteroid) {
-		System.out.println("Uranium.HandleCloseToSun");
+		TestLogger.EnterFunction("Uranium.HandleCloseToSun");
 		asteroid.Explode();
+		TestLogger.ExitFunction();
 	}
 }

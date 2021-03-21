@@ -7,13 +7,14 @@ public abstract class SpaceObject {
 	protected ArrayList<Worker> workers;
 	protected ArrayList<SpaceObject> neigbours;
 
-
 	public void AddNeighbour(SpaceObject spaceObject) {
-		System.out.println("SpaceObject.AddNeighbour");
+		TestLogger.EnterFunction("SpaceObject.AddNeighbour");
+		TestLogger.ExitFunction();
 	}
 	
 	public ArrayList<SpaceObject> GetNeighbours() {
-		System.out.println("SpaceObject.GetNeighbours");
+		TestLogger.EnterFunction("SpaceObject.GetNeighbours");
+		TestLogger.ExitFunction();
 		return this.neigbours;
 	}
 	

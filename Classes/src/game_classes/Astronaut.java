@@ -8,45 +8,52 @@ public class Astronaut extends Worker {
     private ArrayList<Teleporter> teleporters;
 
     public void Mine() {
+        TestLogger.EnterFunction("Astronaut.Mine");
+        TestLogger.ExitFunction();
     }
 
     public Astronaut() {
-        System.out.println("Astronaut.ctor");
+        TestLogger.EnterFunction("Astronaut.ctor");
         this.materialsStored = new Material[10];
+        TestLogger.ExitFunction();
     }
 
     public void PlaceMaterial(Material material) {
-        System.out.println("Astronaut.PlaceMaterial");
+        TestLogger.EnterFunction("Astronaut.PlaceMaterial");
+        TestLogger.ExitFunction();
     }
 
     //nem tudom mennyire jó ötlet a castolás
     public void PlaceTeleporter() {
-        System.out.println("Astronaut.PlaceTeleporter");
+        TestLogger.EnterFunction("Astronaut.PlaceTeleporter");
         if (teleporters.isEmpty()) {
+            TestLogger.ExitFunction();
             return;
         }
         this.teleporters.get(0).Place(this.position);
-
+        TestLogger.ExitFunction();
     }
 
     public void CreateRobot() {
-        System.out.println("Astronaut.CreateRobot");
+        TestLogger.EnterFunction("Astronaut.CreateRobot");
         Robot roby = Robot.CreateRobot(this.materialsStored);
         if (roby != null){
             this.position.AddWorker(roby);
         }
+        TestLogger.ExitFunction();
     }
 
     public void CreateTeleporter() {
-        System.out.println("Astronaut.CreateTeleporter");
+        TestLogger.EnterFunction("Astronaut.CreateTeleporter");
         if (teleporters.isEmpty())
             this.teleporters = Teleporter.CreateTeleporterPair(this.materialsStored);
         if (teleporters.isEmpty())
             System.out.println("Error");
+        TestLogger.ExitFunction();
     }
 
     public void Step() {
-        System.out.println("Astronaut.Step");
+        TestLogger.EnterFunction("Astronaut.Step");
         System.out.println("1. Wait");
         System.out.println("2. Move");
         System.out.println("3. Mine");
@@ -84,29 +91,33 @@ public class Astronaut extends Worker {
             default:
                 this.Wait();
         }
+        TestLogger.ExitFunction();
     }
 
     public void Explode() {
-        System.out.println("Astronaut.Step");
+        TestLogger.EnterFunction("Astronaut.Step");
         this.Die();
+        TestLogger.ExitFunction();
     }
 
     public Material[] GetStoredMaterials() {
-        System.out.println("Astronaut.Get");
+        TestLogger.EnterFunction("Astronaut.Get");
+        TestLogger.ExitFunction();
         return this.materialsStored;
     }
 
     public void Move() {
-        System.out.println("Astronaut.Move");
-        ArrayList<SpaceObject> neigbours = this.position.GetNeighbours();
+        TestLogger.EnterFunction("Astronaut.Move");
+        ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         System.out.println("Where do you want to move?");
-        for (int i = 0; i < neigbours.size(); i++) {
-            System.out.println(i + 1 + "." + neigbours.get(i).toString());
+        for (int i = 0; i < neighbours.size(); i++) {
+            System.out.println(i + 1 + "." + neighbours.get(i).toString());
         }
         Scanner scanner = new Scanner(System.in);
         int to = scanner.nextInt();
         scanner.close();
-        this.TravelTo(neigbours.get(to - 1));
+        this.TravelTo(neighbours.get(to - 1));
+        TestLogger.ExitFunction();
     }
 
 }

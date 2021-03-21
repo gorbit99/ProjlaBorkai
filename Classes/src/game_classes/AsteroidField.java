@@ -13,19 +13,31 @@ package game_classes;//
 
 
 public class AsteroidField {
-	private Asteroid asteroids;
+	private Asteroid[] asteroids;
 	public void MoveAsteroids() {
+		TestLogger.EnterFunction("AsteroidField.MoveAsteroids");
+
+		TestLogger.ExitFunction();
 	}
 	
 	public void AddAsteroid(Asteroid asteroid) {
+		TestLogger.EnterFunction("AsteroidField.AddAsteroid");
+		TestLogger.ExitFunction();
 	}
 	
 	public Asteroid[] GetAsteroids() {
+		TestLogger.EnterFunction("AsteroidField.GetAsteroids");
+		TestLogger.ExitFunction();
+		return asteroids;
 	}
 	
 	public void RemoveAsteroid(Asteroid asteroid) {
+		TestLogger.EnterFunction("AsteroidField.RemoveAsteroid");
+		TestLogger.ExitFunction();
 	}
 	
 	public void HandleSolarStorm() {
+		TestLogger.EnterFunction("AsteroidField.HandleSolarStorm");
+		TestLogger.ExitFunction();
 	}
 }

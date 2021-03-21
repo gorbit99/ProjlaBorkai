@@ -10,40 +10,46 @@ public class Teleporter extends SpaceObject {
     private static BillOfMaterials billOfMaterials;
 
     private Teleporter() {
-        System.out.println("Teleporter.ctor");
+        TestLogger.EnterFunction("Teleporter.ctor");
         active = false;
+        TestLogger.ExitFunction();
     }
 
     private void LinkTo(Teleporter teleporter) {
-        System.out.println("Teleporter.LinkTo");
+        TestLogger.EnterFunction("Teleporter.LinkTo");
         this.pair = teleporter;
+        TestLogger.ExitFunction();
     }
 
     public void Place(SpaceObject asteroid) {
-        System.out.println("Teleporter.Place");
+        TestLogger.EnterFunction("Teleporter.Place");
         this.active = true;
         this.parent = asteroid;
         this.pair.PairPlaced();
+        TestLogger.ExitFunction();
     }
 
     public void PairPlaced() {
-        System.out.println("Teleporter.PairPlaced");
+        TestLogger.EnterFunction("Teleporter.PairPlaced");
         this.active = true;
+        TestLogger.ExitFunction();
     }
 
     public SpaceObject GetParent() {
-        System.out.println("Teleporter.GetParent");
+        TestLogger.EnterFunction("Teleporter.GetParent");
+        TestLogger.ExitFunction();
         return parent;
     }
 
 
     public void TeleportWorker(Worker worker) {
-        System.out.println("Teleport.TeleportWorker");
+        TestLogger.EnterFunction("Teleport.TeleportWorker");
+        TestLogger.ExitFunction();
     }
 
 
     public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) {
-        System.out.println("Teleporter.CreateTeleporterPair");
+        TestLogger.EnterFunction("Teleporter.CreateTeleporterPair");
         ArrayList<Teleporter> teleporters = new ArrayList<>();
         if (billOfMaterials.IsEnough(materials)) {
             Teleporter a = new Teleporter();
@@ -53,20 +59,24 @@ public class Teleporter extends SpaceObject {
             teleporters.add(a);
             teleporters.add(b);
         }
+        TestLogger.ExitFunction();
         return teleporters;
     }
 
     public void RemoveNeighbour(SpaceObject spaceObject) {
-        System.out.println("Teleport.RemoveNeighbour");
+        TestLogger.EnterFunction("Teleport.RemoveNeighbour");
+        TestLogger.ExitFunction();
     }
 
     public void AddWorker(Worker worker) {
-        System.out.println("Teleport.AddWorker");
+        TestLogger.EnterFunction("Teleport.AddWorker");
+        TestLogger.ExitFunction();
     }
 
     @Override
     public void RemoveWorker(Worker worker) {
-        System.out.println("I dunno how we got here");
+        TestLogger.EnterFunction("Teleporter.RemoveWorker I dunno how we got here");
+        TestLogger.ExitFunction();
     }
 
     @Override

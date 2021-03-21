@@ -4,30 +4,35 @@ public abstract class Worker {
     protected SpaceObject position;
 
     public void TravelTo(SpaceObject spaceObject) {
-        System.out.println("Worker.TratvelTo");
+        TestLogger.EnterFunction("Worker.TravelTo");
         this.position.RemoveWorker(this);
         spaceObject.AddWorker(this);
+        TestLogger.ExitFunction();
     }
 
     public void Drill() {
-        System.out.println("Worker.Drill");
+        TestLogger.EnterFunction("Worker.Drill");
 
+        TestLogger.ExitFunction();
     }
 
     public void Wait() {
-        System.out.println("Worker.Wait");
+        TestLogger.EnterFunction("Worker.Wait");
+        TestLogger.ExitFunction();
     }
 
     public abstract void Explode();
 
     public void HandleSolarStorm() {
-        System.out.println("Worker.HandleSolarStorm");
+        TestLogger.EnterFunction("Worker.HandleSolarStorm");
+        TestLogger.ExitFunction();
     }
 
     public void Die() {
-        System.out.println("Worker.Die");
+        TestLogger.EnterFunction("Worker.Die");
         this.position.RemoveWorker(this);
         Game.GetInstance().RemoveWorker(this);
+        TestLogger.ExitFunction();
     }
 
     public abstract void Step();

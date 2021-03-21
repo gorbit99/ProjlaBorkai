@@ -2,10 +2,13 @@ package game_classes;
 
 public class Ice extends Material{
 	public Ice(){
-		System.out.println("Ice.ctor");
+		TestLogger.EnterFunction("Ice.ctor");
+		TestLogger.ExitFunction();
 	}
+
 	public void HandleCloseToSun(Asteroid asteroid) {
-		System.out.println("Ice.HandleCloseToSun");
+		TestLogger.EnterFunction("Ice.HandleCloseToSun");
 		asteroid.SetCore(null);
+		TestLogger.ExitFunction();
 	}
 }
