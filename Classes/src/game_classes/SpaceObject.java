@@ -10,6 +10,7 @@ public abstract class SpaceObject {
 
 	public void AddNeighbour(SpaceObject spaceObject) {
 		System.out.println("SpaceObject.AddNeighbour");
+		this.neigbours.add(spaceObject);
 	}
 	
 	public ArrayList<SpaceObject> GetNeighbours() {

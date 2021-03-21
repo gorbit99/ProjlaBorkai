@@ -17,9 +17,13 @@ public class AsteroidField {
     }
 
     public void MoveAsteroids() {
+        for (Asteroid asteroid : asteroids){
+            asteroid.MoveAsteroid();
+        }
     }
 
     public void AddAsteroid(Asteroid asteroid) {
+        asteroids.add(asteroid);
     }
 
 	public ArrayList<Asteroid> GetAsteroids() {
@@ -28,12 +32,13 @@ public class AsteroidField {
 	}
 
     public void RemoveAsteroid(Asteroid asteroid) {
+        asteroids.remove(asteroid);
     }
 
 	public void HandleSolarStorm() {
 		System.out.println("AsteroidField.HandleSolarStorm");
-		for (int i = 0; i < asteroids.size(); i++) {
-			asteroids.get(i).HandleSolarStorm();
-		}
+        for (Asteroid asteroid : asteroids) {
+            asteroid.HandleSolarStorm();
+        }
 	}
 }
