@@ -3,19 +3,29 @@ package game_classes;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * represents an astronaut
+ */
 public class Astronaut extends Worker {
+    /**
+     * @param materialsStored contains all the materials that the astronaut has
+     * @param teleporters contains the created teleporters
+     */
     private final Material[] materialsStored;
     private ArrayList<Teleporter> teleporters;
+
+    /**
+     * astronaut constructor
+     */
+    public Astronaut() {
+        TestLogger.EnterFunction("Astronaut.ctor");
+        this.materialsStored = new Material[10];
+        TestLogger.ExitFunction();
+    }
 
     public void Mine() {
         TestLogger.EnterFunction("Astronaut.Mine");
         this.position.Mine();
-        TestLogger.ExitFunction();
-    }
-
-    public Astronaut() {
-        TestLogger.EnterFunction("Astronaut.ctor");
-        this.materialsStored = new Material[10];
         TestLogger.ExitFunction();
     }
 

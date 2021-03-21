@@ -42,7 +42,7 @@ public abstract class SpaceObject {
 	public abstract void RemoveNeighbour(SpaceObject spaceObject);
 
 	/**
-	 * adds a worker to the neighbour list
+	 * adds a worker to the worker list
 	 * @param worker worker to be adde to the neighbour list
 	 */
 	public abstract void AddWorker(Worker worker);
