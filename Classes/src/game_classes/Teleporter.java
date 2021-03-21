@@ -36,9 +36,11 @@ public class Teleporter extends SpaceObject {
         return parent;
     }
 
-
+    //ezt átírtam privátra mert úgyis csak osztályon belül van használva
     public void TeleportWorker(Worker worker) {
         System.out.println("Teleport.TeleportWorker");
+        SpaceObject parent= this.GetParent();
+        parent.AddWorker(worker);
     }
 
 
@@ -56,12 +58,16 @@ public class Teleporter extends SpaceObject {
         return teleporters;
     }
 
+    //hogy keressünk új szomszédot
     public void RemoveNeighbour(SpaceObject spaceObject) {
         System.out.println("Teleport.RemoveNeighbour");
+        this.workers.remove(spaceObject);
+        //itt még kéne hozzáadni egy újat
     }
 
     public void AddWorker(Worker worker) {
         System.out.println("Teleport.AddWorker");
+        this.pair.TeleportWorker(worker);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package game_classes;
 
 public abstract class Worker {
-    protected SpaceObject position;
+    protected Asteroid position;
 
     public void TravelTo(SpaceObject spaceObject) {
         System.out.println("Worker.TratvelTo");
@@ -11,7 +11,7 @@ public abstract class Worker {
 
     public void Drill() {
         System.out.println("Worker.Drill");
-
+        this.position.Drill();
     }
 
     public void Wait() {
@@ -22,6 +22,8 @@ public abstract class Worker {
 
     public void HandleSolarStorm() {
         System.out.println("Worker.HandleSolarStorm");
+        if (!this.position.CanHideIn())
+            this.Die();
     }
 
     public void Die() {
