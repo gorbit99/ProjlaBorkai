@@ -49,6 +49,7 @@ public class Teleporter extends SpaceObject {
         this.active = true;
         this.parent = asteroid;
         this.pair.PairPlaced();
+        asteroid.AddNeighbour(this);
         TestLogger.ExitFunction();
     }
 
@@ -113,8 +114,8 @@ public class Teleporter extends SpaceObject {
     public void RemoveNeighbour(SpaceObject spaceObject) {
         TestLogger.EnterFunction("Teleporter.ctor");
         System.out.println("Teleport.RemoveNeighbour");
-        this.neigbours.remove(spaceObject);
-        this.parent = this.neigbours.get(Game.RandomNum(this.neigbours.size()));
+        this.neighbours.remove(spaceObject);
+        this.parent = this.neighbours.get(Game.RandomNum(this.neighbours.size()));
         TestLogger.ExitFunction();
     }
 

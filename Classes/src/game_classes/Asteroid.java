@@ -93,7 +93,7 @@ public class Asteroid extends SpaceObject {
 			workers.get(i).Explode();
 		}
 
-		for (SpaceObject so:neigbours) {
+		for (SpaceObject so:neighbours) {
 			so.RemoveNeighbour(this);
 		}
 
@@ -120,6 +120,7 @@ public class Asteroid extends SpaceObject {
 	public void AddWorker(Worker worker) {
 		TestLogger.EnterFunction("Asteroid.AddWorker");
 		workers.add(worker);
+		worker.SetPosition(this);
 		TestLogger.ExitFunction();
 	}
 
@@ -149,7 +150,7 @@ public class Asteroid extends SpaceObject {
 	 */
 	public void RemoveNeighbour(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("Asteroid.RemoveNeighbour");
-		neigbours.remove(spaceObject);
+		neighbours.remove(spaceObject);
 		TestLogger.ExitFunction();
 	}
 

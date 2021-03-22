@@ -17,7 +17,6 @@ public abstract class Worker {
             this.position.RemoveWorker(this);
         }
         spaceObject.AddWorker(this);
-        this.position = (Asteroid)spaceObject;
         TestLogger.ExitFunction();
     }
 
@@ -62,6 +61,14 @@ public abstract class Worker {
         this.position.RemoveWorker(this);
         Game.GetInstance().RemoveWorker(this);
         TestLogger.ExitFunction();
+    }
+
+    /**
+     * Sets the worker's position
+     * @param asteroid to be set as position
+     */
+    public void SetPosition(Asteroid asteroid) {
+        this.position = asteroid;
     }
 
     /**

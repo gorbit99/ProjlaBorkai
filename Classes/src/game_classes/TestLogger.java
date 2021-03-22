@@ -9,7 +9,7 @@ import java.util.Stack;
 public class TestLogger {
     private static int indentLevel = 0;
     private static Scanner scanner;
-    private static Stack<String> functions = new Stack<>();
+    private final static Stack<String> functions = new Stack<>();
 
     /**
      * To be called when calling a function
