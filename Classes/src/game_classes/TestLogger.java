@@ -9,21 +9,21 @@ public class TestLogger {
     private static Stack<String> functions = new Stack<>();
 
     public static void EnterFunction(String functionName) {
-        indentLevel++;
         for (int i = 0; i < indentLevel; i++) {
             System.out.print("---");
         }
         System.out.println(functionName + "()");
         functions.push(functionName);
+        indentLevel++;
     }
 
     public static void ExitFunction() {
+        indentLevel--;
         String function = functions.pop();
         for (int i = 0; i < indentLevel; i++) {
             System.out.print("---");
         }
         System.out.println(function + "() return");
-        indentLevel--;
     }
 
     public static String AskQuestion(String message) {

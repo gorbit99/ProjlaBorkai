@@ -45,6 +45,7 @@ public class main {
             switch (number) {
                 case 1:
                     TestScenario1();
+                    System.out.println();
                     a.Move();
                     break;
                 case 2:
