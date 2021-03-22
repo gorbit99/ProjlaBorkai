@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class Teleporter extends SpaceObject {
     /**
-     * @param active whether the teleporter is placed
-     * @param pair the pair of the teleporter
-     * @param parent the parent space object of the teleporter
-     * @param billOfMaterials contains the materials that you need to build a teleporter
+     * active whether the teleporter is placed
+     * pair the pair of the teleporter
+     * parent the parent space object of the teleporter
+     * billOfMaterials contains the materials that you need to build a teleporter
      */
     private boolean active;
     private Teleporter pair;

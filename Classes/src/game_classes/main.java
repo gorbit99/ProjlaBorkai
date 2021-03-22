@@ -146,6 +146,9 @@ public class main {
         }
     }
 
+    /**
+     * Initializing for the 1st scenario
+     */
     static void TestScenario1() {
         Game.GetInstance();
         AsteroidField af = AsteroidField.GetInstance();
@@ -167,7 +170,7 @@ public class main {
         t4.LinkTo(t3);
         t1.Place(as);
         t1.Place(bs);
-        ArrayList<Teleporter> list = new ArrayList<Teleporter>();
+        ArrayList<Teleporter> list = new ArrayList<>();
         list.add(t1);
         list.add(t2);
         a.SetTeleporters(list);
@@ -177,6 +180,9 @@ public class main {
         r.TravelTo(as);
     }
 
+    /**
+     * Initializing for the 2nd scenario
+     */
     static void TestScenario2() {
         Game.GetInstance();
         AsteroidField af = AsteroidField.GetInstance();
@@ -194,7 +200,9 @@ public class main {
         r.TravelTo(as);
     }
 
-
+    /**
+     * Initializing for the 3rd scenario
+     */
     static void TestScenario3() {
         Game.GetInstance();
         AsteroidField.GetInstance();
@@ -210,6 +218,9 @@ public class main {
         r.TravelTo(as);
     }
 
+    /**
+     * Initializing for the 4th scenario
+     */
     static void TestScenario4() {
         Game.GetInstance();
         AsteroidField.GetInstance();
@@ -224,6 +235,9 @@ public class main {
         a.SetStoredMaterials(new Material[]{i, c, u});
     }
 
+    /**
+     * Initializing for the 5th scenario
+     */
     static void TestScenario5() {
         Game.GetInstance();
         AsteroidField.GetInstance();
@@ -244,6 +258,9 @@ public class main {
         a.TravelTo(bs);
     }
 
+    /**
+     * Initializing for the 6th scenario
+     */
     static void TestScenario6() {
         Game.GetInstance();
         AsteroidField.GetInstance();
@@ -251,8 +268,8 @@ public class main {
         Asteroid bs = new Asteroid();
         Robot r1 = new Robot();
         Astronaut a1 = new Astronaut();
-        AsteroidField.GetInstance().AddAsteroid(as);;
-        AsteroidField.GetInstance().AddAsteroid(bs);;
+        AsteroidField.GetInstance().AddAsteroid(as);
+        AsteroidField.GetInstance().AddAsteroid(bs);
         Game.GetInstance().AddWorker(a1);
         Game.GetInstance().AddWorker(r1);
         a1.TravelTo(as);
@@ -263,6 +280,9 @@ public class main {
         r2.TravelTo(bs);
     }
 
+    /**
+     * Destroys every object created in a use-case.
+     */
     static void Reset() {
         Game.GetInstance().GetWorkers().clear();
         AsteroidField.GetInstance().GetAsteroids().clear();

@@ -1,6 +1,5 @@
 package game_classes;
 
-import java.util.ArrayList;
 
 /**
  * represents a Worker
@@ -49,7 +48,6 @@ public abstract class Worker {
      */
     public void HandleSolarStorm() {
         TestLogger.EnterFunction("Worker.HandleSolarStorm");
-        System.out.println("Worker.HandleSolarStorm");
         if (!this.position.CanHideIn())
             this.Die();
         TestLogger.ExitFunction();

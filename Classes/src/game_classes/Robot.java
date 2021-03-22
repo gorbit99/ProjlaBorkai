@@ -63,6 +63,8 @@ public class Robot extends Worker {
     }
 
     public Material[] GetStoredMaterials() {
+        TestLogger.EnterFunction("Robot.GetStoredMaterials");
+        TestLogger.ExitFunction();
         return null;
     }
 

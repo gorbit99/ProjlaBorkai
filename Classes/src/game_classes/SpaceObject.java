@@ -30,10 +30,9 @@ public abstract class SpaceObject {
 	 */
 	public ArrayList<SpaceObject> GetNeighbours() {
 		TestLogger.EnterFunction("SpaceObject.GetNeighbours");
+		neigbours.add(new Asteroid());
+		neigbours.add(new Asteroid());
 		TestLogger.ExitFunction();
-		neigbours.add(new Asteroid());
-		neigbours.add(new Asteroid());
-
 		return this.neigbours;
 	}
 
