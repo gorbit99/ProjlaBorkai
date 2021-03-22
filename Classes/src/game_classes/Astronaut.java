@@ -20,6 +20,7 @@ public class Astronaut extends Worker {
     public Astronaut() {
         TestLogger.EnterFunction("Astronaut.ctor");
         this.materialsStored = new Material[10];
+        teleporters = new ArrayList<>();
         TestLogger.ExitFunction();
     }
 
@@ -166,6 +167,12 @@ public class Astronaut extends Worker {
     public void SetTeleporters(ArrayList<Teleporter> teleporters) {
         TestLogger.EnterFunction("Astronaut.SetTeleporters");
         this.teleporters = teleporters;
+        TestLogger.ExitFunction();
+    }
+
+    public void SetStoredMaterials(Material[] materials) {
+        TestLogger.EnterFunction("Astronaut.SetStoredMaterials");
+        System.arraycopy(materials, 0, materialsStored, 0, materials.length);
         TestLogger.ExitFunction();
     }
 }

@@ -95,4 +95,10 @@ public class Game {
         TestLogger.EnterFunction("Game.StartGame");
         TestLogger.ExitFunction();
     }
+
+    public ArrayList<Worker> GetWorkers() {
+        TestLogger.EnterFunction("Game.GetWorkers");
+        TestLogger.ExitFunction();
+        return workers;
+    }
 }

@@ -24,6 +24,9 @@ public class Teleporter extends SpaceObject {
     public Teleporter() {
         TestLogger.EnterFunction("Teleporter.ctor");
         active = false;
+        if (billOfMaterials == null) {
+            billOfMaterials = new BillOfMaterials();
+        }
         TestLogger.ExitFunction();
     }
 
@@ -86,6 +89,9 @@ public class Teleporter extends SpaceObject {
      * @return teleporter list with the pair if its possible to create empty list if not
      */
     public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) {
+        if (billOfMaterials == null) {
+            billOfMaterials = new BillOfMaterials();
+        }
         TestLogger.EnterFunction("Teleporter.CreateTeleporterPair");
         ArrayList<Teleporter> teleporters = new ArrayList<>();
         if (billOfMaterials.IsEnough(materials)) {

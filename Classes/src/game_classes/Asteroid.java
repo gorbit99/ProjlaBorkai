@@ -75,7 +75,9 @@ public class Asteroid extends SpaceObject {
 		TestLogger.EnterFunction("Asteroid.MoveAsteroid");
 
 		if(IsCloseToSun()){
-			core.HandleCloseToSun(this);
+			if (core != null) {
+				core.HandleCloseToSun(this);
+			}
 		}
 
 		TestLogger.ExitFunction();
@@ -87,8 +89,8 @@ public class Asteroid extends SpaceObject {
 	public void Explode() {
 	    TestLogger.EnterFunction("Asteroid.Explode");
 
-		for (Worker w:workers) { //itt honnan van a worker????
-			w.Explode();
+		for (int i = workers.size() - 1; i >= 0; i--) { //itt honnan van a worker????
+			workers.get(i).Explode();
 		}
 
 		for (SpaceObject so:neigbours) {
