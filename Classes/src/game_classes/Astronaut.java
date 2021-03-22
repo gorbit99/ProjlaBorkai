@@ -38,7 +38,6 @@ public class Astronaut extends Worker {
      */
     public void PlaceMaterial() {
         TestLogger.EnterFunction("Astronaut.PlaceMaterial");
-        //TODO testlogger.askquestionné
         for (int i = 0; i < this.materialsStored.length; i++) {
             if (materialsStored[i] != null)
                 System.out.println(i + 1 + "." + materialsStored[i].toString());
