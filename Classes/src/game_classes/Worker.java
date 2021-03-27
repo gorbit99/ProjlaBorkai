@@ -1,6 +1,5 @@
 package game_classes;
 
-import java.util.ArrayList;
 
 /**
  * represents a Worker
@@ -18,7 +17,6 @@ public abstract class Worker {
             this.position.RemoveWorker(this);
         }
         spaceObject.AddWorker(this);
-        this.position = (Asteroid)spaceObject;
         TestLogger.ExitFunction();
     }
 
@@ -49,7 +47,6 @@ public abstract class Worker {
      */
     public void HandleSolarStorm() {
         TestLogger.EnterFunction("Worker.HandleSolarStorm");
-        System.out.println("Worker.HandleSolarStorm");
         if (!this.position.CanHideIn())
             this.Die();
         TestLogger.ExitFunction();
@@ -64,6 +61,14 @@ public abstract class Worker {
         this.position.RemoveWorker(this);
         Game.GetInstance().RemoveWorker(this);
         TestLogger.ExitFunction();
+    }
+
+    /**
+     * Sets the worker's position
+     * @param asteroid to be set as position
+     */
+    public void SetPosition(Asteroid asteroid) {
+        this.position = asteroid;
     }
 
     /**

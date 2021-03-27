@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class Teleporter extends SpaceObject {
     /**
-     * @param active whether the teleporter is placed
-     * @param pair the pair of the teleporter
-     * @param parent the parent space object of the teleporter
-     * @param billOfMaterials contains the materials that you need to build a teleporter
+     * active whether the teleporter is placed
+     * pair the pair of the teleporter
+     * parent the parent space object of the teleporter
+     * billOfMaterials contains the materials that you need to build a teleporter
      */
     private boolean active;
     private Teleporter pair;
@@ -49,6 +49,7 @@ public class Teleporter extends SpaceObject {
         this.active = true;
         this.parent = asteroid;
         this.pair.PairPlaced();
+        asteroid.AddNeighbour(this);
         TestLogger.ExitFunction();
     }
 
@@ -113,8 +114,8 @@ public class Teleporter extends SpaceObject {
     public void RemoveNeighbour(SpaceObject spaceObject) {
         TestLogger.EnterFunction("Teleporter.ctor");
         System.out.println("Teleport.RemoveNeighbour");
-        this.neigbours.remove(spaceObject);
-        this.parent = this.neigbours.get(Game.RandomNum(this.neigbours.size()));
+        this.neighbours.remove(spaceObject);
+        this.parent = this.neighbours.get(Game.RandomNum(this.neighbours.size()));
         TestLogger.ExitFunction();
     }
 

@@ -8,13 +8,15 @@ public abstract class Material {
 	 * This is the constructor of the material.
 	 */
 	public Material(){
-		System.out.println("Material.ctor");
+		TestLogger.EnterFunction("Material.ctor");
+		TestLogger.ExitFunction();
 	}
 	/**
 	 * This method handles, when the material gets closes to the sun.
 	 * @param asteroid The asteroid is what contains this material.
 	 */
 	public void HandleCloseToSun(Asteroid asteroid) {
-		System.out.println("Material.HandleCloseToSun");
+		TestLogger.EnterFunction("Material.HandleCloseToSun");
+		TestLogger.ExitFunction();
 	}
 }

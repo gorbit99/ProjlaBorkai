@@ -12,7 +12,7 @@ public abstract class SpaceObject {
 	 * @param neighbours contains all the neigbours
 	 */
 	protected ArrayList<Worker> workers = new ArrayList<Worker>();
-	protected ArrayList<SpaceObject> neigbours = new ArrayList<SpaceObject>();
+	protected ArrayList<SpaceObject> neighbours = new ArrayList<SpaceObject>();
 
 	/**
 	 * adds new neighbour
@@ -20,7 +20,7 @@ public abstract class SpaceObject {
 	 */
 	public void AddNeighbour(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("SpaceObject.AddNeighbour");
-		this.neigbours.add(spaceObject);
+		this.neighbours.add(spaceObject);
 		TestLogger.ExitFunction();
 	}
 
@@ -31,10 +31,7 @@ public abstract class SpaceObject {
 	public ArrayList<SpaceObject> GetNeighbours() {
 		TestLogger.EnterFunction("SpaceObject.GetNeighbours");
 		TestLogger.ExitFunction();
-		neigbours.add(new Asteroid());
-		neigbours.add(new Asteroid());
-
-		return this.neigbours;
+		return this.neighbours;
 	}
 
 	/**
