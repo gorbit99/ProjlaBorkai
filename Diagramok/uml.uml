@@ -2040,6 +2040,7 @@
 <XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="puV6TOyUtUiwOyOj2oUKeQAA">
 <XPD:ATTR name="Name" type="string">exposureCount</XPD:ATTR>
+<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">int</XPD:ATTR>
 <XPD:REF name="Owner">LHrrPzv2z0GmZUlOtKMrVgAA</XPD:REF>
 </XPD:OBJ>
