@@ -1871,7 +1871,7 @@
 <XPD:ATTR name="Left" type="integer">748</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">776</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">86</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">95</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">108</XPD:ATTR>
 <XPD:REF name="Model">p8dFjj6cbEOAoQoofszYxQAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="SFv+xz37U0aKdA+XnZ/dtgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="I/3+EAAkqkKCcFeulLqHzgAA">
@@ -1899,7 +1899,7 @@
 <XPD:OBJ name="OwnedViews[37]" type="UMLGeneralizationView" guid="5Qp24jHXZEaRYoOl+xr1EwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">833,800;984,718</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">833,805;984,720</XPD:ATTR>
 <XPD:REF name="Model">R28UVmBB1UyPR7estPCq5gAA</XPD:REF>
 <XPD:REF name="Head">IrmFQx2Fv0qzYlmuTIVTAAAA</XPD:REF>
 <XPD:REF name="Tail">6v9hezlm+EGTFbdxVFeM7gAA</XPD:REF>
@@ -3620,7 +3620,7 @@
 <XPD:REF name="Views[3]">7KK6gLtNoEK70po9jBTkSAAA</XPD:REF>
 <XPD:ATTR name="#Generalizations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Generalizations[0]">R28UVmBB1UyPR7estPCq5gAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">4</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">5</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="m8DAObWX/UuepUIkMTrhGgAA">
 <XPD:ATTR name="Name" type="string">Drill</XPD:ATTR>
 <XPD:REF name="Owner">p8dFjj6cbEOAoQoofszYxQAA</XPD:REF>
@@ -3635,6 +3635,10 @@
 </XPD:OBJ>
 <XPD:OBJ name="Operations[3]" type="UMLOperation" guid="ZizFkir+4kKmHwec+5dK5AAA">
 <XPD:ATTR name="Name" type="string">Move</XPD:ATTR>
+<XPD:REF name="Owner">p8dFjj6cbEOAoQoofszYxQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[4]" type="UMLOperation" guid="hcxO3DCpxE6ymF4nA/V2xwAA">
+<XPD:ATTR name="Name" type="string">Steal</XPD:ATTR>
 <XPD:REF name="Owner">p8dFjj6cbEOAoQoofszYxQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
