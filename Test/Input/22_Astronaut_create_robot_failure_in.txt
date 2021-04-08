@@ -1,0 +1,10 @@
+Astronaut_create_robot_failure
+
+#initialization
+create asteroid A1 #creating asteroid
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+
+#movements
+execute createRobot S1 R1
+
+printState

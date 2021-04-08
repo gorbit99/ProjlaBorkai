@@ -1,0 +1,18 @@
+
+Asteroids:
+	A1:
+		workers: R1
+		core: C1
+		layers: 1
+		neighbours: -
+		distanceFromSun: -
+Teleporters:
+Astronauts:
+Robots:
+	R1:
+		position: A1
+UFOs:
+Materials:
+	C1:
+		type: coal
+SolarStorm:

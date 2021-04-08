@@ -1,0 +1,19 @@
+Asteroids:
+	A1:
+		workers: S1
+		core: -
+		layers: -
+		neighbours: -
+		distanceFromSun: -
+Teleporters:
+Astronauts:
+	S1:
+		storedMaterials: -
+		teleporters: -
+		position: A1
+Robots:
+	R1:
+		position: A1
+UFOs:
+Materials:
+SolarStorm:

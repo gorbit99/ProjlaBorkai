@@ -1,0 +1,16 @@
+Astronaut_create_robot_success
+
+#initialization
+create asteroid A1 #creating asteroid
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+create material C1 iron
+create material C2 coal
+create material C3 uranium
+astronaut S1 addMaterial C1
+astronaut S1 addMaterial C2
+astronaut S1 addMaterial C3
+
+#movements
+execute createRobot S1 R1
+
+printState
