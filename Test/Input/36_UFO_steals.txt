@@ -1,0 +1,12 @@
+UFO_steals
+
+#initialization
+create asteroid A1 #creating asteroid
+create ufo U1 A1 #creating ufo U1 on asteroid A1
+#creating material setting distance from sun, layers and core type
+create material C1 coal
+asteroid A1 setCore C1
+asteroid A1 setLayers 0
+
+#movements
+execute mine U1
