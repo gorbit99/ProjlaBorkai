@@ -1,0 +1,15 @@
+Astronaut_drill_through_radioactive_close_to_sun
+
+#initialization
+create asteroid A1 #creating asteroid
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+#creating material setting distance from sun, layers and core type
+create material C1 uranium
+asteroid A1 setDistance 0
+asteroid A1 setLayers 1
+asteroid A1 setCore C1
+
+#movements
+execute drill S1
+
+printState

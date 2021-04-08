@@ -7,10 +7,7 @@ create material C1 coal
 asteroid A1 setLayers 2
 asteroid A1 setCore C1
 
-
-
-
 #movements
-execute drill A1
+execute drill S1
 
 printState

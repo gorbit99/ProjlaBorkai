@@ -4,7 +4,7 @@ Asteroids:
 		core: C1
 		layers: 0
 		neighbours: -
-		distanceFromSun: -
+		distanceFromSun: 5
 Teleporters:
 Astronauts:
 	S1:
@@ -14,4 +14,6 @@ Astronauts:
 Robots:
 UFOs:
 Materials:
+	C1:
+		type: ice
 SolarStorm:
