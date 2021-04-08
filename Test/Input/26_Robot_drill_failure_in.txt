@@ -1,0 +1,14 @@
+Robot_drill_failure
+
+#initialization
+create asteroid A1 #creating asteroid
+#creating robot R1 on asteroid A1
+create robot R1 A1
+create material C1 coal
+asteroid A1 setLayers 0
+asteroid A1 setCore C1
+
+#movements
+execute drill R1
+
+printState
