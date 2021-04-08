@@ -1,0 +1,22 @@
+Astronaut_places_teleporters
+
+#initialization
+create asteroid A1 #creating asteroid 1
+create asteroid A2 #creating asteroid 2
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+create teleporter T1
+create teleporter T2
+astronaut S1 addTeleporter T1
+astronaut S1 addTeleporter T2
+asteroid A1 addNeighbour A2
+asteroid A2 addNeighbour A1
+
+
+
+
+#movements
+execute placeTeleporter S1 T1
+execute move S1 A2
+execute placeTeleporter S1 T2
+
+printState
