@@ -1,0 +1,27 @@
+Exploding_asteroid
+
+#creating asteroids
+create asteroid A1
+create asteroid A2
+
+#creating workers on A1
+create astronaut S1 A1
+create robot R1 A1
+create ufo F1 A1
+
+#creating uranium
+create material U1 uranium
+
+#setup asteroids
+asteroid A1 setdistance 0
+asteroid A1 setlayers 1
+asteroid A1 addNeighbour A2
+asteroid A2 addneighbour A1
+
+#setup uranium
+uranium U1 setExposure 2
+
+#drilling
+execute drill S1
+
+printState
