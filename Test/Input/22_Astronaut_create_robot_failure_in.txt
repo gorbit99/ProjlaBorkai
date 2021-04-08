@@ -1,16 +1,10 @@
-Astronaut_drill_success
+Astronaut_create_robot_failure
 
 #initialization
 create asteroid A1 #creating asteroid
 create astronaut S1 A1 #creating astronaut S1 on asteroid A1
-create material C1 coal
-asteroid A1 setLayers 2
-asteroid A1 setCore C1
-
-
-
 
 #movements
-execute drill A1
+execute createRobot S1 R1
 
 printState
