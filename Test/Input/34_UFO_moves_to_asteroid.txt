@@ -1,0 +1,13 @@
+UFO_moves_to_asteroid
+
+#initialization
+create asteroid A1 #creating asteroids
+create asteroid A2
+asteroid A1 addNeighbour A2
+asteroid A2 addNeighbour A1
+create ufo S1 U1 #creating ufo U1 on asteroid A1
+
+#movements
+execute move U1 A2
+
+printState
