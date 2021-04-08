@@ -1,0 +1,17 @@
+Astronaut_uses_teleporter
+
+#initialization
+create asteroid A1 #creating asteroids
+create asteroid A2
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+create teleporter G1
+create teleporter G2
+teleporter G1 linkTo G2
+teleporter G2 linkTo G1
+teleporter G1 place A1
+teleporter G2 place A2
+
+#movements
+execute move S1 G1
+
+printState

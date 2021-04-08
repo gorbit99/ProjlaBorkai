@@ -1,0 +1,13 @@
+Astronaut_moves_to_asteroid
+
+#initialization
+create asteroid A1 #creating asteroids
+create asteroid A2
+asteroid A1 addNeighbour A2
+asteroid A2 addNeighbour A1
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+
+#movements
+execute move S1 A2
+
+printState
