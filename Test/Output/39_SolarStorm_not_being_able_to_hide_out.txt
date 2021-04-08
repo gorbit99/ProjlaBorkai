@@ -1,0 +1,14 @@
+Asteroids:
+	A1:
+		workers:
+		core: -
+		layers: 1
+		neighbours: -
+		distanceFromSun: -
+Teleporters:
+Astronauts:
+Robots:
+UFOs:
+Materials:
+SolarStorm:
+	timeTillHit: -

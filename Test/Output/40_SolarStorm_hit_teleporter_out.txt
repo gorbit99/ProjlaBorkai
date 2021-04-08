@@ -1,0 +1,18 @@
+Asteroids:
+	A1:
+		workers: -
+		core: -
+		layers: -
+		neighbours: G1
+		distanceFromSun: -
+Teleporter:
+	G1:
+		parent: A1
+		pair: -
+		isBroken: true
+Astronauts:
+Robots:
+UFOs:
+Materials:
+SolarStorm:
+	timeTillHit: -

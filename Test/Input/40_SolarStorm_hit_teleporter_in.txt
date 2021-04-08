@@ -1,0 +1,12 @@
+SolarStorm_hit_teleporter
+
+#creating space objects
+create asteroid A1
+create teleporter G1
+
+#placeing teleporter on A1
+teleporter G1 place A1
+
+execute solarStorm G1
+
+printState

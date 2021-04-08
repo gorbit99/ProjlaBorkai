@@ -1,0 +1,15 @@
+SolarStorm_able_to_hide
+
+#creating workers on asteroid A1
+create asteroid A1
+create astrounaut S1 A1
+create robot R1 A1
+create ufo F1 A1
+
+#setup asteriod
+asteroid A1 setLayers 0
+
+#solarstorm 
+execute solarStorm A1
+
+printState
