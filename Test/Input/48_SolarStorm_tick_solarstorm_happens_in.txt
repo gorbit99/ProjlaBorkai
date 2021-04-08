@@ -1,0 +1,11 @@
+SolarStorm_tick_solarstorm_happens
+
+create asteroid A1
+create astronaut S1 A1
+asteroid A1 setLayers 2
+
+solarStorm setTimeTillHit 0
+
+solarStorm tick
+
+printState

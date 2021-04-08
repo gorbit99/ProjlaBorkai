@@ -1,0 +1,8 @@
+Asteroids:
+Teleporter:
+Astronauts:
+Robots:
+UFOs:
+Materials:
+SolarStorm:
+	timeTillHit: 1

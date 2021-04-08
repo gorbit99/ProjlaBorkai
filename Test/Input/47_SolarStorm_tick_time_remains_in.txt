@@ -1,0 +1,7 @@
+SolarStorm_tick_remains
+
+solarStorm setTimeTillHit 2
+
+solarStorm tick
+
+printState
