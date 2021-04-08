@@ -1,0 +1,18 @@
+Astronaut_places_radioactive_far_from_sun
+
+#initialization
+create asteroid A1 #creating asteroid
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+create material U1 uranium
+asteroid A1 setLayers 0
+astronaut S1 addMaterial U1
+asteroid A1 setDistance 0
+uranium U1 setExposure 2
+
+
+
+
+#movements
+execute placeMaterial S1 U1
+
+printState

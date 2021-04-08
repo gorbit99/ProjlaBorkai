@@ -1,0 +1,19 @@
+Asteroids:
+	A1:
+		workers: S1
+		core: I1
+		layers: 0
+		neighbours: -
+		distanceFromSun: -
+Teleporters:
+Astronauts:
+	S1:
+		storedMaterials: -
+		teleporters: -
+		position: A1
+Robots:
+UFOs:
+Materials:
+    I1:
+        type: ice
+SolarStorm:

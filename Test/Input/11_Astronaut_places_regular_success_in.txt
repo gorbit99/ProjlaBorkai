@@ -1,0 +1,16 @@
+Astronaut_places_regular_success
+
+#initialization
+create asteroid A1 #creating asteroid
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+create material C1 coal
+asteroid A1 setLayers 2
+astronaut S1 addMaterial C1
+
+
+
+
+#movements
+execute placeMaterial S1 C1
+
+printState
