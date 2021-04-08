@@ -1,7 +1,20 @@
 Asteroids:
+	A1:
+		workers: S1
+		core: U1
+		layers: 0
+		neighbours: -
+		distanceFromSun: 0
 Teleporters:
 Astronauts:
+	S1:
+		storedMaterials: -
+		teleporters: -
+		position: A1
 Robots:
 UFOs:
 Materials:
+	U1:
+		type: uranium
+		exposureCount: 1
 SolarStorm:

@@ -1,17 +1,15 @@
 Asteroids:
 	A1:
-		workers: S1
+		workers: R1
 		core: U1
 		layers: 0
 		neighbours: -
 		distanceFromSun: 0
 Teleporters:
 Astronauts:
-	S1:
-		storedMaterials: -
-		teleporters: -
-		position: A1
 Robots:
+	R1:
+		position: A1
 UFOs:
 Materials:
 	U1:
