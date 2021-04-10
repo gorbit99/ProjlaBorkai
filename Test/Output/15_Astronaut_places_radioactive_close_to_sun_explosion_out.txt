@@ -5,3 +5,4 @@ Robots:
 UFOs:
 Materials:
 SolarStorm:
+	timeTillHit: -

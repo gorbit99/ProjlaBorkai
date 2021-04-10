@@ -13,7 +13,6 @@ asteroid A2 addNeighbour A1
 
 
 
-
 #movements
 execute placeTeleporter S1 T1
 execute move S1 A2

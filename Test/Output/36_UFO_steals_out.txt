@@ -10,10 +10,9 @@ Astronauts:
 Robots:
 UFOs:
 	U1:
-		storedMaterials: C1
-		teleporters: -
 		position: A1
 Materials:
 	C1:
 		type: coal
 SolarStorm:
+	timeTillHit: -

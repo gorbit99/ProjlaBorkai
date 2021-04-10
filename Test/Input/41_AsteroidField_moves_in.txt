@@ -1,0 +1,10 @@
+AsteroidField_moves
+
+#creating space objects
+create asteroid A1
+asteroid A1 setDistance 0
+
+#movements
+asteroidField Move
+
+printState

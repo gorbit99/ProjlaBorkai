@@ -9,8 +9,6 @@ astronaut S1 addMaterial I1
 asteroid A1 setDistance 5
 
 
-
-
 #movements
 execute placeMaterial S1 I1
 

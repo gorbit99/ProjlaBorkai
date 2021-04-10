@@ -1,15 +1,13 @@
 Asteroids:
 	A1:
-		workers: R1
-		core: null
-		layers: 0
+		workers: -
+		core: -
+		layers: -
 		neighbours: -
-		distanceFromSun: 0
-Teleporters:
+		distanceFromSun: 3
+Teleporter:
 Astronauts:
 Robots:
-	R1:
-		position: A1
 UFOs:
 Materials:
 SolarStorm:

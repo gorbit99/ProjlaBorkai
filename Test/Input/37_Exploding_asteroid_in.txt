@@ -14,9 +14,11 @@ create material U1 uranium
 
 #setup asteroids
 asteroid A1 setdistance 0
+asteroid A2 setdistance 0
 asteroid A1 setlayers 1
 asteroid A1 addNeighbour A2
 asteroid A2 addneighbour A1
+asteroid A1 setCore U1
 
 #setup uranium
 uranium U1 setExposure 2

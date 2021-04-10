@@ -4,10 +4,8 @@ Astronaut_places_regular_success
 create asteroid A1 #creating asteroid
 create astronaut S1 A1 #creating astronaut S1 on asteroid A1
 create material C1 coal
-asteroid A1 setLayers 2
+asteroid A1 setLayers 0
 astronaut S1 addMaterial C1
-
-
 
 
 #movements

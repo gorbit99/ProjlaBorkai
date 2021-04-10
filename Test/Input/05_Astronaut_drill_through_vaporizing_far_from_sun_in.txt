@@ -4,10 +4,10 @@ Astronaut_drill_through_vaporizing_far_from_sun
 create asteroid A1 #creating asteroid
 create astronaut S1 A1 #creating astronaut S1 on asteroid A1
 #creating material setting distance from sun, layers and core type
-create material C1 ice
+create material I1 ice
 asteroid A1 setDistance 5
 asteroid A1 setLayers 1
-asteroid A1 setCore C1
+asteroid A1 setCore I1
 
 #movements
 execute drill S1

@@ -1,0 +1,18 @@
+Astronaut_creates_teleporter_pair_success
+
+#initialization
+create asteroid A1 #creating asteroid 1
+create astronaut S1 A1 #creating astronaut S1 on asteroid A1
+create material U1 uranium
+create material F1 iron
+create material F2 iron
+create material I1 ice
+astronaut S1 addMaterial U1
+astronaut S1 addMaterial F1
+astronaut S1 addMaterial F2
+astronaut S1 addMaterial I1
+
+#movements
+execute createTeleporter S1 T1 T2
+
+printState

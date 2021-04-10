@@ -1,0 +1,11 @@
+Game_check_Win_or_lose_lose
+
+#initialize
+create asteroid A1
+create material I1 iron
+create astronaut S1 A1
+
+#movements
+game checkWinOrLose
+
+printState

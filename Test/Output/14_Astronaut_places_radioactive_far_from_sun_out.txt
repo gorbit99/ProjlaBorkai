@@ -4,11 +4,11 @@ Asteroids:
 		core: U1
 		layers: 0
 		neighbours: -
-		distanceFromSun: -
+		distanceFromSun: 5
 Teleporters:
 Astronauts:
 	S1:
-		storedMaterials: -
+		storedMaterials:
 		teleporters: -
 		position: A1
 Robots:
@@ -18,3 +18,4 @@ Materials:
         type: uranium
         exposureCount: 0
 SolarStorm:
+	timeTillHit: -

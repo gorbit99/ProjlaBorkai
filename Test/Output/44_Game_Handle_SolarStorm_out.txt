@@ -1,18 +1,18 @@
 Asteroids:
 	A1:
-		workers: R1
-		core: C1
+		workers: 
+		core: -
 		layers: 1
-		neighbours: -
+		neighbours: G1
 		distanceFromSun: -
-Teleporters:
+Teleporter:
+	G1:
+		parent: A1
+		pair: -
+		isBroken: true
 Astronauts:
 Robots:
-	R1:
-		position: A1
 UFOs:
 Materials:
-	C1:
-		type: coal
 SolarStorm:
 	timeTillHit: -

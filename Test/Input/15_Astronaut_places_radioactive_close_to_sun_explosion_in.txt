@@ -1,4 +1,4 @@
-Astronaut_places_radioactive_far_from_sun
+Astronaut_places_radioactive_close_to_sun_explosion
 
 #initialization
 create asteroid A1 #creating asteroid
@@ -8,8 +8,6 @@ asteroid A1 setLayers 0
 astronaut S1 addMaterial U1
 asteroid A1 setDistance 0
 uranium U1 setExposure 2
-
-
 
 
 #movements

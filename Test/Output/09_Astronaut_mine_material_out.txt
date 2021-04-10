@@ -8,12 +8,13 @@ Asteroids:
 Teleporters:
 Astronauts:
 	S1:
-		storedMaterials: C1
+		storedMaterials: I1
 		teleporters: -
 		position: A1
 Robots:
 UFOs:
 Materials:
-	c1:
+	I1:
 		type: iron
 SolarStorm:
+	timeTillHit: -

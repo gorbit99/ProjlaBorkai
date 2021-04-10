@@ -17,3 +17,4 @@ Materials:
 	C1:
 		type: coal
 SolarStorm:
+	timeTillHit: -

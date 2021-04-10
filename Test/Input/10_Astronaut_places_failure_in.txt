@@ -3,9 +3,9 @@ Astronaut_places_failure
 #initialization
 create asteroid A1 #creating asteroid
 create astronaut S1 A1 #creating astronaut S1 on asteroid A1
-create material C1 iron
+create material C1 coal
 astronaut S1 addMaterial C1
-create material C2 iron
+create material C2 coal
 asteroid A1 setLayers 0
 asteroid A1 setCore C2
 

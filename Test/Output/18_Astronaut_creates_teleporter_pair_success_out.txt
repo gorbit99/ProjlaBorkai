@@ -1,30 +1,24 @@
 Asteroids:
     A1:
-        workers:
-        core: -
-        layers: -
-        neighbours: A2, T1
-        distanceFromSun: -
-    A2:
         workers: S1
         core: -
         layers: -
-        neighbours: A1, T2
+        neighbours: -
         distanceFromSun: -
 Teleporters:
     T1:
-        parent: A1
+        parent: null
         pair: T2
         isBroken: false
     T2:
-        parent: A2
+        parent: null
         pair: T1
         isBroken: false
 Astronauts:
     S1:
-        storedMaterials: -
-        teleporters:
-        position: A2
+        storedMaterials: 
+        teleporters: T1, T2
+        position: A1
 Robots:
 UFOs:
 Materials:

@@ -1,6 +1,6 @@
 Asteroids:
 	A1:
-		workers: S1
+		workers: S1, R1
 		core: -
 		layers: -
 		neighbours: -
@@ -8,7 +8,7 @@ Asteroids:
 Teleporters:
 Astronauts:
 	S1:
-		storedMaterials: -
+		storedMaterials:
 		teleporters: -
 		position: A1
 Robots:
@@ -17,3 +17,4 @@ Robots:
 UFOs:
 Materials:
 SolarStorm:
+	timeTillHit: -

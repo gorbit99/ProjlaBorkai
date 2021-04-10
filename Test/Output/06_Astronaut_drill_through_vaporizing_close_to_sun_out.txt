@@ -4,7 +4,7 @@ Asteroids:
 		core: null
 		layers: 0
 		neighbours: -
-		distanceFromSun: -
+		distanceFromSun: 0
 Teleporters:
 Astronauts:
 	S1:
@@ -15,3 +15,4 @@ Robots:
 UFOs:
 Materials:
 SolarStorm:
+	timeTillHit: -

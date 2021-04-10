@@ -16,8 +16,7 @@ Astronauts:
 Robots:
 UFOs:
 	U1:
-		storedMaterials: -
-		teleporters: -
 		position: A2
 Materials:
 SolarStorm:
+	timeTillHit: -

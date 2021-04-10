@@ -1,0 +1,35 @@
+Game_check_Win_or_lose_win
+
+#initialize
+create asteroid A1
+create material F1 iron
+create material F2 iron
+create material F3 iron
+create material I1 ice
+create material I2 ice
+create material I3 ice
+create material U1 uranium
+create material U2 uranium
+create material U3 uranium
+create material C1 coal
+create material C2 coal
+create material C3 coal
+create astronaut S1 A1
+create astronaut S2 A1
+astronaut S1 addMaterial F1
+astronaut S1 addMaterial F2
+astronaut S1 addMaterial F3
+astronaut S1 addMaterial I1
+astronaut S1 addMaterial I2
+astronaut S1 addMaterial I3
+astronaut S2 addMaterial U1
+astronaut S2 addMaterial U2
+astronaut S2 addMaterial U3
+astronaut S2 addMaterial C1
+astronaut S2 addMaterial C2
+astronaut S2 addMaterial C3
+
+#movements
+game checkWinOrLose
+
+printState

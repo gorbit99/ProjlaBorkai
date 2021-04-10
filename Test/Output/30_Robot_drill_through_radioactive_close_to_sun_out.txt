@@ -16,3 +16,4 @@ Materials:
 		type: uranium
 		exposureCount: 1
 SolarStorm:
+	timeTillHit: -

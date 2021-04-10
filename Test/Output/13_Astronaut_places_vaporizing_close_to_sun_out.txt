@@ -8,10 +8,11 @@ Asteroids:
 Teleporters:
 Astronauts:
 	S1:
-		storedMaterials: -
+		storedMaterials:
 		teleporters: -
 		position: A1
 Robots:
 UFOs:
 Materials:
 SolarStorm:
+	timeTillHit: -

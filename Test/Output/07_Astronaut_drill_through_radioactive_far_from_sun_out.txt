@@ -1,7 +1,7 @@
 Asteroids:
 	A1:
 		workers: S1
-		core: C1
+		core: U1
 		layers: 0
 		neighbours: -
 		distanceFromSun: 5
@@ -14,7 +14,8 @@ Astronauts:
 Robots:
 UFOs:
 Materials:
-	C1:
+	U1:
 		type: uranium
 		exposureCount: 0
 SolarStorm:
+	timeTillHit: -

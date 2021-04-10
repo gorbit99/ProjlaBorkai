@@ -1,4 +1,3 @@
-
 Asteroids:
 	A1:
 		workers:
@@ -28,3 +27,4 @@ Robots:
 UFOs:
 Materials:
 SolarStorm:
+	timeTillHit: -

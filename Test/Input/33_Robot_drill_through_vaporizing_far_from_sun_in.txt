@@ -1,4 +1,4 @@
-Robot_drill_through_radioactive_far_from_sun
+Robot_drill_through_vaporizing_far_from_sun
 
 #initialization
 create asteroid A1 #creating asteroid

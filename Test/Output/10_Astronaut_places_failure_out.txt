@@ -1,7 +1,7 @@
 Asteroids:
 	A1:
 		workers: S1
-		core: c2
+		core: C2
 		layers: 0
 		neighbours: -
 		distanceFromSun: -
@@ -14,8 +14,9 @@ Astronauts:
 Robots:
 UFOs:
 Materials:
-	c1:
-		type: iron
-	c2:
-		type: iron
+	C1:
+		type: coal
+	C2:
+		type: coal
 SolarStorm:
+	timeTillHit: -

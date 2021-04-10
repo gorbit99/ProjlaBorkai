@@ -9,4 +9,6 @@ asteroid A1 setCore C1
 asteroid A1 setLayers 0
 
 #movements
-execute mine U1
+execute steal U1
+
+printState
