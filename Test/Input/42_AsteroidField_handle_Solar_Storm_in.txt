@@ -4,7 +4,7 @@ AsteroidField_handle_Solar_Storm
 create asteroid A1
 #setting distance from sun and layer
 asteroid A1 setDistance 0
-asteroid A1 setLazyer 3
+asteroid A1 setLayer 3
 
 #create astronauts
 create astronaut S1 A1

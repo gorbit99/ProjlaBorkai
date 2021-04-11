@@ -6,8 +6,21 @@ create astrounaut S1 A1
 create robot R1 A1
 create ufo F1 A1
 
+#creating more asteroids to test the range
+create asteroid A2
+asteroid A1 addNeighbour A2
+asteroid A2 addNeighbour A1
+create astronaut S2 A2
+
+create asteroid A3
+asteroid A2 addNeighbour A3
+asteroid A3 addNeighbour A2
+create astronaut S3 A3
+
 #setup asteriod
 asteroid A1 setLayers 1
+asteroid A2 setLayers 1
+asteroid A3 setLayers 1
 
 #solarstorm 
 execute solarStorm A1

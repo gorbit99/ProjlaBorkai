@@ -5,8 +5,24 @@ Asteroids:
 		layers: 1
 		neighbours: -
 		distanceFromSun: -
+	A2:
+		workers:
+		core: -
+		layers: 1
+		neighbours: -
+		distanceFromSun: -
+	A3:
+		workers: S3
+		core: -
+		layers: 1
+		neighbours: -
+		distanceFromSun: -
 Teleporters:
 Astronauts:
+	S3:
+		storedMaterials: -
+		teleporters: -
+		position A3
 Robots:
 UFOs:
 Materials:
