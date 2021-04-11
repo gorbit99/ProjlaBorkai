@@ -3,7 +3,7 @@ Asteroids:
 		workers: 
 		core: -
 		layers: 3
-		neighbours: ü
+		neighbours: -
 		distanceFromSun: 0
 Teleporter:
 Astronauts:
