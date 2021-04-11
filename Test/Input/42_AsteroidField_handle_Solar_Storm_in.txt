@@ -2,24 +2,13 @@ AsteroidField_handle_Solar_Storm
 
 #creating space objects
 create asteroid A1
-create asteroid A2
-create asteroid A3
-
-#creating neighbours
-asteroid A1 addNeighbour A2
-asteroid A2 addneighbour A1
-asteroid A2 addNeighbour A3
-asteroid A3 addneighbour A2
-
-#setting distance from sun
+#setting distance from sun and layer
 asteroid A1 setDistance 0
-asteroid A2 setDistance 1
-asteroid A3 setDistance 2
+asteroid A1 setLazyer 3
 
 #create astronauts
 create astronaut S1 A1
-create astronaut S2 A2
-create astronaut S3 A3
+
 
 #movements
 asteroidField handelSolarStorm
