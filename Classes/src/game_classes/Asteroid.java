@@ -1,6 +1,9 @@
 package game_classes;
 
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * represent an asteroid. Extends SpaceObject.
  */
@@ -9,44 +12,44 @@ public class Asteroid extends SpaceObject {
 	 *The core of the asteroid.
 	 */
 	private Material core;
+	/**
+	 *The distance between the sun and the asteroid
+	 */
+	private float distanceFromSun;
+	/**
+	 *The number of layers not drilled through in the asteroid's crust
+	 */
+	private int layers;
+
 
 	/**
 	 * The constructor of the asteroid.
 	 */
 	public Asteroid(){
-	    TestLogger.EnterFunction("Asteroid.ctor");
-
-	    TestLogger.ExitFunction();
+		this.layers = 0;
+		this.distanceFromSun = 0;
+		this.core = null;
 	}
 
 	/**
 	 * handles, when someone drills the asteroid
+	 * @throws Exception when there are no layers left to drill
 	 */
-	public void Drill() {
-	    TestLogger.EnterFunction("Asteroid.Drill");
-	    String answer = TestLogger.AskQuestion("Do I still have layers? (y/n)");
-		if (answer.equals("n")){
-			if (IsCloseToSun())
-				if(core != null)
-					core.HandleCloseToSun(this);
-		}
-	    TestLogger.ExitFunction();
+	public void Drill() throws Exception {
+		if (layers == 0) throw new Exception("No layers left");
+		if (layers > 0) layers--;
+		if (layers == 0 && IsCloseToSun() && core != null)
+			core.HandleCloseToSun(this);
 	}
 
 	/**
 	 * Handles when its under mining.
-	 * @return true, if you can mine this.
+	 * @return the material in the asteroid if you can mine this, null otherwise.
 	 */
-	public Material Mine() {
-	    TestLogger.EnterFunction("Asteroid.Mine");
-		String answer = TestLogger.AskQuestion("Do I still have layers? (y/n)");
-		if (answer.equals("y")){
-			TestLogger.ExitFunction();
-			return null;
-		}
+	public Material Mine(){
+		if (layers != 0 || core == null) return null;
 		Material temp = core;
-		core = null;
-	    TestLogger.ExitFunction();
+		SetCore(null);
 		return temp;
 	}
 
@@ -56,50 +59,32 @@ public class Asteroid extends SpaceObject {
 	 * @return true, if the method has been done.
 	 */
 	public boolean PlaceMaterial(Material material) {
-		TestLogger.EnterFunction("Asteroid.PlaceMaterial");
-		if(material!=null){
-			core=material;
-			if(IsCloseToSun()){
-				core.HandleCloseToSun(this);
-			}
+		if (core == null) {
+			SetCore(material);
+			core.HandleCloseToSun(this);
+			return true;
 		}
-
-		TestLogger.ExitFunction();
-		return material==null;
+		return false;
 	}
 
 	/**
 	 * Changes the distance from the sun.
 	 */
-	public void MoveAsteroid() {
-		TestLogger.EnterFunction("Asteroid.MoveAsteroid");
-
-		if(IsCloseToSun()){
-			if (core != null) {
-				core.HandleCloseToSun(this);
-			}
-		}
-
-		TestLogger.ExitFunction();
+	public void Move() {
+		distanceFromSun = Game.RandomNum(5);
 	}
 
 	/**
 	 * Handles, when asteroid explodes.
 	 */
 	public void Explode() {
-	    TestLogger.EnterFunction("Asteroid.Explode");
-
-		for (int i = workers.size() - 1; i >= 0; i--) { //itt honnan van a worker????
+		for (int i = workers.size() - 1; i >= 0; i--){
 			workers.get(i).Explode();
 		}
-
-		for (SpaceObject so:neighbours) {
+		for (SpaceObject so: neighbours){
 			so.RemoveNeighbour(this);
 		}
-
-		AsteroidField.GetInstance().RemoveAsteroid(this);
-
-		TestLogger.ExitFunction();
+		AsteroidField.GetInstance().RemoveSpaceObject(this);
 	}
 
 	/**
@@ -107,10 +92,7 @@ public class Asteroid extends SpaceObject {
 	 * @return true, if you can hide in it
 	 */
 	public boolean CanHideIn() {
-		TestLogger.EnterFunction("Asteroid.CanHideIn");
-		String answer = TestLogger.AskQuestion("Can you hide in the asteroid? (y/n)");
-		TestLogger.ExitFunction();
-		return answer.equals("y");
+		return layers == 0 && core == null;
 	}
 
 	/**
@@ -118,10 +100,8 @@ public class Asteroid extends SpaceObject {
 	 * @param worker worker to be added to the workers list
 	 */
 	public void AddWorker(Worker worker) {
-		TestLogger.EnterFunction("Asteroid.AddWorker");
 		workers.add(worker);
 		worker.SetPosition(this);
-		TestLogger.ExitFunction();
 	}
 
 	/**
@@ -129,19 +109,15 @@ public class Asteroid extends SpaceObject {
 	 * @param worker worker to be removed from workers list
 	 */
 	public void RemoveWorker(Worker worker) {
-		TestLogger.EnterFunction("Asteroid.RemoveWorker");
 		workers.remove(worker);
-		TestLogger.ExitFunction();
 	}
 
 	/**
 	 * Sets material to core.
-	 * @param material
+	 * @param material the new core of the asteroid.
 	 */
 	public void SetCore(Material material) {
-	    TestLogger.EnterFunction("Asteroid.SetCore");
 		core = material;
-	    TestLogger.ExitFunction();
 	}
 
 	/**
@@ -149,22 +125,30 @@ public class Asteroid extends SpaceObject {
 	 * @param spaceObject space object to be removed
 	 */
 	public void RemoveNeighbour(SpaceObject spaceObject) {
-		TestLogger.EnterFunction("Asteroid.RemoveNeighbour");
 		neighbours.remove(spaceObject);
-		TestLogger.ExitFunction();
+		if (neighbours.size() == 0){
+			ArrayList<SpaceObject> potentialNeighbours = spaceObject.GetNeighbours();
+			if (potentialNeighbours.size() > 1) {
+				SpaceObject obj = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 1));
+				this.AddNeighbour(obj);
+				return;
+			}
+			SpaceObject so;
+			potentialNeighbours = AsteroidField.GetInstance().GetObjects();
+			do {
+				so = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 1));
+			} while (so == this);
+			this.AddNeighbour(so);
+		}
 	}
 
 	/**
 	 * Handles, when the solarstorm hits this
 	 */
 	public void HandleSolarStorm() {
-		TestLogger.EnterFunction("Asteroid.HandleSolarStorm");
-		if(!CanHideIn()){
-			for (Worker w: workers) {
+		if (!CanHideIn())
+			for (Worker w: workers)
 				w.Die();
-			}
-		}
-		TestLogger.ExitFunction();
 	}
 
 	/**
@@ -172,10 +156,7 @@ public class Asteroid extends SpaceObject {
 	 * @return true, if it is close to the sun
 	 */
 	public boolean IsCloseToSun() {
-		TestLogger.EnterFunction("Asteroid.IsCloseToSun");
-		String answer = TestLogger.AskQuestion("Am I close to the sun? (y/n)");
-		TestLogger.ExitFunction();
-		return answer.equals("y");
+		return distanceFromSun < 2.5f;
 	}
 
 	/**
@@ -183,8 +164,6 @@ public class Asteroid extends SpaceObject {
 	 * @return The material in the core
 	 */
 	public Material GetCore() {
-		TestLogger.EnterFunction("Asteroid.GetCore");
-		TestLogger.ExitFunction();
 		return core;
 	}
 
@@ -196,4 +175,5 @@ public class Asteroid extends SpaceObject {
 	public String toString(){
 		return "Asteroid";
 	}
+
 }
