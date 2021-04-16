@@ -68,7 +68,7 @@ public class Game {
             w.Step();
             CheckWinOrLose();
         }
-        AsteroidField.GetInstance().MoveAsteroids();
+        AsteroidField.GetInstance().Move();
         boolean solarStormHappens = solarStorm.Tick();
         if (solarStormHappens){
             HandleSolarStorm();
@@ -83,10 +83,10 @@ public class Game {
      */
     public void CheckWinOrLose() {
         TestLogger.EnterFunction("Game.CheckWinOrlose");
-        ArrayList<Asteroid> asteroids = AsteroidField.GetInstance().GetAsteroids();
+        ArrayList<SpaceObject> spaceObjects = AsteroidField.GetInstance().GetObjects();
         ArrayList<Material> materials = new ArrayList<>();
-        for(Asteroid aS : asteroids){
-            materials.add(aS.GetCore());
+        for(SpaceObject object : spaceObjects){
+            materials.add(object.GetCore());
         }
         for(Worker w : workers){
             Material[] m = w.GetStoredMaterials();

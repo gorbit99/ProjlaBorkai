@@ -9,11 +9,13 @@ import java.util.ArrayList;
 public class Teleporter extends SpaceObject {
     /**
      * active whether the teleporter is placed
+     * isBroken signs whether the teleporter got crazy
      * pair the pair of the teleporter
      * parent the parent space object of the teleporter
      * billOfMaterials contains the materials that you need to build a teleporter
      */
     private boolean active;
+    private boolean isBroken;
     private Teleporter pair;
     private SpaceObject parent;
     private static BillOfMaterials billOfMaterials;
@@ -129,6 +131,16 @@ public class Teleporter extends SpaceObject {
     public void RemoveWorker(Worker worker) {
         TestLogger.EnterFunction("I dunno how we got here");
         TestLogger.ExitFunction();
+    }
+
+    @Override
+    public void Move() {
+
+    }
+
+    @Override
+    public void HandleSolarStorm() {
+
     }
 
     @Override

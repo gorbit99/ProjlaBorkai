@@ -6,6 +6,12 @@ package game_classes;
 public class SolarStorm {
 
 	/**
+	 * parameter that stores the number of rounds
+	 * left until the next solar storm
+	 */
+	private int timeTillHit;
+
+	/**
 	 * Constructor of the class.
 	 */
 	public SolarStorm(){

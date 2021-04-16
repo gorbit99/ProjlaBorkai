@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * This class represents the asteroid field of the game. Stores and moves the asteroids.
  */
 public class AsteroidField {
-	private ArrayList<Asteroid> asteroids;
+	private ArrayList<SpaceObject> spaceObjects;
 	private static AsteroidField instance;
 
 	/**
@@ -14,7 +14,7 @@ public class AsteroidField {
 	 */
 	private AsteroidField() {
 		TestLogger.EnterFunction("AsteroidField.ctor");
-		asteroids = new ArrayList<>();
+		spaceObjects = new ArrayList<>();
 		TestLogger.ExitFunction();
 	}
 
@@ -32,41 +32,41 @@ public class AsteroidField {
 	/**
 	 * Moves all Asteroids in the AsteroidField by calling their MoveAsteroid() method
 	 */
-	public void MoveAsteroids() {
+	public void Move() {
 		TestLogger.EnterFunction("AsteroidField.MoveAsteroids");
-		for (Asteroid asteroid : asteroids){
-			asteroid.MoveAsteroid();
+		for (SpaceObject spaceObject: spaceObjects){
+			spaceObject.Move();
 		}
 		TestLogger.ExitFunction();
 	}
 
 	/**
-	 * Adds an Asteroid to the AsteroidField
-	 * @param asteroid this Asteroid will be added to the AsteroidField
+	 * Adds a spaceObject to the AsteroidField
+	 * @param spaceObject this spaceObject will be added to the AsteroidField
 	 */
-	public void AddAsteroid(Asteroid asteroid) {
+	public void AddSpaceObject(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("AsteroidField.AddAsteroid");
-		asteroids.add(asteroid);
+		spaceObjects.add(spaceObject);
 		TestLogger.ExitFunction();
 	}
 
 	/**
-	 * Get the Asteroids
-	 * @return An ArrayList of the asteroids in the AsteroidField
+	 * returns the list of spaceObjects in asteroid field
+	 * @return An ArrayList of the spaceObjects in the AsteroidField
 	 */
-	public ArrayList<Asteroid> GetAsteroids() {
+	public ArrayList<SpaceObject> GetObjects() {
 		TestLogger.EnterFunction("AsteroidField.GetAsteroids");
 		TestLogger.ExitFunction();
-		return asteroids;
+		return spaceObjects;
 	}
 
 	/**
-	 * Removes an Asteroid
-	 * @param asteroid this Asteroid will be removed from the AsteroidField
+	 * Removes a spaceObject
+	 * @param spaceObject this space object will be removed from the AsteroidField
 	 */
-	public void RemoveAsteroid(Asteroid asteroid) {
+	public void RemoveSpaceObject(SpaceObject spaceObject) {
 		TestLogger.EnterFunction("AsteroidField.RemoveAsteroid");
-		asteroids.remove(asteroid);
+		spaceObjects.remove(spaceObject);
 		TestLogger.ExitFunction();
 	}
 
@@ -75,8 +75,8 @@ public class AsteroidField {
 	 */
 	public void HandleSolarStorm() {
 		TestLogger.EnterFunction("AsteroidField.HandleSolarStorm");
-		for (Asteroid asteroid : asteroids) {
-			asteroid.HandleSolarStorm();
+		for (SpaceObject spaceObject : spaceObjects) {
+			spaceObject.HandleSolarStorm();
 		}
 		TestLogger.ExitFunction();
 	}

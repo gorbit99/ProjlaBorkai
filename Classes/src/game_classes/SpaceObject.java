@@ -51,4 +51,18 @@ public abstract class SpaceObject {
 	 * @param worker worker to be removed from workers list
 	 */
 	public abstract void RemoveWorker(Worker worker);
+
+
+	/**
+	 * moves the space object
+	 * called once every round
+	 */
+	public abstract void Move();
+
+	/**
+	 * called when a solar storm reached a space object
+	 */
+	public abstract void HandleSolarStorm();
+
+	public abstract Material GetCore();
 }

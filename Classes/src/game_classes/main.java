@@ -168,7 +168,7 @@ public class main {
                 //Asteroidfield moves
                 case 22:
                     TestScenario1();
-                    AsteroidField.GetInstance().MoveAsteroids();
+                    AsteroidField.GetInstance().Move();
                     break;
                 default:
                     System.out.println("You entered an incorrect testcase number!");
@@ -344,7 +344,7 @@ public class main {
     static void Reset() {
         System.out.println("\nClearing created objects");
         Game.GetInstance().GetWorkers().clear();
-        AsteroidField.GetInstance().GetAsteroids().clear();
+        AsteroidField.GetInstance().GetObjects().clear();
         a = null;
         r = null;
     }

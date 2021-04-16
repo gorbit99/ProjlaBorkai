@@ -4,7 +4,8 @@ package game_classes;
 /**
  * represents a UFO
  */
-public class Ufo extends Worker{
+public class Ufo extends Worker {
+
 
 
     @Override
@@ -18,6 +19,13 @@ public class Ufo extends Worker{
     @Override
     public void Step() {
 
+    }
+
+    /**
+     * does not do anything since the UFO cannot drill
+     */
+    @Override
+    public void Drill() {
     }
 
     /**
@@ -36,8 +44,8 @@ public class Ufo extends Worker{
     /**
      * steals the material from an asteroid
      */
-    public void Steal(){
-        if (this.position.GetCore() !=null)
+    public void Steal() {
+        if (this.position.GetCore() != null)
             this.position.SetCore(null);
 
     }
