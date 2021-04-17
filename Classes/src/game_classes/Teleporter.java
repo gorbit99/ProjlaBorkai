@@ -17,19 +17,19 @@ public class Teleporter extends SpaceObject {
     private boolean active;
     private boolean isBroken;
     private Teleporter pair;
-    private SpaceObject parent;
+    //private SpaceObject parent;//ez elvileg nem kell ide
     private static BillOfMaterials billOfMaterials;
 
     /**
      * teleporter constructor
      */
     public Teleporter() {
-        TestLogger.EnterFunction("Teleporter.ctor");
         active = false;
         if (billOfMaterials == null) {
-            billOfMaterials = new BillOfMaterials();
+            //TODO kitalálni, hogy a bill of material, hogy a faszba működik
+            Material[] recept={new Iron(),new Iron(),new Ice(),new Uranium()};
+            billOfMaterials = new BillOfMaterials(recept);
         }
-        TestLogger.ExitFunction();
     }
 
     /**
@@ -37,9 +37,7 @@ public class Teleporter extends SpaceObject {
      * @param teleporter the teleporter to be linked
      */
     public void LinkTo(Teleporter teleporter) {
-        TestLogger.EnterFunction("Teleporter.LinkTo");
         this.pair = teleporter;
-        TestLogger.ExitFunction();
     }
 
     /**
@@ -47,21 +45,22 @@ public class Teleporter extends SpaceObject {
      * @param asteroid asteroid to be placed
      */
     public void Place(SpaceObject asteroid) {
-        TestLogger.EnterFunction("Teleporter.Place");
-        this.active = true;
-        this.parent = asteroid;
+        //todo nézzétek meg az aktívot
+        //this.parent = asteroid;
+        this.AddNeighbour(asteroid);
         this.pair.PairPlaced();
+        if(pair.active)
+            this.active=true;
         asteroid.AddNeighbour(this);
-        TestLogger.ExitFunction();
+        AsteroidField.GetInstance().AddSpaceObject(this);//Hozzáadjuk, hogy tudjon Move-olódni.
     }
 
     /**
      * logs that the teleporter's pair is placed
      */
     public void PairPlaced() {
-        TestLogger.EnterFunction("Teleporter.PairPlaced");
-        this.active = true;
-        TestLogger.ExitFunction();
+        if(neighbours.size()!=0)//van szomszédja, azaz lehelyezték
+            active = true;
     }
 
     /**
@@ -69,10 +68,8 @@ public class Teleporter extends SpaceObject {
      * @return parent space object
      */
     public SpaceObject GetParent() {
-        TestLogger.EnterFunction("Teleporter.GetParent");
-        TestLogger.ExitFunction();
-        return parent;
-
+        //return parent;
+        return neighbours.get(0);
     }
 
     /**
@@ -80,22 +77,21 @@ public class Teleporter extends SpaceObject {
      * @param worker worker to be teleported
      */
     public void TeleportWorker(Worker worker) {
-        TestLogger.EnterFunction("Teleport.TeleportWorker");
         SpaceObject parent = this.GetParent();
         parent.AddWorker(worker);
-        TestLogger.ExitFunction();
     }
 
+    //todo meg kell csinálni!!!
     /**
      * creates a teleporter pair
      * @param materials materials to be used to create the teleporter pair
      * @return teleporter list with the pair if its possible to create empty list if not
      */
-    public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) {
-        if (billOfMaterials == null) {
-            billOfMaterials = new BillOfMaterials();
+    public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) { //todo nem tudom hogy működik a bill of material
+        if (billOfMaterials == null) {//TODO kitalálni, hogy a bill of material, hogy a faszba működik
+            Material[] recept={new Iron(),new Iron(),new Ice(),new Uranium()};
+            billOfMaterials = new BillOfMaterials(recept);
         }
-        TestLogger.EnterFunction("Teleporter.CreateTeleporterPair");
         ArrayList<Teleporter> teleporters = new ArrayList<>();
         if (billOfMaterials.IsEnough(materials)) {
             Teleporter a = new Teleporter();
@@ -104,9 +100,9 @@ public class Teleporter extends SpaceObject {
             b.LinkTo(a);
             teleporters.add(a);
             teleporters.add(b);
+            return teleporters;
         }
-        TestLogger.ExitFunction();
-        return teleporters;
+        return null;//todo specifikációba ez van.
     }
 
     /**
@@ -114,33 +110,35 @@ public class Teleporter extends SpaceObject {
      * @param spaceObject space object to be removed
      */
     public void RemoveNeighbour(SpaceObject spaceObject) {
-        TestLogger.EnterFunction("Teleporter.ctor");
-        System.out.println("Teleport.RemoveNeighbour");
+
+        //todo pointer összehasonlítás, légyszi nézzetek rá jó-e. Jelenleg csak akkor fut végtelenségig, ha egy asteroida marad a játékban. Ha ilyen lehet akk szopó van.
+        int random;
+        do {
+            random=Game.RandomNum(this.neighbours.size());
+        }while(this.GetParent() ==AsteroidField.GetInstance().GetObjects().get(random) ||
+                pair.GetParent()==AsteroidField.GetInstance().GetObjects().get(random));
         this.neighbours.remove(spaceObject);
-        this.parent = this.neighbours.get(Game.RandomNum(this.neighbours.size()));
-        TestLogger.ExitFunction();
+        this.AddNeighbour(this.neighbours.get(random));
     }
 
     public void AddWorker(Worker worker) {
-        TestLogger.EnterFunction("Teleport.AddWorker");
         this.pair.TeleportWorker(worker);
-        TestLogger.ExitFunction();
     }
 
     @Override
     public void RemoveWorker(Worker worker) {
-        TestLogger.EnterFunction("I dunno how we got here");
-        TestLogger.ExitFunction();
+
     }
 
     @Override
     public void Move() {
-
+        if(this.isBroken)
+            this.RemoveNeighbour(this.GetParent());
     }
 
     @Override
     public void HandleSolarStorm() {
-
+        isBroken=true;
     }
 
     @Override
