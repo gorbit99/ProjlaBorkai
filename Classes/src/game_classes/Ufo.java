@@ -1,11 +1,21 @@
 package game_classes;
 
 
+import java.util.ArrayList;
+
 /**
  * represents a UFO
  */
 public class Ufo extends Worker {
 
+
+    /**
+     * Constructor of the class, every worker has a position.
+     * @param position
+     */
+    public Ufo(Asteroid position) {
+        super(position);
+    }
 
     @Override
     public void Explode() {
@@ -40,7 +50,7 @@ public class Ufo extends Worker {
     }
 
     @Override
-    public Material[] GetStoredMaterials() {
+    public ArrayList<Material> GetStoredMaterials() {
         return null;
     }
 
