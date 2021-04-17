@@ -1,5 +1,8 @@
 package game_classes;
 
+import java.io.*;
+import java.util.Scanner;
+
 public class main {
     /**
      * The main function
