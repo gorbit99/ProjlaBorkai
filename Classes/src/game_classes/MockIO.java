@@ -59,6 +59,13 @@ class MockIn extends InputStream {
     public void addInput(String input) {
         inputs.addLast(input);
     }
+
+    /**
+     * Clears the stream and throws away all unused input
+     */
+    public void clear() {
+        inputs.clear();
+    }
 }
 
 class MockOut extends OutputStream {
