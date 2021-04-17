@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class BillOfMaterials {
 
-	ArrayList<Material> billOfMaterials;
+	private ArrayList<Material> billOfMaterials;
 
 	public BillOfMaterials(ArrayList<Material> temp) {
 		billOfMaterials = temp;

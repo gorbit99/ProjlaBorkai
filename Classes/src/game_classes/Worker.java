@@ -1,6 +1,8 @@
 package game_classes;
 
 
+import java.util.ArrayList;
+
 /**
  * represents a Worker
  */
@@ -85,5 +87,5 @@ public abstract class Worker {
      * returns the stored material of the worker
      * @return stored materials
      */
-    public abstract Material[] GetStoredMaterials();
+    public abstract ArrayList<Material> GetStoredMaterials();
 }
