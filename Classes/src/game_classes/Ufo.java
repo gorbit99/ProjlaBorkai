@@ -1,6 +1,8 @@
 package game_classes;
 
 
+import java.util.ArrayList;
+
 /**
  * represents a UFO
  */
@@ -48,7 +50,7 @@ public class Ufo extends Worker {
     }
 
     @Override
-    public Material[] GetStoredMaterials() {
+    public ArrayList<Material> GetStoredMaterials() {
         return null;
     }
 

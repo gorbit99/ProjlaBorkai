@@ -65,7 +65,7 @@ public class Robot extends Worker {
      * Returns the materials stored by the robot (nothing)
      * @return null
      */
-    public Material[] GetStoredMaterials() {
+    public ArrayList<Material> GetStoredMaterials() {
         TestLogger.EnterFunction("Robot.GetStoredMaterials");
         TestLogger.ExitFunction();
         return null;
