@@ -9,35 +9,37 @@ import java.util.ArrayList;
 public abstract class Worker {
     protected Asteroid position;
 
+
+    /**
+     * Constructor of the class, every worker has a position.
+     * @param position
+     */
+    public Worker(Asteroid position){
+        SetPosition(position);
+        Game.GetInstance().AddWorker(this);
+    }
+
+
     /**
      * Moves worker to the given SpaceObject
      * @param spaceObject worker will be moved here
      */
     public void TravelTo(SpaceObject spaceObject) {
-        TestLogger.EnterFunction("Worker.TravelTo");
-        if (this.position != null) {
-            this.position.RemoveWorker(this);
-        }
+        this.position.RemoveWorker(this);
         spaceObject.AddWorker(this);
-        TestLogger.ExitFunction();
     }
 
     /**
      * drills a layer with the help of Asteroid.Drill()
      */
-    public void Drill() {
-        TestLogger.EnterFunction("Worker.Drill");
+    public void Drill() throws Exception {
         this.position.Drill();
-        TestLogger.ExitFunction();
     }
 
     /**
      * worker waits nothing happens
      */
-    public void Wait() {
-        TestLogger.EnterFunction("Worker.Wait");
-        TestLogger.ExitFunction();
-    }
+    public void Wait() {}
 
     /**
      * happens when a steroid explodes
@@ -48,10 +50,8 @@ public abstract class Worker {
      * called when a solar storm occurs
      */
     public void HandleSolarStorm() {
-        TestLogger.EnterFunction("Worker.HandleSolarStorm");
         if (!this.position.CanHideIn())
             this.Die();
-        TestLogger.ExitFunction();
     }
 
     /**
@@ -59,10 +59,8 @@ public abstract class Worker {
      * removes worker from asteroid and also from the game
      */
     public void Die() {
-        TestLogger.EnterFunction("Worker.Die");
         this.position.RemoveWorker(this);
         Game.GetInstance().RemoveWorker(this);
-        TestLogger.ExitFunction();
     }
 
     /**
