@@ -7,10 +7,7 @@ public class Iron extends Material  {
     /**
      * This is the constructor of the iron.
      */
-    public Iron(){
-        TestLogger.EnterFunction("Iron.ctor");
-        TestLogger.ExitFunction();
-    }
+    public Iron(){ }
 
     /**
      *
