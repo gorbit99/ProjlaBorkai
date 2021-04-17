@@ -2,7 +2,6 @@ package game_classes;
 
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * represent an asteroid. Extends SpaceObject.
@@ -121,7 +120,7 @@ public class Asteroid extends SpaceObject {
 	}
 
 	/**
-	 * Removes spaceobject from neighbours
+	 * Removes spaceobject from neighbours. Adds a new neighbour if none left.
 	 * @param spaceObject space object to be removed
 	 */
 	public void RemoveNeighbour(SpaceObject spaceObject) {
@@ -165,15 +164,6 @@ public class Asteroid extends SpaceObject {
 	 */
 	public Material GetCore() {
 		return core;
-	}
-
-	/**
-	 *
-	 * @return The name of the class.
-	 */
-	@Override
-	public String toString(){
-		return "Asteroid";
 	}
 
 }
