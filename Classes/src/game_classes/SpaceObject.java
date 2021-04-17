@@ -22,6 +22,15 @@ public abstract class SpaceObject {
 		this.neighbours.add(spaceObject);
 	}
 
+
+	/**
+	 * return all the workers on the space object
+	 * @return all the workers on the space objects
+	 */
+	public ArrayList<Worker> GetWorkers(){
+		return workers;
+	}
+
 	/**
 	 * returns all the neighbours
 	 * @return all the neighbours of the space object
