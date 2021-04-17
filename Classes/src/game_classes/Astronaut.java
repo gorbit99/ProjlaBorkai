@@ -59,16 +59,21 @@ public class Astronaut extends Worker {
     /**
      * places a teleporter down
      */
-    //TODO kiírás melyiket?
-    public void PlaceTeleporter() {
-        TestLogger.EnterFunction("Astronaut.PlaceTeleporter");
-        if (teleporters.isEmpty()) {
-            TestLogger.ExitFunction();
-            return;
-        }
-        this.teleporters.get(0).Place(this.position);
-        this.teleporters.remove(0);
-        TestLogger.ExitFunction();
+    public void PlaceTeleporter() throws Exception {
+        if (teleporters.isEmpty()) throw new Exception();
+        Writer writer = new OutputStreamWriter(MockIO.out);
+        try {
+            for (int i = 0; i < this.teleporters.size(); i++) {
+                if (teleporters.get(i) != null) {
+                    writer.write(i + 1 + "." + teleporters.get(i).toString());
+                }
+            }
+            writer.write("Which teleporter do you wan to place?");
+            Scanner scanner = new Scanner(MockIO.in);
+            Teleporter t = teleporters.get(Integer.parseInt(scanner.nextLine()) - 1);
+            this.teleporters.remove(t);
+            t.Place(this.position);
+        } catch (IOException e) {}
     }
 
     /**
@@ -90,7 +95,6 @@ public class Astronaut extends Worker {
     /**
      * controls the astronaut's movements
      */
-    //TODO mocker
     public void Step() {
         boolean successful = false;
         while (!successful) {
