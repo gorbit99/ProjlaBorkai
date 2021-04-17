@@ -19,9 +19,7 @@ public abstract class SpaceObject {
 	 * @param spaceObject neighbour to be added to the neighbour list
 	 */
 	public void AddNeighbour(SpaceObject spaceObject) {
-		TestLogger.EnterFunction("SpaceObject.AddNeighbour");
 		this.neighbours.add(spaceObject);
-		TestLogger.ExitFunction();
 	}
 
 	/**
@@ -29,8 +27,6 @@ public abstract class SpaceObject {
 	 * @return all the neighbours of the space object
 	 */
 	public ArrayList<SpaceObject> GetNeighbours() {
-		TestLogger.EnterFunction("SpaceObject.GetNeighbours");
-		TestLogger.ExitFunction();
 		return this.neighbours;
 	}
 
