@@ -87,7 +87,7 @@ public class Game {
                 //TODO amugy jo materialSum.add(worker.GetStoredMaterials());
             }
         }
-        if (!this.billOfMaterials.IsEnough((Material[]) materialSum.toArray())) {
+        if (!this.billOfMaterials.IsEnough(materialSum)) {
             //TODO valahgy legeyn vege a jateknak
         }
         ArrayList<Material> coreSum = new ArrayList<>();
@@ -96,7 +96,7 @@ public class Game {
             if (object.GetCore() != null)
                 coreSum.add(object.GetCore());
         }
-        if (!this.billOfMaterials.IsEnough((Material[]) coreSum.toArray())) {
+        if (!this.billOfMaterials.IsEnough(coreSum) ){
             //TODO valahgy legeyn vege a jateknak
         }
 
