@@ -87,7 +87,7 @@ public class Teleporter extends SpaceObject {
      * @param materials materials to be used to create the teleporter pair
      * @return teleporter list with the pair if its possible to create empty list if not
      */
-    public static ArrayList<Teleporter> CreateTeleporterPair(Material[] materials) { //todo nem tudom hogy működik a bill of material
+    public static ArrayList<Teleporter> CreateTeleporterPair(ArrayList<Material> materials) { //todo nem tudom hogy működik a bill of material
         if (billOfMaterials == null) {//TODO kitalálni, hogy a bill of material, hogy a faszba működik
             Material[] recept={new Iron(),new Iron(),new Ice(),new Uranium()};
             billOfMaterials = new BillOfMaterials(recept);
