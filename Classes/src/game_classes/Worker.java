@@ -25,7 +25,7 @@ public abstract class Worker {
      */
     public void Drill() {
         TestLogger.EnterFunction("Worker.Drill");
-        this.position.Drill();
+        //this.position.Drill();
         TestLogger.ExitFunction();
     }
 

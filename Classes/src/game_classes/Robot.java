@@ -9,7 +9,7 @@ public class Robot extends Worker {
     /**
      * contains the materials that you need to build a robot
      */
-    private static BillOfMaterials billOfMaterials = new BillOfMaterials();
+    private static BillOfMaterials billOfMaterials = new BillOfMaterials(new Material[]{new Iron(), new Coal(), new Uranium()});
 
     /**
      * robot constructor
