@@ -7,10 +7,7 @@ public class Coal extends Material{
     /**
      * This is the constructor of the coal.
      */
-    public Coal(){
-        TestLogger.EnterFunction("Coal.ctor");
-        TestLogger.ExitFunction();
-    }
+    public Coal(){ }
 
     /**
      *
