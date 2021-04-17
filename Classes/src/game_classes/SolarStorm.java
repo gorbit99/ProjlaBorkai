@@ -15,8 +15,7 @@ public class SolarStorm {
 	 * Constructor of the class.
 	 */
 	public SolarStorm(){
-		TestLogger.EnterFunction("SolarStorm.ctor");
-		TestLogger.ExitFunction();
+		timeTillHit=Game.RandomNum(10)+10;
 	}
 
 	/**
@@ -24,9 +23,10 @@ public class SolarStorm {
 	 * @return True if a solarstorm is happening, false otherwise.
 	 */
 	public boolean Tick() {
-		TestLogger.EnterFunction("SolarStorm.Tick");
-		String answer = TestLogger.AskQuestion("Is there a solarstorm? (y/n)");
-		TestLogger.ExitFunction();
-		return answer.equals("y");
+		timeTillHit--;
+		if(timeTillHit>0)
+			return false;
+		timeTillHit=Game.RandomNum(10)+10;
+		return true;
 	}
 }
