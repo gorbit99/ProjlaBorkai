@@ -15,8 +15,6 @@ public class Uranium extends Material {
      * This is the constructor of the ice.
      */
     public Uranium() {
-        TestLogger.EnterFunction("Uranium.ctor");
-        TestLogger.ExitFunction();
     }
 
     /**
@@ -26,11 +24,9 @@ public class Uranium extends Material {
      */
     @Override
     public void HandleCloseToSun(Asteroid asteroid) {
-        TestLogger.EnterFunction("Uranium.HandleCloseToSun");
         exposureCount++;
         if (exposureCount == 3)
             asteroid.Explode();
-        TestLogger.ExitFunction();
     }
 
     /**
