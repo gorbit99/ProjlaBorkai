@@ -7,7 +7,6 @@ package game_classes;
 public class Ufo extends Worker {
 
 
-
     @Override
     public void Explode() {
         Die();
@@ -18,7 +17,10 @@ public class Ufo extends Worker {
      */
     @Override
     public void Step() {
-
+        if (this.position.GetCore()!=null)
+            this.Steal();
+        else
+            this.Move();
     }
 
     /**
@@ -33,7 +35,8 @@ public class Ufo extends Worker {
      */
     @Override
     public void Move() {
-
+        SpaceObject pos = this.position.neighbours.get(Game.RandomNum(this.position.neighbours.size()));
+        TravelTo(pos);
     }
 
     @Override
@@ -47,7 +50,6 @@ public class Ufo extends Worker {
     public void Steal() {
         if (this.position.GetCore() != null)
             this.position.SetCore(null);
-
     }
 
 
