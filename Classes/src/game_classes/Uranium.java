@@ -21,7 +21,7 @@ public class Uranium extends Material {
 
     /**
      * This method makes the asteroid explode.
-     *
+     * explodes when the material has been exposed to sun 3 times
      * @param asteroid The asteroid is what contains this material.
      */
     @Override

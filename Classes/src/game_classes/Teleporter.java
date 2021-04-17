@@ -144,6 +144,11 @@ public class Teleporter extends SpaceObject {
     }
 
     @Override
+    public Material GetCore() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "Teleporter";
     }
