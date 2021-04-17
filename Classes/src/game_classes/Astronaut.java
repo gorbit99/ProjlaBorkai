@@ -1,5 +1,8 @@
 package game_classes;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,33 +29,31 @@ public class Astronaut extends Worker {
 
     /**
      * mines an asteroid
+     *
      * @throws Exception when there is not enough place for the material.
      */
     public void Mine() throws Exception {
         if (materialsStored.size() >= 10) throw new Exception("Not enough place");
-        Material mat = this.position.Mine();
+        materialsStored.add(this.position.Mine());
     }
 
     /**
      * places the chosen material back to an asteroid if its core is empty
      */
-    //TODO kiírás döfák?
     public void PlaceMaterial() {
-        /*TestLogger.EnterFunction("Astronaut.PlaceMaterial");
-        for (int i = 0; i < this.materialsStored.length; i++) {
-            if (materialsStored[i] != null)
-                System.out.println(i + 1 + "." + materialsStored[i].toString());
-        }
-        int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you wan to place back?"));
-        this.position.PlaceMaterial(materialsStored[chosen - 1]);
-        TestLogger.ExitFunction();*/
-        for (int i = 0; i < this.materialsStored.size(); i++) {
-            if (materialsStored.get(i) != null)
-                System.out.println(i + 1 + "." + materialsStored.get(i).toString());
-        }
-        int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you wan to place back?"));
-        this.position.PlaceMaterial(materialsStored.get(chosen - 1));
+        Writer writer = new OutputStreamWriter(MockIO.out);
+        try {
+            for (int i = 0; i < this.materialsStored.size(); i++) {
+                if (materialsStored.get(i) != null) {
+                    writer.write(i + 1 + "." + materialsStored.get(i).toString());
+                }
+            }
 
+            writer.write("Which material do you wan to place back?");
+            Scanner scanner = new Scanner(MockIO.in);
+            int chosen = Integer.parseInt(scanner.nextLine());
+            this.position.PlaceMaterial(materialsStored.get(chosen - 1));
+        } catch (IOException e) {}
     }
 
     /**
@@ -92,7 +93,7 @@ public class Astronaut extends Worker {
     //TODO mocker
     public void Step() {
         boolean successful = false;
-        while (!successful){
+        while (!successful) {
             try {
                 System.out.println("1. Wait");
                 System.out.println("2. Move");
@@ -131,8 +132,8 @@ public class Astronaut extends Worker {
                         break;
                 }
                 successful = true;
-            } catch (Exception e){
-                System.out.println( "szar van");
+            } catch (Exception e) {
+                System.out.println("szar van");
             }
         }
     }
@@ -146,6 +147,7 @@ public class Astronaut extends Worker {
 
     /**
      * returns the materials of the astronaut
+     *
      * @return astronauts material
      */
     public ArrayList<Material> GetStoredMaterials() {
