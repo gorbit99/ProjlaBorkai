@@ -1,13 +1,15 @@
 package game_classes;
 
+import java.util.ArrayList;
+
 /**
  * represents the which knows the right amount of materials for the creation of an object
  */
 public class BillOfMaterials {
 
-	Material[] billOfMaterials;
+	ArrayList<Material> billOfMaterials;
 
-	public BillOfMaterials(Material[] temp) {
+	public BillOfMaterials(ArrayList<Material> temp) {
 		billOfMaterials = temp;
 	}
 	/**
@@ -15,15 +17,15 @@ public class BillOfMaterials {
 	 * @param materials materials to be checked if they are enough
 	 * @return true if there is enough materials false if there isn't
 	 */
-	public boolean IsEnough(Material[] materials) {
-		Material[] materials_temp = materials.clone();
-		for(int i = 0; i < billOfMaterials.length; i++) {
+	public boolean IsEnough(ArrayList<Material> materials) {
+		ArrayList<Material> materials_temp = (ArrayList<Material>) materials.clone();
+		for(int i = 0; i < billOfMaterials.size(); i++) {
 			boolean inside = false;
 
-			for(int j = 0; j < materials.length; j++) {
-				if(materials_temp[j].getClass().equals(billOfMaterials[i].getClass()) && materials_temp[j] != null) {
+			for(int j = 0; j < materials.size(); j++) {
+				if(materials_temp.get(j).getClass().equals(billOfMaterials.get(i).getClass())) {
 					inside = true;
-					materials_temp[j] = null;
+					materials_temp.remove(materials_temp.get(j));
 					break;
 				}
 			}
