@@ -43,7 +43,7 @@ class MockIn extends InputStream {
         }
 
         if (inputs.size() == 0) {
-            throw new IOException("No input provided!");
+            return -1;
         }
 
         int result = inputs.get(0).getBytes(StandardCharsets.UTF_8)[0];
