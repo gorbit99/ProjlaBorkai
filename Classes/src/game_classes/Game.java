@@ -84,7 +84,7 @@ public class Game {
         ArrayList<Material> materialSum = new ArrayList<>();
         for (SpaceObject object : AsteroidField.GetInstance().GetObjects()) {
             for (Worker worker : object.GetWorkers()) {
-                materialSum.add(worker.GetStoredMaterials());
+                //TODO amugy jo materialSum.add(worker.GetStoredMaterials());
             }
         }
         if (!this.billOfMaterials.IsEnough((Material[]) materialSum.toArray())) {
