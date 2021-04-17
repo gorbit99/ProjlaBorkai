@@ -14,9 +14,8 @@ public class Robot extends Worker {
     /**
      * robot constructor
      */
-    public Robot(){
-        TestLogger.EnterFunction("Robot.ctor");
-        TestLogger.ExitFunction();
+    public Robot(Asteroid position){
+        super(position);
     }
 
     /**

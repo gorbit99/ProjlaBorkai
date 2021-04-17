@@ -7,6 +7,14 @@ package game_classes;
 public class Ufo extends Worker {
 
 
+    /**
+     * Constructor of the class, every worker has a position.
+     * @param position
+     */
+    public Ufo(Asteroid position) {
+        super(position);
+    }
+
     @Override
     public void Explode() {
         Die();
