@@ -16,11 +16,13 @@ public class Robot extends Worker {
      */
     public Robot(Asteroid position) {
         super(position);
-        ArrayList<Material> materials = new ArrayList<Material>();
-        materials.add(new Iron());
-        materials.add(new Coal());
-        materials.add(new Uranium());
-        this.billOfMaterials = new BillOfMaterials(materials);
+        if (billOfMaterials == null) {
+            ArrayList<Material> materials = new ArrayList<Material>();
+            materials.add(new Iron());
+            materials.add(new Coal());
+            materials.add(new Uranium());
+            billOfMaterials = new BillOfMaterials(materials);
+        }
     }
 
     /**
@@ -86,6 +88,13 @@ public class Robot extends Worker {
      * @return a new robot if the build was successful otherwise null
      */
     public static Robot CreateRobot(ArrayList<Material> materials, Asteroid position) {
+        if (billOfMaterials == null) {
+            ArrayList<Material> receipt = new ArrayList<Material>();
+            receipt.add(new Iron());
+            receipt.add(new Coal());
+            receipt.add(new Uranium());
+            billOfMaterials = new BillOfMaterials(receipt);
+        }
         boolean enough = billOfMaterials.IsEnough(materials);
         if (enough)
             return new Robot(position);
