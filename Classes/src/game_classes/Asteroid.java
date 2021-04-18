@@ -72,7 +72,10 @@ public class Asteroid extends SpaceObject {
 	 * Changes the distance from the sun.
 	 */
 	public void Move() {
-		distanceFromSun = Game.RandomNum(5);
+		float previous = distanceFromSun;
+		do{
+			distanceFromSun = Game.RandomNum(5);
+		} while(Math.abs(previous - distanceFromSun) < 0.01f);
 	}
 
 	/**
