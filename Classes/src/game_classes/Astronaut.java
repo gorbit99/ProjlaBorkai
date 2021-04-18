@@ -55,7 +55,8 @@ public class Astronaut extends Worker {
             int chosen = Integer.parseInt(scanner.nextLine());
             this.position.PlaceMaterial(materialsStored.get(chosen - 1));
             materialsStored.remove(chosen - 1);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 
     /**
@@ -75,7 +76,8 @@ public class Astronaut extends Worker {
             Teleporter t = teleporters.get(Integer.parseInt(scanner.nextLine()) - 1);
             this.teleporters.remove(t);
             t.Place(this.position);
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
     }
 
     /**
@@ -91,7 +93,9 @@ public class Astronaut extends Worker {
      */
     public void CreateTeleporter() throws Exception {
         if (teleporters.size() > 1) throw new Exception("Couldn't create teleporter");
-        this.teleporters = Teleporter.CreateTeleporterPair(GetStoredMaterials());
+        ArrayList<Teleporter> teleporter = Teleporter.CreateTeleporterPair(GetStoredMaterials());
+        if (teleporter != null)
+            this.teleporters = teleporter;
     }
 
     /**
