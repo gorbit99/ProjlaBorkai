@@ -172,18 +172,34 @@ public class Asteroid extends SpaceObject {
 		return core;
 	}
 
+	/**
+	 * Gets the number of undamaged layers of the crust
+	 * @return The number of undamaged layers
+	 */
 	public int GetLayers() {
 		return layers;
 	}
 
+	/**
+	 * Sets the number of layers of the crust
+	 * @param layers the number the layers of the crust
+	 */
 	public void SetLayers(int layers) {
 		this.layers = layers;
 	}
 
+	/**
+	 * Gets the asteroid's distance from sun
+	 * @return The distance from the sun
+	 */
 	public float GetDistance() {
 		return distanceFromSun;
 	}
 
+	/**
+	 * Sets the asteroid's distance from the sun
+	 * @param distanceFromSun the distance from the sun
+	 */
 	public void SetDistance(int distanceFromSun) {
 		this.distanceFromSun = distanceFromSun;
 	}
