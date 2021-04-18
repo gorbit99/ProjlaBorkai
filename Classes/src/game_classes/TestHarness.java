@@ -235,69 +235,140 @@ public class TestHarness {
         }
     }
 
+    /**
+     * Makes command pattern
+     */
     abstract class Command {
+        /**
+         * The constructor
+         * @param args The command arguments
+         * @param lineNo Which line are this in
+         */
         public Command(String[] args, int lineNo) {
             this.args = args;
             this.lineNo = lineNo;
         }
 
+        /**
+         * Represents the run of command
+         * @throws TestException
+         */
         public abstract void run() throws TestException;
 
+        /**
+         * Validate the arguments
+         * @param usage The arguments in string
+         * @throws TestArgumentException
+         */
         protected void validateArgs(String usage) throws TestArgumentException {
             if (args.length != usage.split(" ").length) {
                 throw new TestArgumentException("Incorrect number of arguments", lineNo, usage);
             }
         }
 
+        /**
+         * Checks the worker's existance
+         * @param workerId The worker's ID
+         * @param exists True, if we should check the worker exists. False, if we should check the worker not exists.
+         * @throws MalformedTestException
+         */
         protected void validateWorker(String workerId, boolean exists) throws MalformedTestException {
             if (workers.containsKey(workerId) != exists) {
                 throw new MalformedTestException("The entity-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * Checks the astronaut's existance
+         * @param astronautId The astronaut's ID
+         * @param exists True, if we should check the astronaut exists. False, if we should check the astronaut not exists.
+         * @throws MalformedTestException
+         */
         protected void validateAstronaut(String astronautId, boolean exists) throws MalformedTestException {
             if (astronauts.containsKey(astronautId) != exists) {
                 throw new MalformedTestException("The astronaut-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * Checks the robot's existance
+         * @param robotId The robot's ID
+         * @param exists True, if we should check the robot exists. False, if we should check the robot not exists.
+         * @throws MalformedTestException
+         */
         protected void validateRobot(String robotId, boolean exists) throws MalformedTestException {
             if (robots.containsKey(robotId) != exists) {
                 throw new MalformedTestException("The robot-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * Checks the ufo's existance
+         * @param ufoId The ufo's ID
+         * @param exists True, if we should check the ufo exists. False, if we should check the ufo not exists.
+         * @throws MalformedTestException
+         */
         protected void validateUfo(String ufoId, boolean exists) throws MalformedTestException {
             if (ufos.containsKey(ufoId) != exists) {
                 throw new MalformedTestException("The ufo-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * Checks the spaceobject's existance
+         * @param spaceobjectId The spaceobject's ID
+         * @param exists True, if we should check the spaceobject exists. False, if we should check the spaceobject not exists.
+         * @throws MalformedTestException
+         */
         protected void validateSpaceobject(String spaceobjectId, boolean exists) throws MalformedTestException {
             if (spaceobjects.containsKey(spaceobjectId) != exists) {
                 throw new MalformedTestException("The spaceobject-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * Checks the asteroid's existance
+         * @param asteroidId The asteroid's ID
+         * @param exists True, if we should check the asteroid exists. False, if we should check the asteroid not exists.
+         * @throws MalformedTestException
+         */
         protected void validateAsteroid(String asteroidId, boolean exists) throws MalformedTestException {
             if (asteroids.containsKey(asteroidId) != exists) {
                 throw new MalformedTestException("The asteroid-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * Checks the teleport's existance
+         * @param teleporterId The teleport's ID
+         * @param exists True, if we should check the teleport exists. False, if we should check the teleport not exists.
+         * @throws MalformedTestException
+         */
         protected void validateTeleporter(String teleporterId, boolean exists) throws MalformedTestException {
             if (teleporters.containsKey(teleporterId) != exists) {
                 throw new MalformedTestException("The teleporter-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * Checks the material's existance
+         * @param materialId The material's ID
+         * @param exists True, if we should check the material exists. False, if we should check the material not exists.
+         * @throws MalformedTestException
+         */
         protected void validateMaterial(String materialId, boolean exists) throws MalformedTestException {
             if (materials.containsKey(materialId) != exists) {
                 throw new MalformedTestException("The material-id " + (exists ? "doesn't exist" : "already exists") + "!", lineNo);
             }
         }
 
+        /**
+         * The argumentums of the command
+         */
         protected String[] args;
+        /**
+         * The command is in this line
+         */
         protected int lineNo;
     }
 
