@@ -42,21 +42,14 @@ public class Astronaut extends Worker {
      * places the chosen material back to an asteroid if its core is empty
      */
     public void PlaceMaterial() {
-        Writer writer = new OutputStreamWriter(MockIO.out);
-        try {
-            for (int i = 0; i < this.materialsStored.size(); i++) {
-                if (materialsStored.get(i) != null) {
-                    writer.write(i + 1 + "." + materialsStored.get(i).toString());
-                }
+        for (int i = 0; i < this.materialsStored.size(); i++) {
+            if (materialsStored.get(i) != null) {
+                MockIO.out.println(i + 1 + "." + materialsStored.get(i).toString());
             }
-
-            writer.write("Which material do you wan to place back?");
-            Scanner scanner = new Scanner(MockIO.in);
-            int chosen = Integer.parseInt(scanner.nextLine());
-            this.position.PlaceMaterial(materialsStored.get(chosen - 1));
-            materialsStored.remove(chosen - 1);
-        } catch (IOException ignored) {
         }
+        int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you want to place back?"));
+        this.position.PlaceMaterial(materialsStored.get(chosen - 1));
+        materialsStored.remove(chosen - 1);
     }
 
     /**
@@ -64,20 +57,15 @@ public class Astronaut extends Worker {
      */
     public void PlaceTeleporter() throws Exception {
         if (teleporters.isEmpty()) throw new Exception();
-        Writer writer = new OutputStreamWriter(MockIO.out);
-        try {
-            for (int i = 0; i < this.teleporters.size(); i++) {
-                if (teleporters.get(i) != null) {
-                    writer.write(i + 1 + "." + teleporters.get(i).toString());
-                }
+        for (int i = 0; i < this.teleporters.size(); i++) {
+            if (teleporters.get(i) != null) {
+                MockIO.out.println(i + 1 + "." + teleporters.get(i).toString());
             }
-            writer.write("Which teleporter do you wan to place?");
-            Scanner scanner = new Scanner(MockIO.in);
-            Teleporter t = teleporters.get(Integer.parseInt(scanner.nextLine()) - 1);
-            this.teleporters.remove(t);
-            t.Place(this.position);
-        } catch (IOException e) {
         }
+        int chosen = Integer.parseInt(TestLogger.AskQuestion("Which teleporter do you want to place?"));
+        Teleporter t = teleporters.get(chosen - 1);
+        this.teleporters.remove(t);
+        t.Place(this.position);
     }
 
     /**
@@ -93,9 +81,7 @@ public class Astronaut extends Worker {
      */
     public void CreateTeleporter() throws Exception {
         if (teleporters.size() > 1) throw new Exception("Couldn't create teleporter");
-        ArrayList<Teleporter> teleporter = Teleporter.CreateTeleporterPair(GetStoredMaterials());
-        if (teleporter != null)
-            this.teleporters = teleporter;
+        this.teleporters = Teleporter.CreateTeleporterPair(GetStoredMaterials());
     }
 
     /**
@@ -105,14 +91,14 @@ public class Astronaut extends Worker {
         boolean successful = false;
         while (!successful) {
             try {
-                System.out.println("1. Wait");
-                System.out.println("2. Move");
-                System.out.println("3. Mine");
-                System.out.println("4. Drill");
-                System.out.println("5. Create Robot");
-                System.out.println("6. Create Teleporter");
-                System.out.println("7. Place Teleporter");
-                System.out.println("8. Place Material");
+                MockIO.out.println("1. Wait");
+                MockIO.out.println("2. Move");
+                MockIO.out.println("3. Mine");
+                MockIO.out.println("4. Drill");
+                MockIO.out.println("5. Create Robot");
+                MockIO.out.println("6. Create Teleporter");
+                MockIO.out.println("7. Place Teleporter");
+                MockIO.out.println("8. Place Material");
                 int to = Integer.parseInt(TestLogger.AskQuestion("Which movement you want to make"));
                 to--;
                 switch (to) {
@@ -143,7 +129,7 @@ public class Astronaut extends Worker {
                 }
                 successful = true;
             } catch (Exception e) {
-                System.out.println("szar van");
+                MockIO.out.println("Action could not be executed, chose an other one");
             }
         }
     }
@@ -167,7 +153,6 @@ public class Astronaut extends Worker {
     /**
      * actor can decide where the astronaut moves and calls travelto
      */
-    //TODO mocker
     public void Move() {
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         for (int i = 0; i < neighbours.size(); i++) {
@@ -178,14 +163,26 @@ public class Astronaut extends Worker {
         this.TravelTo(neighbours.get(to - 1));
     }
 
+    /**
+     * Gets the collection of teleporters this astronaut owns
+     * @return the teleporters this astronaut owns
+     */
     public ArrayList<Teleporter> GetTeleporters() {
         return teleporters;
     }
 
+    /**
+     * Sets the teleporters owned by this astronaut.
+     * @param teleporters the teleporters this astronaut will own
+     */
     public void SetTeleporters(ArrayList<Teleporter> teleporters) {
         this.teleporters = teleporters;
     }
 
+    /**
+     * Set the materials stored by this astronaut
+     * @param materials the materials this astronaut will own
+     */
     public void SetStoredMaterials(ArrayList<Material> materials) {
         this.materialsStored = materials;
     }
