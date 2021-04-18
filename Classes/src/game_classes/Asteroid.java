@@ -2,6 +2,7 @@ package game_classes;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * represent an asteroid. Extends SpaceObject.
@@ -73,8 +74,9 @@ public class Asteroid extends SpaceObject {
 	 */
 	public void Move() {
 		float previous = distanceFromSun;
+		Random rnd = new Random();
 		do{
-			distanceFromSun = Game.RandomNum(5);
+			distanceFromSun = rnd.nextFloat() * 5;
 		} while(Math.abs(previous - distanceFromSun) < 0.01f);
 	}
 
