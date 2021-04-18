@@ -81,7 +81,10 @@ public class Astronaut extends Worker {
      */
     public void CreateTeleporter() throws Exception {
         if (teleporters.size() > 1) throw new Exception("Couldn't create teleporter");
-        this.teleporters = Teleporter.CreateTeleporterPair(GetStoredMaterials());
+        ArrayList<Teleporter> teleporter = Teleporter.CreateTeleporterPair(GetStoredMaterials());
+        if (teleporter != null)
+            this.teleporters = teleporter;
+
     }
 
     /**
@@ -165,6 +168,7 @@ public class Astronaut extends Worker {
 
     /**
      * Gets the collection of teleporters this astronaut owns
+     *
      * @return the teleporters this astronaut owns
      */
     public ArrayList<Teleporter> GetTeleporters() {
@@ -173,6 +177,7 @@ public class Astronaut extends Worker {
 
     /**
      * Sets the teleporters owned by this astronaut.
+     *
      * @param teleporters the teleporters this astronaut will own
      */
     public void SetTeleporters(ArrayList<Teleporter> teleporters) {
@@ -181,6 +186,7 @@ public class Astronaut extends Worker {
 
     /**
      * Set the materials stored by this astronaut
+     *
      * @param materials the materials this astronaut will own
      */
     public void SetStoredMaterials(ArrayList<Material> materials) {
