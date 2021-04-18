@@ -367,11 +367,11 @@ public class TestHarness {
                     validateTeleporter(args[3], true);
 
                     Astronaut astronaut = astronauts.get(args[2]);
-                    Teleporter teleporter = teleporters.get(args[2]);
+                    Teleporter teleporter = teleporters.get(args[3]);
 
                     for (int i = 0; i < astronaut.GetTeleporters().size(); i++) {
                         if (astronaut.GetTeleporters().get(i) == teleporter) {
-                            MockIO.in.addInput(i + "\n");
+                            MockIO.in.addInput((i + 1) + "\n");
                             try {
                                 astronaut.PlaceTeleporter();
                             } catch (Exception ignored) {
@@ -387,9 +387,17 @@ public class TestHarness {
                     validateRobot(args[3], false);
 
                     Astronaut astronaut = astronauts.get(args[2]);
-                    //TODO robot id itt kicsit érdekes, lehet ki kéne törölni és dontcare-rel helyettesíteni kimenetben
                     try {
                         astronaut.CreateRobot();
+                        Asteroid astronautPos = astronaut.position;
+                        for (Worker w : astronautPos.GetWorkers()) {
+                            if (!workers.containsValue(w)) {
+                                Robot r = (Robot) w;
+                                robots.put(args[3], r);
+                                workers.put(args[3], r);
+                                break;
+                            }
+                        }
                     } catch (Exception ignored) {
                     }
                     break;
@@ -398,11 +406,25 @@ public class TestHarness {
                     validateArgs("execute createTeleporter <astronaut-id> <teleporter-id> <teleporter-id>");
                     validateAstronaut(args[2], true);
                     validateTeleporter(args[3], false);
+                    validateTeleporter(args[4], false);
 
                     Astronaut astronaut = astronauts.get(args[2]);
-                    //TODO Lásd: createRobot
                     try {
                         astronaut.CreateTeleporter();
+                        boolean args3taken = false;
+                        for (Teleporter t : astronaut.GetTeleporters()) {
+                            if (!teleporters.containsValue(t)) {
+                                if (!args3taken) {
+                                    teleporters.put(args[3], t);
+                                    spaceobjects.put(args[3], t);
+                                    args3taken = true;
+                                } else {
+                                    teleporters.put(args[4], t);
+                                    spaceobjects.put(args[4], t);
+                                    break;
+                                }
+                            }
+                        }
                     } catch (Exception ignored) {
                     }
 
