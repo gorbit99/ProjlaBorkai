@@ -156,13 +156,16 @@ public class Game {
 
     /**
      * Returns the workers of th game
-     *
      * @return workers
      */
     public ArrayList<Worker> GetWorkers() {
         return workers;
     }
 
+    /**
+     * returns the solar storm of the game
+     * @return solarstorm of the game
+     */
     public SolarStorm GetSolarStorm() {
         return solarStorm;
     }
