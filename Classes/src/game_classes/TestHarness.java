@@ -156,20 +156,44 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The exepcetion of test
+     */
     abstract static class TestException extends Exception {
+        /**
+         * The test failed in this line
+         */
         protected int lineNo;
 
+        /**
+         * The constructor of the exeption
+         * @param message This will be the message
+         * @param lineNo The exception is in this line
+         */
         public TestException(String message, int lineNo) {
             super(message);
             this.lineNo = lineNo;
         }
     }
 
+    /**
+     * Incorrectly formed test exeption
+     * Extends from TestException
+     */
     static class MalformedTestException extends TestException {
+        /**
+         * The constuctor
+         * @param message This will be the message
+         * @param lineNo The exception is in this line
+         */
         public MalformedTestException(String message, int lineNo) {
             super(message, lineNo);
         }
 
+        /**
+         * Creates the exception message
+         * @return The exception message
+         */
         @Override
         public String toString() {
             return getMessage() + "\n"
@@ -177,14 +201,32 @@ public class TestHarness {
         }
     }
 
+    /**
+     * Invalid argument test exeption
+     * Extends from TestException
+     */
     static class TestArgumentException extends TestException {
+        //TODO @CsalaPeti ez ezt jelenti? Lentebb is kell javítani
+        /**
+         * The wrong argument
+         */
         private final String usage;
 
+        /**
+         * The constructor
+         * @param message This will be the message
+         * @param lineNo The exception is in this line
+         * @param usage The wrong argument
+         */
         public TestArgumentException(String message, int lineNo, String usage) {
             super(message, lineNo);
             this.usage = usage;
         }
 
+        /**
+         * Creates the exception message
+         * @return The exception message
+         */
         @Override
         public String toString() {
             return getMessage() + "\n"
