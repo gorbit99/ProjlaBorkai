@@ -29,4 +29,12 @@ public class SolarStorm {
 		timeTillHit=Game.RandomNum(10)+10;
 		return true;
 	}
+
+	public int GetTimeTillHit() {
+		return timeTillHit;
+	}
+
+	public void SetTimeTillHit(int timeTillHit) {
+		this.timeTillHit = timeTillHit;
+	}
 }

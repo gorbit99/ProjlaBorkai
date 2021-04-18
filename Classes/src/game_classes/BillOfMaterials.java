@@ -22,7 +22,7 @@ public class BillOfMaterials {
 		for(int i = 0; i < billOfMaterials.size(); i++) {
 			boolean inside = false;
 
-			for(int j = 0; j < materials.size(); j++) {
+			for(int j = 0; j < materials_temp.size(); j++) {
 				if(materials_temp.get(j).getClass().equals(billOfMaterials.get(i).getClass())) {
 					inside = true;
 					materials_temp.remove(materials_temp.get(j));
@@ -33,6 +33,8 @@ public class BillOfMaterials {
 			if(!inside)
 				return false;
 		}
+
+		//TODO nincsen elvégezve ténylegesen a törlés
 
 		return true;
 	}

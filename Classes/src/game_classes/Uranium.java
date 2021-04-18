@@ -35,4 +35,12 @@ public class Uranium extends Material {
     public String toString() {
         return "Uranium";
     }
+
+    public int GetExposure() {
+        return exposureCount;
+    }
+
+    public void SetExposure(int exposureCount) {
+        this.exposureCount = exposureCount;
+    }
 }

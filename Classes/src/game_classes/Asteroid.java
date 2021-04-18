@@ -60,7 +60,9 @@ public class Asteroid extends SpaceObject {
 	public boolean PlaceMaterial(Material material) {
 		if (core == null) {
 			SetCore(material);
-			core.HandleCloseToSun(this);
+			if (distanceFromSun <= 2.5f) {
+				core.HandleCloseToSun(this);
+			}
 			return true;
 		}
 		return false;
@@ -77,13 +79,13 @@ public class Asteroid extends SpaceObject {
 	 * Handles, when asteroid explodes.
 	 */
 	public void Explode() {
+		AsteroidField.GetInstance().RemoveSpaceObject(this);
 		for (int i = workers.size() - 1; i >= 0; i--){
 			workers.get(i).Explode();
 		}
 		for (SpaceObject so: neighbours){
 			so.RemoveNeighbour(this);
 		}
-		AsteroidField.GetInstance().RemoveSpaceObject(this);
 	}
 
 	/**
@@ -126,6 +128,9 @@ public class Asteroid extends SpaceObject {
 	public void RemoveNeighbour(SpaceObject spaceObject) {
 		neighbours.remove(spaceObject);
 		if (neighbours.size() == 0){
+			if (spaceObject.GetNeighbours().size() == 0) {
+				return;
+			}
 			ArrayList<SpaceObject> potentialNeighbours = spaceObject.GetNeighbours();
 			if (potentialNeighbours.size() > 1) {
 				SpaceObject obj = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 1));
@@ -146,8 +151,9 @@ public class Asteroid extends SpaceObject {
 	 */
 	public void HandleSolarStorm() {
 		if (!CanHideIn())
-			for (Worker w: workers)
-				w.Die();
+		    while (workers.size() != 0) {
+				workers.get(0).Die();
+			}
 	}
 
 	/**
@@ -164,6 +170,22 @@ public class Asteroid extends SpaceObject {
 	 */
 	public Material GetCore() {
 		return core;
+	}
+
+	public int GetLayers() {
+		return layers;
+	}
+
+	public void SetLayers(int layers) {
+		this.layers = layers;
+	}
+
+	public float GetDistance() {
+		return distanceFromSun;
+	}
+
+	public void SetDistance(int distanceFromSun) {
+		this.distanceFromSun = distanceFromSun;
 	}
 
 }

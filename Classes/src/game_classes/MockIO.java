@@ -33,6 +33,7 @@ class MockIn extends InputStream {
 
     /**
      * Reads the next byte specified earlier
+     *
      * @return The next byte in the stream
      * @throws IOException
      */
@@ -54,6 +55,7 @@ class MockIn extends InputStream {
 
     /**
      * Add input to the stream
+     *
      * @param input The input to add
      */
     public void addInput(String input) {
@@ -71,5 +73,13 @@ class MockIn extends InputStream {
 class MockOut extends OutputStream {
     @Override
     public void write(int i) throws IOException {
+    }
+
+    public void println(String line) {
+
+    }
+
+    public void println() {
+
     }
 }

@@ -7,34 +7,7 @@ import java.util.Stack;
  * This class creates the indented output
  */
 public class TestLogger {
-    private static int indentLevel = 0;
     private static Scanner scanner;
-    private final static Stack<String> functions = new Stack<>();
-
-    /**
-     * To be called when calling a function
-     * @param functionName The name of the function
-     */
-    public static void EnterFunction(String functionName) {
-        for (int i = 0; i < indentLevel; i++) {
-            System.out.print("---");
-        }
-        System.out.println(functionName + "()");
-        functions.push(functionName);
-        indentLevel++;
-    }
-
-    /**
-     * To be called when exiting a function
-     */
-    public static void ExitFunction() {
-        indentLevel--;
-        String function = functions.pop();
-        for (int i = 0; i < indentLevel; i++) {
-            System.out.print("---");
-        }
-        System.out.println(function + "() return");
-    }
 
     /**
      * To be called when asking a question
@@ -43,11 +16,11 @@ public class TestLogger {
      */
     public static String AskQuestion(String message) {
         if (scanner == null) {
-            scanner = new Scanner(System.in);
+            scanner = new Scanner(MockIO.in);
         }
-        System.out.println("\n" + message + " ");
+        MockIO.out.println("\n" + message + " ");
         String result = scanner.next();
-        System.out.println();
+        MockIO.out.println();
         return result;
     }
 }

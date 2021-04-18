@@ -3,6 +3,7 @@ package game_classes;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,7 +54,8 @@ public class Astronaut extends Worker {
             Scanner scanner = new Scanner(MockIO.in);
             int chosen = Integer.parseInt(scanner.nextLine());
             this.position.PlaceMaterial(materialsStored.get(chosen - 1));
-        } catch (IOException e) {}
+            materialsStored.remove(chosen - 1);
+        } catch (IOException ignored) {}
     }
 
     /**
@@ -165,11 +167,15 @@ public class Astronaut extends Worker {
     public void Move() {
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         for (int i = 0; i < neighbours.size(); i++) {
-            System.out.println(i + 1 + "." + neighbours.get(i).toString());
+            MockIO.out.println(i + 1 + "." + neighbours.get(i).toString());
         }
         int to = Integer.parseInt(TestLogger.AskQuestion("Where do you want to move?"));
 
         this.TravelTo(neighbours.get(to - 1));
+    }
+
+    public ArrayList<Teleporter> GetTeleporters() {
+        return teleporters;
     }
 
     public void SetTeleporters(ArrayList<Teleporter> teleporters) {

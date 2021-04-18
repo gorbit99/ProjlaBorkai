@@ -7,6 +7,10 @@ import java.util.ArrayList;
  */
 public abstract class SpaceObject {
 
+	public SpaceObject() {
+		AsteroidField.GetInstance().AddSpaceObject(this);
+	}
+
 	/**
 	 * @param workers contains all the workers who are standing on the space object
 	 * @param neighbours contains all the neigbours

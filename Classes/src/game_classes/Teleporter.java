@@ -52,9 +52,11 @@ public class Teleporter extends SpaceObject {
         //todo nézzétek meg az aktívot
         //this.parent = asteroid;
         this.AddNeighbour(asteroid);
-        this.pair.PairPlaced();
-        if (pair.active)
-            this.active = true;
+        if (this.pair != null) {
+            this.pair.PairPlaced();
+            if (pair.active)
+                this.active = true;
+        }
         asteroid.AddNeighbour(this);
         AsteroidField.GetInstance().AddSpaceObject(this);//Hozzáadjuk, hogy tudjon Move-olódni.
     }
@@ -74,6 +76,9 @@ public class Teleporter extends SpaceObject {
      */
     public SpaceObject GetParent() {
         //return parent;
+        if (neighbours.isEmpty()) {
+            return null;
+        }
         return neighbours.get(0);
     }
 
@@ -161,5 +166,17 @@ public class Teleporter extends SpaceObject {
     @Override
     public String toString() {
         return "Teleporter";
+    }
+
+    public boolean GetBroken() {
+        return isBroken;
+    }
+
+    public void SetBroken(boolean broken) {
+        isBroken = broken;
+    }
+
+    public Teleporter GetPair() {
+        return pair;
     }
 }

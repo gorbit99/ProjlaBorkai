@@ -55,23 +55,19 @@ public class Robot extends Worker {
      * moves robot to a random neighbour
      */
     public void Explode() {
-        TestLogger.EnterFunction("Robot.Explode");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         this.position.RemoveWorker(this);
         int to = Game.RandomNum(neighbours.size());
         neighbours.get(to).AddWorker(this);
-        TestLogger.ExitFunction();
     }
 
     /**
      * moves robot to a neighbour
      */
     public void Move() {
-        TestLogger.EnterFunction("Robot.Move");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         int to = Game.RandomNum(neighbours.size());
         this.TravelTo(neighbours.get(to));
-        TestLogger.ExitFunction();
     }
 
     /**
@@ -80,8 +76,6 @@ public class Robot extends Worker {
      * @return null
      */
     public ArrayList<Material> GetStoredMaterials() {
-        TestLogger.EnterFunction("Robot.GetStoredMaterials");
-        TestLogger.ExitFunction();
         return null;
     }
 

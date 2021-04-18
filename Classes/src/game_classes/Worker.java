@@ -17,6 +17,7 @@ public abstract class Worker {
     public Worker(Asteroid position){
         SetPosition(position);
         Game.GetInstance().AddWorker(this);
+        position.AddWorker(this);
     }
 
 

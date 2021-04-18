@@ -14,7 +14,7 @@ public class Game {
     /**
      * This is the solarstorm. It will make solarstorms.
      */
-    private SolarStorm solarStorm;
+    private SolarStorm solarStorm = new SolarStorm();
     /**
      * This is the bill of materials, that you need to build a base.
      */
@@ -22,9 +22,9 @@ public class Game {
     /**
      * This helps to make random nums
      */
-    private static Random random;
+    private static Random random = new Random();
     /**
-     * the instance of the singletone class
+     * the instance of the singleton class
      */
     private static Game instance;
     //TODO ide elv kell egz asteroid field de syeritnem nem mert szingletone
@@ -34,10 +34,20 @@ public class Game {
      * This is the game's constructor.
      */
     private Game() {
-        TestLogger.EnterFunction("Game.ctor");
-        TestLogger.ExitFunction();
         this.random = new Random();
-        workers = new ArrayList<Worker>();
+        workers = new ArrayList<>();
+        if (billOfMaterials == null) {
+            ArrayList<Material> materials = new ArrayList<>();
+            materials.add(new Iron());
+            materials.add(new Iron());
+            materials.add(new Coal());
+            materials.add(new Coal());
+            materials.add(new Uranium());
+            materials.add(new Uranium());
+            materials.add(new Ice());
+            materials.add(new Ice());
+            billOfMaterials = new BillOfMaterials(materials);
+        }
     }
 
     /**
@@ -46,10 +56,8 @@ public class Game {
      * @return
      */
     public static Game GetInstance() {
-        TestLogger.EnterFunction("Game.GetInstance");
         if (instance == null)
             instance = new Game();
-        TestLogger.ExitFunction();
         return instance;
     }
 
@@ -141,5 +149,9 @@ public class Game {
      */
     public ArrayList<Worker> GetWorkers() {
         return workers;
+    }
+
+    public SolarStorm GetSolarStorm() {
+        return solarStorm;
     }
 }
