@@ -170,10 +170,18 @@ public class Game {
         return solarStorm;
     }
 
+    /**
+     * This function returns whether the players won
+     * @return true if the settlers won the game
+     */
     public boolean DidWin() {
         return win;
     }
 
+    /**
+     * This function returns whether the players lost
+     * @return true if the settlers lost the game
+     */
     public boolean DidLose() {
         return lose;
     }
