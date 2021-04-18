@@ -10,7 +10,7 @@ public class Coal extends Material{
     public Coal(){ }
 
     /**
-     *
+     * This method returns the name of the class for testing purposes.
      * @return The class name.
      */
     public String toString(){
