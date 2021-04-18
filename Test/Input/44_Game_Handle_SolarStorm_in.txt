@@ -4,10 +4,9 @@ Game_Handle_SolarStorm
 create asteroid A1
 create astronaut S1 A1
 create robot R1 A1
-asteroid A1 setLayer 1
+asteroid A1 setLayers 1
 solarStorm setTimeTillHit 0
 create teleporter G1
-teleporter G1 setParent G1
 teleporter G1 place A1
 
 

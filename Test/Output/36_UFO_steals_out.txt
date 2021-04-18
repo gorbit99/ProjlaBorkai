@@ -12,7 +12,5 @@ UFOs:
 	U1:
 		position: A1
 Materials:
-	C1:
-		type: coal
 SolarStorm:
 	timeTillHit: -

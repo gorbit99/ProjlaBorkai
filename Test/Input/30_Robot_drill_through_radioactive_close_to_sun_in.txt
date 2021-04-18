@@ -2,7 +2,7 @@ Robot_drill_through_radioactive_close_to_sun
 
 #initialization
 create asteroid A1 #creating asteroid
-create astronaut R1 A1 #creating robot R1 on asteroid A1
+create robot R1 A1 #creating robot R1 on asteroid A1
 #creating material setting distance from sun, layers and core type
 create material U1 uranium
 asteroid A1 setDistance 0

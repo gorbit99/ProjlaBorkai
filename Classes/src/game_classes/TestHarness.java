@@ -2,6 +2,7 @@ package game_classes;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TestHarness {
     protected Scanner inputScanner;
@@ -615,15 +616,25 @@ public class TestHarness {
         @Override
         public void run() throws TestException {
             switch (args[1]) {
-                case "doRound":
-                    //TODO haha NOPE
+                case "doRound": {
+                    String instructions = Arrays.stream(args).skip(2).collect(Collectors.joining(" "));
+                    for (String line : instructions.split(";")) {
+                        MockIO.in.addInput(line + "\n");
+                    }
+                    Game.GetInstance().DoRound();
                     break;
+                }
                 case "checkWinOrLose":
                     Game.GetInstance().CheckWinOrLose();
                     break;
-                case "startGame":
-                    //TODO see doRound
+                case "startGame": {
+                    String instructions = Arrays.stream(args).skip(2).collect(Collectors.joining(" "));
+                    for (String line : instructions.split(";")) {
+                        MockIO.in.addInput(line + "\n");
+                    }
+                    Game.GetInstance().StartGame();
                     break;
+                }
                 default:
                     throw new TestArgumentException("Unknown command subtype!", lineNo, "game [doRound/checkWinOrLose/startGame]");
             }
@@ -652,11 +663,9 @@ public class TestHarness {
             for (Worker worker : Game.GetInstance().GetWorkers()) {
                 if (worker instanceof Astronaut) {
                     realAstronauts.add((Astronaut) worker);
-                }
-                else if (worker instanceof Robot) {
+                } else if (worker instanceof Robot) {
                     realRobots.add((Robot) worker);
-                }
-                else if (worker instanceof Ufo) {
+                } else if (worker instanceof Ufo) {
                     realUfos.add((Ufo) worker);
                 }
             }
@@ -788,13 +797,19 @@ public class TestHarness {
             validateArgs("printState");
 
             try {
-                printAsteroids();
-                printTeleporters();
-                printAstronauts();
-                printRobots();
-                printUfos();
-                printMaterials();
-                printSolarStorm();
+                if (Game.GetInstance().DidLose()) {
+                    outputWriter.write("lose\n");
+                } else if (Game.GetInstance().DidWin()) {
+                    outputWriter.write("win\n");
+                } else {
+                    printAsteroids();
+                    printTeleporters();
+                    printAstronauts();
+                    printRobots();
+                    printUfos();
+                    printMaterials();
+                    printSolarStorm();
+                }
                 outputWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();

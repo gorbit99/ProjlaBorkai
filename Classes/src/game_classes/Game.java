@@ -166,4 +166,12 @@ public class Game {
     public SolarStorm GetSolarStorm() {
         return solarStorm;
     }
+
+    public boolean DidWin() {
+        return win;
+    }
+
+    public boolean DidLose() {
+        return lose;
+    }
 }
