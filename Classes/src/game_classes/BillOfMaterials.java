@@ -19,6 +19,7 @@ public class BillOfMaterials {
 	 */
 	public boolean IsEnough(ArrayList<Material> materials) {
 		ArrayList<Material> materials_temp = (ArrayList<Material>) materials.clone();
+		ArrayList<Integer> deleted = new ArrayList<Integer>();
 		for(int i = 0; i < billOfMaterials.size(); i++) {
 			boolean inside = false;
 
@@ -26,6 +27,7 @@ public class BillOfMaterials {
 				if(materials_temp.get(j).getClass().equals(billOfMaterials.get(i).getClass())) {
 					inside = true;
 					materials_temp.remove(materials_temp.get(j));
+					deleted.add(j);
 					break;
 				}
 			}
@@ -33,8 +35,10 @@ public class BillOfMaterials {
 			if(!inside)
 				return false;
 		}
-
 		//TODO nincsen elvégezve ténylegesen a törlés
+		for (int i = 0; i < deleted.size(); i++) {
+			materials.remove(deleted.get(i));
+		}
 
 		return true;
 	}
