@@ -118,7 +118,7 @@ public class Teleporter extends SpaceObject {
             teleporters.add(b);
             return teleporters;
         }
-        return null;//todo specifikációba ez van.
+        return null;
     }
 
     /**
