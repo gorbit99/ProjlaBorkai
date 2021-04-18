@@ -49,6 +49,10 @@ public class Ufo extends Worker {
         TravelTo(pos);
     }
 
+    /**
+     * Doesn't do anything
+     * @return
+     */
     @Override
     public ArrayList<Material> GetStoredMaterials() {
         return null;

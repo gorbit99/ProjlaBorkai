@@ -51,7 +51,7 @@ public abstract class SpaceObject {
 
 	/**
 	 * adds a worker to the worker list
-	 * @param worker worker to be added to the neighbour list
+	 * @param worker worker to be added to the worker list
 	 */
 	public abstract void AddWorker(Worker worker);
 
@@ -73,5 +73,9 @@ public abstract class SpaceObject {
 	 */
 	public abstract void HandleSolarStorm();
 
+	/**
+	 * returns core of the space object
+	 * @return core of the space object
+	 */
 	public abstract Material GetCore();
 }

@@ -30,10 +30,18 @@ public class SolarStorm {
 		return true;
 	}
 
+	/**
+	 * Gets the number of turns remaining until the solarstorm hits
+	 * @return the number of turns remaining
+	 */
 	public int GetTimeTillHit() {
 		return timeTillHit;
 	}
 
+	/**
+	 * Sets the number of turns remaining until the solarstorm hits
+	 * @param timeTillHit the number of turns remaining
+	 */
 	public void SetTimeTillHit(int timeTillHit) {
 		this.timeTillHit = timeTillHit;
 	}

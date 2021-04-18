@@ -138,44 +138,80 @@ public class Teleporter extends SpaceObject {
         this.AddNeighbour(this.neighbours.get(random));
     }
 
+    /**
+     * starts the teleporting of a worker
+     * @param worker worker to be teleported
+     */
     public void AddWorker(Worker worker) {
         this.pair.TeleportWorker(worker);
     }
 
+
+    /**
+     * does nothing
+     * @param worker worker to be removed from workers list
+     */
     @Override
     public void RemoveWorker(Worker worker) {
 
     }
 
+    /**
+     * if the teleporter is broken it changes parent asteroid
+     */
     @Override
     public void Move() {
         if (this.isBroken)
             this.RemoveNeighbour(this.GetParent());
     }
 
+    /**
+     * if a teleporter gets into a solar storm it gets broken
+     * sets broken to true
+     */
     @Override
     public void HandleSolarStorm() {
         isBroken = true;
     }
 
+    /**
+     * does nothing
+     * @return null because the teleporter does not have a core
+     */
     @Override
     public Material GetCore() {
         return null;
     }
 
+    /**
+     * to string method of teleporter
+     * @return
+     */
     @Override
     public String toString() {
         return "Teleporter";
     }
 
+    /**\
+     * returns if the teleporter is broklen
+     * @return
+     */
     public boolean GetBroken() {
         return isBroken;
     }
 
+    /**
+     * sets broken to the given param
+     * @param broken the value will be set to the isBroken
+     */
     public void SetBroken(boolean broken) {
         isBroken = broken;
     }
 
+    /**
+     * returns the pair of the teleporter
+     * @return te pair of the teleporter
+     */
     public Teleporter GetPair() {
         return pair;
     }
