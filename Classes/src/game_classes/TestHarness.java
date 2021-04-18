@@ -4,27 +4,74 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Interprets and runs the tests
+ */
 public class TestHarness {
+    /**
+     * The scanner of input
+     */
     protected Scanner inputScanner;
+    /**
+     * Output writer
+     */
     protected Writer outputWriter = new OutputStreamWriter(System.out);
-
+    /**
+     * Hashmap of the workers
+     */
     protected HashMap<String, Worker> workers = new HashMap<>();
+    /**
+     * Hashmap of the astronauts
+     */
     protected HashMap<String, Astronaut> astronauts = new HashMap<>();
+    /**
+     * Hashmap of the robots
+     */
     protected HashMap<String, Robot> robots = new HashMap<>();
+    /**
+     * Hashmap of the ufos
+     */
     protected HashMap<String, Ufo> ufos = new HashMap<>();
+    /**
+     * Hashmap of the spaceobjects
+     */
     protected HashMap<String, SpaceObject> spaceobjects = new HashMap<>();
+    /**
+     * Hashmap of the asteroids
+     */
     protected HashMap<String, Asteroid> asteroids = new HashMap<>();
+    /**
+     * Hashmap of the teleporters
+     */
     protected HashMap<String, Teleporter> teleporters = new HashMap<>();
+    /**
+     * Hashmap of the materials
+     */
     protected HashMap<String, Material> materials = new HashMap<>();
 
+    /**
+     * The creator of the TestHarness
+     */
     public TestHarness() {
         inputScanner = new Scanner(System.in);
     }
 
+    /**
+     * The creator of the TestHarness
+     * @param stream This is the inputscanner in the TestHarness
+     */
     public TestHarness(InputStream stream) {
         inputScanner = new Scanner(stream);
     }
 
+    /**
+     * Find a key by a value
+     * @param map The hashmap
+     * @param value This will be found
+     * @param <K> Key
+     * @param <V> Value
+     * @return The key of entry
+     */
     protected <K, V> K reverseMap(HashMap<K, V> map, V value) {
         for (Map.Entry<K, V> entry : map.entrySet()) {
             if (entry.getValue() == value) {
@@ -34,6 +81,10 @@ public class TestHarness {
         return null;
     }
 
+    /**
+     * This makes the test run
+     * @throws TestException
+     */
     public void run() throws TestException {
         int lineNo = 1;
         inputScanner.nextLine();
