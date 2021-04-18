@@ -372,11 +372,24 @@ public class TestHarness {
         protected int lineNo;
     }
 
+    /**
+     * The import command
+     * Extends from Command
+     */
     class ImportCommand extends Command {
+        /**
+         * The constructor
+         * @param args The arguments
+         * @param lineNo The command is in this line
+         */
         public ImportCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Imports the file.
+         * @throws TestException
+         */
         @Override
         public void run() throws TestException {
             validateArgs("import <filename>");
