@@ -13,11 +13,11 @@ create ufo F1 A1
 create material U1 uranium
 
 #setup asteroids
-asteroid A1 setdistance 0
-asteroid A2 setdistance 0
-asteroid A1 setlayers 1
+asteroid A1 setDistance 0
+asteroid A2 setDistance 0
+asteroid A1 setLayers 1
 asteroid A1 addNeighbour A2
-asteroid A2 addneighbour A1
+asteroid A2 addNeighbour A1
 asteroid A1 setCore U1
 
 #setup uranium

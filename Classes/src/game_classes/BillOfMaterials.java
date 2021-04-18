@@ -26,7 +26,7 @@ public class BillOfMaterials {
 			for(int j = 0; j < materials_temp.size(); j++) {
 				if(materials_temp.get(j).getClass().equals(billOfMaterials.get(i).getClass())) {
 					inside = true;
-					materials_temp.remove(materials_temp.get(j));
+					materials_temp.remove(j);
 					deleted.add(j);
 					break;
 				}
