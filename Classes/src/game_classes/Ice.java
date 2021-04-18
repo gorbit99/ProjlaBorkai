@@ -19,7 +19,7 @@ public class Ice extends Material{
 		}
 	}
 	/**
-	 *
+	 * This method returns the name of the class for testing purposes.
 	 * @return The class name.
 	 */
 	public String toString(){

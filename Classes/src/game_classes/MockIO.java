@@ -70,15 +70,30 @@ class MockIn extends InputStream {
     }
 }
 
+/**
+ * Mock output stream
+ */
 class MockOut extends OutputStream {
+    /**
+     * Throws the parameter away
+     * @param i
+     * @throws IOException
+     */
     @Override
     public void write(int i) throws IOException {
     }
 
+    /**
+     * Throws the parameter away
+     * @param
+     */
     public void println(String line) {
 
     }
 
+    /**
+     * Mocks a println call
+     */
     public void println() {
 
     }

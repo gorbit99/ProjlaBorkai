@@ -36,10 +36,18 @@ public class Uranium extends Material {
         return "Uranium";
     }
 
+    /**
+     * Gets the number of times this material has been exposed to the sun
+     * @return  exposure count
+     */
     public int GetExposure() {
         return exposureCount;
     }
 
+    /**
+     * Sets the number of times this material has been exposed to the sun
+     * @param exposureCount the number of times this material has been exposed to the sun
+     */
     public void SetExposure(int exposureCount) {
         this.exposureCount = exposureCount;
     }
