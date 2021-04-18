@@ -27,8 +27,16 @@ public class Game {
      * the instance of the singleton class
      */
     private static Game instance;
-    //TODO ide elv kell egz asteroid field de syeritnem nem mert szingletone
-
+    /**
+     * represents if the players won or not
+     * true if they won
+     */
+    private boolean win;
+    /**
+     * represents if the players lost or not
+     * true if they lost
+     */
+    private boolean lose;
 
     /**
      * This is the game's constructor.
@@ -75,14 +83,14 @@ public class Game {
      * This makes a round in the game.
      */
     public void DoRound() {
-        for (Worker worker :this.workers) {
+        for (Worker worker : this.workers) {
             worker.Step();
             CheckWinOrLose();
         }
         AsteroidField.GetInstance().Move();
         if (this.solarStorm.Tick())
             AsteroidField.GetInstance().HandleSolarStorm();
-       CheckWinOrLose();
+        CheckWinOrLose();
     }
 
     /**
@@ -92,11 +100,15 @@ public class Game {
         ArrayList<Material> materialSum = new ArrayList<>();
         for (SpaceObject object : AsteroidField.GetInstance().GetObjects()) {
             for (Worker worker : object.GetWorkers()) {
-                //TODO amugy jo materialSum.add(worker.GetStoredMaterials());
+                for (Material material : worker.GetStoredMaterials()) {
+                    materialSum.add(material);
+
+                }
             }
         }
-        if (!this.billOfMaterials.IsEnough(materialSum)) {
-            //TODO valahgy legeyn vege a jateknak
+        if (this.billOfMaterials.IsEnough(materialSum)) {
+            this.win = true;
+            return;
         }
         ArrayList<Material> coreSum = new ArrayList<>();
 
@@ -104,8 +116,8 @@ public class Game {
             if (object.GetCore() != null)
                 coreSum.add(object.GetCore());
         }
-        if (!this.billOfMaterials.IsEnough(coreSum) ){
-            //TODO valahgy legeyn vege a jateknak
+        if (!this.billOfMaterials.IsEnough(coreSum)) {
+            this.lose = true;
         }
 
     }
