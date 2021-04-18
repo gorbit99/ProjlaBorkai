@@ -13,7 +13,7 @@ public class BillOfMaterials {
 		billOfMaterials = temp;
 	}
 	/**
-	 * decides whether there is enough materials to creat an object
+	 * decides whether there is enough materials to create an object
 	 * @param materials materials to be checked if they are enough
 	 * @return true if there is enough materials false if there isn't
 	 */
