@@ -34,8 +34,6 @@ public class Game {
      * This is the game's constructor.
      */
     private Game() {
-        TestLogger.EnterFunction("Game.ctor");
-        TestLogger.ExitFunction();
         this.random = new Random();
         workers = new ArrayList<Worker>();
     }
@@ -46,10 +44,8 @@ public class Game {
      * @return
      */
     public static Game GetInstance() {
-        TestLogger.EnterFunction("Game.GetInstance");
         if (instance == null)
             instance = new Game();
-        TestLogger.ExitFunction();
         return instance;
     }
 
