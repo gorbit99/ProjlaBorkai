@@ -5,44 +5,48 @@ package game_classes;
  */
 public class SolarStorm {
 
-	/**
-	 * parameter that stores the number of rounds
-	 * left until the next solar storm
-	 */
-	private int timeTillHit;
+    /**
+     * parameter that stores the number of rounds
+     * left until the next solar storm
+     */
+    private int timeTillHit;
 
-	/**
-	 * Constructor of the class.
-	 */
-	public SolarStorm(){
-		timeTillHit=Game.RandomNum(10)+10;
-	}
+    /**
+     * Constructor of the class.
+     */
+    public SolarStorm() {
+        timeTillHit = Game.RandomNum(10) + 10;
+    }
 
-	/**
-	 * Decreases the object's inner counter, resets it if necessary, returns whether a solarstorm should happen.
-	 * @return True if a solarstorm is happening, false otherwise.
-	 */
-	public boolean Tick() {
-		timeTillHit--;
-		if(timeTillHit>0)
-			return false;
-		timeTillHit=Game.RandomNum(10)+10;
-		return true;
-	}
+    /**
+     * Decreases the object's inner counter, resets it if necessary, returns whether a solarstorm should happen.
+     *
+     * @return True if a solarstorm is happening, false otherwise.
+     */
+    public boolean Tick() {
+        if (timeTillHit == 0) {
+            AsteroidField.GetInstance().HandleSolarStorm();
+            timeTillHit = Game.RandomNum(10) + 10;
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Gets the number of turns remaining until the solarstorm hits
-	 * @return the number of turns remaining
-	 */
-	public int GetTimeTillHit() {
-		return timeTillHit;
-	}
+    /**
+     * Gets the number of turns remaining until the solarstorm hits
+     *
+     * @return the number of turns remaining
+     */
+    public int GetTimeTillHit() {
+        return timeTillHit;
+    }
 
-	/**
-	 * Sets the number of turns remaining until the solarstorm hits
-	 * @param timeTillHit the number of turns remaining
-	 */
-	public void SetTimeTillHit(int timeTillHit) {
-		this.timeTillHit = timeTillHit;
-	}
+    /**
+     * Sets the number of turns remaining until the solarstorm hits
+     *
+     * @param timeTillHit the number of turns remaining
+     */
+    public void SetTimeTillHit(int timeTillHit) {
+        this.timeTillHit = timeTillHit;
+    }
 }

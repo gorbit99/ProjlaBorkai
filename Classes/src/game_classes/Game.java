@@ -10,17 +10,17 @@ public class Game {
     /**
      * This list contains workers.
      */
-    private ArrayList<Worker> workers;
+    private final ArrayList<Worker> workers;
     /**
      * This is the solarstorm. It will make solarstorms.
      */
-    private SolarStorm solarStorm = new SolarStorm();
+    private final SolarStorm solarStorm = new SolarStorm();
     /**
      * This is the bill of materials, that you need to build a base.
      */
     private BillOfMaterials billOfMaterials;
     /**
-     * This helps to make random nums
+     * This helps to make random numbers
      */
     private static Random random = new Random();
     /**
@@ -42,7 +42,7 @@ public class Game {
      * This is the game's constructor.
      */
     private Game() {
-        this.random = new Random();
+        random = new Random();
         workers = new ArrayList<>();
         if (billOfMaterials == null) {
             ArrayList<Material> materials = new ArrayList<>();
@@ -59,9 +59,9 @@ public class Game {
     }
 
     /**
-     * This helps the singleton.
+     * Get the game instance
      *
-     * @return
+     * @return The game instance
      */
     public static Game GetInstance() {
         if (instance == null)
@@ -100,10 +100,7 @@ public class Game {
         ArrayList<Material> materialSum = new ArrayList<>();
         for (SpaceObject object : AsteroidField.GetInstance().GetObjects()) {
             for (Worker worker : object.GetWorkers()) {
-                for (Material material : worker.GetStoredMaterials()) {
-                    materialSum.add(material);
-
-                }
+                materialSum.addAll(worker.GetStoredMaterials());
             }
         }
         if (this.billOfMaterials.IsEnough(materialSum)) {
@@ -120,13 +117,6 @@ public class Game {
             this.lose = true;
         }
 
-    }
-
-    /**
-     * Handles a solar storm
-     */
-    public void HandleSolarStorm() {
-        AsteroidField.GetInstance().HandleSolarStorm();
     }
 
     /**
@@ -156,6 +146,7 @@ public class Game {
 
     /**
      * Returns the workers of th game
+     *
      * @return workers
      */
     public ArrayList<Worker> GetWorkers() {
@@ -164,6 +155,7 @@ public class Game {
 
     /**
      * returns the solar storm of the game
+     *
      * @return solarstorm of the game
      */
     public SolarStorm GetSolarStorm() {
@@ -172,6 +164,7 @@ public class Game {
 
     /**
      * This function returns whether the players won
+     *
      * @return true if the settlers won the game
      */
     public boolean DidWin() {
@@ -180,6 +173,7 @@ public class Game {
 
     /**
      * This function returns whether the players lost
+     *
      * @return true if the settlers lost the game
      */
     public boolean DidLose() {

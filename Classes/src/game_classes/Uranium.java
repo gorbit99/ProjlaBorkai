@@ -20,6 +20,7 @@ public class Uranium extends Material {
     /**
      * This method makes the asteroid explode.
      * explodes when the material has been exposed to sun 3 times
+     *
      * @param asteroid The asteroid is what contains this material.
      */
     @Override
@@ -38,7 +39,8 @@ public class Uranium extends Material {
 
     /**
      * Gets the number of times this material has been exposed to the sun
-     * @return  exposure count
+     *
+     * @return exposure count
      */
     public int GetExposure() {
         return exposureCount;
@@ -46,6 +48,7 @@ public class Uranium extends Material {
 
     /**
      * Sets the number of times this material has been exposed to the sun
+     *
      * @param exposureCount the number of times this material has been exposed to the sun
      */
     public void SetExposure(int exposureCount) {

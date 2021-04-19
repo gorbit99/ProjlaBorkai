@@ -1,11 +1,6 @@
 package game_classes;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * represents an astronaut
@@ -13,10 +8,12 @@ import java.util.Scanner;
 public class Astronaut extends Worker {
 
     /**
-     * @param materialsStored contains all the materials that the astronaut has
-     * @param teleporters contains the created teleporters
+     * Contains all the materials that the astronaut has
      */
-    private ArrayList<Material> materialsStored;
+    private final ArrayList<Material> materialsStored;
+    /**
+     * Contains the created teleporters
+     */
     private ArrayList<Teleporter> teleporters;
 
     /**
@@ -41,15 +38,18 @@ public class Astronaut extends Worker {
     /**
      * places the chosen material back to an asteroid if its core is empty
      */
-    public void PlaceMaterial() {
+    public void PlaceMaterial() throws Exception {
         for (int i = 0; i < this.materialsStored.size(); i++) {
             if (materialsStored.get(i) != null) {
                 MockIO.out.println(i + 1 + "." + materialsStored.get(i).toString());
             }
         }
         int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you want to place back?"));
-        this.position.PlaceMaterial(materialsStored.get(chosen - 1));
-        materialsStored.remove(chosen - 1);
+        if (this.position.PlaceMaterial(materialsStored.get(chosen - 1))) {
+            materialsStored.remove(chosen - 1);
+        } else {
+            throw new Exception("Couldn't place material");
+        }
     }
 
     /**
@@ -154,7 +154,7 @@ public class Astronaut extends Worker {
     }
 
     /**
-     * actor can decide where the astronaut moves and calls travelto
+     * actor can decide where the astronaut moves and calls travelTo
      */
     public void Move() {
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
@@ -173,23 +173,5 @@ public class Astronaut extends Worker {
      */
     public ArrayList<Teleporter> GetTeleporters() {
         return teleporters;
-    }
-
-    /**
-     * Sets the teleporters owned by this astronaut.
-     *
-     * @param teleporters the teleporters this astronaut will own
-     */
-    public void SetTeleporters(ArrayList<Teleporter> teleporters) {
-        this.teleporters = teleporters;
-    }
-
-    /**
-     * Set the materials stored by this astronaut
-     *
-     * @param materials the materials this astronaut will own
-     */
-    public void SetStoredMaterials(ArrayList<Material> materials) {
-        this.materialsStored = materials;
     }
 }

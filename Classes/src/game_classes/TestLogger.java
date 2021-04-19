@@ -1,7 +1,6 @@
 package game_classes;
 
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  * This class creates the indented output
@@ -11,6 +10,7 @@ public class TestLogger {
 
     /**
      * To be called when asking a question
+     *
      * @param message Text of the question.
      * @return the answer
      */

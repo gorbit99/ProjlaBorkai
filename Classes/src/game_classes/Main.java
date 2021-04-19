@@ -1,11 +1,9 @@
 package game_classes;
 
-import java.io.*;
-import java.util.Scanner;
-
-public class main {
+public class Main {
     /**
      * The main function
+     *
      * @param args Program arguments
      */
     public static void main(String[] args) {

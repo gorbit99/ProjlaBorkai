@@ -17,7 +17,7 @@ public class Robot extends Worker {
     public Robot(Asteroid position) {
         super(position);
         if (billOfMaterials == null) {
-            ArrayList<Material> materials = new ArrayList<Material>();
+            ArrayList<Material> materials = new ArrayList<>();
             materials.add(new Iron());
             materials.add(new Coal());
             materials.add(new Uranium());
@@ -45,11 +45,9 @@ public class Robot extends Worker {
                 }
                 successful = true;
             } catch (Exception e) {
-                System.out.println("szar van");
+                MockIO.out.println("Invalid action");
             }
         }
-
-
     }
 
     /**
@@ -75,10 +73,10 @@ public class Robot extends Worker {
     /**
      * Returns the materials stored by the robot (nothing)
      *
-     * @return null
+     * @return empty list of materials
      */
     public ArrayList<Material> GetStoredMaterials() {
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -89,7 +87,7 @@ public class Robot extends Worker {
      */
     public static Robot CreateRobot(ArrayList<Material> materials, Asteroid position) {
         if (billOfMaterials == null) {
-            ArrayList<Material> receipt = new ArrayList<Material>();
+            ArrayList<Material> receipt = new ArrayList<>();
             receipt.add(new Iron());
             receipt.add(new Coal());
             receipt.add(new Uranium());

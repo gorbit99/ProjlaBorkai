@@ -9,68 +9,70 @@ import java.util.stream.Collectors;
  */
 public class TestHarness {
     /**
-     * The scanner of input
+     * Input scanner
      */
-    protected Scanner inputScanner;
+    protected final Scanner inputScanner;
     /**
      * Output writer
      */
-    protected Writer outputWriter = new OutputStreamWriter(System.out);
+    protected final Writer outputWriter = new OutputStreamWriter(System.out);
     /**
      * Hashmap of the workers
      */
-    protected HashMap<String, Worker> workers = new HashMap<>();
+    protected final HashMap<String, Worker> workers = new HashMap<>();
     /**
      * Hashmap of the astronauts
      */
-    protected HashMap<String, Astronaut> astronauts = new HashMap<>();
+    protected final HashMap<String, Astronaut> astronauts = new HashMap<>();
     /**
      * Hashmap of the robots
      */
-    protected HashMap<String, Robot> robots = new HashMap<>();
+    protected final HashMap<String, Robot> robots = new HashMap<>();
     /**
      * Hashmap of the ufos
      */
-    protected HashMap<String, Ufo> ufos = new HashMap<>();
+    protected final HashMap<String, Ufo> ufos = new HashMap<>();
     /**
      * Hashmap of the spaceobjects
      */
-    protected HashMap<String, SpaceObject> spaceobjects = new HashMap<>();
+    protected final HashMap<String, SpaceObject> spaceobjects = new HashMap<>();
     /**
      * Hashmap of the asteroids
      */
-    protected HashMap<String, Asteroid> asteroids = new HashMap<>();
+    protected final HashMap<String, Asteroid> asteroids = new HashMap<>();
     /**
      * Hashmap of the teleporters
      */
-    protected HashMap<String, Teleporter> teleporters = new HashMap<>();
+    protected final HashMap<String, Teleporter> teleporters = new HashMap<>();
     /**
      * Hashmap of the materials
      */
-    protected HashMap<String, Material> materials = new HashMap<>();
+    protected final HashMap<String, Material> materials = new HashMap<>();
 
     /**
-     * The creator of the TestHarness
+     * Constructs a test harness
      */
     public TestHarness() {
         inputScanner = new Scanner(System.in);
     }
 
     /**
-     * The creator of the TestHarness
-     * @param stream This is the inputscanner in the TestHarness
+     * Constructs a test harness with a specified input stream
+     *
+     * @param stream The input stream the tests are going to be read from
      */
     public TestHarness(InputStream stream) {
         inputScanner = new Scanner(stream);
     }
 
     /**
-     * Find a key by a value
-     * @param map The hashmap
-     * @param value This will be found
-     * @param <K> Key
-     * @param <V> Value
-     * @return The key of entry
+     * Find a key by a value in a hashmap
+     *
+     * @param map   The hashmap
+     * @param value The value to find
+     * @param <K>   Key
+     * @param <V>   Value
+     * @return The key of the entry
      */
     protected <K, V> K reverseMap(HashMap<K, V> map, V value) {
         for (Map.Entry<K, V> entry : map.entrySet()) {
@@ -82,8 +84,9 @@ public class TestHarness {
     }
 
     /**
-     * This makes the test run
-     * @throws TestException
+     * Runs the testcase
+     *
+     * @throws TestException An exception happened inside the testcase
      */
     public void run() throws TestException {
         int lineNo = 1;
@@ -157,18 +160,19 @@ public class TestHarness {
     }
 
     /**
-     * The exepcetion of test
+     * An exception from a testcase
      */
     abstract static class TestException extends Exception {
         /**
-         * The test failed in this line
+         * The line the exception happened on
          */
         protected int lineNo;
 
         /**
-         * The constructor of the exeption
-         * @param message This will be the message
-         * @param lineNo The exception is in this line
+         * The constructor of the exception
+         *
+         * @param message The exception message
+         * @param lineNo  The line the exception is on
          */
         public TestException(String message, int lineNo) {
             super(message);
@@ -177,21 +181,23 @@ public class TestHarness {
     }
 
     /**
-     * Incorrectly formed test exeption
-     * Extends from TestException
+     * Incorrectly formed test exception
+     * Extends TestException
      */
     static class MalformedTestException extends TestException {
         /**
-         * The constuctor
-         * @param message This will be the message
-         * @param lineNo The exception is in this line
+         * The constructor
+         *
+         * @param message The exception message
+         * @param lineNo  The line the exception happened on
          */
         public MalformedTestException(String message, int lineNo) {
             super(message, lineNo);
         }
 
         /**
-         * Creates the exception message
+         * Turns the exception into a printable message
+         *
          * @return The exception message
          */
         @Override
@@ -202,21 +208,21 @@ public class TestHarness {
     }
 
     /**
-     * Invalid argument test exeption
-     * Extends from TestException
+     * Invalid argument test exception
+     * Extends TestException
      */
     static class TestArgumentException extends TestException {
-        //TODO @CsalaPeti ez ezt jelenti? Lentebb is kell javítani
         /**
-         * The wrong argument
+         * The format of the command
          */
         private final String usage;
 
         /**
          * The constructor
-         * @param message This will be the message
-         * @param lineNo The exception is in this line
-         * @param usage The wrong argument
+         *
+         * @param message The message of the exception
+         * @param lineNo  The line the exception happened on
+         * @param usage   The format of the command
          */
         public TestArgumentException(String message, int lineNo, String usage) {
             super(message, lineNo);
@@ -224,7 +230,8 @@ public class TestHarness {
         }
 
         /**
-         * Creates the exception message
+         * Turns the exception into a printable message
+         *
          * @return The exception message
          */
         @Override
@@ -236,13 +243,14 @@ public class TestHarness {
     }
 
     /**
-     * Makes command pattern
+     * The base class for commands
      */
     abstract class Command {
         /**
          * The constructor
-         * @param args The command arguments
-         * @param lineNo Which line are this in
+         *
+         * @param args   The command arguments
+         * @param lineNo The line the command is on
          */
         public Command(String[] args, int lineNo) {
             this.args = args;
@@ -250,15 +258,17 @@ public class TestHarness {
         }
 
         /**
-         * Represents the run of command
-         * @throws TestException
+         * Runs the command
+         *
+         * @throws TestException Something went wrong while running the command
          */
         public abstract void run() throws TestException;
 
         /**
-         * Validate the arguments
-         * @param usage The arguments in string
-         * @throws TestArgumentException
+         * Validates the arguments
+         *
+         * @param usage The format of the command
+         * @throws TestArgumentException Incorrect arguments were provided to the command
          */
         protected void validateArgs(String usage) throws TestArgumentException {
             if (args.length != usage.split(" ").length) {
@@ -267,10 +277,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the worker's existance
+         * Checks for a worker's existence
+         *
          * @param workerId The worker's ID
-         * @param exists True, if we should check the worker exists. False, if we should check the worker not exists.
-         * @throws MalformedTestException
+         * @param exists   True: The worker needs to exist, False: The worker must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateWorker(String workerId, boolean exists) throws MalformedTestException {
             if (workers.containsKey(workerId) != exists) {
@@ -279,10 +290,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the astronaut's existance
+         * Checks for an astronaut's existence
+         *
          * @param astronautId The astronaut's ID
-         * @param exists True, if we should check the astronaut exists. False, if we should check the astronaut not exists.
-         * @throws MalformedTestException
+         * @param exists      True: The astronaut needs to exist, False: The astronaut must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateAstronaut(String astronautId, boolean exists) throws MalformedTestException {
             if (astronauts.containsKey(astronautId) != exists) {
@@ -291,10 +303,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the robot's existance
+         * Checks for a robot's existence
+         *
          * @param robotId The robot's ID
-         * @param exists True, if we should check the robot exists. False, if we should check the robot not exists.
-         * @throws MalformedTestException
+         * @param exists  True: The robot needs to exist, False: The robot must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateRobot(String robotId, boolean exists) throws MalformedTestException {
             if (robots.containsKey(robotId) != exists) {
@@ -303,10 +316,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the ufo's existance
-         * @param ufoId The ufo's ID
-         * @param exists True, if we should check the ufo exists. False, if we should check the ufo not exists.
-         * @throws MalformedTestException
+         * Checks for a ufo's existence
+         *
+         * @param ufoId  The ufo's ID
+         * @param exists True: The ufo needs to exist, False: The ufo must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateUfo(String ufoId, boolean exists) throws MalformedTestException {
             if (ufos.containsKey(ufoId) != exists) {
@@ -315,10 +329,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the spaceobject's existance
+         * Checks for a spaceobject's existence
+         *
          * @param spaceobjectId The spaceobject's ID
-         * @param exists True, if we should check the spaceobject exists. False, if we should check the spaceobject not exists.
-         * @throws MalformedTestException
+         * @param exists        True: The spaceobject needs to exist, False: The spaceobject must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateSpaceobject(String spaceobjectId, boolean exists) throws MalformedTestException {
             if (spaceobjects.containsKey(spaceobjectId) != exists) {
@@ -327,10 +342,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the asteroid's existance
+         * Checks for an asteroid's existence
+         *
          * @param asteroidId The asteroid's ID
-         * @param exists True, if we should check the asteroid exists. False, if we should check the asteroid not exists.
-         * @throws MalformedTestException
+         * @param exists     True: The asteroid needs to exist, False: The asteroid must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateAsteroid(String asteroidId, boolean exists) throws MalformedTestException {
             if (asteroids.containsKey(asteroidId) != exists) {
@@ -339,10 +355,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the teleport's existance
-         * @param teleporterId The teleport's ID
-         * @param exists True, if we should check the teleport exists. False, if we should check the teleport not exists.
-         * @throws MalformedTestException
+         * Checks for a teleporter's existence
+         *
+         * @param teleporterId The teleporter's ID
+         * @param exists       True: The teleporter needs to exist, False: The teleporter must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateTeleporter(String teleporterId, boolean exists) throws MalformedTestException {
             if (teleporters.containsKey(teleporterId) != exists) {
@@ -351,10 +368,11 @@ public class TestHarness {
         }
 
         /**
-         * Checks the material's existance
+         * Checks for a material's existence
+         *
          * @param materialId The material's ID
-         * @param exists True, if we should check the material exists. False, if we should check the material not exists.
-         * @throws MalformedTestException
+         * @param exists     True: The material needs to exist, False: The material must not exist
+         * @throws MalformedTestException The requirement wasn't met
          */
         protected void validateMaterial(String materialId, boolean exists) throws MalformedTestException {
             if (materials.containsKey(materialId) != exists) {
@@ -363,11 +381,11 @@ public class TestHarness {
         }
 
         /**
-         * The argumentums of the command
+         * The arguments of the command
          */
         protected String[] args;
         /**
-         * The command is in this line
+         * The line the command is on
          */
         protected int lineNo;
     }
@@ -379,8 +397,9 @@ public class TestHarness {
     class ImportCommand extends Command {
         /**
          * The constructor
-         * @param args The arguments
-         * @param lineNo The command is in this line
+         *
+         * @param args   The arguments
+         * @param lineNo The line the command is on
          */
         public ImportCommand(String[] args, int lineNo) {
             super(args, lineNo);
@@ -388,26 +407,45 @@ public class TestHarness {
 
         /**
          * Imports the file.
-         * @throws TestException
+         *
+         * @throws MalformedTestException The specified file doesn't exist
+         * @throws TestArgumentException  The arguments provided were incorrect
+         * @throws TestException          Something went wrong in the underlying testcase
          */
         @Override
         public void run() throws TestException {
             validateArgs("import <filename>");
             try {
                 TestHarness testHarness = new TestHarness(new FileInputStream(args[1]));
+                testHarness.run();
             } catch (FileNotFoundException e) {
                 throw new MalformedTestException("Import file doesn't exist!", lineNo);
             }
         }
     }
 
+    /**
+     * The create command
+     */
     class CreateCommand extends Command {
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public CreateCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was  unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
-        public void run() throws TestException {
+        public void run() throws MalformedTestException, TestArgumentException {
             switch (args[1]) {
                 case "astronaut":
                     validateArgs("create astronaut <astronaut-id> <asteroid-id>");
@@ -477,14 +515,29 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The execute command
+     */
     class ExecuteCommand extends Command {
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public ExecuteCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Run the command
+         *
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         * @throws MalformedTestException The command subtype was unknown
+         */
         @Override
-        public void run() throws TestException {
+        public void run() throws TestArgumentException, MalformedTestException {
             switch (args[1]) {
                 case "move": {
                     validateArgs("execute move <entity-id> <spaceobject-id>");
@@ -532,7 +585,10 @@ public class TestHarness {
                     for (int i = 0; i < astronaut.GetStoredMaterials().size(); i++) {
                         if (astronaut.GetStoredMaterials().get(i) == material) {
                             MockIO.in.addInput((i + 1) + "\n");
-                            astronaut.PlaceMaterial();
+                            try {
+                                astronaut.PlaceMaterial();
+                            } catch (Exception ignored) {
+                            }
                             return;
                         }
                     }
@@ -629,14 +685,29 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The astronaut command
+     */
     class AstronautCommand extends Command {
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public AstronautCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
-        public void run() throws TestException {
+        public void run() throws MalformedTestException, TestArgumentException {
             validateAstronaut(args[1], true);
             Astronaut astronaut = astronauts.get(args[1]);
 
@@ -661,12 +732,27 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The asteroidField command
+     */
     class AsteroidFieldCommand extends Command {
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public AsteroidFieldCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
         public void run() throws TestException {
             switch (args[1]) {
@@ -684,10 +770,22 @@ public class TestHarness {
 
     class TeleporterCommand extends Command {
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public TeleporterCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
         public void run() throws TestException {
             validateTeleporter(args[1], true);
@@ -715,12 +813,27 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The asteroid command
+     */
     class AsteroidCommand extends Command {
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public AsteroidCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
         public void run() throws TestException {
             validateAsteroid(args[1], true);
@@ -760,12 +873,27 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The uranium command
+     */
     class UraniumCommand extends Command {
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public UraniumCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
         public void run() throws TestException {
             validateMaterial(args[1], true);
@@ -781,12 +909,27 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The solarStorm command
+     */
     class SolarStormCommand extends Command {
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public SolarStormCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
         public void run() throws TestException {
             SolarStorm solarStorm = Game.GetInstance().GetSolarStorm();
@@ -807,11 +950,26 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The game command
+     */
     class GameCommand extends Command {
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public GameCommand(String[] args, int lineNo) {
             super(args, lineNo);
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
         public void run() throws TestException {
             switch (args[1]) {
@@ -840,14 +998,41 @@ public class TestHarness {
         }
     }
 
+    /**
+     * The printState command
+     */
     class PrintStateCommand extends Command {
+        /**
+         * The asteroids that actually exist in-game
+         */
         TreeSet<Asteroid> realAsteroids = new TreeSet<>(Comparator.comparing(x -> reverseMap(asteroids, x)));
+        /**
+         * The teleporters that actually exist in-game
+         */
         TreeSet<Teleporter> realTeleporters = new TreeSet<>(Comparator.comparing(x -> reverseMap(teleporters, x)));
+        /**
+         * The astronauts that actually exist in-game
+         */
         TreeSet<Astronaut> realAstronauts = new TreeSet<>(Comparator.comparing(x -> reverseMap(astronauts, x)));
+        /**
+         * The robots that actually exist in-game
+         */
         TreeSet<Robot> realRobots = new TreeSet<>(Comparator.comparing(x -> reverseMap(robots, x)));
+        /**
+         * The ufos that actually exist in-game
+         */
         TreeSet<Ufo> realUfos = new TreeSet<>(Comparator.comparing(x -> reverseMap(ufos, x)));
+        /**
+         * The materials that actually exist in-game
+         */
         TreeSet<Material> realMaterials = new TreeSet<>(Comparator.comparing(x -> reverseMap(materials, x)));
 
+        /**
+         * The constructor
+         *
+         * @param args   The arguments of the command
+         * @param lineNo The line the command is on
+         */
         public PrintStateCommand(String[] args, int lineNo) {
             super(args, lineNo);
 
@@ -881,6 +1066,11 @@ public class TestHarness {
             }
         }
 
+        /**
+         * Print the state of the asteroids
+         *
+         * @throws IOException An error happened while printing
+         */
         private void printAsteroids() throws IOException {
             outputWriter.write("Asteroids:\n");
             for (Asteroid asteroid : realAsteroids) {
@@ -908,6 +1098,11 @@ public class TestHarness {
             }
         }
 
+        /**
+         * Prints the state of the teleporters
+         *
+         * @throws IOException An error happened while printing
+         */
         private void printTeleporters() throws IOException {
             outputWriter.write("Teleporters:\n");
             for (Teleporter teleporter : realTeleporters) {
@@ -920,10 +1115,15 @@ public class TestHarness {
                 String pair = teleporter.GetPair() == null ? "null" : reverseMap(teleporters, teleporter.GetPair());
                 outputWriter.write("\t\tpair: " + pair + "\n");
 
-                outputWriter.write("\t\tisBroken: " + teleporter.GetBroken() + "\n");
+                outputWriter.write("\t\tisBroken: " + teleporter.IsBroken() + "\n");
             }
         }
 
+        /**
+         * Prints the state of the astronauts
+         *
+         * @throws IOException An error happened while printing
+         */
         private void printAstronauts() throws IOException {
             outputWriter.write("Astronauts:\n");
             for (Astronaut astronaut : realAstronauts) {
@@ -946,6 +1146,11 @@ public class TestHarness {
             }
         }
 
+        /**
+         * Prints the state of the robots
+         *
+         * @throws IOException An error happened while printing
+         */
         private void printRobots() throws IOException {
             outputWriter.write("Robots:\n");
 
@@ -957,6 +1162,11 @@ public class TestHarness {
             }
         }
 
+        /**
+         * Prints the state of the ufos
+         *
+         * @throws IOException An error happened while printing
+         */
         private void printUfos() throws IOException {
             outputWriter.write("UFOs:\n");
 
@@ -968,6 +1178,11 @@ public class TestHarness {
             }
         }
 
+        /**
+         * Prints the state of the materials
+         *
+         * @throws IOException An error happened while printing
+         */
         void printMaterials() throws IOException {
             outputWriter.write("Materials:\n");
             for (Material material : realMaterials) {
@@ -986,11 +1201,22 @@ public class TestHarness {
             }
         }
 
+        /**
+         * Prints the state of the solar storm
+         *
+         * @throws IOException An error happened while printing
+         */
         private void printSolarStorm() throws IOException {
             outputWriter.write("SolarStorm:\n");
             outputWriter.write("\ttimeTillHit: " + Game.GetInstance().GetSolarStorm().GetTimeTillHit() + "\n");
         }
 
+        /**
+         * Runs the command
+         *
+         * @throws MalformedTestException The command subtype was unknown
+         * @throws TestArgumentException  The arguments provided to the command were incorrect
+         */
         @Override
         public void run() throws TestException {
             validateArgs("printState");
