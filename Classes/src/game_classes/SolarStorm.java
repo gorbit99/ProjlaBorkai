@@ -29,6 +29,7 @@ public class SolarStorm {
             timeTillHit = Game.RandomNum(10) + 10;
             return true;
         }
+        timeTillHit--;
         return false;
     }
 
