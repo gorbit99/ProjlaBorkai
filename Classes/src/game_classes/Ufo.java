@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class Ufo extends Worker {
 
-
     /**
      * Constructor of the class, every worker has a position.
-     * @param position
+     *
+     * @param position The position to create the ufo on
      */
     public Ufo(Asteroid position) {
         super(position);
@@ -27,7 +27,7 @@ public class Ufo extends Worker {
      */
     @Override
     public void Step() {
-        if (this.position.GetCore()!=null)
+        if (this.position.GetCore() != null)
             this.Steal();
         else
             this.Move();
@@ -49,9 +49,14 @@ public class Ufo extends Worker {
         TravelTo(pos);
     }
 
+    /**
+     * Doesn't do anything
+     *
+     * @return empty list of materials
+     */
     @Override
     public ArrayList<Material> GetStoredMaterials() {
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -61,6 +66,4 @@ public class Ufo extends Worker {
         if (this.position.GetCore() != null)
             this.position.SetCore(null);
     }
-
-
 }

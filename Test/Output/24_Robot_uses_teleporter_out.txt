@@ -16,7 +16,7 @@ Teleporters:
 		parent: A1
 		pair: G2
 		isBroken: false
-	G1:
+	G2:
 		parent: A2
 		pair: G1
 		isBroken: false

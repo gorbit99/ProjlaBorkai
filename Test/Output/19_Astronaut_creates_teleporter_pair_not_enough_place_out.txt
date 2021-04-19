@@ -7,11 +7,11 @@ Asteroids:
         distanceFromSun: -
 Teleporters:
     T1:
-        parent: null
+        parent: not placed
         pair: T2
         isBroken: false
     T2:
-        parent: null
+        parent: not placed
         pair: T1
         isBroken: false
 Astronauts:

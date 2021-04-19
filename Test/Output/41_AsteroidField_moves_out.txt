@@ -4,7 +4,7 @@ Asteroids:
 		core: -
 		layers: -
 		neighbours: -
-		distanceFromSun: 3
+		distanceFromSun: !0
 Teleporter:
 Astronauts:
 Robots:

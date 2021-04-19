@@ -10,7 +10,7 @@ public class AsteroidField {
     /**
      * contains all the spaceObjects in the asteroid field
      */
-    private ArrayList<SpaceObject> spaceObjects;
+    private final ArrayList<SpaceObject> spaceObjects;
     private static AsteroidField instance;
 
     /**

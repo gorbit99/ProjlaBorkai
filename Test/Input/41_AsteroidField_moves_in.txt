@@ -5,6 +5,6 @@ create asteroid A1
 asteroid A1 setDistance 0
 
 #movements
-asteroidField Move
+asteroidField move
 
 printState

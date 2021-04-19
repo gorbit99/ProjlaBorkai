@@ -1,6 +1,5 @@
 package game_classes;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -18,26 +17,26 @@ public class MockIO {
     /**
      * Mock input stream, returns the previous specified bytes in order
      */
-    public static MockIn in;
+    public static final MockIn in;
     /**
      * Mock output stream, throws away the input
      */
-    public static MockOut out;
+    public static final MockOut out;
 }
 
 /**
  * Mock input stream
  */
 class MockIn extends InputStream {
-    private LinkedList<String> inputs = new LinkedList<>();
+    private final LinkedList<String> inputs = new LinkedList<>();
 
     /**
      * Reads the next byte specified earlier
+     *
      * @return The next byte in the stream
-     * @throws IOException
      */
     @Override
-    public int read() throws IOException {
+    public int read() {
         while (inputs.size() > 0 && inputs.get(0).length() == 0) {
             inputs.pollFirst();
         }
@@ -54,22 +53,40 @@ class MockIn extends InputStream {
 
     /**
      * Add input to the stream
+     *
      * @param input The input to add
      */
     public void addInput(String input) {
         inputs.addLast(input);
     }
-
-    /**
-     * Clears the stream and throws away all unused input
-     */
-    public void clear() {
-        inputs.clear();
-    }
 }
 
+/**
+ * Mock output stream
+ */
 class MockOut extends OutputStream {
+    /**
+     * Throws the parameter away
+     *
+     * @param i The byte to write
+     */
     @Override
-    public void write(int i) throws IOException {
+    public void write(int i) {
+    }
+
+    /**
+     * Mocks a println call with a parameter
+     *
+     * @param ignored The line to print out
+     */
+    public void println(String ignored) {
+
+    }
+
+    /**
+     * Mocks a println call
+     */
+    public void println() {
+
     }
 }

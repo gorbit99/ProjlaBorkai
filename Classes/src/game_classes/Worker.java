@@ -12,16 +12,19 @@ public abstract class Worker {
 
     /**
      * Constructor of the class, every worker has a position.
-     * @param position
+     *
+     * @param position The position to create the worker on
      */
-    public Worker(Asteroid position){
+    public Worker(Asteroid position) {
         SetPosition(position);
         Game.GetInstance().AddWorker(this);
+        position.AddWorker(this);
     }
 
 
     /**
      * Moves worker to the given SpaceObject
+     *
      * @param spaceObject worker will be moved here
      */
     public void TravelTo(SpaceObject spaceObject) {
@@ -39,7 +42,8 @@ public abstract class Worker {
     /**
      * worker waits nothing happens
      */
-    public void Wait() {}
+    public void Wait() {
+    }
 
     /**
      * happens when a steroid explodes
@@ -50,8 +54,9 @@ public abstract class Worker {
      * called when a solar storm occurs
      */
     public void HandleSolarStorm() {
-        if (!this.position.CanHideIn())
+        if (!this.position.CanHideIn()) {
             this.Die();
+        }
     }
 
     /**
@@ -65,6 +70,7 @@ public abstract class Worker {
 
     /**
      * Sets the worker's position
+     *
      * @param asteroid to be set as position
      */
     public void SetPosition(Asteroid asteroid) {
@@ -83,6 +89,7 @@ public abstract class Worker {
 
     /**
      * returns the stored material of the worker
+     *
      * @return stored materials
      */
     public abstract ArrayList<Material> GetStoredMaterials();

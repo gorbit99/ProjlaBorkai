@@ -16,11 +16,13 @@ public class Robot extends Worker {
      */
     public Robot(Asteroid position) {
         super(position);
-        ArrayList<Material> materials = new ArrayList<Material>();
-        materials.add(new Iron());
-        materials.add(new Coal());
-        materials.add(new Uranium());
-        this.billOfMaterials = new BillOfMaterials(materials);
+        if (billOfMaterials == null) {
+            ArrayList<Material> materials = new ArrayList<>();
+            materials.add(new Iron());
+            materials.add(new Coal());
+            materials.add(new Uranium());
+            billOfMaterials = new BillOfMaterials(materials);
+        }
     }
 
     /**
@@ -43,11 +45,9 @@ public class Robot extends Worker {
                 }
                 successful = true;
             } catch (Exception e) {
-                System.out.println("szar van");
+                MockIO.out.println("Invalid action");
             }
         }
-
-
     }
 
     /**
@@ -55,34 +55,28 @@ public class Robot extends Worker {
      * moves robot to a random neighbour
      */
     public void Explode() {
-        TestLogger.EnterFunction("Robot.Explode");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         this.position.RemoveWorker(this);
         int to = Game.RandomNum(neighbours.size());
         neighbours.get(to).AddWorker(this);
-        TestLogger.ExitFunction();
     }
 
     /**
      * moves robot to a neighbour
      */
     public void Move() {
-        TestLogger.EnterFunction("Robot.Move");
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         int to = Game.RandomNum(neighbours.size());
         this.TravelTo(neighbours.get(to));
-        TestLogger.ExitFunction();
     }
 
     /**
      * Returns the materials stored by the robot (nothing)
      *
-     * @return null
+     * @return empty list of materials
      */
     public ArrayList<Material> GetStoredMaterials() {
-        TestLogger.EnterFunction("Robot.GetStoredMaterials");
-        TestLogger.ExitFunction();
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -92,6 +86,13 @@ public class Robot extends Worker {
      * @return a new robot if the build was successful otherwise null
      */
     public static Robot CreateRobot(ArrayList<Material> materials, Asteroid position) {
+        if (billOfMaterials == null) {
+            ArrayList<Material> receipt = new ArrayList<>();
+            receipt.add(new Iron());
+            receipt.add(new Coal());
+            receipt.add(new Uranium());
+            billOfMaterials = new BillOfMaterials(receipt);
+        }
         boolean enough = billOfMaterials.IsEnough(materials);
         if (enough)
             return new Robot(position);

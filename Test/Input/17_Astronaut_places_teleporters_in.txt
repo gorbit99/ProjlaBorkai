@@ -10,6 +10,8 @@ astronaut S1 addTeleporter T1
 astronaut S1 addTeleporter T2
 asteroid A1 addNeighbour A2
 asteroid A2 addNeighbour A1
+teleporter T1 linkTo T2
+teleporter T2 linkTo T1
 
 
 

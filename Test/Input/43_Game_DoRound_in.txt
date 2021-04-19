@@ -6,19 +6,19 @@ create asteroid A2
 
 #creating neighbours
 asteroid A1 addNeighbour A2
-asteroid A2 addneighbour A1
+asteroid A2 addNeighbour A1
 
 #setting asteroid params
 create material I1 iron
-asteroid A1 setLayer 0
+asteroid A1 setLayers 0
 asteroid A1 setCore I1
 
-#creat workers
-creat astronaut S1 A1
-creat robot R1 A1
+#create workers
+create astronaut S1 A1
+create robot R1 A1
 
 
 #movements
-game doRound execute mine S1;execute move R1 A2
+game doRound 3
 
 printState

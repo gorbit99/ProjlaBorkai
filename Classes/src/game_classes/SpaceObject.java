@@ -7,67 +7,83 @@ import java.util.ArrayList;
  */
 public abstract class SpaceObject {
 
-	/**
-	 * @param workers contains all the workers who are standing on the space object
-	 * @param neighbours contains all the neigbours
-	 */
-	protected ArrayList<Worker> workers = new ArrayList<Worker>();
-	protected ArrayList<SpaceObject> neighbours = new ArrayList<SpaceObject>();
+    public SpaceObject() {
+        AsteroidField.GetInstance().AddSpaceObject(this);
+    }
 
-	/**
-	 * adds new neighbour
-	 * @param spaceObject neighbour to be added to the neighbour list
-	 */
-	public void AddNeighbour(SpaceObject spaceObject) {
-		this.neighbours.add(spaceObject);
-	}
+    /**
+     * Contains all the workers who are standing on the space object
+     */
+    protected final ArrayList<Worker> workers = new ArrayList<>();
+    /**
+     * Contains all the neighbours
+     */
+    protected final ArrayList<SpaceObject> neighbours = new ArrayList<>();
 
-
-	/**
-	 * return all the workers on the space object
-	 * @return all the workers on the space objects
-	 */
-	public ArrayList<Worker> GetWorkers(){
-		return workers;
-	}
-
-	/**
-	 * returns all the neighbours
-	 * @return all the neighbours of the space object
-	 */
-	public ArrayList<SpaceObject> GetNeighbours() {
-		return this.neighbours;
-	}
-
-	/**
-	 * removes a neighbour
-	 * @param spaceObject space object to be removed
-	 */
-	public abstract void RemoveNeighbour(SpaceObject spaceObject);
-
-	/**
-	 * adds a worker to the worker list
-	 * @param worker worker to be added to the neighbour list
-	 */
-	public abstract void AddWorker(Worker worker);
-
-	/**
-	 * removes a worker from workers list
-	 * @param worker worker to be removed from workers list
-	 */
-	public abstract void RemoveWorker(Worker worker);
+    /**
+     * adds new neighbour
+     *
+     * @param spaceObject neighbour to be added to the neighbour list
+     */
+    public void AddNeighbour(SpaceObject spaceObject) {
+        this.neighbours.add(spaceObject);
+    }
 
 
-	/**
-	 * moves the space object
-	 * called once every round
-	 */
-	public abstract void Move();
+    /**
+     * return all the workers on the space object
+     *
+     * @return all the workers on the space objects
+     */
+    public ArrayList<Worker> GetWorkers() {
+        return workers;
+    }
 
-	/**
-	 * called when a solar storm reached a space object
-	 */
-	public abstract void HandleSolarStorm();
+    /**
+     * returns all the neighbours
+     *
+     * @return all the neighbours of the space object
+     */
+    public ArrayList<SpaceObject> GetNeighbours() {
+        return this.neighbours;
+    }
 
-	public abstract Material GetCore();
+    /**
+     * removes a neighbour
+     *
+     * @param spaceObject space object to be removed
+     */
+    public abstract void RemoveNeighbour(SpaceObject spaceObject);
+
+    /**
+     * adds a worker to the worker list
+     *
+     * @param worker worker to be added to the worker list
+     */
+    public abstract void AddWorker(Worker worker);
+
+    /**
+     * removes a worker from workers list
+     *
+     * @param worker worker to be removed from workers list
+     */
+    public abstract void RemoveWorker(Worker worker);
+
+    /**
+     * moves the space object
+     * called once every round
+     */
+    public abstract void Move();
+
+    /**
+     * called when a solar storm reached a space object
+     */
+    public abstract void HandleSolarStorm();
+
+    /**
+     * returns core of the space object
+     *
+     * @return core of the space object
+     */
+    public abstract Material GetCore();
 }

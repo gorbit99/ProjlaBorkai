@@ -10,38 +10,58 @@ public class Game {
     /**
      * This list contains workers.
      */
-    private ArrayList<Worker> workers;
+    private final ArrayList<Worker> workers;
     /**
      * This is the solarstorm. It will make solarstorms.
      */
-    private SolarStorm solarStorm;
+    private final SolarStorm solarStorm = new SolarStorm();
     /**
      * This is the bill of materials, that you need to build a base.
      */
     private BillOfMaterials billOfMaterials;
     /**
-     * This helps to make random nums
+     * This helps to make random numbers
      */
-    private static Random random;
+    private static Random random = new Random();
     /**
-     * the instance of the singletone class
+     * the instance of the singleton class
      */
     private static Game instance;
-    //TODO ide elv kell egz asteroid field de syeritnem nem mert szingletone
-
+    /**
+     * represents if the players won or not
+     * true if they won
+     */
+    private boolean win;
+    /**
+     * represents if the players lost or not
+     * true if they lost
+     */
+    private boolean lose;
 
     /**
      * This is the game's constructor.
      */
     private Game() {
-        this.random = new Random();
-        workers = new ArrayList<Worker>();
+        random = new Random();
+        workers = new ArrayList<>();
+        if (billOfMaterials == null) {
+            ArrayList<Material> materials = new ArrayList<>();
+            materials.add(new Iron());
+            materials.add(new Iron());
+            materials.add(new Coal());
+            materials.add(new Coal());
+            materials.add(new Uranium());
+            materials.add(new Uranium());
+            materials.add(new Ice());
+            materials.add(new Ice());
+            billOfMaterials = new BillOfMaterials(materials);
+        }
     }
 
     /**
-     * This helps the singleton.
+     * Get the game instance
      *
-     * @return
+     * @return The game instance
      */
     public static Game GetInstance() {
         if (instance == null)
@@ -63,14 +83,14 @@ public class Game {
      * This makes a round in the game.
      */
     public void DoRound() {
-        for (Worker worker :this.workers) {
+        for (Worker worker : this.workers) {
             worker.Step();
             CheckWinOrLose();
         }
         AsteroidField.GetInstance().Move();
         if (this.solarStorm.Tick())
             AsteroidField.GetInstance().HandleSolarStorm();
-       CheckWinOrLose();
+        CheckWinOrLose();
     }
 
     /**
@@ -80,11 +100,12 @@ public class Game {
         ArrayList<Material> materialSum = new ArrayList<>();
         for (SpaceObject object : AsteroidField.GetInstance().GetObjects()) {
             for (Worker worker : object.GetWorkers()) {
-                //TODO amugy jo materialSum.add(worker.GetStoredMaterials());
+                materialSum.addAll(worker.GetStoredMaterials());
             }
         }
-        if (!this.billOfMaterials.IsEnough(materialSum)) {
-            //TODO valahgy legeyn vege a jateknak
+        if (this.billOfMaterials.IsEnough(materialSum)) {
+            this.win = true;
+            return;
         }
         ArrayList<Material> coreSum = new ArrayList<>();
 
@@ -92,17 +113,10 @@ public class Game {
             if (object.GetCore() != null)
                 coreSum.add(object.GetCore());
         }
-        if (!this.billOfMaterials.IsEnough(coreSum) ){
-            //TODO valahgy legeyn vege a jateknak
+        if (!this.billOfMaterials.IsEnough(coreSum)) {
+            this.lose = true;
         }
 
-    }
-
-    /**
-     * Handles a solar storm
-     */
-    public void HandleSolarStorm() {
-        AsteroidField.GetInstance().HandleSolarStorm();
     }
 
     /**
@@ -137,5 +151,32 @@ public class Game {
      */
     public ArrayList<Worker> GetWorkers() {
         return workers;
+    }
+
+    /**
+     * returns the solar storm of the game
+     *
+     * @return solarstorm of the game
+     */
+    public SolarStorm GetSolarStorm() {
+        return solarStorm;
+    }
+
+    /**
+     * This function returns whether the players won
+     *
+     * @return true if the settlers won the game
+     */
+    public boolean DidWin() {
+        return win;
+    }
+
+    /**
+     * This function returns whether the players lost
+     *
+     * @return true if the settlers lost the game
+     */
+    public boolean DidLose() {
+        return lose;
     }
 }
