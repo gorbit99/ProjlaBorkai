@@ -19,6 +19,6 @@ create robot R1 A1
 
 
 #movements
-game doRound execute mine S1;execute move R1 A2
+game doRound 3
 
 printState
