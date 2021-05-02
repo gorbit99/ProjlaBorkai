@@ -1,5 +1,7 @@
 package graphics;
 
+import game_classes.Astronaut;
+
 import java.beans.PropertyChangeEvent;
 
 public class AstronautController extends WorkerController{

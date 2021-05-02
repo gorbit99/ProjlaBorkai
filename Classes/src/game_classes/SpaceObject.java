@@ -1,11 +1,17 @@
 package game_classes;
 
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 /**
  * represents a space object
  */
 public abstract class SpaceObject {
+    protected PropertyChangeSupport changeEvent;
+
+    public PropertyChangeSupport GetChangeEvent() {
+        return changeEvent;
+    }
 
     public SpaceObject() {
         AsteroidField.GetInstance().AddSpaceObject(this);

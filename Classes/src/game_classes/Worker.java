@@ -1,6 +1,7 @@
 package game_classes;
 
 
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,11 @@ import java.util.ArrayList;
  */
 public abstract class Worker {
     protected Asteroid position;
+    protected PropertyChangeSupport changeEvent;
 
+    public PropertyChangeSupport GetChangeEvent() {
+        return changeEvent;
+    }
 
     /**
      * Constructor of the class, every worker has a position.
@@ -93,4 +98,5 @@ public abstract class Worker {
      * @return stored materials
      */
     public abstract ArrayList<Material> GetStoredMaterials();
+
 }

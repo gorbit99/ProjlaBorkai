@@ -1,5 +1,7 @@
 package graphics;
 
+import game_classes.Ufo;
+
 import javax.swing.text.html.ImageView;
 import java.beans.PropertyChangeEvent;
 

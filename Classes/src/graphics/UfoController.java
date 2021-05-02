@@ -1,5 +1,7 @@
 package graphics;
 
+import game_classes.Ufo;
+
 import java.beans.PropertyChangeEvent;
 
 public class UfoController extends WorkerController{
