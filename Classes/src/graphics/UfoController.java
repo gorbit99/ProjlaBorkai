@@ -1,4 +1,12 @@
 package graphics;
 
-public class UfoController {
+import java.beans.PropertyChangeEvent;
+
+public class UfoController extends WorkerController{
+    private Ufo ufo;
+    private UfoView view;
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
+    }
 }
