@@ -1,5 +1,6 @@
 package game_classes;
 
+
 public class Main {
     /**
      * The main function
@@ -7,6 +8,7 @@ public class Main {
      * @param args Program arguments
      */
     public static void main(String[] args) {
+
         TestHarness testHarness = new TestHarness();
         try {
             testHarness.run();
@@ -14,4 +16,6 @@ public class Main {
             System.out.println(e);
         }
     }
+
+
 }
