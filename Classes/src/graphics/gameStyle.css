@@ -1,0 +1,80 @@
+.root {
+    -fx-background-color: #2591E4;
+}
+
+#moveBtn {
+    -fx-background-image: url('../Pictures/move.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
+
+#exitBtn {
+    -fx-background-image: url('../Pictures/exit.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
+
+
+#drillBtn {
+    -fx-background-image: url('../Pictures/drill.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
+
+#drillBtn:disabled {
+    -fx-background-image: url('../Pictures/drill_inactive.png');
+}
+
+#mineBtn {
+    -fx-background-image: url('../Pictures/mine.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
+
+#mineBtn:disabled {
+    -fx-background-image: url('../Pictures/mine_inactive.png');
+}
+
+#placeBtn {
+    -fx-background-image: url('../Pictures/place.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
+
+#placeBtn:disabled {
+    -fx-background-image: url('../Pictures/place_inaktive.png');
+}
+
+#robotBtn {
+    -fx-background-image: url('../Pictures/crtRobot.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
+
+#robotBtn:disabled {
+    -fx-background-image: url('../Pictures/crtRobot_inactive.png');
+}
+
+#teleportBtn {
+    -fx-background-image: url('../Pictures/crtTeleport.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
+
+#teleportBtn:disabled {
+    -fx-background-image: url('../Pictures/crtTeleport_inactive.png');
+}
