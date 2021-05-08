@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -14,10 +14,10 @@
       </AnchorPane>
       <AnchorPane layoutX="-4.0" prefHeight="404.0" prefWidth="608.0">
          <children>
-            <Button layoutX="271.0" layoutY="342.0" mnemonicParsing="false" text="Button" />
-            <ImageView fx:id="logoPic" fitHeight="242.0" fitWidth="454.0" layoutX="77.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="startBtn" layoutX="170.0" layoutY="243.0" mnemonicParsing="false" prefHeight="143.0" prefWidth="252.0" />
+            <ImageView fx:id="logoPic" fitHeight="242.0" fitWidth="454.0" layoutX="84.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Pictures/logo.png"/>
+                  <Image url="@../Pictures/logo.png" />
                </image>
             </ImageView>
          </children>

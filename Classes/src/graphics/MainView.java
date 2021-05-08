@@ -16,6 +16,8 @@ public class MainView extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(root, Color.ORANGE);
+        String css=this.getClass().getResource("menuStyle.css").toExternalForm();
+        scene.getStylesheets().add(css);
 
         stage.setScene(scene);
         stage.show();
