@@ -6,6 +6,5 @@
     -fx-background-image: url('../Pictures/start.png');
     -fx-background-position: center;
     -fx-background-color: #DF7213;
-    -fx-background-repeat: no-repeat;
-
+    -fx-background-repeat: no-repeat
 }
