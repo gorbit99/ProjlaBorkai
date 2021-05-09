@@ -1,5 +1,7 @@
 package game_classes;
 
+import graphics.AstronautController;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -149,6 +151,7 @@ public class Game {
     public void StartGame() {
         AsteroidField.GetInstance();
         for (int i = 0; i < 4; i++) {
+            AstronautController.CreateAstronautController();
         }
     }
 
