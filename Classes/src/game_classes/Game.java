@@ -7,6 +7,9 @@ import java.util.Random;
  * This class represents the game.
  */
 public class Game {
+    final int astronautCount = 4;
+    final int ufoCount = 2;
+
     /**
      * This list contains workers.
      */
@@ -78,6 +81,9 @@ public class Game {
     public static int RandomNum(int bound) {
         return random.nextInt(bound);
     }
+    public static Random getRandomGenerator() {
+        return random;
+    }
 
     /**
      * This makes a round in the game.
@@ -141,7 +147,7 @@ public class Game {
      * function that starts the game
      */
     public void StartGame() {
-
+        AsteroidField.GetInstance();
     }
 
     /**

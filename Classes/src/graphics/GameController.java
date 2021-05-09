@@ -2,11 +2,14 @@ package graphics;
 
 import game_classes.Game;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 public class GameController {
 
+    @FXML
+    private Group asteroidFieldGroup;
     @FXML
     private Button placeBtn;
     @FXML
@@ -24,6 +27,15 @@ public class GameController {
     @FXML
     private Button moveBtn;
 
+    private static GameController instance;
+
+    public GameController() {
+        instance = this;
+    }
+
+    public static GameController getInstance() {
+        return instance;
+    }
 
     @FXML
     protected void initialize(){
@@ -41,5 +53,9 @@ public class GameController {
 
     public void exit(){
         System.exit(0);
+    }
+
+    public Group getAsteroidFieldGroup() {
+        return asteroidFieldGroup;
     }
 }

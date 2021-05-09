@@ -1,11 +1,22 @@
 package game_classes;
 
+import graphics.SpaceObjectController;
+
 import java.util.ArrayList;
 
 /**
  * This class represents the asteroid field of the game. Stores and moves the asteroids.
  */
 public class AsteroidField {
+    /**
+     * Number of asteroids in a row
+     */
+    private static final int asteroidFieldWidth = 3;
+
+    /**
+     * Number of asteroids in a column
+     */
+    private static final int asteroidFieldHeight = 5;
 
     /**
      * contains all the spaceObjects in the asteroid field
@@ -20,12 +31,20 @@ public class AsteroidField {
         spaceObjects = new ArrayList<>();
     }
 
+    private void init() {
+        for (int i = 0; i < asteroidFieldWidth * asteroidFieldHeight; i++) {
+            SpaceObjectController.createAsteroidController(i);
+        }
+    }
+
     /**
      * @return the instance of the class
      */
     public static AsteroidField GetInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new AsteroidField();
+            instance.init();
+        }
         return instance;
     }
 
@@ -75,5 +94,21 @@ public class AsteroidField {
         for (SpaceObject so : object.GetNeighbours()) {
             so.HandleSolarStorm();
         }
+    }
+
+    /**
+     * Gets the number of asteroids in a row
+     * @return The number of asteroids in a row
+     */
+    public static int getAsteroidFieldWidth() {
+        return asteroidFieldWidth;
+    }
+
+    /**
+     * Gets the number of asteroids in a column
+     * @return The number of asteroids in a column
+     */
+    public static int getAsteroidFieldHeight() {
+        return asteroidFieldHeight;
     }
 }
