@@ -13,6 +13,6 @@ public class IceView extends MaterialView{
 
     public IceView(ImageView iv){
         super(iv);
-        image.setImage(new Image("/Pictures/iron.png"));
+        image.setImage(new Image("/Pictures/ice.png"));
     }
 }

@@ -13,6 +13,6 @@ public class UraniumView extends MaterialView{
 
     public UraniumView(ImageView iv){
         super(iv);
-        image.setImage(new Image("/Pictures/iron.png"));
+        image.setImage(new Image("/Pictures/uranium.png"));
     }
 }

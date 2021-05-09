@@ -13,6 +13,6 @@ public class CoalView extends MaterialView {
 
     public CoalView(ImageView iv){
         super(iv);
-        image.setImage(new Image("/Pictures/iron.png"));
+        image.setImage(new Image("/Pictures/coal.png"));
     }
 }
