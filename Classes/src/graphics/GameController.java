@@ -55,6 +55,22 @@ public class GameController {
         System.exit(0);
     }
 
+    public Button getPlaceBtn() {
+        return placeBtn;
+    }
+
+    public Button getRobotBtn() {
+        return robotBtn;
+    }
+
+    public Button getMineBtn() {
+        return mineBtn;
+    }
+
+    public Button getTeleportBtn() {
+        return teleportBtn;
+    }
+
     public Group getAsteroidFieldGroup() {
         return asteroidFieldGroup;
     }

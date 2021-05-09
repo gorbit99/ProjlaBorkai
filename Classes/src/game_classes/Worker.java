@@ -27,6 +27,14 @@ public abstract class Worker {
 
 
     /**
+     * returns the position of the worker
+     * @return worker's position
+     */
+    public Asteroid getPosition() {
+        return position;
+    }
+
+    /**
      * Moves worker to the given SpaceObject
      *
      * @param spaceObject worker will be moved here

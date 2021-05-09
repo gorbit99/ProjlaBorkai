@@ -1,5 +1,6 @@
 package game_classes;
 
+import graphics.AstronautController;
 import graphics.SpaceObjectController;
 
 import java.util.ArrayList;
