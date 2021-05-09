@@ -16,13 +16,15 @@ public class MainController {
     @FXML
     private AnchorPane menuView;
 
-
+    /**
+     * starting method of the game
+     * @throws IOException
+     */
     public void Start() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
         Scene scene = new Scene(root, Color.ORANGE);
         String css = this.getClass().getResource("gameStyle.css").toExternalForm();
         scene.getStylesheets().add(css);
-
 
 
         Stage stage = (Stage)menuView.getScene().getWindow();
