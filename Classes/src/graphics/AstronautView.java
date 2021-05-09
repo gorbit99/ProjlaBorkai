@@ -7,9 +7,17 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 public class AstronautView {
+    /**
+     * image view of the controller
+     * and the astronaut which belong sto the controller
+     */
     private ImageView imageView;
     private Astronaut astronaut;
 
+    /**
+     * constructor of AstronautView class
+     * @param astronaut the astronaut which belongs to the controller
+     */
     public AstronautView(Astronaut astronaut) {
         imageView.setImage(new Image("/Pictures/spaceship.png"));
         this.astronaut = astronaut;
@@ -19,6 +27,9 @@ public class AstronautView {
 
     }
 
+    /**
+     * Decides which button is active during a player's turn
+     */
     public void SetButtonStatus() {
         Asteroid asteroid = astronaut.getPosition();
         if (asteroid.GetLayers() == 0)
