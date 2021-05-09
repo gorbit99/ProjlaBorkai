@@ -48,10 +48,6 @@ public class GameController {
         return drillBtn;
     }
 
-    public Button getMoveBtn() {
-        return moveBtn;
-    }
-
     public void exit(){
         System.exit(0);
     }

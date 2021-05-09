@@ -1,7 +1,9 @@
 package graphics;
 
+import game_classes.Asteroid;
 import game_classes.AsteroidField;
 import game_classes.Astronaut;
+import game_classes.Game;
 
 import java.beans.PropertyChangeEvent;
 
@@ -15,6 +17,8 @@ public class AstronautController extends WorkerController {
     }
 
     public static void CreateAstronautController() {
-        //Astronaut astronaut = new Astronaut(AsteroidField.GetInstance().GetObjects().get());
+        Astronaut as = new Astronaut((Asteroid) AsteroidField.GetInstance().GetObjects().get(Game.GetInstance().RandomNum(AsteroidField.GetInstance().GetObjects().size())));
+
+
     }
 }
