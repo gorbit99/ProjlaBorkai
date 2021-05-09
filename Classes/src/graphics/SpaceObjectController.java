@@ -38,13 +38,13 @@ public class SpaceObjectController implements PropertyChangeListener {
         double gridHeight = height / AsteroidField.getAsteroidFieldHeight();
 
         int groupX = id % AsteroidField.getAsteroidFieldWidth();
-        int groupY = id / AsteroidField.getAsteroidFieldWidth();
+        int groupY = id % AsteroidField.getAsteroidFieldHeight(); // per helyett százalék
 
         double x = gridWidth * groupX + Game.getRandomGenerator().nextDouble() * gridWidth;
         double y = gridHeight * groupY + Game.getRandomGenerator().nextDouble() * gridHeight;
 
-        imageView.setFitWidth(width / AsteroidField.getAsteroidFieldWidth() / 3);
-        imageView.setFitHeight(width / AsteroidField.getAsteroidFieldWidth() / 3);
+        imageView.setFitWidth(width / AsteroidField.getAsteroidFieldWidth() / 5);
+        imageView.setFitHeight(height / AsteroidField.getAsteroidFieldHeight() / 3);
 
         asteroidsGroup.getChildren().add(imageView);
         imageView.setLayoutX(x);
