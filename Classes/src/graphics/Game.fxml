@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="gameView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.GameController">
@@ -13,7 +13,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2591E4;">
                <children>
-                  <Group fx:id="asteroidFieldGroup" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="599.0" AnchorPane.topAnchor="0.0" />
+                  <Pane fx:id="asteroidFieldGroup" AnchorPane.bottomAnchor="329.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="598.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

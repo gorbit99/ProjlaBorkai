@@ -4,12 +4,13 @@ import game_classes.Game;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 public class GameController {
 
     @FXML
-    private Group asteroidFieldGroup;
+    private Pane asteroidFieldGroup;
     @FXML
     private Button placeBtn;
     @FXML
@@ -67,7 +68,7 @@ public class GameController {
         return teleportBtn;
     }
 
-    public Group getAsteroidFieldGroup() {
+    public Pane getAsteroidFieldGroup() {
         return asteroidFieldGroup;
     }
 }
