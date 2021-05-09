@@ -40,7 +40,9 @@ public class Teleporter extends SpaceObject {
      * @param teleporter the teleporter to be linked
      */
     public void LinkTo(Teleporter teleporter) {
+        Teleporter before_pair = pair;
         this.pair = teleporter;
+        changeEvent.firePropertyChange("pair", before_pair, teleporter);
     }
 
     /**
@@ -52,8 +54,11 @@ public class Teleporter extends SpaceObject {
         this.AddNeighbour(asteroid);
         if (this.pair != null) {
             this.pair.PairPlaced();
-            if (pair.active)
+            if (pair.active) {
+                boolean before_active=active;
                 this.active = true;
+                changeEvent.firePropertyChange("active",before_active,active);
+            }
         }
         asteroid.AddNeighbour(this);
         AsteroidField.GetInstance().AddSpaceObject(this);
@@ -63,8 +68,11 @@ public class Teleporter extends SpaceObject {
      * logs that the teleporter's pair is placed
      */
     public void PairPlaced() {
-        if (neighbours.size() != 0)
+        if (neighbours.size() != 0){
+            boolean before_active=active;
             active = true;
+            changeEvent.firePropertyChange("active",before_active,active);
+        }
     }
 
     /**
@@ -130,7 +138,9 @@ public class Teleporter extends SpaceObject {
             random = Game.RandomNum(this.neighbours.size());
         } while (this.GetParent() == AsteroidField.GetInstance().GetObjects().get(random) ||
                 pair.GetParent() == AsteroidField.GetInstance().GetObjects().get(random));
+        ArrayList<SpaceObject> before_neighbours= (ArrayList<SpaceObject>)neighbours.clone();
         this.neighbours.remove(spaceObject);
+        changeEvent.firePropertyChange("neighbours",before_neighbours,neighbours);
         this.AddNeighbour(this.neighbours.get(random));
     }
 
@@ -169,7 +179,9 @@ public class Teleporter extends SpaceObject {
      */
     @Override
     public void HandleSolarStorm() {
+        boolean before_isBroken=isBroken;
         isBroken = true;
+        changeEvent.firePropertyChange("isBroken",before_isBroken,isBroken);
     }
 
     /**
