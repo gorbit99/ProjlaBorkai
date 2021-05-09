@@ -1,8 +1,8 @@
 package graphics;
 
 import game_classes.Game;
+import game_classes.MockIO;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -70,9 +70,37 @@ public class GameController {
     /**
      * exit method of the game
      */
-    public void exit(){
+    public void Exit(){
         System.exit(0);
     }
+
+    public void Move(){
+
+    }
+    public void Wait(){
+
+    }
+
+    public void Mine(){
+
+    }
+
+    public void Place(){
+
+    }
+
+    public void Drill(){
+
+    }
+
+    public void createTeleporter(){
+
+    }
+
+    public void createRobot(){
+
+    }
+
 
     /**
      * getter of the place button

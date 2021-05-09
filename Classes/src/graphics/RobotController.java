@@ -1,10 +1,11 @@
 package graphics;
 
+import game_classes.Asteroid;
 import game_classes.Robot;
 
 import java.beans.PropertyChangeEvent;
 
-public class RobotController extends WorkerController{
+public class RobotController extends WorkerController {
 
     /**
      * thr robot which belongs to the controller
@@ -22,7 +23,7 @@ public class RobotController extends WorkerController{
     /**
      * creating method of the robot's controller
      */
-    public static void CreateRobotController(){
-
+    public static void CreateRobotController(Asteroid asteroid) {
+        Robot robot = new Robot(asteroid);
     }
 }

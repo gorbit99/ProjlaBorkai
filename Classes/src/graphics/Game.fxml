@@ -20,15 +20,15 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="63.0" prefWidth="598.0" spacing="10.0" style="-fx-background-color: #2591E4;">
                      <children>
-                        <Button fx:id="moveBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="drillBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="mineBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="placeBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="robotBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="teleportBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="waitBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="moveBtn" mnemonicParsing="false" onAction="#Move" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="drillBtn" mnemonicParsing="false" onAction="#Drill" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="mineBtn" mnemonicParsing="false" onAction="#Mine" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="placeBtn" mnemonicParsing="false" onAction="#Place" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="robotBtn" mnemonicParsing="false" onAction="#createRobot" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="teleportBtn" mnemonicParsing="false" onAction="#createTeleporter" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="waitBtn" mnemonicParsing="false" onAction="#Wait" prefHeight="40.0" prefWidth="65.0" />
                         <Text fx:id="playerText" strokeType="OUTSIDE" strokeWidth="0.0" text="P1" />
-                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#Exit" prefHeight="40.0" prefWidth="65.0" />
                      </children>
                   </HBox>
                </children>
