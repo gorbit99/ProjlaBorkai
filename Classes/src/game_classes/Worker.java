@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public abstract class Worker {
     protected Asteroid position;
-    protected PropertyChangeSupport changeEvent;
+    protected PropertyChangeSupport changeEvent = new PropertyChangeSupport(this);
 
     public PropertyChangeSupport GetChangeEvent() {
         return changeEvent;

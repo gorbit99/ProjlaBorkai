@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="gameView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.GameController">
+<AnchorPane fx:id="gameView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.GameController">
    <children>
-      <SplitPane dividerPositions="0.8341708542713567" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.8341708542713567" mouseTransparent="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2591E4;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2591E4;" SplitPane.resizableWithParent="false">
                <children>
-                  <Pane fx:id="asteroidFieldGroup" AnchorPane.bottomAnchor="329.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="598.0" AnchorPane.topAnchor="0.0" />
+                  <Pane fx:id="asteroidFieldGroup" maxHeight="500.0" maxWidth="329.0" minHeight="598.0" minWidth="329.0" prefHeight="598.0" prefWidth="329.0" AnchorPane.bottomAnchor="329.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="598.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                <children>
                   <HBox alignment="CENTER" prefHeight="63.0" prefWidth="598.0" spacing="10.0" style="-fx-background-color: #2591E4;">
                      <children>

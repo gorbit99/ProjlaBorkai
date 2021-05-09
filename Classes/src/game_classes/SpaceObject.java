@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * represents a space object
  */
 public abstract class SpaceObject {
-    protected PropertyChangeSupport changeEvent;
+    protected PropertyChangeSupport changeEvent = new PropertyChangeSupport(this);
 
     public PropertyChangeSupport GetChangeEvent() {
         return changeEvent;

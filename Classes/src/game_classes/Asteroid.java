@@ -26,8 +26,8 @@ public class Asteroid extends SpaceObject {
      * The constructor of the asteroid.
      */
     public Asteroid() {
-        this.layers = 0;
-        this.distanceFromSun = 0;
+        this.layers = Game.getRandomGenerator().nextInt(3) + 1;
+        this.distanceFromSun = Game.getRandomGenerator().nextFloat() * 5;
         this.core = null;
     }
 

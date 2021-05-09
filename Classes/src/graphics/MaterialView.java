@@ -10,4 +10,8 @@ public abstract class MaterialView {
     protected MaterialView(ImageView iv){
         image = iv;
     }
+
+    public void ShowView(boolean show) {
+        image.setVisible(show);
+    }
 }

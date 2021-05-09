@@ -1,6 +1,5 @@
 package game_classes;
 
-import graphics.AstronautController;
 import graphics.SpaceObjectController;
 
 import java.util.ArrayList;
@@ -23,6 +22,10 @@ public class AsteroidField {
      * contains all the spaceObjects in the asteroid field
      */
     private final ArrayList<SpaceObject> spaceObjects;
+
+    /**
+     * The asteroid field instance in the game
+     */
     private static AsteroidField instance;
 
     /**
