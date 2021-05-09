@@ -20,6 +20,7 @@ public class Ufo extends Worker {
     @Override
     public void Explode() {
         Die();
+        changeEvent.firePropertyChange("exists", true, false);
     }
 
     /**
@@ -46,7 +47,9 @@ public class Ufo extends Worker {
     @Override
     public void Move() {
         SpaceObject pos = this.position.neighbours.get(Game.RandomNum(this.position.neighbours.size()));
+
         TravelTo(pos);
+
     }
 
     /**

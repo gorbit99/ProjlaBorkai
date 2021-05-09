@@ -1,6 +1,5 @@
 package game_classes;
 
-
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
@@ -33,7 +32,9 @@ public abstract class Worker {
      * @param spaceObject worker will be moved here
      */
     public void TravelTo(SpaceObject spaceObject) {
+        SpaceObject old = position;
         this.position.RemoveWorker(this);
+        changeEvent.firePropertyChange("position", old, position);
         spaceObject.AddWorker(this);
     }
 
@@ -71,6 +72,7 @@ public abstract class Worker {
     public void Die() {
         this.position.RemoveWorker(this);
         Game.GetInstance().RemoveWorker(this);
+        changeEvent.firePropertyChange("exist", true, false);
     }
 
     /**
@@ -79,7 +81,9 @@ public abstract class Worker {
      * @param asteroid to be set as position
      */
     public void SetPosition(Asteroid asteroid) {
+        SpaceObject old = position;
         this.position = asteroid;
+        changeEvent.firePropertyChange("position", old,position);
     }
 
     /**

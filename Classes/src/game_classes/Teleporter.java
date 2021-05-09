@@ -55,9 +55,8 @@ public class Teleporter extends SpaceObject {
         if (this.pair != null) {
             this.pair.PairPlaced();
             if (pair.active) {
-                boolean before_active=active;
                 this.active = true;
-                changeEvent.firePropertyChange("active",before_active,active);
+                changeEvent.firePropertyChange("active",false,true);
             }
         }
         asteroid.AddNeighbour(this);
@@ -81,7 +80,6 @@ public class Teleporter extends SpaceObject {
      * @return parent space object
      */
     public SpaceObject GetParent() {
-        //return parent;
         if (neighbours.isEmpty()) {
             return null;
         }

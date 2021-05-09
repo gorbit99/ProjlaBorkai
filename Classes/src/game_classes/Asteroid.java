@@ -152,24 +152,27 @@ public class Asteroid extends SpaceObject {
      * @param spaceObject space object to be removed
      */
     public void RemoveNeighbour(SpaceObject spaceObject) {
+        ArrayList<SpaceObject> old = (ArrayList<SpaceObject>) neighbours.clone();
         neighbours.remove(spaceObject);
         if (neighbours.size() == 0) {
+            //todo ez az if mit csinál?
             if (spaceObject.GetNeighbours().size() == 0) {
                 return;
             }
             ArrayList<SpaceObject> potentialNeighbours = spaceObject.GetNeighbours();
             if (potentialNeighbours.size() > 1) {
-                SpaceObject obj = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 1));
+                SpaceObject obj = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 2) + 1);
                 this.AddNeighbour(obj);
-                return;
+            } else {
+                SpaceObject so;
+                potentialNeighbours = AsteroidField.GetInstance().GetObjects();
+                do {
+                    so = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 1));
+                } while (so == this);
+                this.AddNeighbour(so);
             }
-            SpaceObject so;
-            potentialNeighbours = AsteroidField.GetInstance().GetObjects();
-            do {
-                so = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 1));
-            } while (so == this);
-            this.AddNeighbour(so);
         }
+        changeEvent.firePropertyChange("neighbours", old, neighbours);
     }
 
     /**
@@ -214,6 +217,7 @@ public class Asteroid extends SpaceObject {
      * @param layers the number the layers of the crust
      */
     public void SetLayers(int layers) {
+        changeEvent.firePropertyChange("layers", this.layers, layers);
         this.layers = layers;
     }
 
@@ -232,6 +236,7 @@ public class Asteroid extends SpaceObject {
      * @param distanceFromSun the distance from the sun
      */
     public void SetDistance(int distanceFromSun) {
+        changeEvent.firePropertyChange("distanceFromSun", this.distanceFromSun, distanceFromSun);
         this.distanceFromSun = distanceFromSun;
     }
 

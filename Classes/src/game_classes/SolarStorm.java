@@ -1,9 +1,17 @@
 package game_classes;
 
+import java.beans.PropertyChangeSupport;
+
 /**
  * This class represents the SolarStorms in the game.
  */
 public class SolarStorm {
+
+    protected PropertyChangeSupport changeEvent;
+
+    public PropertyChangeSupport GetChangeEvent() {
+        return changeEvent;
+    }
 
     /**
      * parameter that stores the number of rounds
@@ -29,7 +37,10 @@ public class SolarStorm {
             timeTillHit = Game.RandomNum(10) + 10;
             return true;
         }
+        int old = timeTillHit;
         timeTillHit--;
+        changeEvent.firePropertyChange("timeTillHit", old, timeTillHit);
+
         return false;
     }
 
@@ -48,6 +59,8 @@ public class SolarStorm {
      * @param timeTillHit the number of turns remaining
      */
     public void SetTimeTillHit(int timeTillHit) {
+        int old = this.timeTillHit;
         this.timeTillHit = timeTillHit;
+        changeEvent.firePropertyChange("timeTillHit", old, timeTillHit);
     }
 }
