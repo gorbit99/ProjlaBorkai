@@ -37,8 +37,11 @@ public class Asteroid extends SpaceObject {
      * @throws Exception when there are no layers left to drill
      */
     public void Drill() throws Exception {
+        int oldValue = layers;
         if (layers == 0) throw new Exception("No layers left");
         if (layers > 0) layers--;
+        int newValue = layers;
+        changeEvent.firePropertyChange("layers", oldValue, newValue);
         if (layers == 0 && IsCloseToSun() && core != null)
             core.HandleCloseToSun(this);
     }

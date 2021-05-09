@@ -33,6 +33,7 @@ public abstract class SpaceObject {
      */
     public void AddNeighbour(SpaceObject spaceObject) {
         this.neighbours.add(spaceObject);
+        changeEvent.firePropertyChange("neighbour", null, spaceObject);
     }
 
 

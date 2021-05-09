@@ -25,9 +25,12 @@ public class Uranium extends Material {
      */
     @Override
     public void HandleCloseToSun(Asteroid asteroid) {
+        int oldValue = exposureCount;
         exposureCount++;
+        int newValue = exposureCount;
         if (exposureCount == 3)
             asteroid.Explode();
+        changeEvent.firePropertyChange("exposureCount", oldValue, newValue);
     }
 
     /**
