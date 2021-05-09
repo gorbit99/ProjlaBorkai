@@ -11,14 +11,14 @@
    <children>
       <SplitPane dividerPositions="0.8341708542713567" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2591E4;">
                <children>
                   <Group fx:id="asteroidFieldGroup" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="599.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="63.0" prefWidth="598.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="63.0" prefWidth="598.0" spacing="10.0" style="-fx-background-color: #2591E4;">
                      <children>
                         <Button fx:id="moveBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
                         <Button fx:id="drillBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />

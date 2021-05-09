@@ -1,7 +1,3 @@
-.root {
-    -fx-background-color: #2591E4;
-}
-
 #moveBtn {
     -fx-background-image: url('../Pictures/move.png');
     -fx-background-position: center;
