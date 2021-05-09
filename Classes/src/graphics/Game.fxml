@@ -26,6 +26,7 @@
                         <Button fx:id="placeBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
                         <Button fx:id="robotBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
                         <Button fx:id="teleportBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="waitBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
                         <Text fx:id="playerText" strokeType="OUTSIDE" strokeWidth="0.0" text="P1" />
                         <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="65.0" />
                      </children>

@@ -5,6 +5,13 @@
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
+#waitBtn {
+    -fx-background-image: url('../Pictures/wait.png');
+    -fx-background-position: center;
+    -fx-background-size: cover, auto;
+    -fx-background-color: #2591E4;
+    -fx-background-repeat: no-repeat
+}
 
 #exitBtn {
     -fx-background-image: url('../Pictures/exit.png');
