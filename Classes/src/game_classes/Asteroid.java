@@ -55,6 +55,7 @@ public class Asteroid extends SpaceObject {
         if (layers != 0 || core == null) return null;
         Material temp = core;
         SetCore(null);
+        changeEvent.firePropertyChange("core", temp, null);
         return temp;
     }
 
@@ -70,6 +71,7 @@ public class Asteroid extends SpaceObject {
             if (distanceFromSun <= 2.5f) {
                 core.HandleCloseToSun(this);
             }
+            changeEvent.firePropertyChange("core", null, material);
             return true;
         }
         return false;
@@ -84,6 +86,7 @@ public class Asteroid extends SpaceObject {
         do {
             distanceFromSun = rnd.nextFloat() * 5;
         } while (Math.abs(previous - distanceFromSun) < 0.01f);
+        changeEvent.firePropertyChange("core", previous, distanceFromSun);
     }
 
     /**
@@ -97,6 +100,7 @@ public class Asteroid extends SpaceObject {
         for (SpaceObject so : neighbours) {
             so.RemoveNeighbour(this);
         }
+        changeEvent.firePropertyChange("exploded", false, true);
     }
 
     /**
@@ -114,8 +118,10 @@ public class Asteroid extends SpaceObject {
      * @param worker worker to be added to the workers list
      */
     public void AddWorker(Worker worker) {
+        ArrayList<Worker> old = (ArrayList<Worker>)workers.clone();
         workers.add(worker);
         worker.SetPosition(this);
+        changeEvent.firePropertyChange("workers", old, workers);
     }
 
     /**
@@ -124,7 +130,9 @@ public class Asteroid extends SpaceObject {
      * @param worker worker to be removed from workers list
      */
     public void RemoveWorker(Worker worker) {
+        ArrayList<Worker> old = (ArrayList<Worker>)workers.clone();
         workers.remove(worker);
+        changeEvent.firePropertyChange("workers", old, workers);
     }
 
     /**
@@ -133,7 +141,9 @@ public class Asteroid extends SpaceObject {
      * @param material the new core of the asteroid.
      */
     public void SetCore(Material material) {
+        Material old = core;
         core = material;
+        changeEvent.firePropertyChange("core", old, core);
     }
 
     /**
