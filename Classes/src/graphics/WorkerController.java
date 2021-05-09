@@ -1,5 +1,7 @@
 package graphics;
 
+import game_classes.Worker;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
