@@ -6,6 +6,7 @@ import game_classes.Game;
 import game_classes.SpaceObject;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -28,7 +29,7 @@ public class SpaceObjectController implements PropertyChangeListener {
         Asteroid asteroid = new Asteroid();
 
         ImageView imageView = new ImageView();
-        Group asteroidsGroup = GameController.getInstance().getAsteroidFieldGroup();
+        Pane asteroidsGroup = GameController.getInstance().getAsteroidFieldGroup();
 
         double width = asteroidsGroup.getBoundsInParent().getWidth();
         double height = asteroidsGroup.getBoundsInParent().getHeight();

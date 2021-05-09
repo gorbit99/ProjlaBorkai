@@ -11,7 +11,6 @@ public class AsteroidView extends SpaceObjectView{
         imageView.setImage(new Image("/Pictures/Asteroida.png"));
     }
 
-
     @Override
     public void Draw(SpaceObject spaceObject) {
 
