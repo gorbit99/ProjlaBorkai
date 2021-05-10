@@ -32,7 +32,7 @@ public class AstronautController extends WorkerController {
         view.DrawAstronaut(astronaut);
         if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
             view.SetButtonStatus();
-
+            view.Unsubscribe();
         }
         if (evt.getPropertyName().equals("InActiveAstronaut")){
             System.out.println("inaktiv ghecciii");
@@ -47,7 +47,7 @@ public class AstronautController extends WorkerController {
                 System.out.println("drill");
                 System.out.println(astronaut.toString()+"yup");
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
-
+                view.Unsubscribe();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -62,7 +62,7 @@ public class AstronautController extends WorkerController {
 
                 //astronaut.Mine(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
-
+                view.Unsubscribe();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -76,7 +76,7 @@ public class AstronautController extends WorkerController {
             try {
                 //astronaut.PlaceMaterial(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
-
+                view.Unsubscribe();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -89,7 +89,7 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             System.out.println("wait");
             astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
-
+            view.Unsubscribe();
            //astronaut.Wait();
         }
     };
@@ -99,7 +99,7 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             System.out.println("movee");
             //astronaut.Move(); //todo
-
+            view.Unsubscribe();
         }
     };
 

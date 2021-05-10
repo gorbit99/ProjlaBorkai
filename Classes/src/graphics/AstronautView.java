@@ -1,6 +1,7 @@
 package graphics;
 
 import game_classes.*;
+import javafx.event.EventType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -104,8 +105,26 @@ public class AstronautView {
         }
     }
     public void Unsubscribe(){
-
-
-
+        if(move_ButtonSubscribe){
+            GameController.getInstance().getMoveBtn().setOnAction(null);
+        }
+        if(drill_ButtonSubscribe){
+            GameController.getInstance().getDrillBtn().setOnAction(null);
+        }
+        if(mine_ButtonSubscribe){
+            GameController.getInstance().getMineBtn().setOnAction(null);
+        }
+        if(place_ButtonSubscribe){
+            GameController.getInstance().getPlaceBtn().setOnAction(null);
+        }
+        if(crtRobot_ButtonSubscribe){
+            //GameController.getInstance().getRobotBtn(,this.astronautController.???)
+        }
+        if(crtTeleport_ButtonSubscribe){
+           // GameController.getInstance().getTeleportBtn()
+        }
+        if(wait_ButtonSubscribe){
+            GameController.getInstance().getWaitBtn().setOnAction(null);
+        }
     }
 }

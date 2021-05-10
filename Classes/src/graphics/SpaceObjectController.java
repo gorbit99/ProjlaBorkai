@@ -1,9 +1,6 @@
 package graphics;
 
-import game_classes.Asteroid;
-import game_classes.AsteroidField;
-import game_classes.Game;
-import game_classes.SpaceObject;
+import game_classes.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -100,6 +97,11 @@ public class SpaceObjectController implements PropertyChangeListener {
         asteroid.SetCore(materialController.getMaterial());
 
         return new SpaceObjectController(asteroid, asteroidView);
+    }
+
+    public static SpaceObjectController createTeleporterController(Asteroid asteroid) {
+//        Teleporter teleporter = new Teleporter()
+        return null;//todo ez egy szar
     }
 
     public SpaceObject getSpaceObject() {
