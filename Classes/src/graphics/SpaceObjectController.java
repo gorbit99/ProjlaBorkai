@@ -4,16 +4,29 @@ import game_classes.Asteroid;
 import game_classes.AsteroidField;
 import game_classes.Game;
 import game_classes.SpaceObject;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class SpaceObjectController implements PropertyChangeListener {
     private SpaceObject spaceObject;
     private SpaceObjectView view;
+
+    private static ArrayList<SpaceObjectController> spaceObjectControllers = new ArrayList<>();
+
+    private static ArrayList<Integer> materialsRequired;
+
+    static {
+        materialsRequired = new ArrayList<>();
+        for (int i = 0; i < AsteroidField.getAsteroidFieldWidth() * AsteroidField.getAsteroidFieldHeight(); i++) {
+            materialsRequired.add(i % 5);
+        }
+        Collections.shuffle(materialsRequired);
+    }
 
     //todo ez az osztálydián privát
     @Override
@@ -24,6 +37,7 @@ public class SpaceObjectController implements PropertyChangeListener {
     private SpaceObjectController(SpaceObject so, SpaceObjectView sv) {
         spaceObject = so;
         view = sv;
+        spaceObjectControllers.add(this);
     }
 
     public static SpaceObjectController createAsteroidController(int id) {
@@ -38,10 +52,10 @@ public class SpaceObjectController implements PropertyChangeListener {
         double gridWidth = width / AsteroidField.getAsteroidFieldWidth();
         double gridHeight = height / AsteroidField.getAsteroidFieldHeight();
 
-        int groupX = id / AsteroidField.getAsteroidFieldWidth();
-        int groupY = id % AsteroidField.getAsteroidFieldWidth();
+        int groupX = id % AsteroidField.getAsteroidFieldWidth();
+        int groupY = id / AsteroidField.getAsteroidFieldWidth();
 
-        double asteroidWidth = width / AsteroidField.getAsteroidFieldWidth() / 2;
+        double asteroidWidth = width / AsteroidField.getAsteroidFieldWidth() / 3;
 
         double x = gridWidth * groupX + Game.getRandomGenerator().nextDouble() * (gridWidth - asteroidWidth);
         double y = gridHeight * groupY + Game.getRandomGenerator().nextDouble() * (gridHeight - asteroidWidth);
@@ -61,7 +75,7 @@ public class SpaceObjectController implements PropertyChangeListener {
         asteroidsGroup.getChildren().add(materialIV);
 
         MaterialController materialController;
-        switch (Game.getRandomGenerator().nextInt(5)) {
+        switch (materialsRequired.get(materialsRequired.size() - 1)) {
             case 0:
                 materialController = MaterialController.CreateCoal(materialIV);
                 break;
@@ -79,9 +93,23 @@ public class SpaceObjectController implements PropertyChangeListener {
                 break;
         }
 
-        AsteroidView asteroidView = new AsteroidView(imageView, materialController.getView());
+        materialsRequired.remove(materialsRequired.size() - 1);
+
+        AsteroidView asteroidView = new AsteroidView(imageView, materialController.getView(), asteroid);
         asteroid.SetCore(materialController.getMaterial());
 
         return new SpaceObjectController(asteroid, asteroidView);
+    }
+
+    public SpaceObject getSpaceObject() {
+        return spaceObject;
+    }
+
+    public SpaceObjectView getView() {
+        return view;
+    }
+
+    public static SpaceObjectController controllerFromSpaceObject(SpaceObject spaceObject) {
+        return spaceObjectControllers.stream().filter(x -> x.spaceObject == spaceObject).findFirst().get();
     }
 }

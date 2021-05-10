@@ -5,14 +5,26 @@ import game_classes.Ufo;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.*;
+
 public class UfoView {
-    private ImageView imageView;
+    private final ImageView imageView;
 
     public UfoView(){
-        imageView.setImage(new Image("/Pictures/ufo.png"));
+        imageView = new ImageView(new Image("/Pictures/ufo.png"));
+        GameController.getInstance().getAsteroidFieldGroup().getChildren().add(imageView);
+        imageView.setFitWidth(30);
+        imageView.setFitHeight(30);
     }
 
     public void DrawUfo(Ufo ufo){
+        SpaceObjectController spaceObjectController =
+                SpaceObjectController.controllerFromSpaceObject(ufo.getPosition());
 
+        int id = AsteroidView.getNextEntityId(ufo.getPosition());
+        Point position = ((AsteroidView)spaceObjectController.getView()).getEntityPosition(id);
+
+        imageView.setLayoutX(position.x);
+        imageView.setLayoutY(position.y);
     }
 }

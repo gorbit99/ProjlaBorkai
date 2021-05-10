@@ -1,9 +1,9 @@
 package graphics;
 
-import game_classes.Asteroid;
-import game_classes.Robot;
+import game_classes.*;
 
 import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
 
 public class RobotController extends WorkerController {
 
@@ -14,16 +14,15 @@ public class RobotController extends WorkerController {
     private Robot robot;
     private RobotView view;
 
+    public RobotController(Asteroid asteroid) {
+        robot = new Robot(asteroid);
+
+        view = new RobotView();
+        view.DrawRobot(robot);
+    }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
-    }
-
-    /**
-     * creating method of the robot's controller
-     */
-    public static void CreateRobotController(Asteroid asteroid) {
-        Robot robot = new Robot(asteroid);
+        view.DrawRobot(robot);
     }
 }

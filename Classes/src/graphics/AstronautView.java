@@ -4,6 +4,7 @@ import game_classes.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class AstronautView {
@@ -11,20 +12,30 @@ public class AstronautView {
      * image view of the controller
      * and the astronaut which belong sto the controller
      */
-    private ImageView imageView;
-    private Astronaut astronaut;
+    private final ImageView imageView;
+    private final Astronaut astronaut;
 
     /**
      * constructor of AstronautView class
      * @param astronaut the astronaut which belongs to the controller
      */
     public AstronautView(Astronaut astronaut) {
-        imageView.setImage(new Image("/Pictures/spaceship.png"));
+        imageView = new ImageView(new Image("/Pictures/spaceship.png"));
+        GameController.getInstance().getAsteroidFieldGroup().getChildren().add(imageView);
+        imageView.setFitWidth(40);
+        imageView.setFitHeight(40);
         this.astronaut = astronaut;
     }
 
     public void DrawAstronaut(Astronaut astronaut) {
+        SpaceObjectController spaceObjectController =
+                SpaceObjectController.controllerFromSpaceObject(astronaut.getPosition());
 
+        int id = AsteroidView.getNextEntityId(astronaut.getPosition());
+        Point position = ((AsteroidView)spaceObjectController.getView()).getEntityPosition(id);
+
+        imageView.setLayoutX(position.x);
+        imageView.setLayoutY(position.y);
     }
 
     /**

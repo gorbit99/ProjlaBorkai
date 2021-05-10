@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 public class NoMaterialView extends MaterialView{
     protected NoMaterialView(ImageView iv) {
         super(iv);
-        image.setImage(new Image("/Pictures/UFO.png"));
+        image.setImage(new Image("/Pictures/NoMaterial.png"));
     }
 
     @Override

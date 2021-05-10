@@ -1,11 +1,10 @@
 package graphics;
 
-import game_classes.Asteroid;
-import game_classes.AsteroidField;
-import game_classes.Astronaut;
-import game_classes.Game;
+import game_classes.*;
 
 import java.beans.PropertyChangeEvent;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class AstronautController extends WorkerController {
     /**
@@ -15,17 +14,18 @@ public class AstronautController extends WorkerController {
     private Astronaut astronaut;
     private AstronautView view;
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public AstronautController() {
+        ArrayList<SpaceObject> asteroids = AsteroidField.GetInstance().GetObjects();
 
+        Asteroid newPosition = (Asteroid) asteroids.get(Game.RandomNum(asteroids.size()));
+        astronaut = new Astronaut(newPosition);
+
+        view = new AstronautView(astronaut);
+        view.DrawAstronaut(astronaut);
     }
 
-    /**
-     * creating method of the astronaut controller
-     */
-    public static void CreateAstronautController() {
-        Astronaut as = new Astronaut((Asteroid) AsteroidField.GetInstance().GetObjects().get(Game.GetInstance().RandomNum(AsteroidField.GetInstance().GetObjects().size())));
-
-
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        view.DrawAstronaut(astronaut);
     }
 }

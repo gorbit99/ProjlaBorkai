@@ -9,26 +9,26 @@
 
 <AnchorPane fx:id="gameView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.GameController">
    <children>
-      <SplitPane dividerPositions="0.8341708542713567" mouseTransparent="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.8342" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2591E4;" SplitPane.resizableWithParent="false">
                <children>
-                  <Pane fx:id="asteroidFieldGroup" maxHeight="500.0" maxWidth="329.0" minHeight="598.0" minWidth="329.0" prefHeight="598.0" prefWidth="329.0" AnchorPane.bottomAnchor="329.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="598.0" AnchorPane.topAnchor="0.0" />
+                  <Pane fx:id="asteroidFieldGroup" maxHeight="329.0" maxWidth="600.0" minHeight="327.0" minWidth="284.0" prefHeight="329.0" prefWidth="600.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                <children>
                   <HBox alignment="CENTER" prefHeight="63.0" prefWidth="598.0" spacing="10.0" style="-fx-background-color: #2591E4;">
                      <children>
-                        <Button fx:id="moveBtn" mnemonicParsing="false" onAction="#Move" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="drillBtn" mnemonicParsing="false" onAction="#Drill" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="mineBtn" mnemonicParsing="false" onAction="#Mine" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="placeBtn" mnemonicParsing="false" onAction="#Place" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="robotBtn" mnemonicParsing="false" onAction="#createRobot" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="teleportBtn" mnemonicParsing="false" onAction="#createTeleporter" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="waitBtn" mnemonicParsing="false" onAction="#Wait" prefHeight="40.0" prefWidth="65.0" />
-                        <Text fx:id="playerText" strokeType="OUTSIDE" strokeWidth="0.0" text="P1" />
-                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#Exit" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="moveBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="drillBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="mineBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="placeBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="robotBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="teleportBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="waitBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="P1" />
+                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="65.0" />
                      </children>
                   </HBox>
                </children>

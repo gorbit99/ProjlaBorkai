@@ -11,12 +11,12 @@ public class AsteroidField {
     /**
      * Number of asteroids in a row
      */
-    private static final int asteroidFieldWidth = 3;
+    private static final int asteroidFieldWidth = 5;
 
     /**
      * Number of asteroids in a column
      */
-    private static final int asteroidFieldHeight = 5;
+    private static final int asteroidFieldHeight = 3;
 
     /**
      * contains all the spaceObjects in the asteroid field
@@ -36,8 +36,26 @@ public class AsteroidField {
     }
 
     private void init() {
+        ArrayList<SpaceObjectController> controllers = new ArrayList<>();
         for (int i = 0; i < asteroidFieldWidth * asteroidFieldHeight; i++) {
-            SpaceObjectController.createAsteroidController(i);
+            controllers.add(SpaceObjectController.createAsteroidController(i));
+        }
+
+        for (int i = 0; i < AsteroidField.GetInstance().GetObjects().size(); i++) {
+            if (i % asteroidFieldWidth != asteroidFieldWidth - 1) {
+                int id = i + 1;
+                AsteroidField.GetInstance().GetObjects().get(i).AddNeighbour(AsteroidField.GetInstance().GetObjects().get(id));
+                AsteroidField.GetInstance().GetObjects().get(id).AddNeighbour(AsteroidField.GetInstance().GetObjects().get(i));
+            }
+            if (i / asteroidFieldWidth != asteroidFieldHeight - 1) {
+                int id = i + asteroidFieldWidth;
+                AsteroidField.GetInstance().GetObjects().get(i).AddNeighbour(AsteroidField.GetInstance().GetObjects().get(id));
+                AsteroidField.GetInstance().GetObjects().get(id).AddNeighbour(AsteroidField.GetInstance().GetObjects().get(i));
+            }
+        }
+
+        for (SpaceObjectController controller : controllers) {
+            controller.getView().Draw(controller.getSpaceObject());
         }
     }
 
@@ -102,6 +120,7 @@ public class AsteroidField {
 
     /**
      * Gets the number of asteroids in a row
+     *
      * @return The number of asteroids in a row
      */
     public static int getAsteroidFieldWidth() {
@@ -110,6 +129,7 @@ public class AsteroidField {
 
     /**
      * Gets the number of asteroids in a column
+     *
      * @return The number of asteroids in a column
      */
     public static int getAsteroidFieldHeight() {
