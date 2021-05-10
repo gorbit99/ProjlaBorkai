@@ -111,4 +111,9 @@ public class AsteroidView extends SpaceObjectView {
     public static int getNextEntityId(SpaceObject spaceObject) {
         return spaceObject.GetWorkers().size();
     }
+
+    public void SetView(MaterialView CoreView){
+        this.coreView = coreView;
+        coreView.ShowView(true);
+    }
 }

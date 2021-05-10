@@ -3,6 +3,7 @@ package graphics;
 import game_classes.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.beans.PropertyChangeEvent;
@@ -100,12 +101,21 @@ public class AstronautController extends WorkerController {
     public EventHandler<ActionEvent> MoveEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
-            System.out.println("move");
+            /*System.out.println("move");
             astronaut.Move(); //todo
             view.Unsubscribe();
-            Game.GetInstance().nextTurn();
+            Game.GetInstance().nextTurn();*/
+
+            view.Unsubscribe();
+            view.SubscribeToSpaceObjects();
 
         }
     };
+
+    public void TravelToWrapper(SpaceObject so){
+        astronaut.TravelTo(so);
+        view.UnSubscribeFromSpaceObjects();
+        Game.GetInstance().nextTurn();
+    }
 
 }

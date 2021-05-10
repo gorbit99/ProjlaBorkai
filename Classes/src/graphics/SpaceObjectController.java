@@ -28,7 +28,13 @@ public class SpaceObjectController implements PropertyChangeListener {
     //todo ez az osztálydián privát
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        if (evt.getPropertyName().equals("core")){
+            if (evt.getNewValue() == null){
+                //NoMaterialView nomaterial = new NoMaterialView();
+                System.out.println( "most kéne cserélni");
+            }
+        }
+        view.Draw(spaceObject);
     }
 
     private SpaceObjectController(SpaceObject so, SpaceObjectView sv) {
