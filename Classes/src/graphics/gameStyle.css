@@ -1,14 +1,15 @@
 #moveBtn {
     -fx-background-image: url('../Pictures/move.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
+
 #waitBtn {
     -fx-background-image: url('../Pictures/wait.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
@@ -16,7 +17,7 @@
 #exitBtn {
     -fx-background-image: url('../Pictures/exit.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
@@ -25,59 +26,66 @@
 #drillBtn {
     -fx-background-image: url('../Pictures/drill.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
 
 #drillBtn:disabled {
     -fx-background-image: url('../Pictures/drill_inactive.png');
+    -fx-background-size: 65, 50;
 }
 
 #mineBtn {
     -fx-background-image: url('../Pictures/mine.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
 
 #mineBtn:disabled {
     -fx-background-image: url('../Pictures/mine_inactive.png');
+    -fx-background-size: 65, 50;
 }
 
 #placeBtn {
     -fx-background-image: url('../Pictures/place.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
 
 #placeBtn:disabled {
-    -fx-background-image: url('../Pictures/place_inaktive.png');
+    -fx-background-image: url('../Pictures/place_inactive.png');
+    -fx-background-size: 65, 50;
 }
 
 #robotBtn {
     -fx-background-image: url('../Pictures/crtRobot.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
 
 #robotBtn:disabled {
     -fx-background-image: url('../Pictures/crtRobot_inactive.png');
+    -fx-background-size: 65, 50;
+
 }
 
 #teleportBtn {
     -fx-background-image: url('../Pictures/crtTeleport.png');
     -fx-background-position: center;
-    -fx-background-size: cover, auto;
+    -fx-background-size: 65, 50;
     -fx-background-color: #2591E4;
     -fx-background-repeat: no-repeat
 }
 
 #teleportBtn:disabled {
     -fx-background-image: url('../Pictures/crtTeleport_inactive.png');
+    -fx-background-size: 65, 50;
+
 }
