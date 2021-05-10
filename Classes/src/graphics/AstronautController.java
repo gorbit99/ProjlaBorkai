@@ -61,7 +61,7 @@ public class AstronautController extends WorkerController {
             try {
                 System.out.println("mine");
 
-                //astronaut.Mine(); //todo
+                astronaut.Mine(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
                 Game.GetInstance().nextTurn();
@@ -77,7 +77,7 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(ActionEvent e) {
             try {
-                //astronaut.PlaceMaterial(); //todo
+                astronaut.PlaceMaterial(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
                 Game.GetInstance().nextTurn();

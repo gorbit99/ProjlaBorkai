@@ -18,6 +18,8 @@ public class UfoView {
     }
 
     public void DrawUfo(Ufo ufo){
+        GameController.getInstance().getPlayerId().setText("UFO");
+
         SpaceObjectController spaceObjectController =
                 SpaceObjectController.controllerFromSpaceObject(ufo.getPosition());
 

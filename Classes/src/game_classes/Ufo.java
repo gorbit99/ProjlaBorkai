@@ -28,6 +28,8 @@ public class Ufo extends Worker {
      */
     @Override
     public void Step() {
+        changeEvent.firePropertyChange("ActiveUfo", null, this);
+
         System.out.println(this.toString());
         if (this.position.GetCore() != null)
             this.Steal();
