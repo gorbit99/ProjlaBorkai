@@ -15,6 +15,7 @@ public class AstronautView {
      */
     private final ImageView imageView;
     private final Astronaut astronaut;
+    private final AstronautController astronautController;
 
     private boolean move_ButtonSubscribe = false; //todo ehhez még nincs semmi
     private boolean drill_ButtonSubscribe = false;
@@ -29,12 +30,13 @@ public class AstronautView {
      *
      * @param astronaut the astronaut which belongs to the controller
      */
-    public AstronautView(Astronaut astronaut) {
+    public AstronautView(Astronaut astronaut, AstronautController astronautController) {
         imageView = new ImageView(new Image("/Pictures/spaceship.png"));
         GameController.getInstance().getAsteroidFieldGroup().getChildren().add(imageView);
         imageView.setFitWidth(40);
         imageView.setFitHeight(40);
         this.astronaut = astronaut;
+        this.astronautController = astronautController;
     }
 
     public void DrawAstronaut(Astronaut astronaut) {

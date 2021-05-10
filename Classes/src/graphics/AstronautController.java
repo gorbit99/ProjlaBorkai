@@ -29,7 +29,6 @@ public class AstronautController extends WorkerController {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
         view.DrawAstronaut(astronaut);
         if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
             view.SetButtonStatus();
@@ -42,9 +41,13 @@ public class AstronautController extends WorkerController {
 
     public EventHandler<ActionEvent> DrillEventHandler = new EventHandler<>() {
         @Override
-        public void handle(MouseEvent e) {
+        public void handle(ActionEvent e) {
             try {
                 astronaut.Drill();
+                System.out.println("drill");
+                System.out.println(astronaut.toString()+"yup");
+                astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
+
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
