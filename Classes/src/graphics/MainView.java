@@ -27,7 +27,7 @@ public class MainView extends Application {
 
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setTitle("The asteroids");
+        stage.setTitle("Asteroid the game by ProjlaBorka(i)®");
         stage.getIcons().add(new Image("/Pictures/logo.png"));
         stage.show();
     }

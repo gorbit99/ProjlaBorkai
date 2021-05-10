@@ -106,7 +106,7 @@ public class Game {
     public void nextTurn() {
         if (workers.size() != 0) {
             this.CheckWinOrLose();
-            Worker worker=workers.get(0);
+            Worker worker = workers.get(0);
             workers.remove(0);
             this.workers.add(worker);
             worker.Step();
@@ -139,7 +139,8 @@ public class Game {
         }
 
 
-
+        if (lose)
+            System.exit(0 );
     }
 
     /**
