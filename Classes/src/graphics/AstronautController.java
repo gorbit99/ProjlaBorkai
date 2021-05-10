@@ -59,6 +59,7 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             try {
                 System.out.println("mine");
+
                 //astronaut.Mine(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
 

@@ -1,6 +1,9 @@
 package graphics;
 
-import game_classes.*;
+import game_classes.Asteroid;
+import game_classes.AsteroidField;
+import game_classes.Game;
+import game_classes.SpaceObject;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -10,12 +13,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class SpaceObjectController implements PropertyChangeListener {
-    private final SpaceObject spaceObject;
-    private final SpaceObjectView view;
+    private SpaceObject spaceObject;
+    private SpaceObjectView view;
 
-    private static final ArrayList<SpaceObjectController> spaceObjectControllers = new ArrayList<>();
+    private static ArrayList<SpaceObjectController> spaceObjectControllers = new ArrayList<>();
 
-    private static final ArrayList<Integer> materialsRequired;
+    private static ArrayList<Integer> materialsRequired;
 
     static {
         materialsRequired = new ArrayList<>();
@@ -97,10 +100,6 @@ public class SpaceObjectController implements PropertyChangeListener {
         asteroid.SetCore(materialController.getMaterial());
 
         return new SpaceObjectController(asteroid, asteroidView);
-    }
-
-    public static SpaceObjectController createTeleporterController(Asteroid asteroid) {
-//        Teleporter teleporter = new Teleporter()
     }
 
     public SpaceObject getSpaceObject() {
