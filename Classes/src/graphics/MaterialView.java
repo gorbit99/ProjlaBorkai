@@ -3,6 +3,9 @@ package graphics;
 import game_classes.Material;
 import javafx.scene.image.ImageView;
 
+/**
+ * Abstract base class for material views
+ */
 public abstract class MaterialView {
     //todo
     protected ImageView image;

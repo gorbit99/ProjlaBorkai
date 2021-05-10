@@ -7,8 +7,15 @@ import java.util.ArrayList;
  */
 public class BillOfMaterials {
 
+    /**
+     * The list of necessary materials for a specific construction
+     */
     private final ArrayList<Material> billOfMaterials;
 
+    /**
+     * Constructor of the class
+     * @param temp The list of necessary elements
+     */
     public BillOfMaterials(ArrayList<Material> temp) {
         billOfMaterials = temp;
     }

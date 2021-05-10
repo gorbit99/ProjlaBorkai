@@ -7,8 +7,15 @@ import java.beans.PropertyChangeSupport;
  */
 public class SolarStorm {
 
+    /**
+     * An event that invokes when properties are changed
+     */
     protected PropertyChangeSupport changeEvent = new PropertyChangeSupport(this);
 
+    /**
+     * Gets the changeevent
+     * @return
+     */
     public PropertyChangeSupport GetChangeEvent() {
         return changeEvent;
     }

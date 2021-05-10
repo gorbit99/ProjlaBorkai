@@ -18,6 +18,9 @@ public class AstronautController extends WorkerController {
     private Astronaut astronaut;
     private AstronautView view;
 
+    /**
+     * Constructor of the class
+     */
     public AstronautController() {
         ArrayList<SpaceObject> asteroids = AsteroidField.GetInstance().GetObjects();
 
@@ -28,6 +31,10 @@ public class AstronautController extends WorkerController {
         view.DrawAstronaut(astronaut);
     }
 
+    /**
+     * Event Handler for the propertychangeevent
+     * @param evt the caught event
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         view.SetActivePic();
@@ -41,6 +48,9 @@ public class AstronautController extends WorkerController {
         }
     }
 
+    /**
+     * Event Handler for the drill action
+     */
     public EventHandler<ActionEvent> DrillEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
@@ -55,6 +65,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    /**
+     * Event Handler for the mine action
+     */
     public EventHandler<ActionEvent> MineEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
@@ -68,6 +81,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    /**
+     * Event Handler for the place action
+     */
     public EventHandler<ActionEvent> PlaceEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
@@ -82,6 +98,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    /**
+     * Event Handler for the wait action
+     */
     public EventHandler<ActionEvent> WaitEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
@@ -90,6 +109,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    /**
+     * Event Handler for the move action
+     */
     public EventHandler<ActionEvent> MoveEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
@@ -98,6 +120,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    /**
+     * Event Handler for the create robot action
+     */
     public EventHandler<ActionEvent> CreateRobotEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
@@ -111,12 +136,19 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    /**
+     * A wrapper function for the TravelTo method in astronaut. Unsubscribes from the events of the spaceobjects.
+     * @param so The space object the astronaut will travel to.
+     */
     public void TravelToWrapper(SpaceObject so) {
         astronaut.TravelTo(so);
         view.UnSubscribeFromSpaceObjects();
         endTurn();
     }
 
+    /**
+     * Little helper function for frequently repeated calls.
+     */
     private void endTurn() {
         view.Unsubscribe();
         Game.GetInstance().nextTurn();

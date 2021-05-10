@@ -8,6 +8,10 @@ import java.io.File;
 
 public class IronView extends MaterialView {//TODO
 
+    /**
+     * Constructor of the class
+     * @param iv
+     */
     public IronView(ImageView iv){
         super(iv);
         image.setImage(new Image("/Pictures/iron.png"));

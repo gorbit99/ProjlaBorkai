@@ -42,6 +42,10 @@ public class AstronautView {
         this.astronautController = astronautController;
     }
 
+    /**
+     * Draws the astronaut to the appropriate coordinates
+     * @param astronaut the astronaut to be drawn
+     */
     public void DrawAstronaut(Astronaut astronaut) {
         SpaceObjectController spaceObjectController =
                 SpaceObjectController.controllerFromSpaceObject(astronaut.getPosition());
@@ -53,10 +57,16 @@ public class AstronautView {
         imageView.setLayoutY(position.y);
     }
 
+    /**
+     * Sets the active astronaut image
+     */
     public void SetActivePic(){
         imageView.setImage(new Image("/Pictures/spaceship_active.png"));
     }
 
+    /**
+     * Sets the passive astronaut image
+     */
     public void SetPassivePic(){
         imageView.setImage(new Image("/Pictures/spaceship.png"));
     }
@@ -118,6 +128,9 @@ public class AstronautView {
         }
     }
 
+    /**
+     * Unsubscribes the controller from all of the views buttons
+     */
     public void Unsubscribe() {
 
         astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
@@ -154,6 +167,9 @@ public class AstronautView {
 
     }
 
+    /**
+     * Subscribes to the neighbouring space object's events
+     */
     public void SubscribeToSpaceObjects(){
         oldPosition = astronaut.getPosition();
         ArrayList<SpaceObject> neighbours = oldPosition.GetNeighbours();
@@ -163,6 +179,9 @@ public class AstronautView {
         }
     }
 
+    /**
+     * Unsubscribes from the neighbouring space object's events
+     */
     public void UnSubscribeFromSpaceObjects(){
         for(SpaceObject so : oldPosition.GetNeighbours()){
             SpaceObjectController soc = SpaceObjectController.controllerFromSpaceObject(so);

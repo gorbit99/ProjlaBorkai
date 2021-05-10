@@ -11,6 +11,10 @@ public class IceView extends MaterialView{
 
     }
 
+    /**
+     * Constructor of the clas
+     * @param iv
+     */
     public IceView(ImageView iv){
         super(iv);
         image.setImage(new Image("/Pictures/ice.png"));

@@ -18,7 +18,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameController {
-
+    /**
+     * Fxml elements
+     */
     @FXML
     private AnchorPane gameView;
     @FXML
@@ -60,40 +62,75 @@ public class GameController {
 
     }
 
+    /**
+     * Gets the drill button
+     * @return the drill button
+     */
     public Button getDrillBtn() {
         return drillBtn;
     }
 
+    /**
+     * exits the game
+     */
     public void exit(){
         System.exit(0);
     }
 
+    /**
+     * Gets the place button
+     * @return the place button
+     */
     public Button getPlaceBtn() {
         return placeBtn;
     }
 
+    /**
+     * Gets the Create robot button
+     * @return the robot button
+     */
     public Button getRobotBtn() {
         return robotBtn;
     }
 
+    /**
+     * Gets the mine button
+     * @return the mine button
+     */
     public Button getMineBtn() {
         return mineBtn;
     }
 
+    /**
+     * Gets the create teleport button
+     * @return the create teleport button
+     */
     public Button getTeleportBtn() {
         return teleportBtn;
     }
 
+    /**
+     * Gets the wait button
+     * @return the wait button
+     */
     public Button getWaitBtn() {
         return waitBtn;
     }
 
+    /**
+     * Gets the move button
+     * @return the move button
+     */
     public Button getMoveBtn() {
         return moveBtn;
     }
-
+//todo miért létezik?
     public Button getReturnToMenu(){return returnToMenu;}
 
+    /**
+     * Gets the player id text
+     * @return the player id text
+     */
     public Text getPlayerId() {
         return playerId;
     }
@@ -102,6 +139,10 @@ public class GameController {
         return inventoryPane;
     }
 
+    /**
+     * Gets the asteroid field group
+     * @return asteroid field group
+     */
     public Pane getAsteroidFieldGroup() {
         return asteroidFieldGroup;
     }
