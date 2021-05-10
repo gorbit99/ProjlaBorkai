@@ -9,7 +9,6 @@ public abstract class Material {
     protected PropertyChangeSupport changeEvent = new PropertyChangeSupport(this);
 
     public PropertyChangeSupport GetChangeEvent() {
-        System.out.println("nem kéne itt lenni");
         return changeEvent;
     }
 

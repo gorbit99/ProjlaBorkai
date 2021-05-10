@@ -25,7 +25,7 @@ public class RobotController extends WorkerController {
     /*PropertyChangeListener AstronautChange = new PropertyChangeListener() {
         @Override
         public void propertyChange(PropertyChangeEvent evt) {
-            System.out.println("dik");
+            System.out.println("astronautchange");
             view.DrawAstronaut(astronaut);
             if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
                 view.SetButtonStatus();

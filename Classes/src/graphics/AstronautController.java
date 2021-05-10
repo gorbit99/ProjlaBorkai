@@ -35,7 +35,7 @@ public class AstronautController extends WorkerController {
             view.Unsubscribe();
         }
         if (evt.getPropertyName().equals("InActiveAstronaut")){
-            System.out.println("inaktiv ghecciii");
+            System.out.println("inaktiv");
         }
     }
 
@@ -45,7 +45,7 @@ public class AstronautController extends WorkerController {
             try {
                 astronaut.Drill();
                 System.out.println("drill");
-                System.out.println(astronaut.toString()+"yup");
+                System.out.println(astronaut.toString());
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
             } catch (Exception exception) {
@@ -97,7 +97,7 @@ public class AstronautController extends WorkerController {
     public EventHandler<ActionEvent> MoveEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
-            System.out.println("movee");
+            System.out.println("move");
             //astronaut.Move(); //todo
             view.Unsubscribe();
         }
