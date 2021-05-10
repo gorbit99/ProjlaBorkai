@@ -29,7 +29,7 @@ public class MainController {
 
         Stage stage = (Stage)menuView.getScene().getWindow();
         stage.setScene(scene);
-        Game.GetInstance().nextTurn();
+        Game.GetInstance().DoRound();
     }
 
 }

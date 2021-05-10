@@ -13,6 +13,4 @@ public class SolarStormController implements PropertyChangeListener {
         solarStromView.Draw(solarStrom);
 
     }
-
-
 }
