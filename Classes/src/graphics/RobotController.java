@@ -22,20 +22,10 @@ public class RobotController extends WorkerController {
         robot.GetChangeEvent().addPropertyChangeListener(this);
     }
 
-    /*PropertyChangeListener AstronautChange = new PropertyChangeListener() {
-        @Override
-        public void propertyChange(PropertyChangeEvent evt) {
-            System.out.println("astronautchange");
-            view.DrawAstronaut(astronaut);
-            if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
-                view.SetButtonStatus();
-
-            }
-        }
-    };*/
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("SDFsdrfsf");
         view.DrawRobot(robot);
     }
 }

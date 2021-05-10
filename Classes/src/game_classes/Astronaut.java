@@ -1,5 +1,7 @@
 package game_classes;
 
+import graphics.RobotController;
+
 import java.util.ArrayList;
 
 /**
@@ -90,8 +92,9 @@ public class Astronaut extends Worker {
      * creates a robot from the astronaut's materials
      */
     public void CreateRobot() throws Exception {
-        Robot roby = Robot.CreateRobot(GetStoredMaterials(), this.position);
-        if (roby == null) throw new Exception("Couldn't create robot");
+        //Robot roby = Robot.CreateRobot(GetStoredMaterials(), this.position);
+        //if (roby == null) throw new Exception("Couldn't create robot");
+        new RobotController(this.position);
     }
 
     /**
@@ -200,4 +203,6 @@ public class Astronaut extends Worker {
     public ArrayList<Teleporter> GetTeleporters() {
         return teleporters;
     }
+
+
 }

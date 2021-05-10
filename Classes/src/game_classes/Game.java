@@ -1,6 +1,7 @@
 package game_classes;
 
 import graphics.AstronautController;
+import graphics.RobotController;
 import graphics.UfoController;
 
 import java.util.ArrayList;
@@ -170,9 +171,11 @@ public class Game {
             new AstronautController();
         }
 
+
         for (int i = 0; i < ufoCount; i++) {
-            new UfoController();
+            //new UfoController();
         }
+
 
     }
 

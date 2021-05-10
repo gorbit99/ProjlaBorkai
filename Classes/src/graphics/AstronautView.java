@@ -18,7 +18,7 @@ public class AstronautView {
     private final Astronaut astronaut;
     private final AstronautController astronautController;
 
-    private boolean move_ButtonSubscribe = true; //todo ehhez még nincs semmi
+    //private boolean move_ButtonSubscribe = true; //todo ehhez még nincs semmi
     private boolean drill_ButtonSubscribe = false;
     private boolean mine_ButtonSubscribe = false;
     private boolean place_ButtonSubscribe = false;
@@ -100,7 +100,7 @@ public class AstronautView {
         BillOfMaterials billOfMaterialsRobot = new BillOfMaterials(receiptRobot);
         if (billOfMaterialsRobot.IsEnough(astronaut.GetStoredMaterials())) {
             GameController.getInstance().getRobotBtn().setDisable(false);
-            //GameController.getInstance().getRobotBtn().setOnAction(this.astronautController.RobotEventHandler);
+            GameController.getInstance().getRobotBtn().setOnAction(this.astronautController.CreateRobotEventHandler);
             crtRobot_ButtonSubscribe = true;
         }
 
@@ -143,8 +143,9 @@ public class AstronautView {
 
         }
         if (crtRobot_ButtonSubscribe) {
-            //GameController.getInstance().getRobotBtn(,this.astronautController.???)
-            //GameController.getInstance().getDrillBtn().setDisable(false);
+            System.out.println("sdfsdfdsfs");
+            GameController.getInstance().getRobotBtn().setOnAction(null);
+            GameController.getInstance().getRobotBtn().setDisable(true);
         }
         if (crtTeleport_ButtonSubscribe) {
             // GameController.getInstance().getTeleportBtn()

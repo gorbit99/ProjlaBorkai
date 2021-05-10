@@ -24,7 +24,7 @@ public class AstronautController extends WorkerController {
         Asteroid newPosition = (Asteroid) asteroids.get(Game.RandomNum(asteroids.size()));
         astronaut = new Astronaut(newPosition);
         astronaut.GetChangeEvent().addPropertyChangeListener(this);
-        view = new AstronautView(astronaut,this);
+        view = new AstronautView(astronaut, this);
         view.DrawAstronaut(astronaut);
     }
 
@@ -36,7 +36,7 @@ public class AstronautController extends WorkerController {
             view.SetButtonStatus();
 
         }
-        if (evt.getPropertyName().equals("InActiveAstronaut")){
+        if (evt.getPropertyName().equals("InActiveAstronaut")) {
             System.out.println("inaktiv");
         }
     }
@@ -98,12 +98,26 @@ public class AstronautController extends WorkerController {
         }
     };
 
-    public void TravelToWrapper(SpaceObject so){
+    public EventHandler<ActionEvent> CreateRobotEventHandler = new EventHandler<>() {
+        @Override
+        public void handle(ActionEvent e) {
+            try {
+                astronaut.CreateRobot();
+                endTurn();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+        }
+    };
+
+    public void TravelToWrapper(SpaceObject so) {
         astronaut.TravelTo(so);
         view.UnSubscribeFromSpaceObjects();
         endTurn();
     }
-    private void endTurn(){
+
+    private void endTurn() {
         view.Unsubscribe();
         Game.GetInstance().nextTurn();
         view.SetPassivePic();

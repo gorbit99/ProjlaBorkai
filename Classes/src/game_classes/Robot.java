@@ -48,6 +48,7 @@ public class Robot extends Worker {
                 MockIO.out.println("Invalid action");
             }
         }
+        Game.GetInstance().nextTurn();
     }
 
     /**
@@ -55,19 +56,25 @@ public class Robot extends Worker {
      * moves robot to a random neighbour
      */
     public void Explode() {
+        SpaceObject old = this.position;
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         this.position.RemoveWorker(this);
         int to = Game.RandomNum(neighbours.size());
         neighbours.get(to).AddWorker(this);
+        changeEvent.firePropertyChange("position", old, position);
+
     }
 
     /**
      * moves robot to a neighbour
      */
     public void Move() {
+        SpaceObject old = this.position;
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
         int to = Game.RandomNum(neighbours.size());
         this.TravelTo(neighbours.get(to));
+        changeEvent.firePropertyChange("position", old, position);
+
     }
 
     /**
