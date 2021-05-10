@@ -19,6 +19,7 @@ public class RobotController extends WorkerController {
 
         view = new RobotView();
         view.DrawRobot(robot);
+        robot.GetChangeEvent().addPropertyChangeListener(this);
     }
 
     @Override

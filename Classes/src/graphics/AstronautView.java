@@ -3,6 +3,7 @@ package graphics;
 import game_classes.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class AstronautView {
 
     /**
      * constructor of AstronautView class
+     *
      * @param astronaut the astronaut which belongs to the controller
      */
     public AstronautView(Astronaut astronaut) {
@@ -32,7 +34,7 @@ public class AstronautView {
                 SpaceObjectController.controllerFromSpaceObject(astronaut.getPosition());
 
         int id = AsteroidView.getNextEntityId(astronaut.getPosition());
-        Point position = ((AsteroidView)spaceObjectController.getView()).getEntityPosition(id);
+        Point position = ((AsteroidView) spaceObjectController.getView()).getEntityPosition(id);
 
         imageView.setLayoutX(position.x);
         imageView.setLayoutY(position.y);
@@ -43,24 +45,20 @@ public class AstronautView {
      */
     public void SetButtonStatus() {
         Asteroid asteroid = astronaut.getPosition();
-        boolean move_ButtonSubscribe=false;
-        boolean drill_ButtonSubscribe=false;
-        boolean mine_ButtonSubscribe=false;
-        boolean _ButtonSubscribe=false;
-        boolean place_ButtonSubscribe=false;
-        boolean crtRobot_ButtonSubscribe=false;
-        boolean vrtTeleport_ButtonSubscribe=false;
-        boolean wait_ButtonSubscribe=false;
 
-        if (asteroid.GetLayers() == 0) {
+        GameController.getInstance().getWaitBtn().setOnAction(this.astronautController.WaitEventHandler);
+        GameController.getInstance().getMoveBtn().setOnAction(this.astronautController.MoveEventHandler);
+
+
+        if (asteroid.GetLayers() != 0) {
             GameController.getInstance().getDrillBtn().setDisable(false);
             //GameController.getInstance().getDrillBtn().
 
             //GameController.getInstance().getDrillBtn().//removeEventHandler();
             drill_ButtonSubscribe = true;
         }
-
-        if (asteroid.GetLayers() == 0 && asteroid.GetCore() != null)
+        //GameController.getInstance().getDrillBtn().setOnAction(this.astronautController.DrillEventHandler);
+        if (asteroid.GetLayers() == 0 && asteroid.GetCore() != null) {
             GameController.getInstance().getMineBtn().setDisable(false);
 
         if (asteroid.GetLayers() == 0 && asteroid.GetCore() == null)

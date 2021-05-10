@@ -21,11 +21,11 @@
                   <HBox alignment="CENTER" prefHeight="63.0" prefWidth="598.0" spacing="10.0" style="-fx-background-color: #2591E4;">
                      <children>
                         <Button fx:id="moveBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="drillBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="mineBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="placeBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="robotBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
-                        <Button fx:id="teleportBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="drillBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="mineBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="placeBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="robotBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
+                        <Button fx:id="teleportBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
                         <Button fx:id="waitBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="P1" />
                         <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="65.0" />

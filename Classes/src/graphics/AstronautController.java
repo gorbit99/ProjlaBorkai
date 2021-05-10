@@ -1,11 +1,12 @@
 package graphics;
 
 import game_classes.*;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 import java.beans.PropertyChangeEvent;
-import java.lang.reflect.Array;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public class AstronautController extends WorkerController {
@@ -34,6 +35,9 @@ public class AstronautController extends WorkerController {
             view.SetButtonStatus();
 
         }
+        if (evt.getPropertyName().equals("InActiveAstronaut")){
+            System.out.println("inaktiv ghecciii");
+        }
     }
 
     EventHandler<MouseEvent> DrillEventHandler = new EventHandler<>() {
@@ -51,7 +55,10 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(MouseEvent e) {
             try {
-                astronaut.Mine(); //todo
+                System.out.println("mine");
+                //astronaut.Mine(); //todo
+                astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
+
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -63,7 +70,9 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(MouseEvent e) {
             try {
-                astronaut.PlaceMaterial(); //todo
+                //astronaut.PlaceMaterial(); //todo
+                astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
+
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -73,18 +82,19 @@ public class AstronautController extends WorkerController {
 
     EventHandler<MouseEvent> WaitEventHandler = new EventHandler<>() {
         @Override
-        public void handle(MouseEvent e) {
+        public void handle(ActionEvent e) {
+            System.out.println("wait");
+            astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
 
-            astronaut.Wait();
-
+           //astronaut.Wait();
         }
     };
 
     EventHandler<MouseEvent> MoveEventHandler = new EventHandler<>() {
         @Override
-        public void handle(MouseEvent e) {
-
-            astronaut.Move(); //todo
+        public void handle(ActionEvent e) {
+            System.out.println("movee");
+            //astronaut.Move(); //todo
 
         }
     };

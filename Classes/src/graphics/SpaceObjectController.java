@@ -38,6 +38,7 @@ public class SpaceObjectController implements PropertyChangeListener {
         spaceObject = so;
         view = sv;
         spaceObjectControllers.add(this);
+        spaceObject.GetChangeEvent().addPropertyChangeListener(this);
     }
 
     public static SpaceObjectController createAsteroidController(int id) {

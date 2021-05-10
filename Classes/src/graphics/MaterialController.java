@@ -18,12 +18,15 @@ public class MaterialController implements PropertyChangeListener {
 
     /**
      * constructor of the material controller
-     * @param m the material which will be represented by the contorller
+     *
+     * @param m  the material which will be represented by the controller
      * @param mv view of the controller
      */
     private MaterialController(Material m, MaterialView mv) {
         material = m;
         view = mv;
+        if (material != null)
+            material.GetChangeEvent().addPropertyChangeListener(this);
     }
 
     public static MaterialController CreateIron(ImageView iv) {
