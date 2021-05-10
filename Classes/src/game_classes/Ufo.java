@@ -28,10 +28,13 @@ public class Ufo extends Worker {
      */
     @Override
     public void Step() {
+        System.out.println(this.toString());
         if (this.position.GetCore() != null)
             this.Steal();
         else
             this.Move();
+
+        Game.GetInstance().nextTurn();
     }
 
     /**
@@ -46,9 +49,11 @@ public class Ufo extends Worker {
      */
     @Override
     public void Move() {
+        SpaceObject oldPoz=position;
         SpaceObject pos = this.position.neighbours.get(Game.RandomNum(this.position.neighbours.size()));
 
         TravelTo(pos);
+        changeEvent.firePropertyChange("moved",oldPoz , pos);
 
     }
 

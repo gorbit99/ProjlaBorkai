@@ -32,7 +32,7 @@ public class AstronautController extends WorkerController {
         view.DrawAstronaut(astronaut);
         if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
             view.SetButtonStatus();
-            view.Unsubscribe();
+
         }
         if (evt.getPropertyName().equals("InActiveAstronaut")){
             System.out.println("inaktiv");
@@ -48,6 +48,7 @@ public class AstronautController extends WorkerController {
                 System.out.println(astronaut.toString());
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
+                Game.GetInstance().nextTurn();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -63,6 +64,8 @@ public class AstronautController extends WorkerController {
                 //astronaut.Mine(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
+                Game.GetInstance().nextTurn();
+
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -77,6 +80,8 @@ public class AstronautController extends WorkerController {
                 //astronaut.PlaceMaterial(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
+                Game.GetInstance().nextTurn();
+
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -88,9 +93,10 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(ActionEvent e) {
             System.out.println("wait");
-            astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
             view.Unsubscribe();
-           //astronaut.Wait();
+            astronaut.Wait();
+            Game.GetInstance().nextTurn();
+
         }
     };
 
@@ -98,8 +104,10 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(ActionEvent e) {
             System.out.println("move");
-            //astronaut.Move(); //todo
+            astronaut.Move(); //todo
             view.Unsubscribe();
+            Game.GetInstance().nextTurn();
+
         }
     };
 

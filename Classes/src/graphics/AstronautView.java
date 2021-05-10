@@ -18,7 +18,7 @@ public class AstronautView {
     private final Astronaut astronaut;
     private final AstronautController astronautController;
 
-    private boolean move_ButtonSubscribe = false; //todo ehhez még nincs semmi
+    private boolean move_ButtonSubscribe = true; //todo ehhez még nincs semmi
     private boolean drill_ButtonSubscribe = false;
     private boolean mine_ButtonSubscribe = false;
     private boolean place_ButtonSubscribe = false;
@@ -55,6 +55,8 @@ public class AstronautView {
      * Decides which button is active during a player's turn
      */
     public void SetButtonStatus() {
+        GameController.getInstance().getPlayerId().setText("P" + astronaut.getAstronautId());
+
         Asteroid asteroid = astronaut.getPosition();
 
         GameController.getInstance().getWaitBtn().setOnAction(this.astronautController.WaitEventHandler);
@@ -104,27 +106,49 @@ public class AstronautView {
             crtTeleport_ButtonSubscribe = true;
         }
     }
-    public void Unsubscribe(){
-        if(move_ButtonSubscribe){
-            GameController.getInstance().getMoveBtn().setOnAction(null);
-        }
-        if(drill_ButtonSubscribe){
+
+    public void Unsubscribe() {
+
+        astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
+
+
+        GameController.getInstance().getMoveBtn().setOnAction(null);
+        GameController.getInstance().getWaitBtn().setOnAction(null);
+
+
+        if (drill_ButtonSubscribe) {
             GameController.getInstance().getDrillBtn().setOnAction(null);
+            GameController.getInstance().getDrillBtn().setDisable(true);
+
         }
-        if(mine_ButtonSubscribe){
+        if (mine_ButtonSubscribe) {
             GameController.getInstance().getMineBtn().setOnAction(null);
+            GameController.getInstance().getMineBtn().setDisable(true);
+
         }
-        if(place_ButtonSubscribe){
+        if (place_ButtonSubscribe) {
             GameController.getInstance().getPlaceBtn().setOnAction(null);
+            GameController.getInstance().getPlaceBtn().setDisable(true);
+
         }
-        if(crtRobot_ButtonSubscribe){
+        if (crtRobot_ButtonSubscribe) {
             //GameController.getInstance().getRobotBtn(,this.astronautController.???)
+            //GameController.getInstance().getDrillBtn().setDisable(false);
         }
-        if(crtTeleport_ButtonSubscribe){
-           // GameController.getInstance().getTeleportBtn()
+        if (crtTeleport_ButtonSubscribe) {
+            // GameController.getInstance().getTeleportBtn()
+            //            GameController.getInstance().getDrillBtn().setDisable(false);
         }
-        if(wait_ButtonSubscribe){
-            GameController.getInstance().getWaitBtn().setOnAction(null);
-        }
+
+    }
+
+    private void drawInventory() {
+        ArrayList<Material> inventory = astronaut.GetStoredMaterials();
+        int size=inventory.size();
+        if (size==0)
+            return;
+
+
+
     }
 }

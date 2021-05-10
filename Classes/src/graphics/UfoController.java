@@ -14,6 +14,7 @@ public class UfoController extends WorkerController{
 
         Asteroid newPosition = (Asteroid) asteroids.get(Game.RandomNum(asteroids.size()));
         ufo = new Ufo(newPosition);
+        ufo.GetChangeEvent().addPropertyChangeListener(this);
 
         view = new UfoView();
         view.DrawUfo(ufo);

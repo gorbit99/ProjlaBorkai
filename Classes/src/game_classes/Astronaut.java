@@ -16,6 +16,10 @@ public class Astronaut extends Worker {
      */
     private ArrayList<Teleporter> teleporters;
 
+    private static int _id = 1;
+
+    private int astronautId;
+
     /**
      * astronaut constructor
      */
@@ -23,6 +27,12 @@ public class Astronaut extends Worker {
         super(position);
         this.materialsStored = new ArrayList<>();
         teleporters = new ArrayList<>();
+        this.astronautId = _id;
+        _id++;
+    }
+
+    public int getAstronautId() {
+        return astronautId;
     }
 
     /**
@@ -32,7 +42,7 @@ public class Astronaut extends Worker {
      */
     public void Mine() throws Exception {
         if (materialsStored.size() >= 10) throw new Exception("Not enough place");
-        ArrayList<Material> old = (ArrayList<Material>)materialsStored.clone();
+        ArrayList<Material> old = (ArrayList<Material>) materialsStored.clone();
         materialsStored.add(this.position.Mine());
         changeEvent.firePropertyChange("materialsStored", old, materialsStored);
     }
@@ -42,7 +52,7 @@ public class Astronaut extends Worker {
      */
     public void PlaceMaterial() throws Exception {
         //todo mock
-        ArrayList<Material> old = (ArrayList<Material>)materialsStored.clone();
+        ArrayList<Material> old = (ArrayList<Material>) materialsStored.clone();
         for (int i = 0; i < this.materialsStored.size(); i++) {
             if (materialsStored.get(i) != null) {
                 MockIO.out.println(i + 1 + "." + materialsStored.get(i).toString());
@@ -62,7 +72,7 @@ public class Astronaut extends Worker {
      */
     public void PlaceTeleporter() throws Exception {
         //todo mock
-        ArrayList<Teleporter> old = (ArrayList<Teleporter>)teleporters.clone();
+        ArrayList<Teleporter> old = (ArrayList<Teleporter>) teleporters.clone();
         if (teleporters.isEmpty()) throw new Exception();
         for (int i = 0; i < this.teleporters.size(); i++) {
             if (teleporters.get(i) != null) {
@@ -170,12 +180,14 @@ public class Astronaut extends Worker {
     public void Move() {
         SpaceObject old = position;
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
-        for (int i = 0; i < neighbours.size(); i++) {
+        /*for (int i = 0; i < neighbours.size(); i++) {
             MockIO.out.println(i + 1 + "." + neighbours.get(i).toString());
         }
         int to = Integer.parseInt(TestLogger.AskQuestion("Where do you want to move?"));
+*/
+        this.TravelTo(neighbours.get(Game.RandomNum(neighbours.size() - 1)));
 
-        this.TravelTo(neighbours.get(to - 1));
+
         changeEvent.firePropertyChange("position", old, position);
 
     }

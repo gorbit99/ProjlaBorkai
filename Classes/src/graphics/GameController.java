@@ -11,6 +11,11 @@ import javafx.scene.text.Text;
 
 public class GameController {
 
+
+    @FXML
+    private Pane inventoryPane;
+    @FXML
+    private Text playerId;
     @FXML
     private Button waitBtn;
     @FXML
@@ -74,6 +79,14 @@ public class GameController {
 
     public Button getMoveBtn() {
         return moveBtn;
+    }
+
+    public Text getPlayerId() {
+        return playerId;
+    }
+
+    public Pane getInventoryPane() {
+        return inventoryPane;
     }
 
     public Pane getAsteroidFieldGroup() {

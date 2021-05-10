@@ -84,6 +84,7 @@ public class Game {
     public static int RandomNum(int bound) {
         return random.nextInt(bound);
     }
+
     public static Random getRandomGenerator() {
         return random;
     }
@@ -100,6 +101,17 @@ public class Game {
         if (this.solarStorm.Tick())
             AsteroidField.GetInstance().HandleSolarStorm();
         CheckWinOrLose();
+    }
+
+    public void nextTurn() {
+        if (workers.size() != 0) {
+            this.CheckWinOrLose();
+            Worker worker=workers.get(0);
+            workers.remove(0);
+            this.workers.add(worker);
+            worker.Step();
+
+        }
     }
 
     /**
@@ -125,6 +137,7 @@ public class Game {
         if (!this.billOfMaterials.IsEnough(coreSum)) {
             this.lose = true;
         }
+
 
 
     }
@@ -159,8 +172,6 @@ public class Game {
         for (int i = 0; i < ufoCount; i++) {
             new UfoController();
         }
-
-
 
     }
 
