@@ -99,7 +99,10 @@ public class Astronaut extends Worker {
      */
     public void Step() {
         changeEvent.firePropertyChange("ActiveAstronaut", null, this);
-        boolean successful = false;
+
+        boolean successful = true;
+        MockIO.in.addInput("2\n");
+        MockIO.in.addInput("1\n");
         while (!successful) {
             try {
                 MockIO.out.println("1. Wait");

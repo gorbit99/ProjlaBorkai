@@ -6,9 +6,10 @@ import java.beans.PropertyChangeSupport;
  * This class represents the material. This is the parent class of all materials.
  */
 public abstract class Material {
-    protected PropertyChangeSupport changeEvent;
+    protected PropertyChangeSupport changeEvent = new PropertyChangeSupport(this);
 
     public PropertyChangeSupport GetChangeEvent() {
+        System.out.println("nem kéne itt lenni");
         return changeEvent;
     }
 
