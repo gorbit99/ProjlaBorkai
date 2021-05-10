@@ -25,6 +25,7 @@ public class AstronautView {
     private boolean crtRobot_ButtonSubscribe = false;
     private boolean crtTeleport_ButtonSubscribe = false;
     private boolean wait_ButtonSubscribe = false; //todo ehhez még nincs semmi
+    private Asteroid oldPosition = null;
 
     /**
      * constructor of AstronautView class
@@ -140,6 +141,22 @@ public class AstronautView {
             //            GameController.getInstance().getDrillBtn().setDisable(false);
         }
 
+    }
+
+    public void SubscribeToSpaceObjects(){
+        oldPosition = astronaut.getPosition();
+        ArrayList<SpaceObject> neighbours = oldPosition.GetNeighbours();
+
+        for (SpaceObject so : neighbours){
+            SpaceObjectController.controllerFromSpaceObject(so).getView().imageView.setOnMouseClicked(event -> astronautController.TravelToWrapper(so));
+        }
+    }
+
+    public void UnSubscribeFromSpaceObjects(){
+        for(SpaceObject so : oldPosition.GetNeighbours()){
+            SpaceObjectController soc = SpaceObjectController.controllerFromSpaceObject(so);
+            soc.getView().imageView.setOnMouseClicked(null);
+        }
     }
 
     private void drawInventory() {
