@@ -46,7 +46,6 @@ public class AstronautController extends WorkerController {
                 astronaut.Drill();
                 System.out.println("drill");
                 System.out.println(astronaut.toString());
-                astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
                 Game.GetInstance().nextTurn();
             } catch (Exception exception) {
@@ -62,7 +61,6 @@ public class AstronautController extends WorkerController {
                 System.out.println("mine");
 
                 astronaut.Mine(); //todo
-                astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
                 Game.GetInstance().nextTurn();
 
@@ -78,7 +76,6 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             try {
                 astronaut.PlaceMaterial(); //todo
-                //astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
                 Game.GetInstance().nextTurn();
 
