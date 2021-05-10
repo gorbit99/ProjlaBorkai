@@ -9,6 +9,11 @@ public class AsteroidView extends SpaceObjectView{
 
     private MaterialView coreView;
 
+    /**
+     * constructor of asteroid view
+     * @param imageView image view of the view
+     * @param coreView view of the asteroid's core
+     */
     public AsteroidView(ImageView imageView, MaterialView coreView){
         super(imageView);
         imageView.setImage(new Image("/Pictures/Asteroida.png"));
@@ -16,6 +21,11 @@ public class AsteroidView extends SpaceObjectView{
         coreView.ShowView(true);
     }
 
+
+    /**
+     * draw option
+     * @param spaceObject
+     */
     @Override
     public void Draw(SpaceObject spaceObject) {
         if (((Asteroid)spaceObject).GetLayers() == 0) {

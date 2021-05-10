@@ -16,6 +16,11 @@ public class MaterialController implements PropertyChangeListener {
         view.Draw(material);
     }
 
+    /**
+     * constructor of the material controller
+     * @param m the material which will be represented by the contorller
+     * @param mv view of the controller
+     */
     private MaterialController(Material m, MaterialView mv) {
         material = m;
         view = mv;

@@ -43,16 +43,30 @@ public class GameController {
     @FXML
     private Button drillBtn;
 
+    /**
+     * instance of the game controller
+     */
     private static GameController instance;
 
+    /**
+     * constructor of the game controller
+     */
     public GameController() {
         instance = this;
     }
 
+
+    /**
+     * returns an instance of the game controller
+     * @return the instance of the game controller
+     */
     public static GameController getInstance() {
         return instance;
     }
 
+    /**
+     * initialize function of the game controller class
+     */
     @FXML
     protected void initialize(){
         Game.GetInstance().StartGame();
@@ -73,30 +87,45 @@ public class GameController {
     public void Exit(){
         System.exit(0);
     }
-
+    /**
+     * move method of the game
+     */
     public void Move(){
 
     }
+    /**
+     * wait method of the game
+     */
     public void Wait(){
 
     }
-
+    /**
+     * mine method of the game
+     */
     public void Mine(){
 
     }
-
+    /**
+     * place method of the game
+     */
     public void Place(){
 
     }
-
+    /**
+     * drill method of the game
+     */
     public void Drill(){
 
     }
-
+    /**
+     * teleporter creating method of the game
+     */
     public void createTeleporter(){
 
     }
-
+    /**
+     * robot creating method of the game
+     */
     public void createRobot(){
 
     }

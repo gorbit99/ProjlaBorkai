@@ -6,11 +6,19 @@ import javafx.scene.image.ImageView;
 
 public class CoalView extends MaterialView {
     //todo
+    /**
+     * draw method of the coal view
+     * @param material
+     */
     @Override
     public void Draw(Material material) {
 
     }
 
+    /**
+     * constructor of the coal view
+     * @param iv
+     */
     public CoalView(ImageView iv){
         super(iv);
         image.setImage(new Image("/Pictures/coal.png"));

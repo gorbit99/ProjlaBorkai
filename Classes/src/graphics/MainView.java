@@ -12,6 +12,11 @@ public class MainView extends Application {
         launch(args);
     }
 
+    /**
+     * start point of the game
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
