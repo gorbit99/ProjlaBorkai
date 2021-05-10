@@ -16,6 +16,14 @@ public class AstronautView {
     private final ImageView imageView;
     private final Astronaut astronaut;
 
+    private boolean move_ButtonSubscribe = false; //todo ehhez még nincs semmi
+    private boolean drill_ButtonSubscribe = false;
+    private boolean mine_ButtonSubscribe = false;
+    private boolean place_ButtonSubscribe = false;
+    private boolean crtRobot_ButtonSubscribe = false;
+    private boolean crtTeleport_ButtonSubscribe = false;
+    private boolean wait_ButtonSubscribe = false; //todo ehhez még nincs semmi
+
     /**
      * constructor of AstronautView class
      *
@@ -52,25 +60,33 @@ public class AstronautView {
 
         if (asteroid.GetLayers() != 0) {
             GameController.getInstance().getDrillBtn().setDisable(false);
-            //GameController.getInstance().getDrillBtn().
+            GameController.getInstance().getDrillBtn().setOnAction(this.astronautController.DrillEventHandler);
 
-            //GameController.getInstance().getDrillBtn().//removeEventHandler();
             drill_ButtonSubscribe = true;
         }
         //GameController.getInstance().getDrillBtn().setOnAction(this.astronautController.DrillEventHandler);
         if (asteroid.GetLayers() == 0 && asteroid.GetCore() != null) {
             GameController.getInstance().getMineBtn().setDisable(false);
+            GameController.getInstance().getMineBtn().setOnAction(this.astronautController.MineEventHandler);
+            mine_ButtonSubscribe = true;
+        }
 
-        if (asteroid.GetLayers() == 0 && asteroid.GetCore() == null)
+        if (asteroid.GetLayers() == 0 && asteroid.GetCore() == null) {
             GameController.getInstance().getPlaceBtn().setDisable(false);
+            GameController.getInstance().getPlaceBtn().setOnAction(this.astronautController.PlaceEventHandler);
+            place_ButtonSubscribe = true;
+        }
 
         ArrayList<Material> receiptRobot = new ArrayList<>();
         receiptRobot.add(new Iron());
         receiptRobot.add(new Coal());
         receiptRobot.add(new Uranium());
-        BillOfMaterials billOfMaterialsRobot=new BillOfMaterials(receiptRobot);
-        if (billOfMaterialsRobot.IsEnough(astronaut.GetStoredMaterials()))
+        BillOfMaterials billOfMaterialsRobot = new BillOfMaterials(receiptRobot);
+        if (billOfMaterialsRobot.IsEnough(astronaut.GetStoredMaterials())) {
             GameController.getInstance().getRobotBtn().setDisable(false);
+            //GameController.getInstance().getRobotBtn().setOnAction(this.astronautController.RobotEventHandler);
+            crtRobot_ButtonSubscribe = true;
+        }
 
 
         ArrayList<Material> materialsTeleport = new ArrayList<>();
@@ -79,9 +95,15 @@ public class AstronautView {
         materialsTeleport.add(new Ice());
         materialsTeleport.add(new Uranium());
         BillOfMaterials billOfMaterialsTeleport = new BillOfMaterials(materialsTeleport);
-
-        if (billOfMaterialsTeleport.IsEnough(astronaut.GetStoredMaterials()))
+        if (billOfMaterialsTeleport.IsEnough(astronaut.GetStoredMaterials())) {
             GameController.getInstance().getTeleportBtn().setDisable(false);
+            //GameController.getInstance().getTeleportBtn().setOnAction(this.astronautController.TeleportEventHandler);
+            crtTeleport_ButtonSubscribe = true;
+        }
+    }
+    public void Unsubscribe(){
+
+
 
     }
 }

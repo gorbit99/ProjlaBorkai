@@ -22,8 +22,8 @@ public class AstronautController extends WorkerController {
 
         Asteroid newPosition = (Asteroid) asteroids.get(Game.RandomNum(asteroids.size()));
         astronaut = new Astronaut(newPosition);
-
-        view = new AstronautView(astronaut);
+        astronaut.GetChangeEvent().addPropertyChangeListener(this);
+        view = new AstronautView(astronaut,this);
         view.DrawAstronaut(astronaut);
     }
 
@@ -40,7 +40,7 @@ public class AstronautController extends WorkerController {
         }
     }
 
-    EventHandler<MouseEvent> DrillEventHandler = new EventHandler<>() {
+    public EventHandler<ActionEvent> DrillEventHandler = new EventHandler<>() {
         @Override
         public void handle(MouseEvent e) {
             try {
@@ -51,9 +51,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
-    EventHandler<MouseEvent> MineEventHandler = new EventHandler<>() {
+    public EventHandler<ActionEvent> MineEventHandler = new EventHandler<>() {
         @Override
-        public void handle(MouseEvent e) {
+        public void handle(ActionEvent e) {
             try {
                 System.out.println("mine");
                 //astronaut.Mine(); //todo
@@ -66,9 +66,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
-    EventHandler<MouseEvent> PlaceEventHandler = new EventHandler<>() {
+    public EventHandler<ActionEvent> PlaceEventHandler = new EventHandler<>() {
         @Override
-        public void handle(MouseEvent e) {
+        public void handle(ActionEvent e) {
             try {
                 //astronaut.PlaceMaterial(); //todo
                 astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
@@ -80,7 +80,7 @@ public class AstronautController extends WorkerController {
         }
     };
 
-    EventHandler<MouseEvent> WaitEventHandler = new EventHandler<>() {
+    public EventHandler<ActionEvent> WaitEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
             System.out.println("wait");
@@ -90,7 +90,7 @@ public class AstronautController extends WorkerController {
         }
     };
 
-    EventHandler<MouseEvent> MoveEventHandler = new EventHandler<>() {
+    public EventHandler<ActionEvent> MoveEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
             System.out.println("movee");
@@ -98,6 +98,5 @@ public class AstronautController extends WorkerController {
 
         }
     };
-
 
 }
