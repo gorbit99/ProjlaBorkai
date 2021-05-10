@@ -18,8 +18,14 @@ public class Astronaut extends Worker {
      */
     private ArrayList<Teleporter> teleporters;
 
+    /**
+     * Identifier counter
+     */
     private static int _id = 1;
 
+    /**
+     * Identifier of the player
+     */
     private int astronautId;
 
     /**
@@ -33,6 +39,10 @@ public class Astronaut extends Worker {
         _id++;
     }
 
+    /**
+     * Getter for the id
+     * @return the if of the astronaut
+     */
     public int getAstronautId() {
         return astronautId;
     }
@@ -53,14 +63,9 @@ public class Astronaut extends Worker {
      * places the chosen material back to an asteroid if its core is empty
      */
     public void PlaceMaterial() throws Exception {
-        //todo mock
+        //todo inventory alapján történjen, ehhez segédfüggvény
         ArrayList<Material> old = (ArrayList<Material>) materialsStored.clone();
-        for (int i = 0; i < this.materialsStored.size(); i++) {
-            if (materialsStored.get(i) != null) {
-                MockIO.out.println(i + 1 + "." + materialsStored.get(i).toString());
-            }
-        }
-        //int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you want to place back?"));
+
         if (this.position.PlaceMaterial(materialsStored.get(0))) {
             materialsStored.remove(0);
         } else {
@@ -73,14 +78,10 @@ public class Astronaut extends Worker {
      * places a teleporter down
      */
     public void PlaceTeleporter() throws Exception {
-        //todo mock
+        //todo grafikus felületről választás
         ArrayList<Teleporter> old = (ArrayList<Teleporter>) teleporters.clone();
         if (teleporters.isEmpty()) throw new Exception();
-        for (int i = 0; i < this.teleporters.size(); i++) {
-            if (teleporters.get(i) != null) {
-                MockIO.out.println(i + 1 + "." + teleporters.get(i).toString());
-            }
-        }
+
         int chosen = Integer.parseInt(TestLogger.AskQuestion("Which teleporter do you want to place?"));
         Teleporter t = teleporters.get(chosen - 1);
         this.teleporters.remove(t);
@@ -112,53 +113,6 @@ public class Astronaut extends Worker {
      */
     public void Step() {
         changeEvent.firePropertyChange("ActiveAstronaut", null, this);
-        System.out.println("Astronaut" + astronautId);
-        boolean successful = true;
-        MockIO.in.addInput("2\n");
-        MockIO.in.addInput("1\n");
-        while (!successful) {
-            try {
-                MockIO.out.println("1. Wait");
-                MockIO.out.println("2. Move");
-                MockIO.out.println("3. Mine");
-                MockIO.out.println("4. Drill");
-                MockIO.out.println("5. Create Robot");
-                MockIO.out.println("6. Create Teleporter");
-                MockIO.out.println("7. Place Teleporter");
-                MockIO.out.println("8. Place Material");
-                int to = Integer.parseInt(TestLogger.AskQuestion("Which movement you want to make"));
-                to--;
-                switch (to) {
-                    case 1:
-                        this.Move();
-                        break;
-                    case 2:
-                        this.Mine();
-                        break;
-                    case 3:
-                        this.Drill();
-                        break;
-                    case 4:
-                        this.CreateRobot();
-                        break;
-                    case 5:
-                        this.CreateTeleporter();
-                        break;
-                    case 6:
-                        this.PlaceTeleporter();
-                        break;
-                    case 7:
-                        this.PlaceMaterial();
-                        break;
-                    default:
-                        this.Wait();
-                        break;
-                }
-                successful = true;
-            } catch (Exception e) {
-                MockIO.out.println("Action could not be executed, chose an other one");
-            }
-        }
     }
 
     /**
@@ -181,17 +135,7 @@ public class Astronaut extends Worker {
      * actor can decide where the astronaut moves and calls travelTo
      */
     public void Move() {
-        SpaceObject old = position;
         ArrayList<SpaceObject> neighbours = this.position.GetNeighbours();
-        /*for (int i = 0; i < neighbours.size(); i++) {
-            MockIO.out.println(i + 1 + "." + neighbours.get(i).toString());
-        }
-        int to = Integer.parseInt(TestLogger.AskQuestion("Where do you want to move?"));
-*/
-        this.TravelTo(neighbours.get(Game.RandomNum(neighbours.size() - 1)));
-
-
-        changeEvent.firePropertyChange("position", old, position);
 
     }
 

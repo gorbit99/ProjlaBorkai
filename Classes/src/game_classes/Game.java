@@ -135,10 +135,12 @@ public class Game {
             if (object.GetCore() != null)
                 coreSum.add(object.GetCore());
         }
+        for(Worker worker : workers){
+            coreSum.addAll(worker.GetStoredMaterials());
+        }
         if (!this.billOfMaterials.IsEnough(coreSum)) {
             this.lose = true;
         }
-
 
         if (lose)
             System.exit(0 );
