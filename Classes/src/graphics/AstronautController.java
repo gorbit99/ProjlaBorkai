@@ -30,6 +30,7 @@ public class AstronautController extends WorkerController {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        view.SetActivePic();
         view.DrawAstronaut(astronaut);
         if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
             view.SetButtonStatus();
@@ -47,8 +48,7 @@ public class AstronautController extends WorkerController {
                 astronaut.Drill();
                 System.out.println("drill");
                 System.out.println(astronaut.toString());
-                view.Unsubscribe();
-                Game.GetInstance().nextTurn();
+                endTurn();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -60,15 +60,11 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             try {
                 System.out.println("mine");
-
                 astronaut.Mine(); //todo
-                view.Unsubscribe();
-                Game.GetInstance().nextTurn();
-
+                endTurn();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
-
         }
     };
 
@@ -76,46 +72,40 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(ActionEvent e) {
             try {
+                System.out.println("sün");
                 astronaut.PlaceMaterial(); //todo
-                view.Unsubscribe();
-                Game.GetInstance().nextTurn();
+                endTurn();
 
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
-
         }
     };
 
     public EventHandler<ActionEvent> WaitEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
-            System.out.println("wait");
-            view.Unsubscribe();
             astronaut.Wait();
-            Game.GetInstance().nextTurn();
-
+            endTurn();
         }
     };
 
     public EventHandler<ActionEvent> MoveEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {
-            /*System.out.println("move");
-            astronaut.Move(); //todo
-            view.Unsubscribe();
-            Game.GetInstance().nextTurn();*/
-
             view.Unsubscribe();
             view.SubscribeToSpaceObjects();
-
         }
     };
 
     public void TravelToWrapper(SpaceObject so){
         astronaut.TravelTo(so);
         view.UnSubscribeFromSpaceObjects();
-        Game.GetInstance().nextTurn();
+        endTurn();
     }
-
+    private void endTurn(){
+        view.Unsubscribe();
+        Game.GetInstance().nextTurn();
+        view.SetPassivePic();
+    }
 }

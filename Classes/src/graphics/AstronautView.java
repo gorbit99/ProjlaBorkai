@@ -33,11 +33,12 @@ public class AstronautView {
      * @param astronaut the astronaut which belongs to the controller
      */
     public AstronautView(Astronaut astronaut, AstronautController astronautController) {
+        this.astronaut = astronaut;
         imageView = new ImageView(new Image("/Pictures/spaceship.png"));
         GameController.getInstance().getAsteroidFieldGroup().getChildren().add(imageView);
         imageView.setFitWidth(40);
         imageView.setFitHeight(40);
-        this.astronaut = astronaut;
+
         this.astronautController = astronautController;
     }
 
@@ -51,6 +52,15 @@ public class AstronautView {
         imageView.setLayoutX(position.x);
         imageView.setLayoutY(position.y);
     }
+
+    public void SetActivePic(){
+        imageView.setImage(new Image("/Pictures/spaceship_active.png"));
+    }
+
+    public void SetPassivePic(){
+        imageView.setImage(new Image("/Pictures/spaceship.png"));
+    }
+
 
     /**
      * Decides which button is active during a player's turn
