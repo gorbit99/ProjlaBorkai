@@ -98,6 +98,7 @@ public class Astronaut extends Worker {
      * controls the astronaut's movements
      */
     public void Step() {
+        changeEvent.firePropertyChange("ActiveAstronaut", null, this);
         boolean successful = false;
         while (!successful) {
             try {

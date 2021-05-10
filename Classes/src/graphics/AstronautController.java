@@ -1,6 +1,8 @@
 package graphics;
 
 import game_classes.*;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
 import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Array;
@@ -26,6 +28,66 @@ public class AstronautController extends WorkerController {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+
         view.DrawAstronaut(astronaut);
+        if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
+            view.SetButtonStatus();
+
+        }
     }
+
+    EventHandler<MouseEvent> DrillEventHandler = new EventHandler<>() {
+        @Override
+        public void handle(MouseEvent e) {
+            try {
+                astronaut.Drill();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+    };
+
+    EventHandler<MouseEvent> MineEventHandler = new EventHandler<>() {
+        @Override
+        public void handle(MouseEvent e) {
+            try {
+                astronaut.Mine(); //todo
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+        }
+    };
+
+    EventHandler<MouseEvent> PlaceEventHandler = new EventHandler<>() {
+        @Override
+        public void handle(MouseEvent e) {
+            try {
+                astronaut.PlaceMaterial(); //todo
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+        }
+    };
+
+    EventHandler<MouseEvent> WaitEventHandler = new EventHandler<>() {
+        @Override
+        public void handle(MouseEvent e) {
+
+            astronaut.Wait();
+
+        }
+    };
+
+    EventHandler<MouseEvent> MoveEventHandler = new EventHandler<>() {
+        @Override
+        public void handle(MouseEvent e) {
+
+            astronaut.Move(); //todo
+
+        }
+    };
+
+
 }

@@ -43,8 +43,22 @@ public class AstronautView {
      */
     public void SetButtonStatus() {
         Asteroid asteroid = astronaut.getPosition();
-        if (asteroid.GetLayers() == 0)
+        boolean move_ButtonSubscribe=false;
+        boolean drill_ButtonSubscribe=false;
+        boolean mine_ButtonSubscribe=false;
+        boolean _ButtonSubscribe=false;
+        boolean place_ButtonSubscribe=false;
+        boolean crtRobot_ButtonSubscribe=false;
+        boolean vrtTeleport_ButtonSubscribe=false;
+        boolean wait_ButtonSubscribe=false;
+
+        if (asteroid.GetLayers() == 0) {
             GameController.getInstance().getDrillBtn().setDisable(false);
+            //GameController.getInstance().getDrillBtn().
+
+            //GameController.getInstance().getDrillBtn().//removeEventHandler();
+            drill_ButtonSubscribe = true;
+        }
 
         if (asteroid.GetLayers() == 0 && asteroid.GetCore() != null)
             GameController.getInstance().getMineBtn().setDisable(false);
