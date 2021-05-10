@@ -76,7 +76,7 @@ public class AstronautView {
             mine_ButtonSubscribe = true;
         }
 
-        if (asteroid.GetLayers() == 0 && asteroid.GetCore() == null) {
+        if (asteroid.GetLayers() == 0 && asteroid.GetCore() == null && astronaut.GetStoredMaterials().size() != 0) {
             GameController.getInstance().getPlaceBtn().setDisable(false);
             GameController.getInstance().getPlaceBtn().setOnAction(this.astronautController.PlaceEventHandler);
             place_ButtonSubscribe = true;
@@ -144,10 +144,9 @@ public class AstronautView {
 
     private void drawInventory() {
         ArrayList<Material> inventory = astronaut.GetStoredMaterials();
-        int size=inventory.size();
-        if (size==0)
+        int size = inventory.size();
+        if (size == 0)
             return;
-
 
 
     }

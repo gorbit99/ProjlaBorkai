@@ -58,9 +58,9 @@ public class Astronaut extends Worker {
                 MockIO.out.println(i + 1 + "." + materialsStored.get(i).toString());
             }
         }
-        int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you want to place back?"));
-        if (this.position.PlaceMaterial(materialsStored.get(chosen - 1))) {
-            materialsStored.remove(chosen - 1);
+        //int chosen = Integer.parseInt(TestLogger.AskQuestion("Which material do you want to place back?"));
+        if (this.position.PlaceMaterial(materialsStored.get(0))) {
+            materialsStored.remove(0);
         } else {
             throw new Exception("Couldn't place material");
         }

@@ -78,7 +78,7 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             try {
                 astronaut.PlaceMaterial(); //todo
-                astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
+                //astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
                 view.Unsubscribe();
                 Game.GetInstance().nextTurn();
 
