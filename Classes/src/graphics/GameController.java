@@ -32,6 +32,8 @@ public class GameController {
     private Button drillBtn;
     @FXML
     private Button moveBtn;
+    @FXML
+    private Button returnToMenu;
 
     private static GameController instance;
 
@@ -80,6 +82,8 @@ public class GameController {
     public Button getMoveBtn() {
         return moveBtn;
     }
+
+    public Button getReturnToMenu(){return returnToMenu;}
 
     public Text getPlayerId() {
         return playerId;

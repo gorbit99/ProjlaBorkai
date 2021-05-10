@@ -12,7 +12,6 @@ public class MainView extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
     /**
      * start point of the game
      * @param stage
