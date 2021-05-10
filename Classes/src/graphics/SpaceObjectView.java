@@ -10,8 +10,4 @@ public abstract class SpaceObjectView {
 
     //todo ez az osztály az osztálydiagrammon nem absztrakt
     public abstract void Draw(SpaceObject spaceObject);
-
-    public SpaceObjectView(ImageView imageView) {
-        this.imageView = imageView;
-    }
 }
