@@ -3,15 +3,24 @@ package graphics;
 import game_classes.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GameController {
 
-
+    @FXML
+    private AnchorPane gameView;
     @FXML
     private Pane inventoryPane;
     @FXML
@@ -46,7 +55,7 @@ public class GameController {
     }
 
     @FXML
-    protected void initialize(){
+    protected void initialize() {
         Game.GetInstance().StartGame();
 
     }
@@ -55,7 +64,7 @@ public class GameController {
         return drillBtn;
     }
 
-    public void exit(){
+    public void exit() {
         System.exit(0);
     }
 
@@ -83,7 +92,9 @@ public class GameController {
         return moveBtn;
     }
 
-    public Button getReturnToMenu(){return returnToMenu;}
+    public Button getReturnToMenu() {
+        return returnToMenu;
+    }
 
     public Text getPlayerId() {
         return playerId;
@@ -95,5 +106,31 @@ public class GameController {
 
     public Pane getAsteroidFieldGroup() {
         return asteroidFieldGroup;
+    }
+
+    public void Endgame(boolean win, boolean lose) {
+        if (win || lose) {
+            Parent root = new Parent() {};
+            if (win) {
+                try {//todo nem rajzolja ki a kurva anyját
+                    root = FXMLLoader.load(getClass().getResource("Win.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("win" + root);
+            } else if (lose) {
+                try {//todo nem rajzolja ki a kurva anyját
+                    root = FXMLLoader.load(getClass().getResource("Lose.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("lose" + root);
+            }
+
+            Scene scene = new Scene(root, Color.ORANGE);
+            Stage stage = (Stage) gameView.getScene().getWindow();
+            stage.setScene(scene);
+        }
+
     }
 }

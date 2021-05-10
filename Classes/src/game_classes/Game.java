@@ -1,6 +1,7 @@
 package game_classes;
 
 import graphics.AstronautController;
+import graphics.GameController;
 import graphics.RobotController;
 import graphics.UfoController;
 
@@ -127,7 +128,8 @@ public class Game {
         }
         if (this.billOfMaterials.IsEnough(materialSum)) {
             this.win = true;
-            return;
+            GameController.getInstance().Endgame(true,lose);
+            //return;
         }
         ArrayList<Material> coreSum = new ArrayList<>();
 
@@ -140,8 +142,9 @@ public class Game {
         }
 
 
-        if (lose)
-            System.exit(0 );
+        if (lose) {
+            GameController.getInstance().Endgame(win, true);
+        }
     }
 
     /**
@@ -173,7 +176,7 @@ public class Game {
 
 
         for (int i = 0; i < ufoCount; i++) {
-            //new UfoController();
+            new UfoController();
         }
 
 
