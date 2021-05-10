@@ -3,7 +3,6 @@ package graphics;
 import game_classes.Asteroid;
 import game_classes.AsteroidField;
 import game_classes.SpaceObject;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
@@ -13,9 +12,16 @@ import java.util.ArrayList;
 
 public class AsteroidView extends SpaceObjectView {
 
+    //todo ez gyanús
     private final static int maxEntityOnAsteroid = 5;
 
+    /**
+     * View of the material in this asteroid's core
+     */
     private MaterialView coreView;
+    /**
+     * collection of lines symbolizing neighbourhood
+     */
     private ArrayList<Line> neighbourLines = new ArrayList<>();
 
     /**
@@ -28,7 +34,7 @@ public class AsteroidView extends SpaceObjectView {
         this.imageView = imageView;
         imageView.setImage(new Image("/Pictures/Asteroida.png"));
         this.coreView = coreView;
-        coreView.ShowView(true);
+        coreView.ShowView(false);
     }
 
 
@@ -46,6 +52,10 @@ public class AsteroidView extends SpaceObjectView {
         drawNeighbourLines(spaceObject);
     }
 
+    /**
+     * Draws the lines to this space object's neighbours
+     * @param spaceObject whose neighbourhood will be displayed
+     */
     private void drawNeighbourLines(SpaceObject spaceObject) {
         for (Line line : neighbourLines) {
             GameController.getInstance().getAsteroidFieldGroup().getChildren().remove(line);
@@ -98,6 +108,11 @@ public class AsteroidView extends SpaceObjectView {
         }
     }
 
+    /**
+     * Gets the point where an entity specified by an id should be placed.
+     * @param id Identifier of the entity
+     * @return the point where the entity should be placed at
+     */
     public Point getEntityPosition(int id) {
         double angle = 2 * Math.PI / maxEntityOnAsteroid * id;
 
@@ -108,12 +123,12 @@ public class AsteroidView extends SpaceObjectView {
                 (int) (Math.sin(angle) * len + imageView.getLayoutY()));
     }
 
+    /**
+     * Gets the next identifier on a spaceObject.
+     * @param spaceObject whose next available will be returned
+     * @return the next entity id
+     */
     public static int getNextEntityId(SpaceObject spaceObject) {
         return spaceObject.GetWorkers().size();
-    }
-
-    public void SetView(MaterialView CoreView){
-        this.coreView = coreView;
-        coreView.ShowView(true);
     }
 }

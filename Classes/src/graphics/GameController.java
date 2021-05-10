@@ -3,10 +3,7 @@ package graphics;
 import game_classes.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -55,7 +52,7 @@ public class GameController {
     }
 
     @FXML
-    protected void initialize() {
+    protected void initialize(){
         Game.GetInstance().StartGame();
 
     }
@@ -64,7 +61,7 @@ public class GameController {
         return drillBtn;
     }
 
-    public void exit() {
+    public void exit(){
         System.exit(0);
     }
 
@@ -92,9 +89,7 @@ public class GameController {
         return moveBtn;
     }
 
-    public Button getReturnToMenu() {
-        return returnToMenu;
-    }
+    public Button getReturnToMenu(){return returnToMenu;}
 
     public Text getPlayerId() {
         return playerId;

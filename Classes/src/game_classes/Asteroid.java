@@ -71,7 +71,6 @@ public class Asteroid extends SpaceObject {
             if (distanceFromSun <= 2.5f) {
                 core.HandleCloseToSun(this);
             }
-            changeEvent.firePropertyChange("core", null, material);
             return true;
         }
         return false;
@@ -155,13 +154,13 @@ public class Asteroid extends SpaceObject {
         ArrayList<SpaceObject> old = (ArrayList<SpaceObject>) neighbours.clone();
         neighbours.remove(spaceObject);
         if (neighbours.size() == 0) {
-            //todo ez az if mit csinál?
+            //todo lehet csak butus vagyok, de mí nó ért
             if (spaceObject.GetNeighbours().size() == 0) {
                 return;
             }
             ArrayList<SpaceObject> potentialNeighbours = spaceObject.GetNeighbours();
             if (potentialNeighbours.size() > 1) {
-                SpaceObject obj = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 2) + 1);
+                SpaceObject obj = potentialNeighbours.get(Game.RandomNum(potentialNeighbours.size() - 1));
                 this.AddNeighbour(obj);
             } else {
                 SpaceObject so;

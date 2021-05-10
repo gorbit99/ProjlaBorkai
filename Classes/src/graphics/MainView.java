@@ -30,6 +30,4 @@ public class MainView extends Application {
         stage.getIcons().add(new Image("/Pictures/logo.png"));
         stage.show();
     }
-
-
 }
