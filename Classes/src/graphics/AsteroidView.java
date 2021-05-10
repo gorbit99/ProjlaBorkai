@@ -25,7 +25,7 @@ public class AsteroidView extends SpaceObjectView {
      * @param coreView  view of the asteroid's core
      */
     public AsteroidView(ImageView imageView, MaterialView coreView, SpaceObject spaceObject) {
-        super(imageView);
+        this.imageView = imageView;
         imageView.setImage(new Image("/Pictures/Asteroida.png"));
         this.coreView = coreView;
         coreView.ShowView(true);
