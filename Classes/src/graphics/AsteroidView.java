@@ -3,6 +3,8 @@ package graphics;
 import game_classes.Asteroid;
 import game_classes.AsteroidField;
 import game_classes.SpaceObject;
+import game_classes.Worker;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
@@ -12,7 +14,6 @@ import java.util.ArrayList;
 
 public class AsteroidView extends SpaceObjectView {
 
-    //todo ez gyanús
     private final static int maxEntityOnAsteroid = 5;
 
     /**
@@ -123,12 +124,12 @@ public class AsteroidView extends SpaceObjectView {
                 (int) (Math.sin(angle) * len + imageView.getLayoutY()));
     }
 
-    /**
-     * Gets the next identifier on a spaceObject.
-     * @param spaceObject whose next available will be returned
-     * @return the next entity id
-     */
-    public static int getNextEntityId(SpaceObject spaceObject) {
-        return spaceObject.GetWorkers().size();
+    public static int getNextEntityId(SpaceObject spaceObject, Worker worker) {
+        return spaceObject.GetWorkers().indexOf(worker);
+    }
+
+    public void SetView(MaterialView CoreView){
+        this.coreView = coreView;
+        coreView.ShowView(true);
     }
 }

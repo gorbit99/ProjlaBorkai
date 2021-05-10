@@ -153,5 +153,6 @@ public class AstronautController extends WorkerController {
         view.Unsubscribe();
         Game.GetInstance().nextTurn();
         view.SetPassivePic();
+        //GameController.getInstance().getInventoryBox().getChildren().clear();
     }
 }

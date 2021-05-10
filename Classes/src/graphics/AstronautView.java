@@ -5,6 +5,7 @@ import javafx.event.EventType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -47,27 +48,41 @@ public class AstronautView {
      * @param astronaut the astronaut to be drawn
      */
     public void DrawAstronaut(Astronaut astronaut) {
+        GameController.getInstance().getInventoryBox().getChildren().clear();
         SpaceObjectController spaceObjectController =
                 SpaceObjectController.controllerFromSpaceObject(astronaut.getPosition());
 
-        int id = AsteroidView.getNextEntityId(astronaut.getPosition());
+        int id = AsteroidView.getNextEntityId(astronaut.getPosition(),astronaut);
         Point position = ((AsteroidView) spaceObjectController.getView()).getEntityPosition(id);
 
         imageView.setLayoutX(position.x);
         imageView.setLayoutY(position.y);
+
+        HBox inventoryBox = GameController.getInstance().getInventoryBox();
+
+        for (Material material : this.astronaut.GetStoredMaterials()) {
+            MaterialView view=MaterialController.controllerFromMaterial(material).getView();
+            System.out.println("Materiall list:"+material);
+            ImageView image=view.image;
+            image.setFitHeight(50);
+            image.setFitWidth(50);
+            inventoryBox.getChildren().add(image);
+        }
+
+
     }
 
     /**
      * Sets the active astronaut image
      */
-    public void SetActivePic(){
+    public void SetActivePic() {
         imageView.setImage(new Image("/Pictures/spaceship_active.png"));
     }
 
     /**
      * Sets the passive astronaut image
      */
-    public void SetPassivePic(){
+    public void SetPassivePic() {
         imageView.setImage(new Image("/Pictures/spaceship.png"));
     }
 
@@ -170,11 +185,11 @@ public class AstronautView {
     /**
      * Subscribes to the neighbouring space object's events
      */
-    public void SubscribeToSpaceObjects(){
+    public void SubscribeToSpaceObjects() {
         oldPosition = astronaut.getPosition();
         ArrayList<SpaceObject> neighbours = oldPosition.GetNeighbours();
 
-        for (SpaceObject so : neighbours){
+        for (SpaceObject so : neighbours) {
             SpaceObjectController.controllerFromSpaceObject(so).getView().imageView.setOnMouseClicked(event -> astronautController.TravelToWrapper(so));
         }
     }
@@ -182,8 +197,8 @@ public class AstronautView {
     /**
      * Unsubscribes from the neighbouring space object's events
      */
-    public void UnSubscribeFromSpaceObjects(){
-        for(SpaceObject so : oldPosition.GetNeighbours()){
+    public void UnSubscribeFromSpaceObjects() {
+        for (SpaceObject so : oldPosition.GetNeighbours()) {
             SpaceObjectController soc = SpaceObjectController.controllerFromSpaceObject(so);
             soc.getView().imageView.setOnMouseClicked(null);
         }

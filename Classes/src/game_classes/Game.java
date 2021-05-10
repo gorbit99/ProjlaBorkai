@@ -46,6 +46,8 @@ public class Game {
      */
     private boolean lose;
 
+    private int roundNum = 0;
+
     /**
      * This is the game's constructor.
      */
@@ -106,7 +108,13 @@ public class Game {
     }
 
     public void nextTurn() {
+        if (roundNum == this.astronautCount) {
+            roundNum = 0;
+            if (this.solarStorm.Tick())
+                AsteroidField.GetInstance().HandleSolarStorm();
+        }
         if (workers.size() != 0) {
+            roundNum++;
             this.CheckWinOrLose();
             Worker worker = workers.get(0);
             workers.remove(0);
@@ -128,8 +136,7 @@ public class Game {
         }
         if (this.billOfMaterials.IsEnough(materialSum)) {
             this.win = true;
-            GameController.getInstance().Endgame(true,lose);
-            //return;
+            return;
         }
         ArrayList<Material> coreSum = new ArrayList<>();
 
@@ -137,17 +144,20 @@ public class Game {
             if (object.GetCore() != null)
                 coreSum.add(object.GetCore());
         }
-        for(Worker worker : workers){
-            coreSum.addAll(worker.GetStoredMaterials());
+
+        for (Worker worker : this.workers) {
+            for (Material material : worker.GetStoredMaterials()) {
+                coreSum.add(material);
+            }
         }
         if (!this.billOfMaterials.IsEnough(coreSum)) {
+            System.out.println(coreSum);
             this.lose = true;
         }
 
 
-        if (lose) {
-            GameController.getInstance().Endgame(win, true);
-        }
+        if (lose)
+            System.exit(0);
     }
 
     /**

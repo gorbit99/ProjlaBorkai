@@ -1,10 +1,12 @@
 package graphics;
 
 import game_classes.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 /**
  * Controller class for the materials in the game. Connects the view and the model
@@ -13,10 +15,17 @@ public class MaterialController implements PropertyChangeListener {
     private MaterialView view;
     private Material material;
 
+    private static ArrayList<MaterialController> materialControllers = new ArrayList<>();
+
     //TODO ez az osztálydiagrammon privát
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         view.Draw(material);
+
+        if (evt.getPropertyName().equals("exists") || evt.getPropertyName().equals("exposureCount")) {
+            view = new NoMaterialView(new ImageView(new Image("/NoMaterial.png")));
+            System.out.println("no material");
+        }
     }
 
     /**
@@ -32,11 +41,12 @@ public class MaterialController implements PropertyChangeListener {
             material.GetChangeEvent().addPropertyChangeListener(this);
     }
 
-    /**
-     * Creates an iron controller
-     * @param iv the image view the iron will be represented in
-     * @return the iron controller
-     */
+    public static MaterialController controllerFromMaterial(Material material) {
+        return materialControllers.stream().filter(x -> x.material == material).findFirst().get();
+
+    }
+
+
     public static MaterialController CreateIron(ImageView iv) {
 
         MaterialView mv = new IronView(iv);

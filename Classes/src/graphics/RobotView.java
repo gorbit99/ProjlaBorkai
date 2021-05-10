@@ -19,7 +19,7 @@ public class RobotView {
         SpaceObjectController spaceObjectController =
                 SpaceObjectController.controllerFromSpaceObject(robot.getPosition());
 
-        int id = AsteroidView.getNextEntityId(robot.getPosition());
+        int id = AsteroidView.getNextEntityId(robot.getPosition(),robot);
         Point position = ((AsteroidView)spaceObjectController.getView()).getEntityPosition(id);
 
         imageView.setLayoutX(position.x);

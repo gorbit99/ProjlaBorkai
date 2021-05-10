@@ -7,21 +7,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="gameView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.GameController">
+<AnchorPane fx:id="gameView" prefHeight="505.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.GameController">
    <children>
-      <SplitPane dividerPositions="0.8342" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.7176938369781312" orientation="VERTICAL" prefHeight="505.0" prefWidth="600.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #2591E4;" SplitPane.resizableWithParent="false">
                <children>
-                  <Pane fx:id="asteroidFieldGroup" maxHeight="329.0" maxWidth="600.0" minHeight="327.0" minWidth="284.0" prefHeight="329.0" prefWidth="600.0">
-                     <children>
-                        <Pane fx:id="inventoryPane" layoutX="550.0" layoutY="112.0" prefHeight="217.0" prefWidth="43.0" />
-                     </children></Pane>
+                  <Pane fx:id="asteroidFieldGroup" maxHeight="329.0" maxWidth="600.0" minHeight="327.0" minWidth="284.0" prefHeight="329.0" prefWidth="600.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                <children>
-                  <HBox alignment="CENTER" prefHeight="63.0" prefWidth="598.0" spacing="10.0" style="-fx-background-color: #2591E4;">
+                  <HBox alignment="CENTER" layoutY="61.0" prefHeight="71.0" prefWidth="598.0" spacing="10.0" style="-fx-background-color: #2591E4;">
                      <children>
                         <Button fx:id="moveBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
                         <Button fx:id="drillBtn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" />
@@ -34,6 +31,7 @@
                         <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="65.0" />
                      </children>
                   </HBox>
+                  <HBox fx:id="inventoryBox" layoutX="-1.0" layoutY="-7.0" prefHeight="71.0" prefWidth="598.0" style="-fx-background-color: #2591E4;" />
                </children>
             </AnchorPane>
         </items>

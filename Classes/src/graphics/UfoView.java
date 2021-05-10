@@ -23,7 +23,7 @@ public class UfoView {
         SpaceObjectController spaceObjectController =
                 SpaceObjectController.controllerFromSpaceObject(ufo.getPosition());
 
-        int id = AsteroidView.getNextEntityId(ufo.getPosition());
+        int id = AsteroidView.getNextEntityId(ufo.getPosition(),ufo);
         Point position = ((AsteroidView)spaceObjectController.getView()).getEntityPosition(id);
 
         imageView.setLayoutX(position.x);

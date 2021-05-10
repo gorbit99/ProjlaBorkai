@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -23,8 +24,9 @@ public class GameController {
      */
     @FXML
     private AnchorPane gameView;
+
     @FXML
-    private Pane inventoryPane;
+    private HBox inventoryBox;
     @FXML
     private Text playerId;
     @FXML
@@ -124,7 +126,11 @@ public class GameController {
     public Button getMoveBtn() {
         return moveBtn;
     }
-//todo miért létezik?
+
+    public HBox getInventoryBox() {
+        return inventoryBox;
+    }
+
     public Button getReturnToMenu(){return returnToMenu;}
 
     /**
@@ -135,9 +141,6 @@ public class GameController {
         return playerId;
     }
 
-    public Pane getInventoryPane() {
-        return inventoryPane;
-    }
 
     /**
      * Gets the asteroid field group
@@ -147,6 +150,8 @@ public class GameController {
         return asteroidFieldGroup;
     }
 
+
+    //todo ez a baj
     public void Endgame(boolean win, boolean lose) {
         if (win || lose) {
             Parent root = new Parent() {};
