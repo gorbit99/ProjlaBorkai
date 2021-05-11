@@ -58,10 +58,14 @@ public class Game {
             ArrayList<Material> materials = new ArrayList<>();
             materials.add(new Iron());
             materials.add(new Iron());
+            materials.add(new Iron());
+            materials.add(new Coal());
             materials.add(new Coal());
             materials.add(new Coal());
             materials.add(new Uranium());
             materials.add(new Uranium());
+            materials.add(new Uranium());
+            materials.add(new Ice());
             materials.add(new Ice());
             materials.add(new Ice());
             billOfMaterials = new BillOfMaterials(materials);
@@ -107,11 +111,16 @@ public class Game {
         CheckWinOrLose();
     }
 
+    /**
+     * Makes the next worker make it's turn.
+     */
     public void nextTurn() {
         if (roundNum == this.astronautCount) {
             roundNum = 0;
-            if (this.solarStorm.Tick())
+            if (this.solarStorm.Tick()){
                 AsteroidField.GetInstance().HandleSolarStorm();
+                AsteroidField.GetInstance().Move();
+            }
         }
         if (workers.size() != 0) {
             roundNum++;
@@ -120,7 +129,6 @@ public class Game {
             workers.remove(0);
             this.workers.add(worker);
             worker.Step();
-
         }
     }
 
@@ -151,7 +159,6 @@ public class Game {
             }
         }
         if (!this.billOfMaterials.IsEnough(coreSum)) {
-            System.out.println(coreSum);
             this.lose = true;
             GameController.getInstance().Endgame(false,true);
         }
@@ -186,7 +193,6 @@ public class Game {
         for (int i = 0; i < astronautCount; i++) {
             new AstronautController();
         }
-
 
         for (int i = 0; i < ufoCount; i++) {
             new UfoController();

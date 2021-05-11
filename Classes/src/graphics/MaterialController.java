@@ -17,14 +17,12 @@ public class MaterialController implements PropertyChangeListener {
 
     private static ArrayList<MaterialController> materialControllers = new ArrayList<>();
 
-    //TODO ez az osztálydiagrammon privát
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
         if (evt.getPropertyName().equals("exist") || evt.getPropertyName().equals("exposureCount")) {
             view = new NoMaterialView(view.getImage());
             material = null;
-            System.out.println("no material");
         }
         view.Draw(material);
 
@@ -45,13 +43,22 @@ public class MaterialController implements PropertyChangeListener {
         materialControllers.add(this);
     }
 
+    /**
+     * Gets the controller of a material
+     * @param material the material you want to get the controller of
+     * @return the controller
+     */
     public static MaterialController controllerFromMaterial(Material material) {
-        System.out.println(material);
         return materialControllers.stream().filter(x -> x.material == material).findFirst().get();
 
     }
 
 
+    /**
+     * Creates an iron controller
+     * @param iv the image view the iron will appear in
+     * @return the iron controller
+     */
     public static MaterialController CreateIron(ImageView iv) {
 
         MaterialView mv = new IronView(iv);
@@ -71,6 +78,10 @@ public class MaterialController implements PropertyChangeListener {
         return new MaterialController(coal, mv);
     }
 
+    /**
+     * Setter for the material
+     * @param material
+     */
     public void setMaterial(Material material) {
         this.material = material;
     }

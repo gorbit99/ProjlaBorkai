@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
  * Abstract base class for material views
  */
 public abstract class MaterialView {
-    //todo
     protected ImageView image;
     public abstract void Draw(Material material);
     protected MaterialView(ImageView iv){

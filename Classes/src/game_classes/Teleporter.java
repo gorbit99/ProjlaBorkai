@@ -104,7 +104,6 @@ public class Teleporter extends SpaceObject {
      * @return teleporter list with the pair if its possible to create empty list if not
      */
     public static ArrayList<Teleporter> CreateTeleporterPair(ArrayList<Material> materials) {
-        //todo nem tudom itt kellene e vagy ez is a rteleport controllerbe kell hogy történjen
         if (billOfMaterials == null) {
             ArrayList<Material> createMaterials = new ArrayList<>();
             createMaterials.add(new Iron());

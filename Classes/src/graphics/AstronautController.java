@@ -44,13 +44,14 @@ public class AstronautController extends WorkerController {
         view.SetActivePic();
         if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
             view.SetButtonStatus();
+        }
 
-
+        if (evt.getPropertyName().equals("exist")){
+            GameController.getInstance().getAsteroidFieldGroup().getChildren().remove(view);
         }
 
 
         if (evt.getPropertyName().equals("materialsStored")) {
-            //todo ide kell hogy megvaltozzon mine utan
             Pane asteroidsGroup = GameController.getInstance().getAsteroidFieldGroup();
             Asteroid asteroid=(Asteroid) evt.getNewValue();
             ImageView imageView= SpaceObjectController.controllerFromSpaceObject(asteroid).getView().imageView;
@@ -68,8 +69,6 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             try {
                 astronaut.Drill();
-                System.out.println("drill");
-                System.out.println(astronaut.toString());
                 endTurn();
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -84,8 +83,7 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(ActionEvent e) {
             try {
-                System.out.println("mine");
-                astronaut.Mine(); //todo hogy eltűnjön és az üres legyen ott
+                astronaut.Mine();
                 endTurn();
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -100,8 +98,7 @@ public class AstronautController extends WorkerController {
         @Override
         public void handle(ActionEvent e) {
             try {
-                System.out.println("sün");
-                astronaut.PlaceMaterial(); //todo hogy ki tudjam választani melyiket kell bele tennem
+                astronaut.PlaceMaterial();
                 endTurn();
 
             } catch (Exception exception) {
@@ -148,6 +145,9 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    /**
+     * Event handler for the create teleporter action
+     */
     public EventHandler<ActionEvent> CreateTeleportEventHandler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent e) {

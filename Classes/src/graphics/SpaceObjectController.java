@@ -1,6 +1,7 @@
 package graphics;
 
 import game_classes.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -9,12 +10,21 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Controller for the space objects
+ */
 public class SpaceObjectController implements PropertyChangeListener {
     private SpaceObject spaceObject;
     private SpaceObjectView view;
 
+    /**
+     * collection of the space objects in the game
+     */
     private static ArrayList<SpaceObjectController> spaceObjectControllers = new ArrayList<>();
 
+    /**
+     * Collection of indexes of the necessary materials, useful, when setting up the game
+     */
     private static ArrayList<Integer> materialsRequired;
 
     static {
@@ -25,18 +35,26 @@ public class SpaceObjectController implements PropertyChangeListener {
         Collections.shuffle(materialsRequired);
     }
 
-    //todo ez az osztálydián privát
+    /**
+     * Event handler for the property changes of the space object this object controls
+     * @param evt
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("core")){
             if (evt.getNewValue() == null){
-                //NoMaterialView nomaterial = new NoMaterialView();
-                System.out.println( "most kéne cserélni");
+                //NoMaterialView nomaterial = new NoMaterialView(new Coal());
+                //((AsteroidView)view).SetView(nomaterial);
             }
         }
         view.Draw(spaceObject);
     }
 
+    /**
+     * Constructor of the class
+     * @param so the space object
+     * @param sv the view for the space object
+     */
     private SpaceObjectController(SpaceObject so, SpaceObjectView sv) {
         spaceObject = so;
         view = sv;
@@ -44,6 +62,11 @@ public class SpaceObjectController implements PropertyChangeListener {
         spaceObject.GetChangeEvent().addPropertyChangeListener(this);
     }
 
+    /**
+     * Creates an asteroid controller
+     * @param id identifier, defines the placement of the asteroid
+     * @return the asteroid controller
+     */
     public static SpaceObjectController createAsteroidController(int id) {
         Asteroid asteroid = new Asteroid();
 
@@ -105,19 +128,38 @@ public class SpaceObjectController implements PropertyChangeListener {
         return new SpaceObjectController(asteroid, asteroidView);
     }
 
-    public static SpaceObjectController createTeleporterController(Asteroid asteroid) {
-//        Teleporter teleporter = new Teleporter()
-        return null;//todo ez egy szar (ezt nem értem nem tudom ki íta ide xdd levi)
+    /**
+     * Creates a teleporter controller
+     * @param teleporter the teleporter object this controller will control
+     * @return the teleporter controller
+     */
+    public static SpaceObjectController createTeleporterController(Teleporter teleporter) {
+        //Teleporter teleporter = new Teleporter()
+        return null;
+        //return new SpaceObjectController(teleporter, new TeleportView(teleporter));
     }
 
+    /**
+     * Gets the space object this object controls
+     * @return space object controlled by this controller
+     */
     public SpaceObject getSpaceObject() {
         return spaceObject;
     }
 
+    /**
+     * Gets the view this controller handles
+     * @return  the view
+     */
     public SpaceObjectView getView() {
         return view;
     }
 
+    /**
+     * Gets the controller of a space object
+     * @param spaceObject the spaceobject whose controller will be returnd
+     * @return the controller of the spaceobject specified in the parameters.
+     */
     public static SpaceObjectController controllerFromSpaceObject(SpaceObject spaceObject) {
         return spaceObjectControllers.stream().filter(x -> x.spaceObject == spaceObject).findFirst().get();
     }

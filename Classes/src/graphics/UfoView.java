@@ -7,9 +7,15 @@ import javafx.scene.image.ImageView;
 
 import java.awt.*;
 
+/**
+ * View for the ufos
+ */
 public class UfoView {
     private final ImageView imageView;
 
+    /**
+     * Constructor of the class
+     */
     public UfoView(){
         imageView = new ImageView(new Image("/Pictures/ufo.png"));
         GameController.getInstance().getAsteroidFieldGroup().getChildren().add(imageView);
@@ -17,6 +23,10 @@ public class UfoView {
         imageView.setFitHeight(30);
     }
 
+    /**
+     * Draws this ufo to the appropriate location
+     * @param ufo the ufo to be drawn
+     */
     public void DrawUfo(Ufo ufo){
         GameController.getInstance().getPlayerId().setText("UFO");
 

@@ -5,12 +5,17 @@ import game_classes.SolarStorm;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-//todo ez így nincs
-//valahogy le kell kezeljük amikor robbanunk meg amikor eltűnik egy aszteroida
+/**
+ * Controller for the solarstorm.
+ */
 public class SolarStormController implements PropertyChangeListener {
     private SolarStorm solarStrom;
     private SolarStromView solarStromView;
 
+    /**
+     * Event Handler for the property changes of a solarstorm
+     * @param evt
+     */
     public void propertyChange(PropertyChangeEvent evt) {
         solarStromView.Draw(solarStrom);
 

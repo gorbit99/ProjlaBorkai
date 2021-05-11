@@ -30,7 +30,6 @@ public class Uranium extends Material {
         int newValue = exposureCount;
         if (exposureCount == 3) {
             asteroid.Explode();
-            System.out.println("uran eltuntem");
 
             changeEvent.firePropertyChange("exposureCount", oldValue, newValue);
         }

@@ -167,22 +167,18 @@ public class GameController {
         if (win || lose) {
             Parent root = null;
             if (win) {
-                try {//todo nem rajzolja ki a kurva anyját
+                try {
                     root = FXMLLoader.load(getClass().getResource("Win.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("win" + root);
             } else if (lose) {
-                try {//todo nem rajzolja ki a kurva anyját
-                    System.out.println("bej0v00000000k33333333333333");
+                try {
 
                     root = FXMLLoader.load(getClass().getResource("Lose.fxml"));
-                    System.out.println("bej0v00000000k");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("lose" + root);
             }
 
             Scene scene = new Scene(root);

@@ -124,10 +124,20 @@ public class AsteroidView extends SpaceObjectView {
                 (int) (Math.sin(angle) * len + imageView.getLayoutY()));
     }
 
+    /**
+     * Gets the next available id on a spaceobject
+     * @param spaceObject the spaceobject
+     * @param worker the worker you want to place on the spaceobject
+     * @return the id
+     */
     public static int getNextEntityId(SpaceObject spaceObject, Worker worker) {
         return spaceObject.GetWorkers().indexOf(worker);
     }
 
+    /**
+     * Sets the coreView of the asteroid
+     * @param CoreView the new view
+     */
     public void SetView(MaterialView CoreView){
         this.coreView = coreView;
         coreView.ShowView(true);

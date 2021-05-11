@@ -4,8 +4,10 @@ import game_classes.Material;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * View for the coal material
+ */
 public class CoalView extends MaterialView {
-    //todo
     /**
      * draw method of the coal view
      * @param material

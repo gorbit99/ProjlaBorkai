@@ -19,13 +19,13 @@ public class AstronautView {
     private final Astronaut astronaut;
     private final AstronautController astronautController;
 
-    //private boolean move_ButtonSubscribe = true; //todo ehhez még nincs semmi
+    //private boolean move_ButtonSubscribe = true;
     private boolean drill_ButtonSubscribe = false;
     private boolean mine_ButtonSubscribe = false;
     private boolean place_ButtonSubscribe = false;
     private boolean crtRobot_ButtonSubscribe = false;
     private boolean crtTeleport_ButtonSubscribe = false;
-    private boolean wait_ButtonSubscribe = false; //todo ehhez még nincs semmi
+    private boolean wait_ButtonSubscribe = false;
     private Asteroid oldPosition = null;
 
     /**
@@ -61,10 +61,8 @@ public class AstronautView {
 
         HBox inventoryBox = GameController.getInstance().getInventoryBox();
 
-        System.out.println(this.astronaut.GetStoredMaterials());
         for (Material material : this.astronaut.GetStoredMaterials()) {
             MaterialView view = MaterialController.controllerFromMaterial(material).getView();
-            System.out.println("Materiall list:" + material);
             ImageView image = view.image;
             image.setFitHeight(50);
             image.setFitWidth(50);
@@ -125,7 +123,8 @@ public class AstronautView {
         receiptRobot.add(new Coal());
         receiptRobot.add(new Uranium());
         BillOfMaterials billOfMaterialsRobot = new BillOfMaterials(receiptRobot);
-        if (billOfMaterialsRobot.IsEnough(astronaut.GetStoredMaterials())) {
+        ArrayList<Material> tempMaterials = (ArrayList<Material>) astronaut.GetStoredMaterials().clone();
+        if (billOfMaterialsRobot.IsEnough(tempMaterials)) {
             GameController.getInstance().getRobotBtn().setDisable(false);
             GameController.getInstance().getRobotBtn().setOnAction(this.astronautController.CreateRobotEventHandler);
             crtRobot_ButtonSubscribe = true;
@@ -138,7 +137,8 @@ public class AstronautView {
         materialsTeleport.add(new Ice());
         materialsTeleport.add(new Uranium());
         BillOfMaterials billOfMaterialsTeleport = new BillOfMaterials(materialsTeleport);
-        if (billOfMaterialsTeleport.IsEnough(astronaut.GetStoredMaterials())) {
+        tempMaterials = (ArrayList<Material>) astronaut.GetStoredMaterials().clone();
+        if (billOfMaterialsTeleport.IsEnough(tempMaterials)) {
             GameController.getInstance().getTeleportBtn().setDisable(false);
             GameController.getInstance().getTeleportBtn().setOnAction(this.astronautController.CreateTeleportEventHandler);
             crtTeleport_ButtonSubscribe = true;

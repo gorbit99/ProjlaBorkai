@@ -83,7 +83,7 @@ public class Asteroid extends SpaceObject {
         float previous = distanceFromSun;
         Random rnd = new Random();
         do {
-            distanceFromSun = rnd.nextFloat() * 5;
+            distanceFromSun = rnd.nextFloat() * 5 + 5;
         } while (Math.abs(previous - distanceFromSun) < 0.01f);
         //changeEvent.firePropertyChange("core", previous, distanceFromSun);
     }
@@ -154,7 +154,6 @@ public class Asteroid extends SpaceObject {
         ArrayList<SpaceObject> old = (ArrayList<SpaceObject>) neighbours.clone();
         neighbours.remove(spaceObject);
         if (neighbours.size() == 0) {
-            //todo lehet csak butus vagyok, de mí nó ért
             if (spaceObject.GetNeighbours().size() == 0) {
                 return;
             }

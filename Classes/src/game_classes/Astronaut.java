@@ -1,6 +1,7 @@
 package game_classes;
 
 import graphics.RobotController;
+import graphics.SpaceObjectController;
 
 import java.util.ArrayList;
 
@@ -63,7 +64,6 @@ public class Astronaut extends Worker {
      * places the chosen material back to an asteroid if its core is empty
      */
     public void PlaceMaterial() throws Exception {
-        //todo inventory alapján történjen, ehhez segédfüggvény
         ArrayList<Material> old = (ArrayList<Material>) materialsStored.clone();
 
         if (this.position.PlaceMaterial(materialsStored.get(0))) {
@@ -78,7 +78,6 @@ public class Astronaut extends Worker {
      * places a teleporter down
      */
     public void PlaceTeleporter() throws Exception {
-        //todo grafikus felületről választás
         ArrayList<Teleporter> old = (ArrayList<Teleporter>) teleporters.clone();
         if (teleporters.isEmpty()) throw new Exception();
 
@@ -93,7 +92,7 @@ public class Astronaut extends Worker {
      * creates a robot from the astronaut's materials
      */
     public void CreateRobot() throws Exception {
-        new RobotController(this.position);
+        new RobotController(this.GetStoredMaterials(), this.position);
     }
 
     /**
@@ -104,7 +103,8 @@ public class Astronaut extends Worker {
         ArrayList<Teleporter> teleporter = Teleporter.CreateTeleporterPair(GetStoredMaterials());
         if (teleporter != null)
             this.teleporters = teleporter;
-        //todo itt kellene létrehozni a teleporter kontrollereket
+        //SpaceObjectController teleporterController = SpaceObjectController.createTeleporterController(teleporters.get(0));
+        //SpaceObjectController teleporterController1 = SpaceObjectController.createTeleporterController(teleporters.get(1));
     }
 
     /**

@@ -6,6 +6,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
+/**
+ * Controller for the robot worker
+ */
 public class RobotController extends WorkerController {
 
     /**
@@ -15,17 +18,25 @@ public class RobotController extends WorkerController {
     private Robot robot;
     private RobotView view;
 
-    public RobotController(Asteroid asteroid) {
-        robot = new Robot(asteroid);
+    /**
+     * Contructor of the class
+     * @param materials materials necessary to create a robot
+     * @param asteroid the asteroid this robot is created on
+     */
+    public RobotController(ArrayList<Material> materials, Asteroid asteroid) {
+        robot = Robot.CreateRobot(materials, asteroid);
         view = new RobotView();
         view.DrawRobot(robot);
         robot.GetChangeEvent().addPropertyChangeListener(this);
     }
 
 
+    /**
+     * Event Handler for property changes
+     * @param evt
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("SDFsdrfsf");
         view.DrawRobot(robot);
     }
 }

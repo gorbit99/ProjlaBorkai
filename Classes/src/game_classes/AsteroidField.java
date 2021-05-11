@@ -11,12 +11,12 @@ public class AsteroidField {
     /**
      * Number of asteroids in a row
      */
-    private static final int asteroidFieldWidth = 5;
+    private static final int asteroidFieldWidth = 8;
 
     /**
      * Number of asteroids in a column
      */
-    private static final int asteroidFieldHeight = 3;
+    private static final int asteroidFieldHeight = 5;
 
     /**
      * contains all the spaceObjects in the asteroid field

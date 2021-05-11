@@ -18,7 +18,6 @@ public class Ice extends Material {
     public void HandleCloseToSun(Asteroid asteroid) {
         if (asteroid.IsCloseToSun()) {
             asteroid.SetCore(null);
-            System.out.println("ice eltuntem");
             changeEvent.firePropertyChange("exist", true, false);
         }
     }

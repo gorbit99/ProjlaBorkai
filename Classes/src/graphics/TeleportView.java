@@ -9,10 +9,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 
+/**
+ * View for the teleporter
+ */
 public class TeleportView extends SpaceObjectView {
 
+    /**
+     * the line connecting this teleporter to it's neighbours
+     */
     private Line neighbourLine;
 
+    /**
+     * Contsructor of the class
+     * @param teleporter
+     */
     public TeleportView(Teleporter teleporter) {
         imageView = new ImageView(new Image("/Pictures/portal.png"));
         GameController.getInstance().getAsteroidFieldGroup().getChildren().add(imageView);
@@ -33,6 +43,10 @@ public class TeleportView extends SpaceObjectView {
         imageView.setLayoutY(y - imageView.getFitHeight() / 2);
     }
 
+    /**
+     * Draws this teleporter with it's neighbourhood
+     * @param spaceObject
+     */
     @Override
     public void Draw(SpaceObject spaceObject) {
         Teleporter teleporter = (Teleporter) spaceObject;

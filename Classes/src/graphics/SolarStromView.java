@@ -6,6 +6,9 @@ import javafx.scene.image.Image;
 
 import javax.swing.text.html.ImageView;
 
+/**
+ * View for the solar storm
+ */
 public class SolarStromView {
     protected ImageView imageView;
 

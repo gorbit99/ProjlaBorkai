@@ -4,8 +4,10 @@ import game_classes.Material;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * View for the ice material
+ */
 public class IceView extends MaterialView{
-    //todo
     @Override
     public void Draw(Material material) {
 
