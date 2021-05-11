@@ -56,7 +56,7 @@ public class Astronaut extends Worker {
         if (materialsStored.size() >= 10) throw new Exception("Not enough place");
         ArrayList<Material> old = (ArrayList<Material>) materialsStored.clone();
         materialsStored.add(this.position.Mine());
-        //changeEvent.firePropertyChange("materialsStored", old, materialsStored);
+        changeEvent.firePropertyChange("materialsStored", old, this.position);
     }
 
     /**
@@ -93,8 +93,6 @@ public class Astronaut extends Worker {
      * creates a robot from the astronaut's materials
      */
     public void CreateRobot() throws Exception {
-        //Robot roby = Robot.CreateRobot(GetStoredMaterials(), this.position);
-        //if (roby == null) throw new Exception("Couldn't create robot");
         new RobotController(this.position);
     }
 
@@ -106,6 +104,7 @@ public class Astronaut extends Worker {
         ArrayList<Teleporter> teleporter = Teleporter.CreateTeleporterPair(GetStoredMaterials());
         if (teleporter != null)
             this.teleporters = teleporter;
+        //todo itt kellene létrehozni a teleporter kontrollereket
     }
 
     /**

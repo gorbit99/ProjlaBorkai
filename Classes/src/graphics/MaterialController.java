@@ -22,7 +22,7 @@ public class MaterialController implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
 
         if (evt.getPropertyName().equals("exist") || evt.getPropertyName().equals("exposureCount")) {
-            view = new NoMaterialView(new ImageView(new Image("/Pictures/NoMaterial.png")));
+            view = new NoMaterialView(view.getImage());
             material = null;
             System.out.println("no material");
         }
@@ -69,6 +69,10 @@ public class MaterialController implements PropertyChangeListener {
         MaterialView mv = new CoalView(iv);
         Coal coal = new Coal();
         return new MaterialController(coal, mv);
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 
     /**

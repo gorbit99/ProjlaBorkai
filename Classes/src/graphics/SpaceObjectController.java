@@ -107,7 +107,7 @@ public class SpaceObjectController implements PropertyChangeListener {
 
     public static SpaceObjectController createTeleporterController(Asteroid asteroid) {
 //        Teleporter teleporter = new Teleporter()
-        return null;//todo ez egy szar
+        return null;//todo ez egy szar (ezt nem értem nem tudom ki íta ide xdd levi)
     }
 
     public SpaceObject getSpaceObject() {

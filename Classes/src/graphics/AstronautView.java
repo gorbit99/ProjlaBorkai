@@ -140,7 +140,7 @@ public class AstronautView {
         BillOfMaterials billOfMaterialsTeleport = new BillOfMaterials(materialsTeleport);
         if (billOfMaterialsTeleport.IsEnough(astronaut.GetStoredMaterials())) {
             GameController.getInstance().getTeleportBtn().setDisable(false);
-            //GameController.getInstance().getTeleportBtn().setOnAction(this.astronautController.TeleportEventHandler);
+            GameController.getInstance().getTeleportBtn().setOnAction(this.astronautController.CreateTeleportEventHandler);
             crtTeleport_ButtonSubscribe = true;
         }
     }
@@ -150,7 +150,6 @@ public class AstronautView {
      */
     public void Unsubscribe() {
 
-        astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, astronaut);
 
 
         GameController.getInstance().getMoveBtn().setOnAction(null);
@@ -173,13 +172,12 @@ public class AstronautView {
 
         }
         if (crtRobot_ButtonSubscribe) {
-            System.out.println("sdfsdfdsfs");
             GameController.getInstance().getRobotBtn().setOnAction(null);
             GameController.getInstance().getRobotBtn().setDisable(true);
         }
         if (crtTeleport_ButtonSubscribe) {
-            // GameController.getInstance().getTeleportBtn()
-            //            GameController.getInstance().getDrillBtn().setDisable(false);
+            GameController.getInstance().getTeleportBtn().setOnAction(null);
+            GameController.getInstance().getTeleportBtn().setDisable(true);
         }
 
     }

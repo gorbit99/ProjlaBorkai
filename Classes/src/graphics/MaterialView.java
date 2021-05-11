@@ -17,4 +17,8 @@ public abstract class MaterialView {
     public void ShowView(boolean show) {
         image.setVisible(show);
     }
+
+    public ImageView getImage() {
+        return image;
+    }
 }

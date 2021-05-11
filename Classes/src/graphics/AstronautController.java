@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -33,6 +34,7 @@ public class AstronautController extends WorkerController {
 
     /**
      * Event Handler for the propertychangeevent
+     *
      * @param evt the caught event
      */
     @Override
@@ -45,8 +47,15 @@ public class AstronautController extends WorkerController {
 
 
         }
-        if (evt.getPropertyName().equals("InActiveAstronaut")) {
-            System.out.println("inaktiv");
+
+
+        if (evt.getPropertyName().equals("materialsStored")) {
+            //todo ide kell hogy megvaltozzon mine utan
+            Pane asteroidsGroup = GameController.getInstance().getAsteroidFieldGroup();
+            Asteroid asteroid=(Asteroid) evt.getNewValue();
+            ImageView imageView= SpaceObjectController.controllerFromSpaceObject(asteroid).getView().imageView;
+
+
         }
 
     }
@@ -76,7 +85,7 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             try {
                 System.out.println("mine");
-                astronaut.Mine(); //todo
+                astronaut.Mine(); //todo hogy eltűnjön és az üres legyen ott
                 endTurn();
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -92,7 +101,7 @@ public class AstronautController extends WorkerController {
         public void handle(ActionEvent e) {
             try {
                 System.out.println("sün");
-                astronaut.PlaceMaterial(); //todo
+                astronaut.PlaceMaterial(); //todo hogy ki tudjam választani melyiket kell bele tennem
                 endTurn();
 
             } catch (Exception exception) {
@@ -139,8 +148,22 @@ public class AstronautController extends WorkerController {
         }
     };
 
+    public EventHandler<ActionEvent> CreateTeleportEventHandler = new EventHandler<>() {
+        @Override
+        public void handle(ActionEvent e) {
+            try {
+                astronaut.CreateTeleporter();
+                endTurn();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+        }
+    };
+
     /**
      * A wrapper function for the TravelTo method in astronaut. Unsubscribes from the events of the spaceobjects.
+     *
      * @param so The space object the astronaut will travel to.
      */
     public void TravelToWrapper(SpaceObject so) {
