@@ -153,11 +153,11 @@ public class Game {
         if (!this.billOfMaterials.IsEnough(coreSum)) {
             System.out.println(coreSum);
             this.lose = true;
+            GameController.getInstance().Endgame(false,true);
         }
 
 
-        if (lose)
-            System.exit(0);
+
     }
 
     /**
@@ -189,7 +189,7 @@ public class Game {
 
 
         for (int i = 0; i < ufoCount; i++) {
-            //new UfoController();
+            new UfoController();
         }
 
 

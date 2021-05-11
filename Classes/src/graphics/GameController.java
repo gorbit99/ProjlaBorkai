@@ -59,13 +59,14 @@ public class GameController {
     }
 
     @FXML
-    protected void initialize(){
+    protected void initialize() {
         Game.GetInstance().StartGame();
 
     }
 
     /**
      * Gets the drill button
+     *
      * @return the drill button
      */
     public Button getDrillBtn() {
@@ -75,12 +76,13 @@ public class GameController {
     /**
      * exits the game
      */
-    public void exit(){
+    public void exit() {
         System.exit(0);
     }
 
     /**
      * Gets the place button
+     *
      * @return the place button
      */
     public Button getPlaceBtn() {
@@ -89,6 +91,7 @@ public class GameController {
 
     /**
      * Gets the Create robot button
+     *
      * @return the robot button
      */
     public Button getRobotBtn() {
@@ -97,6 +100,7 @@ public class GameController {
 
     /**
      * Gets the mine button
+     *
      * @return the mine button
      */
     public Button getMineBtn() {
@@ -105,6 +109,7 @@ public class GameController {
 
     /**
      * Gets the create teleport button
+     *
      * @return the create teleport button
      */
     public Button getTeleportBtn() {
@@ -113,6 +118,7 @@ public class GameController {
 
     /**
      * Gets the wait button
+     *
      * @return the wait button
      */
     public Button getWaitBtn() {
@@ -121,6 +127,7 @@ public class GameController {
 
     /**
      * Gets the move button
+     *
      * @return the move button
      */
     public Button getMoveBtn() {
@@ -131,10 +138,13 @@ public class GameController {
         return inventoryBox;
     }
 
-    public Button getReturnToMenu(){return returnToMenu;}
+    public Button getReturnToMenu() {
+        return returnToMenu;
+    }
 
     /**
      * Gets the player id text
+     *
      * @return the player id text
      */
     public Text getPlayerId() {
@@ -144,6 +154,7 @@ public class GameController {
 
     /**
      * Gets the asteroid field group
+     *
      * @return asteroid field group
      */
     public Pane getAsteroidFieldGroup() {
@@ -154,7 +165,7 @@ public class GameController {
     //todo ez a baj
     public void Endgame(boolean win, boolean lose) {
         if (win || lose) {
-            Parent root = new Parent() {};
+            Parent root = null;
             if (win) {
                 try {//todo nem rajzolja ki a kurva anyját
                     root = FXMLLoader.load(getClass().getResource("Win.fxml"));
@@ -164,16 +175,23 @@ public class GameController {
                 System.out.println("win" + root);
             } else if (lose) {
                 try {//todo nem rajzolja ki a kurva anyját
+                    System.out.println("bej0v00000000k33333333333333");
+
                     root = FXMLLoader.load(getClass().getResource("Lose.fxml"));
+                    System.out.println("bej0v00000000k");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 System.out.println("lose" + root);
             }
 
-            Scene scene = new Scene(root, Color.ORANGE);
+            Scene scene = new Scene(root);
             Stage stage = (Stage) gameView.getScene().getWindow();
+
+
+            //Stage stage=new Stage();
             stage.setScene(scene);
+            stage.show();
         }
 
     }
