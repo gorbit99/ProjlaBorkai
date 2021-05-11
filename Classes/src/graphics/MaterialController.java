@@ -20,12 +20,14 @@ public class MaterialController implements PropertyChangeListener {
     //TODO ez az osztálydiagrammon privát
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        view.Draw(material);
 
-        if (evt.getPropertyName().equals("exists") || evt.getPropertyName().equals("exposureCount")) {
-            view = new NoMaterialView(new ImageView(new Image("/NoMaterial.png")));
+        if (evt.getPropertyName().equals("exist") || evt.getPropertyName().equals("exposureCount")) {
+            view = new NoMaterialView(new ImageView(new Image("/Pictures/NoMaterial.png")));
+            material = null;
             System.out.println("no material");
         }
+        view.Draw(material);
+
     }
 
     /**
@@ -56,8 +58,10 @@ public class MaterialController implements PropertyChangeListener {
         Iron iron = new Iron();
         return new MaterialController(iron, mv);
     }
+
     /**
      * Creates an coal controller
+     *
      * @param iv the image view the coal will be represented in
      * @return the coal controller
      */
@@ -66,8 +70,10 @@ public class MaterialController implements PropertyChangeListener {
         Coal coal = new Coal();
         return new MaterialController(coal, mv);
     }
+
     /**
      * Creates a uranium controller
+     *
      * @param iv the image view the uranium will be represented in
      * @return the uranium controller
      */
@@ -76,8 +82,10 @@ public class MaterialController implements PropertyChangeListener {
         Uranium uranium = new Uranium();
         return new MaterialController(uranium, mv);
     }
+
     /**
      * Creates an ice controller
+     *
      * @param iv the image view the ice will be represented in
      * @return the ice controller
      */
@@ -86,8 +94,10 @@ public class MaterialController implements PropertyChangeListener {
         Ice ice = new Ice();
         return new MaterialController(ice, mv);
     }
+
     /**
      * Creates a no material controller
+     *
      * @param iv the image view the absence of a material will be represented in
      * @return the no material controller
      */
@@ -98,6 +108,7 @@ public class MaterialController implements PropertyChangeListener {
 
     /**
      * Getter for the view
+     *
      * @return the view
      */
     public MaterialView getView() {
@@ -106,6 +117,7 @@ public class MaterialController implements PropertyChangeListener {
 
     /**
      * Getter for the material
+     *
      * @return the material
      */
     public Material getMaterial() {
