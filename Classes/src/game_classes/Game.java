@@ -189,7 +189,7 @@ public class Game {
 
 
         for (int i = 0; i < ufoCount; i++) {
-            new UfoController();
+            //new UfoController();
         }
 
 

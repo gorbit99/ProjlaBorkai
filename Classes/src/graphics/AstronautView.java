@@ -45,6 +45,7 @@ public class AstronautView {
 
     /**
      * Draws the astronaut to the appropriate coordinates
+     *
      * @param astronaut the astronaut to be drawn
      */
     public void DrawAstronaut(Astronaut astronaut) {
@@ -52,7 +53,7 @@ public class AstronautView {
         SpaceObjectController spaceObjectController =
                 SpaceObjectController.controllerFromSpaceObject(astronaut.getPosition());
 
-        int id = AsteroidView.getNextEntityId(astronaut.getPosition(),astronaut);
+        int id = AsteroidView.getNextEntityId(astronaut.getPosition(), astronaut);
         Point position = ((AsteroidView) spaceObjectController.getView()).getEntityPosition(id);
 
         imageView.setLayoutX(position.x);
@@ -60,10 +61,11 @@ public class AstronautView {
 
         HBox inventoryBox = GameController.getInstance().getInventoryBox();
 
+        System.out.println(this.astronaut.GetStoredMaterials());
         for (Material material : this.astronaut.GetStoredMaterials()) {
-            MaterialView view=MaterialController.controllerFromMaterial(material).getView();
-            System.out.println("Materiall list:"+material);
-            ImageView image=view.image;
+            MaterialView view = MaterialController.controllerFromMaterial(material).getView();
+            System.out.println("Materiall list:" + material);
+            ImageView image = view.image;
             image.setFitHeight(50);
             image.setFitWidth(50);
             inventoryBox.getChildren().add(image);
@@ -148,7 +150,7 @@ public class AstronautView {
      */
     public void Unsubscribe() {
 
-        astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, this);
+        astronaut.GetChangeEvent().firePropertyChange("InActiveAstronaut", null, astronaut);
 
 
         GameController.getInstance().getMoveBtn().setOnAction(null);

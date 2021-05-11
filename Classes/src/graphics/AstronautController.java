@@ -38,14 +38,16 @@ public class AstronautController extends WorkerController {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         view.SetActivePic();
-        view.DrawAstronaut(astronaut);
         if (evt.getPropertyName().equals("ActiveAstronaut") && evt.getNewValue() == astronaut) {
             view.SetButtonStatus();
+            view.DrawAstronaut(astronaut);
+
 
         }
         if (evt.getPropertyName().equals("InActiveAstronaut")) {
             System.out.println("inaktiv");
         }
+
     }
 
     /**

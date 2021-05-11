@@ -55,7 +55,7 @@ public class Asteroid extends SpaceObject {
         if (layers != 0 || core == null) return null;
         Material temp = core;
         SetCore(null);
-        changeEvent.firePropertyChange("core", temp, null);
+       // changeEvent.firePropertyChange("core", temp, null);
         return temp;
     }
 
@@ -85,7 +85,7 @@ public class Asteroid extends SpaceObject {
         do {
             distanceFromSun = rnd.nextFloat() * 5;
         } while (Math.abs(previous - distanceFromSun) < 0.01f);
-        changeEvent.firePropertyChange("core", previous, distanceFromSun);
+        //changeEvent.firePropertyChange("core", previous, distanceFromSun);
     }
 
     /**

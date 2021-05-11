@@ -39,9 +39,12 @@ public class MaterialController implements PropertyChangeListener {
         view = mv;
         if (material != null)
             material.GetChangeEvent().addPropertyChangeListener(this);
+
+        materialControllers.add(this);
     }
 
     public static MaterialController controllerFromMaterial(Material material) {
+        System.out.println(material);
         return materialControllers.stream().filter(x -> x.material == material).findFirst().get();
 
     }

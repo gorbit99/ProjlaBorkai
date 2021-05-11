@@ -56,7 +56,7 @@ public class Astronaut extends Worker {
         if (materialsStored.size() >= 10) throw new Exception("Not enough place");
         ArrayList<Material> old = (ArrayList<Material>) materialsStored.clone();
         materialsStored.add(this.position.Mine());
-        changeEvent.firePropertyChange("materialsStored", old, materialsStored);
+        //changeEvent.firePropertyChange("materialsStored", old, materialsStored);
     }
 
     /**
